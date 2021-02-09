@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import { h1, span } from "./components/ReactCreateElement";
+import ReactComponent from "./components/ReactComponent";
+import ReactPureComponent from "./components/ReactPureComponent";
+import FunctionalComponent from "./components/FunctionalComponent";
+
+const App = () => {
+  const ReactComponentRoot = React.createElement(ReactComponent, null, null);
+  const ReactPureComponentRoot = React.createElement(
+    ReactPureComponent,
+    null,
+    null
   );
-}
+  const FunctionalComponentRoot = React.createElement(
+    FunctionalComponent,
+    null,
+    null
+  );
+
+  return React.createElement(
+    "div",
+    null,
+    h1,
+    span,
+    ReactComponentRoot,
+    ReactPureComponentRoot,
+    FunctionalComponentRoot
+  );
+};
 
 export default App;
