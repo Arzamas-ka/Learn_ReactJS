@@ -1,17 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import { App as AppStyled } from './style';
+import { GlobalStyle } from '../../style';
 
 import Header from 'components/Header';
 
-const Title = styled.h2`
-  color: red;
-`;
-
 const App: React.FC = () => (
-  <>
-    <Title>Hello App!</Title>
+  <AppStyled>
+    <GlobalStyle />
     <Header />
-  </>
+  </AppStyled>
 );
 
 export default App;

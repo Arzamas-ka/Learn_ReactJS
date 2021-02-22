@@ -1,14 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { SyntheticEvent } from 'react';
 
-const Title = styled.h3`
-  color: blue;
-`;
+import { HeaderWrapper, HeaderBgr, Logo } from './style';
 
-const Header: React.FC = () => (
-  <>
-    <Title>Hello Header!</Title>
-  </>
-);
+import Button from 'components/Button';
+
+const Header: React.FC = () => {
+  const handleOnClick = (event: React.SyntheticEvent): void => {
+    event.preventDefault();
+
+    console.log('click: ', event);
+  };
+
+  return (
+    <>
+      <HeaderBgr />
+      <HeaderWrapper>
+        <Logo>
+          netflix<span>roulette</span>
+        </Logo>
+        <Button onClick={handleOnClick} text={`+ Add Movie`}></Button>
+      </HeaderWrapper>
+    </>
+  );
+};
 
 export default Header;
