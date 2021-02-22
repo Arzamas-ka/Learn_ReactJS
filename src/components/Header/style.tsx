@@ -41,7 +41,7 @@ export const Logo = styled.h1`
   margin-bottom: 15px;
   padding: 25px 0;
 
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 900;
   color: #f65261;
 

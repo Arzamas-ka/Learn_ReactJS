@@ -18,7 +18,7 @@ const Header: React.FC = () => {
         <Logo>
           netflix<span>roulette</span>
         </Logo>
-        <Button onClick={handleOnClick} text={`+ Add Movie`}></Button>
+        <Button type="add" onClick={handleOnClick} text="+ Add Movie"></Button>
       </HeaderWrapper>
     </>
   );
