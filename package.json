@@ -1,8 +1,30 @@
 {
-  "name": "newsapitask",
+  "name": "movie",
   "version": "1.0.0",
-  "description": "newsAPI task",
-  "main": "index.js",
+  "description": "",
+  "main": "index.tsx",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run lint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "node-sass": "^4.10.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "react-test-renderer": "^17.0.1",
+    "redux": "^4.0.5",
+    "styled-components": "^5.2.1",
+    "ts-loader": "^8.0.17",
+    "tsconfig-paths-webpack-plugin": "^3.3.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.12.13",
@@ -11,6 +33,9 @@
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "@babel/runtime": "^7.1.5",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@types/styled-components": "^5.1.7",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -20,23 +45,21 @@
     "cross-env": "^5.2.0",
     "css-loader": "^5.0.2",
     "dotenv": "^8.2.0",
+    "eslint": "^7.8.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.5",
     "image-webpack-loader": "^4.5.0",
     "jest": "^26.6.3",
+    "lint-staged": "^10.2.13",
     "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "react": "^17.0.1",
-    "react-redux": "^7.2.2",
-    "react-router": "^5.2.0",
-    "redux": "^4.0.5",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.1",
+    "prettier": "^2.1.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^2.0.0",
+    "typescript": "^4.1.5",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.26.0",
     "webpack-cli": "^3.1.2",
@@ -47,7 +70,9 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --watch",
     "prod": "cross-env NODE_ENV=production webpack-dev-server",
     "build:prod": "cross-env NODE_ENV=production webpack",
-    "build:dev": "cross-env NODE_ENV=development webpack"
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "tsc": "tsc",
+    "lint": "eslint"
   },
   "author": "",
   "license": "ISC"

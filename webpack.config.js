@@ -1,9 +1,8 @@
 const path = require('path');
-const dotenv = require('dotenv');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -12,7 +11,7 @@ const filename = (ext) => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
-  entry: ['./index.js'],
+  entry: ['./src/index.tsx'],
   output: {
     filename: `./js/${filename('js')}`,
     chunkFilename: '[name].bundle.js',
@@ -20,7 +19,7 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.json', '.tsx', '.ts']
   },
   watch: true,
   devtool: 'source-map',
@@ -38,6 +37,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['build']),
+    new TsconfigPathsPlugin({ configFile: './tsconfig.json' }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
@@ -59,6 +59,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
