@@ -1,11 +1,12 @@
-import React, { SyntheticEvent } from 'react';
+import React, { FC, SyntheticEvent } from 'react';
 
 import { HeaderWrapper, HeaderBgr, Logo } from './style';
 
 import Button from 'components/Button';
+import Search from 'components/Search';
 
-const Header: React.FC = () => {
-  const handleOnClick = (event: React.SyntheticEvent): void => {
+const Header: FC = () => {
+  const handleOnClick = (event: SyntheticEvent): void => {
     event.preventDefault();
 
     console.log('click: ', event);
@@ -15,10 +16,20 @@ const Header: React.FC = () => {
     <>
       <HeaderBgr />
       <HeaderWrapper>
-        <Logo>
-          netflix<span>roulette</span>
-        </Logo>
-        <Button type="add" onClick={handleOnClick} text="+ Add Movie"></Button>
+        <div className="header-top">
+          <Logo href="#">
+            <h2>
+              netflix<span>roulette</span>
+            </h2>
+          </Logo>
+          <Button
+            type="button"
+            view="button"
+            onClick={handleOnClick}
+            text="+ Add Movie"
+          ></Button>
+        </div>
+        <Search />
       </HeaderWrapper>
     </>
   );
