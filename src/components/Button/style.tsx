@@ -16,7 +16,9 @@ export const Button = styled.button`
   }
 
   &.btn-submit {
-    padding: 20px 70px;
+    align-self: flex-end;
+
+    padding: 16px 70px;
 
     font-size: 16px;
     color: white;

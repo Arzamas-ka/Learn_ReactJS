@@ -6,7 +6,6 @@ export type StyledButton =
 
 export interface ButtonProps {
   text: string;
-  // type: StyledButton;
   view: StyledButton;
   type?: 'submit' | 'reset' | 'button';
   onClick: (event: SyntheticEvent<Element, Event>) => void;

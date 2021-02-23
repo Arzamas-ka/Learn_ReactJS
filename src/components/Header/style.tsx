@@ -3,19 +3,21 @@ import styled from 'styled-components';
 import bgrImage from '../../assets/images/background.jpg';
 
 export const HeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   position: fixed;
   left: 0;
   right: 0;
 
   width: 100%;
-  padding: 25px 55px;
+  padding: 25px 55px 125px 55px;
 
   background-color: rgba(12, 13, 14, 0.7);
   z-index: 10;
+
+  & .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const HeaderBgr = styled.div`
@@ -26,7 +28,7 @@ export const HeaderBgr = styled.div`
 
   display: block;
   width: 100%;
-  height: 500px;
+  height: 395px;
 
   background-image: url(${bgrImage});
   background-repeat: no-repeat;
@@ -36,13 +38,10 @@ export const HeaderBgr = styled.div`
   opacity: 0.7;
 `;
 
-export const Logo = styled.h1`
-  display: inline-block;
+export const Logo = styled.a`
   margin-bottom: 15px;
   padding: 25px 0;
 
-  font-size: 20px;
-  font-weight: 900;
   color: #f65261;
 
   span {
