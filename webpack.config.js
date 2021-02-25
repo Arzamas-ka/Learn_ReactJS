@@ -11,6 +11,9 @@ const filename = (ext) => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
+  performance: {
+    hints: false,
+  },
   entry: ['./src/index.tsx'],
   output: {
     filename: `./js/${filename('js')}`,
@@ -22,7 +25,7 @@ module.exports = {
     extensions: ['.js', '.json', '.tsx', '.ts']
   },
   watch: true,
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     compress: true,
