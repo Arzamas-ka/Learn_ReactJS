@@ -22,7 +22,7 @@ module.exports = {
     extensions: ['.js', '.json', '.tsx', '.ts']
   },
   watch: true,
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     compress: true,
