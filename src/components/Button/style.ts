@@ -26,6 +26,12 @@ export const Button = styled.button`
     background-color: #f65261;
     text-transform: uppercase;
 
+    @media screen and (max-width: 970px) {
+      align-self: center;
+    
+      margin-top: 20px;
+  }
+
     &:hover {
       color: #424242;
     }

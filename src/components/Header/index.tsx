@@ -1,6 +1,6 @@
 import React, { FC, SyntheticEvent } from 'react';
 
-import { HeaderWrapper, HeaderBgr, Logo } from './style';
+import { HeaderWrapper, Logo } from './style';
 
 import Button from 'components/Button';
 import Search from 'components/Search';
@@ -14,7 +14,6 @@ const Header: FC = () => {
 
   return (
     <>
-      <HeaderBgr />
       <HeaderWrapper>
         <div className="header-top">
           <Logo href="#">

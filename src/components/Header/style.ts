@@ -3,39 +3,27 @@ import styled from 'styled-components';
 import bgrImage from '../../assets/images/background.jpg';
 
 export const HeaderWrapper = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-
-  width: 100%;
-  padding: 25px 55px 125px 55px;
-
-  background-color: rgba(12, 13, 14, 0.7);
-  z-index: 10;
+  background-image: linear-gradient(
+      to right,
+      rgba(12, 13, 14, 0.7),
+      rgba(12, 13, 14, 0.7)
+    ),
+    url(${bgrImage});
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
 
   & .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 25px 55px 25px 55px;
+
+    @media screen and (max-width: 430px) {
+      flex-direction: column;
+    }
   }
-`;
-
-export const HeaderBgr = styled.div`
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 1;
-
-  display: block;
-  width: 100%;
-  height: 395px;
-
-  background-image: url(${bgrImage});
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
-  filter: blur(2px);
-  opacity: 0.7;
 `;
 
 export const Logo = styled.a`

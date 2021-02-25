@@ -3,12 +3,19 @@ import styled from 'styled-components';
 export const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 970px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Input = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  width: 100%;
 
   input {
     padding: 15px 20px;
@@ -26,7 +33,7 @@ export const Input = styled.div`
     }
 
     &.input-search {
-      width: 710px;
+      width: 95%;
       margin-right: 20px;
 
       font-size: 18px;
@@ -35,10 +42,18 @@ export const Input = styled.div`
         color: #555555;
         font-size: 20px;
         font-weight: 100;
+
+        @media screen and (max-width: 370px) {
+        font-size: 16px;
+      }
+      }
+
+      @media screen and (max-width: 970px) {
+        margin-right: 0px;
       }
     }
     &.input-title {
-      width: 510px;
+      width: 95%;
       padding: 20px;
 
       font-size: 14px;
