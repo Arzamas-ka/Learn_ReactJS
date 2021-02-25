@@ -5,7 +5,7 @@ import movie_4 from './src/assets/images/movie_4.png';
 import movie_5 from './src/assets/images/movie_5.png';
 import movie_6 from './src/assets/images/movie_6.png';
 
-export const data = [
+const PostersData = [
   {
     id: 1,
     title: 'Pulp Fiction',
@@ -49,3 +49,5 @@ export const data = [
     poster: movie_6,
   },
 ]
+
+export default PostersData;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Catalog as CatalogWrapper, FilterSortWrapper } from './style';
+import { Catalog as CatalogWrapper, FilterSortWrapper, NumberMovies } from './style';
 
 import Filter from './Filter';
 import Sort from './Sort';
@@ -12,6 +12,7 @@ const Catalog: FC = () => (
       <Filter />
       <Sort />
     </FilterSortWrapper>
+    <NumberMovies><span>10</span> movie found</NumberMovies>
       <Posters />
   </CatalogWrapper>
 );

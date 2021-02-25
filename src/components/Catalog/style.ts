@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Catalog = styled.div`
-  /* color: green; */
+  color: #424242;
 `;
 
 export const FilterSortWrapper = styled.div`
@@ -12,9 +12,22 @@ export const FilterSortWrapper = styled.div`
   border-bottom: 2px solid #555555;
 
   @media screen and (max-width: 880px) {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
 
-      border-bottom: none;
-    }
+    border-bottom: none;
+  }
+`;
+
+export const NumberMovies = styled.h3`
+  padding: 25px 70px;
+
+  font-size: 18px;
+  font-weight: 100;
+  color: white;
+
+  span {
+    font-size: 22px;
+    font-weight: 600;
+  }
 `;
