@@ -1,9 +1,10 @@
 import React, { FC, SyntheticEvent } from 'react';
 
-import { HeaderWrapper, Logo } from './style';
+import { HeaderWrapper } from './style';
 
 import Button from 'components/Button';
 import Search from 'components/Search';
+import Logo from 'components/Logo';
 
 const Header: FC = () => {
   const handleOnClick = (event: SyntheticEvent): void => {
@@ -16,11 +17,7 @@ const Header: FC = () => {
     <>
       <HeaderWrapper>
         <div className="header-top">
-          <Logo href="#">
-            <h2>
-              netflix<span>roulette</span>
-            </h2>
-          </Logo>
+          <Logo />
           <Button
             type="button"
             view="button"
