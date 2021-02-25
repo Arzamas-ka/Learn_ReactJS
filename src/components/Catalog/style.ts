@@ -10,4 +10,11 @@ export const FilterSortWrapper = styled.div`
 
   margin: 0 65px;
   border-bottom: 2px solid #555555;
+
+  @media screen and (max-width: 880px) {
+      flex-direction: column;
+      align-items: center;
+
+      border-bottom: none;
+    }
 `;

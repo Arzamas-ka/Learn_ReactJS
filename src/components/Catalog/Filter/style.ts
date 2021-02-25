@@ -8,6 +8,11 @@ export const Filter = styled.div`
     font-size: 16px;
     color: white;
     text-transform: uppercase;
+
+    @media screen and (max-width: 490px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   li {
