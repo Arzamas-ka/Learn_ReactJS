@@ -16,6 +16,10 @@ export const Search = styled.div`
     color: white;
     text-transform: uppercase;
 
+    @media screen and (max-width: 880px) {
+    text-align: center;
+  }
+  
     @media screen and (max-width: 510px) {
       margin: 0;
 

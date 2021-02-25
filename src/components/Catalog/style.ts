@@ -26,6 +26,10 @@ export const NumberMovies = styled.h3`
   font-weight: 100;
   color: white;
 
+  @media screen and (max-width: 880px) {
+    text-align: center;
+  }
+
   span {
     font-size: 22px;
     font-weight: 600;
