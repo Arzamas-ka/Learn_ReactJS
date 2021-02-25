@@ -5,12 +5,14 @@ import { GlobalStyle } from '../../style';
 
 import Header from 'components/Header';
 import Catalog from 'components/Catalog';
+import Footer from 'components/Footer';
 
 const App: FC = () => (
   <AppStyled>
     <GlobalStyle />
     <Header />
     <Catalog />
+    <Footer />
   </AppStyled>
 );
 
