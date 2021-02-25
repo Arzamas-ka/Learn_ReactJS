@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 
-import { Catalog as CatalogWrapper } from './style';
+import { Catalog as CatalogWrapper, FilterSortWrapper } from './style';
 
 import Filter from './Filter';
 import Sort from './Sort';
-import Posters from './Sort';
+import Posters from './Posters';
 
 const Catalog: FC = () => (
   <CatalogWrapper>
-    <div>
+    <FilterSortWrapper>
       <Filter />
       <Sort />
+    </FilterSortWrapper>
       <Posters />
-    </div>
   </CatalogWrapper>
 );
 
