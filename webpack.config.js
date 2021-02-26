@@ -22,9 +22,9 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
-    extensions: ['.js', '.json', '.tsx', '.ts']
+    extensions: ['.js', '.json', '.tsx', '.ts'],
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]
   },
-  watch: true,
   devtool: 'source-map',
   devServer: {
     contentBase: path.join(__dirname, 'build'),
@@ -40,7 +40,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(['build']),
-    new TsconfigPathsPlugin({ configFile: './tsconfig.json' }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './index.html'),
       filename: 'index.html',
