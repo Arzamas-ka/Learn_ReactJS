@@ -14,7 +14,6 @@ const Header: FC = () => {
   };
 
   return (
-    <>
       <HeaderWrapper>
         <div className="header-top">
           <Logo />
@@ -27,7 +26,6 @@ const Header: FC = () => {
         </div>
         <Search />
       </HeaderWrapper>
-    </>
   );
 };
 
