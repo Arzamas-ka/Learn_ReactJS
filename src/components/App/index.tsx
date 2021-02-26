@@ -10,8 +10,8 @@ import AddMovie from 'components/AddMovie';
 
 const App: FC = () => (
   <AppStyled>
+    <Backdrop className="backdrop"></Backdrop>
     <GlobalStyle />
-    <Backdrop className="backdrop--active"></Backdrop>
     <AddMovie />
     <Header />
     <Catalog />

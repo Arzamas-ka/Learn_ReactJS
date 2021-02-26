@@ -9,8 +9,8 @@ export const Backdrop = styled.div`
     &--active {
       position: absolute;
       width: 100%;
-      height: 100vw;
-      max-height: 100vh;
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
       background-color: rgba(12, 13, 14, 0.7);
       backdrop-filter: blur(50px);
 

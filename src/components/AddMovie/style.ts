@@ -5,7 +5,7 @@ export const AddMovie = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  /* display: none; */
+  display: none;
 
   position: fixed;
   top: 50%;

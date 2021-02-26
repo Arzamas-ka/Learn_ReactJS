@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-// export const InputWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-
-//   @media screen and (max-width: 970px) {
-//     flex-direction: column;
-//     align-items: center;
-//   }
-// `;
-
 export const Input = styled.div`
   display: flex;
   justify-content: center;
@@ -33,6 +23,14 @@ export const Input = styled.div`
       font-weight: 100;
     }
 
+    @media screen and (max-width: 600px) {
+      width: 320px;
+    }
+
+    @media screen and (max-width: 380px) {
+      width: 300px;
+    }
+
     &.input-search {
       width: 95%;
       margin-right: 20px;
@@ -45,8 +43,8 @@ export const Input = styled.div`
         font-weight: 100;
 
         @media screen and (max-width: 370px) {
-        font-size: 16px;
-      }
+          font-size: 16px;
+        }
       }
 
       @media screen and (max-width: 970px) {
