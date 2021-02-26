@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-export const InputWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+// export const InputWrapper = styled.div`
+//   display: flex;
+//   justify-content: center;
 
-  @media screen and (max-width: 970px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
+//   @media screen and (max-width: 970px) {
+//     flex-direction: column;
+//     align-items: center;
+//   }
+// `;
 
 export const Input = styled.div`
   display: flex;
@@ -18,6 +18,7 @@ export const Input = styled.div`
   width: 100%;
 
   input {
+    width: 520px;
     padding: 15px 20px;
 
     color: white;
@@ -28,7 +29,7 @@ export const Input = styled.div`
 
     &::placeholder {
       color: #555555;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 100;
     }
 
@@ -52,19 +53,13 @@ export const Input = styled.div`
         margin-right: 0px;
       }
     }
-    &.input-title {
-      width: 95%;
-      padding: 20px;
-
-      font-size: 14px;
-    }
   }
 
   label {
-    margin-bottom: 15px;
+    margin: 15px 0;
 
     color: #f65261;
-    font-size: 18px;
+    font-size: 14px;
     text-transform: uppercase;
   }
 `;

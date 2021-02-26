@@ -35,3 +35,13 @@ export const Search = styled.div`
     }
   }
 `;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 970px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;

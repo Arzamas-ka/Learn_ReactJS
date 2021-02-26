@@ -1,8 +1,9 @@
 import React, { SyntheticEvent, FC, FormEvent, useState } from 'react';
 
-import { Search as SearchStyled } from './style';
+import { Search as SearchStyled, InputWrapper } from './style';
 
 import Input from 'components/Input';
+import Button from 'components/Button';
 
 const Search: FC = () => {
   const [value, setValue] = useState('');
@@ -17,14 +18,22 @@ const Search: FC = () => {
     <SearchStyled>
       <h2>Find your movie</h2>
       <form onSubmit={(event: SyntheticEvent) => event.preventDefault()}>
-        <Input
-          label={null}
-          view="search"
-          type="text"
-          placeholder="What do you want to watch?"
-          onChange={handleOnChange}
-          value={value}
-        />
+        <InputWrapper>
+          <Input
+            label={null}
+            view="search"
+            type="text"
+            placeholder="What do you want to watch?"
+            onChange={handleOnChange}
+            value={value}
+          />
+          <Button
+            type="submit"
+            view="submit"
+            onClick={null}
+            text="Search"
+          ></Button>
+        </InputWrapper>
       </form>
     </SearchStyled>
   );

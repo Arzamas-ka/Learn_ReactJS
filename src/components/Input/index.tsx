@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
 
 import { InputProps } from './models';
-import { InputWrapper, Input as InputStyled } from './style';
-
-import Button from 'components/Button';
+import { Input as InputStyled } from './style';
 
 const Input: FC<InputProps> = ({
   type,
@@ -13,7 +11,6 @@ const Input: FC<InputProps> = ({
   view,
   label,
 }) => (
-  <InputWrapper>
     <InputStyled>
       {label && <label htmlFor="input-field">{label}</label>}
       <input
@@ -24,8 +21,6 @@ const Input: FC<InputProps> = ({
         value={value}
       />
     </InputStyled>
-    <Button type="submit" view="submit" onClick={null} text="Search"></Button>
-  </InputWrapper>
 );
 
 export default Input;
