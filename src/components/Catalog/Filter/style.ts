@@ -42,11 +42,11 @@ export const Filter = styled.div`
       width: 100%;
     }
 
-    &:hover {
+    :hover {
       color: #f65261;
     }
 
-    &:active {
+    :active {
       color: #555555;
     }
   }

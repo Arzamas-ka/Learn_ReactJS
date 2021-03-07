@@ -6,13 +6,13 @@ export const Error = styled.div`
   align-items: center;
   justify-content: center;
 
-  & img {
+  img {
     width: 30%;
     margin-top: 10%;
     margin-bottom: 20px;
   }
 
-  & p {
+  p {
     padding: 10px;
     font-size: 25px;
   }

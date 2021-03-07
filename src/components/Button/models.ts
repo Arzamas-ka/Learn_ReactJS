@@ -2,7 +2,8 @@ import { SyntheticEvent } from 'react';
 
 export type StyledButton =
   | (Omit<JSX.IntrinsicElements['button'], 'view' | 'className'> & 'button')
-  | 'submit' | 'reset';
+  | 'submit'
+  | 'reset';
 
 export interface ButtonProps {
   text: string;

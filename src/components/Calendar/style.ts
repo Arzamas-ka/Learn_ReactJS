@@ -23,7 +23,7 @@ export const Calendar = styled.div`
     outline: none;
     background-color: rgba(85, 85, 85, 0.3);
 
-    &::placeholder {
+    ::placeholder {
       color: #555555;
       font-size: 18px;
       font-weight: 100;
@@ -43,7 +43,7 @@ export const Calendar = styled.div`
 
       font-size: 18px;
 
-      &::placeholder {
+      ::placeholder {
         color: #555555;
         font-size: 20px;
         font-weight: 100;

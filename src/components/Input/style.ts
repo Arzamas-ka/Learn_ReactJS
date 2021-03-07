@@ -17,7 +17,7 @@ export const Input = styled.div`
     outline: none;
     background-color: rgba(85, 85, 85, 0.3);
 
-    &::placeholder {
+    ::placeholder {
       color: #555555;
       font-size: 18px;
       font-weight: 100;
@@ -30,26 +30,25 @@ export const Input = styled.div`
     @media screen and (max-width: 380px) {
       width: 300px;
     }
+  }
 
-    &.input-search {
-      width: 95%;
-      margin-right: 20px;
+  .input-search {
+    margin-right: 20px;
 
-      font-size: 18px;
+    font-size: 18px;
 
-      &::placeholder {
-        color: #555555;
-        font-size: 20px;
-        font-weight: 100;
+    ::placeholder {
+      color: #555555;
+      font-size: 20px;
+      font-weight: 100;
 
-        @media screen and (max-width: 370px) {
-          font-size: 16px;
-        }
+      @media screen and (max-width: 370px) {
+        font-size: 16px;
       }
+    }
 
-      @media screen and (max-width: 970px) {
-        margin-right: 0px;
-      }
+    @media screen and (max-width: 970px) {
+      margin-right: 0px;
     }
   }
 

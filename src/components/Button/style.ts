@@ -10,7 +10,7 @@ export const Button = styled.button`
     background-color: rgba(85, 85, 85, 0.9);
     text-transform: uppercase;
 
-    &:hover {
+    :hover {
       color: white;
     }
   }
@@ -28,11 +28,11 @@ export const Button = styled.button`
 
     @media screen and (max-width: 970px) {
       align-self: center;
-    
-      margin-top: 20px;
-  }
 
-    &:hover {
+      margin-top: 20px;
+    }
+
+    :hover {
       color: #424242;
     }
   }
@@ -50,11 +50,11 @@ export const Button = styled.button`
 
     @media screen and (max-width: 970px) {
       align-self: center;
-    
-      margin-top: 20px;
-  }
 
-    &:hover {
+      margin-top: 20px;
+    }
+
+    :hover {
       color: #424242;
     }
   }

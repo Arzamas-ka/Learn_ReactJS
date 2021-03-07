@@ -1,10 +1,13 @@
 import React, { FC, useState, FormEvent } from 'react';
 
-import { AddMovie as AddMovieWrapper, ButtonContainer } from './style';
+import {
+  AddMovie as AddMovieWrapper,
+  ButtonContainer,
+  CloseIcon,
+} from './style';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
-import Close from 'components/Close';
 import Calendar from 'components/Calendar';
 
 const initialValues = {
@@ -36,7 +39,7 @@ const AddMovie: FC = () => {
 
   return (
     <AddMovieWrapper>
-      <Close />
+      <CloseIcon />
       <h2>Add Movie</h2>
       <form onSubmit={handleSubmit}>
         <>

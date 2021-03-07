@@ -14,18 +14,18 @@ const Header: FC = () => {
   };
 
   return (
-      <HeaderWrapper>
-        <div className="header-top">
-          <Logo />
-          <Button
-            type="button"
-            view="button"
-            onClick={handleOnClick}
-            text="+ Add Movie"
-          ></Button>
-        </div>
-        <Search />
-      </HeaderWrapper>
+    <HeaderWrapper>
+      <div className="header-top">
+        <Logo />
+        <Button
+          type="button"
+          view="button"
+          onClick={handleOnClick}
+          text="+ Add Movie"
+        ></Button>
+      </div>
+      <Search />
+    </HeaderWrapper>
   );
 };
 

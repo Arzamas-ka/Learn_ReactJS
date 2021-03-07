@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { AiOutlineClose } from 'react-icons/ai';
 
 export const AddMovie = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 
-  /* display: none; */
+  display: none;
 
   position: fixed;
   top: 50%;
@@ -22,7 +23,7 @@ export const AddMovie = styled.div`
     margin: 10px 40px 40px 40px;
   }
 
-  & h2 {
+  h2 {
     padding: 50px 0 0 50px;
 
     font-size: 30px;
@@ -35,4 +36,17 @@ export const AddMovie = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+`;
+
+export const CloseIcon = styled(AiOutlineClose)`
+  position: absolute;
+  right: 32px;
+  top: 32px;
+
+  width: 32px;
+  height: 32px;
+
+  :hover {
+    color: #f65261;
+  }
 `;

@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 
+import { GlobalStyle } from 'styles/style';
 import { App as AppStyled, Backdrop } from './style';
-import { GlobalStyle } from '../../style';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 import Header from 'components/Header';
 import Catalog from 'components/Catalog';
