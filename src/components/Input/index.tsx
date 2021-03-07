@@ -10,17 +10,20 @@ const Input: FC<InputProps> = ({
   value,
   view,
   label,
+  onClick,
 }) => (
-    <InputStyled>
-      {label && <label htmlFor="input-field">{label}</label>}
-      <input
-        className={`input-${view}`}
-        type={type}
-        placeholder={placeholder}
-        onChange={onChange}
-        value={value}
-      />
-    </InputStyled>
+  <InputStyled>
+    {label && <label htmlFor="input-field">{label}</label>}
+    <input
+      className={`input-${view}`}
+      type={type}
+      name={view}
+      placeholder={placeholder}
+      onChange={onChange}
+      value={value}
+      onClick={onClick}
+    />
+  </InputStyled>
 );
 
 export default Input;
