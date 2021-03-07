@@ -5,7 +5,7 @@ export const AddMovie = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  display: none;
+  /* display: none; */
 
   position: fixed;
   top: 50%;
@@ -18,7 +18,7 @@ export const AddMovie = styled.div`
   overflow: scroll;
   transform: translate(-50%, -50%);
 
-  > div {
+  > form {
     margin: 10px 40px 40px 40px;
   }
 

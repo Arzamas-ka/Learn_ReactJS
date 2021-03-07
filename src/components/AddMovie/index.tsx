@@ -5,80 +5,104 @@ import { AddMovie as AddMovieWrapper, ButtonContainer } from './style';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Close from 'components/Close';
+import Calendar from 'components/Calendar';
+
+const initialValues = {
+  title: '',
+  movie: '',
+  genre: '',
+  overview: '',
+  runtime: '',
+};
 
 const AddMovie: FC = () => {
-  const [value, setValue] = useState('');
+  const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = (event: FormEvent<HTMLInputElement>): void => {
-    console.log('input: ', event.currentTarget.value);
+  const handleOnChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
-    setValue(event.currentTarget.value);
+  const handleSubmit = (value) => {
+    event.preventDefault();
+
+    console.log(JSON.stringify(values, null, 2));
   };
 
   return (
     <AddMovieWrapper>
       <Close />
       <h2>Add Movie</h2>
-      <div>
-        <Input
-          label="Title"
-          view="title"
-          type="text"
-          placeholder="Moana"
-          onChange={handleOnChange}
-          value={value}
-        />
-        <Input
-          label="Release date"
-          view="release"
-          type="text"
-          placeholder="Select Date"
-          onChange={handleOnChange}
-          value={value}
-        />
-        <Input
-          label="Movie url"
-          view="movie"
-          type="text"
-          placeholder="Movie url here"
-          onChange={handleOnChange}
-          value={value}
-        />
-        <Input
-          label="Genre"
-          view="genre"
-          type="text"
-          placeholder="Select Genre"
-          onChange={handleOnChange}
-          value={value}
-        />
-        <Input
-          label="Overview"
-          view="overview"
-          type="text"
-          placeholder="Overview here"
-          onChange={handleOnChange}
-          value={value}
-        />
-        <Input
-          label="Runtime"
-          view="runtime"
-          type="text"
-          placeholder="Runtime here"
-          onChange={handleOnChange}
-          value={value}
-        />
-      </div>
+      <form onSubmit={handleSubmit}>
+        <>
+          <Input
+            label="Title"
+            view="title"
+            name="title"
+            type="text"
+            placeholder="Moana"
+            onChange={handleOnChange}
+            value={values.title}
+          />
+          <Calendar />
+          <Input
+            label="Movie url"
+            view="movie"
+            name="movie"
+            type="text"
+            placeholder="Movie url here"
+            onChange={handleOnChange}
+            value={values.movie}
+          />
+          <Input
+            label="Genre"
+            view="genre"
+            name="genre"
+            type="text"
+            placeholder="Select Genre"
+            onChange={handleOnChange}
+            value={values.genre}
+          />
+          <Input
+            label="Overview"
+            view="overview"
+            name="overview"
+            type="text"
+            placeholder="Overview here"
+            onChange={handleOnChange}
+            value={values.overview}
+          />
+          <Input
+            label="Runtime"
+            view="runtime"
+            name="runtime"
+            type="text"
+            placeholder="Runtime here"
+            onChange={handleOnChange}
+            value={values.runtime}
+          />
+        </>
 
-      <ButtonContainer>
-        <Button type="reset" view="reset" onClick={null} text="Reset"></Button>
-        <Button
-          type="submit"
-          view="submit"
-          onClick={null}
-          text="Submit"
-        ></Button>
-      </ButtonContainer>
+        <ButtonContainer>
+          <Button
+            type="reset"
+            view="reset"
+            onClick={null}
+            text="Reset"
+          ></Button>
+          <Button
+            type="submit"
+            view="submit"
+            onClick={null}
+            text="Submit"
+          ></Button>
+        </ButtonContainer>
+      </form>
     </AddMovieWrapper>
   );
 };
