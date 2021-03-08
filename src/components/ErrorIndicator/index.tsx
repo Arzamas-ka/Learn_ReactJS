@@ -28,7 +28,7 @@ const ErrorIndicator: FC<ErrorIndicator> = ({
         view="button"
         onClick={handleOnClick}
         text="Go Home"
-      ></Button>
+      />
     </Error>
   );
 };

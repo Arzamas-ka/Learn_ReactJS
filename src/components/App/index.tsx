@@ -11,7 +11,7 @@ import AddMovie from 'components/AddMovie';
 
 const App: FC = () => (
   <AppStyled>
-    <Backdrop className="backdrop"></Backdrop>
+    <Backdrop className="backdrop" />
     <GlobalStyle />
     <AddMovie />
     <Header />

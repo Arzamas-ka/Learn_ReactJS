@@ -92,18 +92,8 @@ const AddMovie: FC = () => {
         </>
 
         <ButtonContainer>
-          <Button
-            type="reset"
-            view="reset"
-            onClick={null}
-            text="Reset"
-          ></Button>
-          <Button
-            type="submit"
-            view="submit"
-            onClick={null}
-            text="Submit"
-          ></Button>
+          <Button type="reset" view="reset" onClick={null} text="Reset" />
+          <Button type="submit" view="submit" onClick={null} text="Submit" />
         </ButtonContainer>
       </form>
     </AddMovieWrapper>

@@ -9,7 +9,7 @@ export const Backdrop = styled.div`
     &--active {
       position: absolute;
 
-      width: 100%;
+      width: 100vw;
       min-height: 100vh;
       min-height: -webkit-fill-available;
 

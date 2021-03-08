@@ -34,7 +34,7 @@ const Search: FC = () => {
               view="submit"
               onClick={null}
               text="Search"
-            ></Button>
+            />
           </InputWrapper>
         </form>
       </SearchStyled>
