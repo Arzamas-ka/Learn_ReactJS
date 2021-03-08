@@ -17,19 +17,19 @@ export const AddMovie = styled.div`
   z-index: 10;
   overflow: scroll;
   transform: translate(-50%, -50%);
+`;
 
-  > div {
-    margin: 10px 40px 40px 40px;
-  }
+export const AddMovieContainer = styled.div`
+  margin: 10px 40px 40px 40px;
+`;
 
-  & h2 {
-    padding: 50px 0 0 50px;
+export const AddMovieTitle = styled.h2`
+  padding: 50px 0 0 50px;
 
-    font-size: 30px;
-    font-weight: 400;
-    color: white;
-    text-transform: uppercase;
-  }
+  font-size: 30px;
+  font-weight: 400;
+  color: white;
+  text-transform: uppercase;
 `;
 
 export const ButtonContainer = styled.div`

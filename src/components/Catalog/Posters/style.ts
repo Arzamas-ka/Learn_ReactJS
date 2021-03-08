@@ -2,44 +2,42 @@ import styled from 'styled-components';
 
 export const Posters = styled.div`
   padding: 0 30px 30px 30px;
+`;
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+export const PostersList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+`;
 
-    & li {
-      margin: 0 15px;
+export const PostersItem = styled.li`
+  margin: 0 15px;
+`;
 
-      & img {
-        width: 320px;
-        height: 455px;
-      }
+export const PostersWrapTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  color: grey;
+`;
 
-      & div {
-        display: flex;
-        justify-content: space-between;
+export const PostersTitle = styled.h2`
+  font-size: 22px;
+`;
 
+export const PostersTitleYear = styled.span`
+  padding: 5px 10px;
+  border: 1px solid grey;
+  border-radius: 4px;
+`;
 
-        padding: 10px 0;
-        color: grey;
+export const PostersImg = styled.img`
+  width: 320px;
+  height: 455px;
+`;
 
-        & h3{
-          font-size: 22px;
-        }
-
-        & span {
-          padding: 5px 10px;
-          border: 1px solid grey;
-          border-radius: 4px;
-        }
-      }
-
-      & p {
-        padding-bottom: 15px;
-        color: grey;
-      }
-    }
-  }
+export const PostersGenre = styled.p`
+  padding-bottom: 15px;
+  color: grey;
 `;
