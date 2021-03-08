@@ -1,11 +1,15 @@
 import React, { Component, ReactNode } from 'react';
 
+import { PropsEB, StateEB } from './models';
+
 import ErrorIndicator from 'components/ErrorIndicator';
 
-class ErrorBoundary extends Component {
-  public state = {
-    hasError: false,
-  };
+class ErrorBoundary extends Component<PropsEB, StateEB> {
+  constructor(props) {
+    super(props);
+
+    this.state = { hasError: false };
+  }
 
   static getDerivedStateFromError() {
     return { hasError: true };
