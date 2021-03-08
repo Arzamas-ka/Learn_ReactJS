@@ -22,7 +22,7 @@ const Header: FC = () => {
             view="button"
             onClick={handleOnClick}
             text="+ Add Movie"
-          ></Button>
+          />
         </div>
         <Search />
       </HeaderWrapper>

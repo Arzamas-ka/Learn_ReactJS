@@ -10,6 +10,7 @@ const Input: FC<InputProps> = ({
   value,
   view,
   label,
+  name
 }) => (
     <InputStyled>
       {label && <label htmlFor="input-field">{label}</label>}
@@ -19,6 +20,7 @@ const Input: FC<InputProps> = ({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
+        name={name}
       />
     </InputStyled>
 );

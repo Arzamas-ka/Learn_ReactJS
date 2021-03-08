@@ -23,6 +23,7 @@ const AddMovie: FC = () => {
         <Input
           label="Title"
           view="title"
+          name="title"
           type="text"
           placeholder="Moana"
           onChange={handleOnChange}
@@ -31,6 +32,7 @@ const AddMovie: FC = () => {
         <Input
           label="Release date"
           view="release"
+          name="release"
           type="text"
           placeholder="Select Date"
           onChange={handleOnChange}
@@ -39,6 +41,7 @@ const AddMovie: FC = () => {
         <Input
           label="Movie url"
           view="movie"
+          name="movie"
           type="text"
           placeholder="Movie url here"
           onChange={handleOnChange}
@@ -47,6 +50,7 @@ const AddMovie: FC = () => {
         <Input
           label="Genre"
           view="genre"
+          name="genre"
           type="text"
           placeholder="Select Genre"
           onChange={handleOnChange}
@@ -55,6 +59,7 @@ const AddMovie: FC = () => {
         <Input
           label="Overview"
           view="overview"
+          name="overview"
           type="text"
           placeholder="Overview here"
           onChange={handleOnChange}
@@ -63,6 +68,7 @@ const AddMovie: FC = () => {
         <Input
           label="Runtime"
           view="runtime"
+          name="runtime"
           type="text"
           placeholder="Runtime here"
           onChange={handleOnChange}
@@ -77,7 +83,7 @@ const AddMovie: FC = () => {
           view="submit"
           onClick={null}
           text="Submit"
-        ></Button>
+        />
       </ButtonContainer>
     </AddMovieWrapper>
   );
