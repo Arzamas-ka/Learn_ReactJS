@@ -23,7 +23,7 @@ class ErrorBoundary extends Component<PropsEB, StateEB> {
     this.setState({ hasError: false });
   };
 
-  render(): ReactNode {
+  render() {
     const { children } = this.props;
     const { hasError } = this.state;
 
