@@ -1,11 +1,14 @@
 import React, { Component, ReactNode } from 'react';
 
-import ErrorIndicator from 'components/ErrorIndicator';
+import { PropsEB, StateEB } from './models';
 
-class ErrorBoundary extends Component {
-  public state = {
-    hasError: false,
-  };
+import ErrorIndicator from 'components/ErrorIndicator';
+class ErrorBoundary extends Component<PropsEB, StateEB> {
+  constructor(props) {
+    super(props);
+
+    this.state = { hasError: false };
+  }
 
   static getDerivedStateFromError() {
     return { hasError: true };
@@ -19,16 +22,15 @@ class ErrorBoundary extends Component {
     this.setState({ hasError: false });
   };
 
-  render(): ReactNode {
+  render() {
     const { children } = this.props;
     const { hasError } = this.state;
 
     if (hasError) {
       return <ErrorIndicator handleCloseError={this.handleCloseError} />;
     }
-
+    
     return children;
   }
 }
-
 export default ErrorBoundary;
