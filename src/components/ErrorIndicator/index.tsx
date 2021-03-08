@@ -25,7 +25,6 @@ const ErrorIndicator: FC<ErrorIndicator> = ({
       <p>We are working on it!</p>
       <Button
         type="button"
-        view="button"
         onClick={handleOnClick}
         text="Go Home"
       />

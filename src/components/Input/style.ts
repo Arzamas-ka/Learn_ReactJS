@@ -1,6 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpoints } from '../../styles/consts';
 
-export const Input = styled.div`
+interface InputProps {
+  search?: boolean;
+  topic?: boolean;
+  release?: boolean;
+  movie?: boolean;
+  genre?: boolean;
+  overview?: boolean;
+  runtime?: boolean;
+  placeholder?: string;
+}
+
+export const Input = styled.div<InputProps>`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -23,34 +35,17 @@ export const Input = styled.div`
       font-weight: 100;
     }
 
-    @media screen and (max-width: 600px) {
-      width: 320px;
-    }
-
-    @media screen and (max-width: 380px) {
-      width: 300px;
-    }
-
-    &.input-search {
-      width: 95%;
-      margin-right: 20px;
-
-      font-size: 18px;
-
-      &::placeholder {
-        color: #555555;
-        font-size: 20px;
-        font-weight: 100;
-
-        @media screen and (max-width: 370px) {
-          font-size: 16px;
-        }
+    ${css`
+      @media screen and ${breakpoints.l} {
+        width: 320px;
       }
+    `}
 
-      @media screen and (max-width: 970px) {
-        margin-right: 0px;
+    ${css`
+      @media screen and ${breakpoints.s} {
+        width: 300px;
       }
-    }
+    `}
   }
 
   label {
@@ -60,4 +55,32 @@ export const Input = styled.div`
     font-size: 14px;
     text-transform: uppercase;
   }
+
+  ${({ search }) =>
+    search &&
+    css`
+      input {
+        width: 95%;
+        margin-right: 20px;
+
+        font-size: 18px;
+
+        &::placeholder {
+          font-size: 20px;
+          font-weight: 100;
+
+          ${css`
+            @media screen and ${breakpoints.xs} {
+              font-size: 16px;
+            }
+          `}
+        }
+
+        ${css`
+          @media screen and ${breakpoints.xlg} {
+            margin-right: 0px;
+          }
+        `}
+      }
+    `};
 `;

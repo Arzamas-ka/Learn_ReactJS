@@ -1,61 +1,74 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpoints } from '../../styles/consts';
 
-export const Button = styled.button`
-  &.btn-button {
-    padding: 10px 20px;
+interface ButtonProps {
+  button?: boolean;
+  submit?: boolean;
+  reset?: boolean;
+}
 
-    font-size: 16px;
-    color: #f65261;
-    border-radius: 4px;
-    background-color: rgba(85, 85, 85, 0.9);
-    text-transform: uppercase;
+export const Button = styled.button<ButtonProps>`
+  ${({ button }) =>
+    button &&
+    css`
+      padding: 10px 20px;
 
-    &:hover {
+      font-size: 16px;
+      color: #f65261;
+      border-radius: 4px;
+      background-color: rgba(85, 85, 85, 0.9);
+      text-transform: uppercase;
+
+      :hover {
+        color: white;
+      }
+    `};
+
+  ${({ submit }) =>
+    submit &&
+    css`
+      align-self: flex-end;
+
+      padding: 16px 45px;
+
+      font-size: 16px;
       color: white;
-    }
-  }
+      border-radius: 4px;
+      background-color: #f65261;
+      text-transform: uppercase;
 
-  &.btn-submit {
-    align-self: flex-end;
+      @media screen and ${breakpoints.xlg} {
+        align-self: center;
 
-    padding: 16px 45px;
+        margin-top: 20px;
+      }
 
-    font-size: 16px;
-    color: white;
-    border-radius: 4px;
-    background-color: #f65261;
-    text-transform: uppercase;
+      :hover {
+        color: #424242;
+      }
+    `};
 
-    @media screen and (max-width: 970px) {
-      align-self: center;
-    
-      margin-top: 20px;
-  }
+  ${({ reset }) =>
+    reset &&
+    css`
+      padding: 16px 40px;
+      margin-right: 15px;
 
-    &:hover {
-      color: #424242;
-    }
-  }
+      font-size: 16px;
+      color: white;
+      border-radius: 4px;
+      border: 1px solid #f65261;
+      background-color: transparent;
+      text-transform: uppercase;
 
-  &.btn-reset {
-    padding: 16px 40px;
-    margin-right: 15px;
+      @media screen and ${breakpoints.xlg} {
+        align-self: center;
 
-    font-size: 16px;
-    color: white;
-    border-radius: 4px;
-    border: 1px solid #f65261;
-    background-color: transparent;
-    text-transform: uppercase;
+        margin-top: 20px;
+      }
 
-    @media screen and (max-width: 970px) {
-      align-self: center;
-    
-      margin-top: 20px;
-  }
-
-    &:hover {
-      color: #424242;
-    }
-  }
+      &:hover {
+        color: #424242;
+      }
+    `};
 `;
