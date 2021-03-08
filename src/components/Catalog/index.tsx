@@ -1,19 +1,25 @@
 import React, { FC } from 'react';
 
-import { Catalog as CatalogWrapper, FilterSortWrapper, NumberMovies } from './style';
+import {
+  Catalog as CatalogWrapper,
+  FilterSelectionWrapper,
+  NumberMovies,
+} from './style';
 
 import Filter from './Filter';
-import Sort from './Sort';
+import Selection from './Selection';
 import Posters from './Posters';
 
 const Catalog: FC = () => (
   <CatalogWrapper>
-    <FilterSortWrapper>
+    <FilterSelectionWrapper>
       <Filter />
-      <Sort />
-    </FilterSortWrapper>
-    <NumberMovies><span>10</span> movie found</NumberMovies>
-      <Posters />
+      <Selection />
+    </FilterSelectionWrapper>
+    <NumberMovies>
+      <span>10</span> movie found
+    </NumberMovies>
+    <Posters />
   </CatalogWrapper>
 );
 

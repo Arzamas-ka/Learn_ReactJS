@@ -20,15 +20,15 @@ const Search: FC = () => {
       <form onSubmit={(event: SyntheticEvent) => event.preventDefault()}>
         <InputWrapper>
           <Input
+            search
             label={null}
-            view="search"
             name="search"
             type="text"
             placeholder="What do you want to watch?"
             onChange={handleOnChange}
             value={value}
           />
-          <Button type="submit" view="submit" onClick={null} text="Search" />
+          <Button submit type="submit" onClick={null} text="Search" />
         </InputWrapper>
       </form>
     </SearchStyled>

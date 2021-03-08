@@ -1,23 +1,32 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 
-import { Posters as PostersWrapper } from './style';
+import {
+  Posters as PostersWrapper,
+  PostersList,
+  PostersItem,
+  PostersWrapTitle,
+  PostersTitle,
+  PostersTitleYear,
+  PostersImg,
+  PostersGenre,
+} from './style';
 
 import PostersData from '../../../../data';
 
 const Posters: FC = () => (
   <PostersWrapper>
-    <ul>
+    <PostersList>
       {PostersData.map((poster) => (
-        <li key={poster.id}>
-          <img src={poster.poster} alt={poster.title} />
-          <div>
-            <h3>{poster.title}</h3>
-            <span>{poster.year}</span>
-          </div>
-          <p>{poster.genre}</p>
-        </li>
+        <PostersItem key={poster.id}>
+          <PostersImg src={poster.poster} alt={poster.title} />
+          <PostersWrapTitle>
+            <PostersTitle>{poster.title}</PostersTitle>
+            <PostersTitleYear>{poster.year}</PostersTitleYear>
+          </PostersWrapTitle>
+          <PostersGenre>{poster.genre}</PostersGenre>
+        </PostersItem>
       ))}
-    </ul>
+    </PostersList>
   </PostersWrapper>
 );
 

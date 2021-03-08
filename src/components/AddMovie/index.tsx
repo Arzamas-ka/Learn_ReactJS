@@ -1,6 +1,11 @@
 import React, { FC, useState, FormEvent } from 'react';
 
-import { AddMovie as AddMovieWrapper, ButtonContainer } from './style';
+import {
+  AddMovie as AddMovieWrapper,
+  ButtonContainer,
+  AddMovieContainer,
+  AddMovieTitle,
+} from './style';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -18,11 +23,11 @@ const AddMovie: FC = () => {
   return (
     <AddMovieWrapper>
       <Close />
-      <h2>Add Movie</h2>
-      <div>
+      <AddMovieTitle>Add Movie</AddMovieTitle>
+      <AddMovieContainer>
         <Input
+          topic
           label="Title"
-          view="title"
           name="title"
           type="text"
           placeholder="Moana"
@@ -30,8 +35,8 @@ const AddMovie: FC = () => {
           value={value}
         />
         <Input
+          release
           label="Release date"
-          view="release"
           name="release"
           type="text"
           placeholder="Select Date"
@@ -39,8 +44,8 @@ const AddMovie: FC = () => {
           value={value}
         />
         <Input
+          movie
           label="Movie url"
-          view="movie"
           name="movie"
           type="text"
           placeholder="Movie url here"
@@ -48,8 +53,8 @@ const AddMovie: FC = () => {
           value={value}
         />
         <Input
+          genre
           label="Genre"
-          view="genre"
           name="genre"
           type="text"
           placeholder="Select Genre"
@@ -57,8 +62,8 @@ const AddMovie: FC = () => {
           value={value}
         />
         <Input
+          overview
           label="Overview"
-          view="overview"
           name="overview"
           type="text"
           placeholder="Overview here"
@@ -66,24 +71,19 @@ const AddMovie: FC = () => {
           value={value}
         />
         <Input
+          runtime
           label="Runtime"
-          view="runtime"
           name="runtime"
           type="text"
           placeholder="Runtime here"
           onChange={handleOnChange}
           value={value}
         />
-      </div>
+      </AddMovieContainer>
 
       <ButtonContainer>
-        <Button type="reset" view="reset" onClick={null} text="Reset"></Button>
-        <Button
-          type="submit"
-          view="submit"
-          onClick={null}
-          text="Submit"
-        />
+        <Button reset type="reset" onClick={null} text="Reset"></Button>
+        <Button submit type="submit" onClick={null} text="Submit" />
       </ButtonContainer>
     </AddMovieWrapper>
   );

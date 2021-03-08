@@ -1,22 +1,25 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { breakpoints } from '../../styles/consts';
 
 export const Catalog = styled.div`
   color: #424242;
 `;
 
-export const FilterSortWrapper = styled.div`
+export const FilterSelectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
   margin: 0 65px;
   border-bottom: 2px solid #555555;
 
-  @media screen and (max-width: 880px) {
-    flex-direction: column;
-    align-items: center;
+  ${css`
+    @media screen and ${breakpoints.lg} {
+      flex-direction: column;
+      align-items: center;
 
-    border-bottom: none;
-  }
+      border-bottom: none;
+    }
+  `}
 `;
 
 export const NumberMovies = styled.h3`
@@ -26,9 +29,11 @@ export const NumberMovies = styled.h3`
   font-weight: 100;
   color: white;
 
-  @media screen and (max-width: 880px) {
-    text-align: center;
-  }
+  ${css`
+    @media screen and ${breakpoints.lg} {
+      text-align: center;
+    }
+  `}
 
   span {
     font-size: 22px;
