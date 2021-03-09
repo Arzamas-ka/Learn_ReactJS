@@ -1,15 +1,16 @@
 import styled from 'styled-components';
+import { colors } from '../../styles/consts';
 
 export const Logo = styled.a`
   padding: 25px 0;
 
-  color: #f65261;
+  color: ${colors.grey_coral};
 
   span {
     font-weight: 400;
   }
 
   :hover {
-    color: white;
+    color: ${colors.white};
   }
 `;

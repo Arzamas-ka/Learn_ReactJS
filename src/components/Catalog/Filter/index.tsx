@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 
-import { Filter as FilterWrapper } from './style';
+import { FilterList, FilterItem } from './style';
 
 import { filterData } from 'data/data';
 
 const Filter: FC = () => (
-  <FilterWrapper>
-    <ul>
+  <>
+    <FilterList>
       {filterData.map((item) => (
-        <li key={item} className="active-link">
+        <FilterItem key={item} className="active-link">
           {item}
-        </li>
+        </FilterItem>
       ))}
-    </ul>
-  </FilterWrapper>
+    </FilterList>
+  </>
 );
 
 export default Filter;

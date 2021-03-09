@@ -8,20 +8,18 @@ const Input: FC<InputProps> = ({
   placeholder,
   onChange,
   value,
-  view,
   label,
-  onClick,
+  name,
+  ...props
 }) => (
-  <InputStyled>
+  <InputStyled placeholder={placeholder} {...props}>
     {label && <label htmlFor="input-field">{label}</label>}
     <input
-      className={`input-${view}`}
       type={type}
-      name={view}
       placeholder={placeholder}
       onChange={onChange}
       value={value}
-      onClick={onClick}
+      name={name}
     />
   </InputStyled>
 );

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import { mediaQueries, colors, colorsRgba, rgbaMap } from '../../styles/consts';
 
 import bgrImage from '../../assets/images/background.jpg';
 
 export const HeaderWrapper = styled.div`
   background-image: linear-gradient(
       to right,
-      rgba(12, 13, 14, 0.7),
-      rgba(12, 13, 14, 0.7)
+      ${rgbaMap(colorsRgba.grey_dark, 0.7)},
+      ${rgbaMap(colorsRgba.grey_dark, 0.7)}
     ),
     url(${bgrImage});
   background-repeat: no-repeat;
@@ -20,9 +21,9 @@ export const HeaderWrapper = styled.div`
 
     padding: 25px 55px 25px 55px;
 
-    @media screen and (max-width: 430px) {
+    ${mediaQueries('sizeXS')`
       flex-direction: column;
-    }
+    `}
   }
 `;
 
@@ -30,13 +31,13 @@ export const Logo = styled.a`
   margin-bottom: 15px;
   padding: 25px 0;
 
-  color: #f65261;
+  color: ${colors.grey_coral};
 
   span {
     font-weight: 400;
   }
 
   :hover {
-    color: white;
+    color: ${colors.white};
   }
 `;

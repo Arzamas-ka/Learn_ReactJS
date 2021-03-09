@@ -13,7 +13,6 @@ const Calendar: FC = () => {
     <>
       <Input
         label="Release Date"
-        view="release"
         name="release"
         type="text"
         placeholder="Select date"
@@ -25,18 +24,11 @@ const Calendar: FC = () => {
     </>
   ));
 
-  const isWeekday = (date) => {
-    const day = date.getDay();
-
-    return day !== 0 && day !== 6;
-  };
-
   return (
     <CalendarWrapper>
       <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
-        filterDate={isWeekday}
         placeholderText="Select date"
         showYearDropdown={true}
         customInput={<ExampleCustomInput />}

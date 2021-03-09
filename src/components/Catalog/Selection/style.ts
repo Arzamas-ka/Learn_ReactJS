@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { mediaQueries, colors } from '../../../styles/consts';
 
 export const Sort = styled.div`
   ul {
@@ -6,18 +7,18 @@ export const Sort = styled.div`
     justify-content: space-between;
 
     font-size: 16px;
-    color: white;
+    color: ${colors.white};
     text-transform: uppercase;
 
-    @media screen and (max-width: 490px) {
+    ${mediaQueries('sizeM')`
       flex-direction: column;
       align-items: center;
-    }
+  `}
   }
 
   li {
     position: relative;
-    
+
     margin: 25px 15px;
     cursor: pointer;
 
@@ -42,11 +43,11 @@ export const Sort = styled.div`
     }
 
     &:hover {
-      color: #f65261;
+      color: ${colors.grey_coral};
     }
 
     &:active {
-      color: #555555;
+      color: ${colors.grey_light};
     }
   }
 `;

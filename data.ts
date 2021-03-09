@@ -5,7 +5,15 @@ import movie_4 from './src/assets/images/movie_4.png';
 import movie_5 from './src/assets/images/movie_5.png';
 import movie_6 from './src/assets/images/movie_6.png';
 
-const PostersData = [
+export interface PostersDataTypes {
+  id?: number;
+  title?: string;
+  year?: string;
+  genre?: string;
+  poster?: string;
+}
+
+const PostersData: PostersDataTypes[] = [
   {
     id: 1,
     title: 'Pulp Fiction',
@@ -48,6 +56,6 @@ const PostersData = [
     genre: 'Oscar winning movie',
     poster: movie_6,
   },
-]
+];
 
 export default PostersData;

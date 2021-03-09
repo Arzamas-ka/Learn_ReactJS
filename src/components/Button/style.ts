@@ -1,61 +1,74 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { mediaQueries, colors, colorsRgba, rgbaMap } from '../../styles/consts';
 
-export const Button = styled.button`
-  &.btn-button {
-    padding: 10px 20px;
+interface ButtonProps {
+  button?: boolean;
+  submit?: boolean;
+  reset?: boolean;
+}
 
-    font-size: 16px;
-    color: #f65261;
-    border-radius: 4px;
-    background-color: rgba(85, 85, 85, 0.9);
-    text-transform: uppercase;
+export const Button = styled.button<ButtonProps>`
+  ${({ button }) =>
+    button &&
+    css`
+      padding: 10px 20px;
 
-    :hover {
-      color: white;
-    }
-  }
+      font-size: 16px;
+      color: ${colors.grey_coral};
+      border-radius: 4px;
+      background-color: ${rgbaMap(colorsRgba.rgba_grey_light, 0.9)};
+      text-transform: uppercase;
 
-  &.btn-submit {
-    align-self: flex-end;
+      :hover {
+        color: ${colors.white};
+      }
+    `};
 
-    padding: 16px 45px;
+  ${({ submit }) =>
+    submit &&
+    css`
+      align-self: flex-end;
 
-    font-size: 16px;
-    color: white;
-    border-radius: 4px;
-    background-color: #f65261;
-    text-transform: uppercase;
+      padding: 16px 45px;
 
-    @media screen and (max-width: 970px) {
-      align-self: center;
+      font-size: 16px;
+      color: ${colors.white};
+      border-radius: 4px;
+      background-color: ${colors.grey_coral};
+      text-transform: uppercase;
 
-      margin-top: 20px;
-    }
+      ${mediaQueries('sizeXXXL')`
+        align-self: center;
 
-    :hover {
-      color: #424242;
-    }
-  }
+        margin-top: 20px;
+      `}
 
-  &.btn-reset {
-    padding: 16px 40px;
-    margin-right: 15px;
+      :hover {
+        color: ${colors.grey};
+      }
+    `};
 
-    font-size: 16px;
-    color: white;
-    border-radius: 4px;
-    border: 1px solid #f65261;
-    background-color: transparent;
-    text-transform: uppercase;
+  ${({ reset }) =>
+    reset &&
+    css`
+      padding: 16px 40px;
+      margin-right: 15px;
 
-    @media screen and (max-width: 970px) {
-      align-self: center;
+      font-size: 16px;
+      color: ${colors.white};
+      border-radius: 4px;
+      border: 1px solid ${colors.grey_coral};
+      background-color: transparent;
+      text-transform: uppercase;
 
-      margin-top: 20px;
-    }
+      ${mediaQueries('sizeXXXL')`
+        align-self: center;
 
-    :hover {
-      color: #424242;
-    }
-  }
+        margin-top: 20px;
+      `}
+
+      &:hover {
+        color: ${colors.grey};
+      }
+    `};
 `;

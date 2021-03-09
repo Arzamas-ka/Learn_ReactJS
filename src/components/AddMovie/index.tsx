@@ -1,9 +1,11 @@
-import React, { FC, useState, FormEvent } from 'react';
+import React, { FC, useState } from 'react';
 
 import {
   AddMovie as AddMovieWrapper,
   ButtonContainer,
   CloseIcon,
+  AddMovieContainer,
+  AddMovieTitle,
 } from './style';
 
 import Input from 'components/Input';
@@ -31,7 +33,7 @@ const AddMovie: FC = () => {
     });
   };
 
-  const handleSubmit = (value) => {
+  const handleSubmit = (values) => {
     event.preventDefault();
 
     console.log(JSON.stringify(values, null, 2));
@@ -40,12 +42,12 @@ const AddMovie: FC = () => {
   return (
     <AddMovieWrapper>
       <CloseIcon />
-      <h2>Add Movie</h2>
+      <AddMovieTitle>Add Movie</AddMovieTitle>
       <form onSubmit={handleSubmit}>
-        <>
+        <AddMovieContainer>
           <Input
+            topic
             label="Title"
-            view="title"
             name="title"
             type="text"
             placeholder="Moana"
@@ -54,8 +56,8 @@ const AddMovie: FC = () => {
           />
           <Calendar />
           <Input
+            movie
             label="Movie url"
-            view="movie"
             name="movie"
             type="text"
             placeholder="Movie url here"
@@ -63,8 +65,8 @@ const AddMovie: FC = () => {
             value={values.movie}
           />
           <Input
+            genre
             label="Genre"
-            view="genre"
             name="genre"
             type="text"
             placeholder="Select Genre"
@@ -72,8 +74,8 @@ const AddMovie: FC = () => {
             value={values.genre}
           />
           <Input
+            overview
             label="Overview"
-            view="overview"
             name="overview"
             type="text"
             placeholder="Overview here"
@@ -81,19 +83,19 @@ const AddMovie: FC = () => {
             value={values.overview}
           />
           <Input
+            runtime
             label="Runtime"
-            view="runtime"
             name="runtime"
             type="text"
             placeholder="Runtime here"
             onChange={handleOnChange}
             value={values.runtime}
           />
-        </>
+        </AddMovieContainer>
 
         <ButtonContainer>
-          <Button type="reset" view="reset" onClick={null} text="Reset" />
-          <Button type="submit" view="submit" onClick={null} text="Submit" />
+          <Button reset type="reset" onClick={null} text="Reset"></Button>
+          <Button submit type="submit" onClick={null} text="Submit" />
         </ButtonContainer>
       </form>
     </AddMovieWrapper>

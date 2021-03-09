@@ -18,8 +18,8 @@ const Header: FC = () => {
       <div className="header-top">
         <Logo />
         <Button
+          button
           type="button"
-          view="button"
           onClick={handleOnClick}
           text="+ Add Movie"
         />
