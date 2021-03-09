@@ -1,6 +1,5 @@
 import React, { FC, forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
-import moment from 'react-moment';
 
 import { Calendar as CalendarWrapper, CalendarIcon } from './style';
 

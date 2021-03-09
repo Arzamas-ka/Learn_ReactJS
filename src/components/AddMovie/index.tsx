@@ -11,6 +11,7 @@ import {
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
+import Select from 'components/Select';
 
 const initialValues = {
   title: '',
@@ -19,6 +20,12 @@ const initialValues = {
   overview: '',
   runtime: '',
 };
+
+const selectOptions = [
+  { id: 1, name: 'Action & Adventure' },
+  { id: 2, name: 'Drama, Biography, Music' },
+  { id: 3, name: 'Oscar winning movie' },
+];
 
 const AddMovie: FC = () => {
   const [values, setValues] = useState(initialValues);
@@ -38,6 +45,10 @@ const AddMovie: FC = () => {
 
     console.log(JSON.stringify(values, null, 2));
   };
+
+  const onSelectChange = (event) => {
+    console.log(event.target.value);
+  }
 
   return (
     <AddMovieWrapper>
@@ -64,7 +75,7 @@ const AddMovie: FC = () => {
             onChange={handleOnChange}
             value={values.movie}
           />
-          <Input
+          {/* <Input
             genre
             label="Genre"
             name="genre"
@@ -72,7 +83,8 @@ const AddMovie: FC = () => {
             placeholder="Select Genre"
             onChange={handleOnChange}
             value={values.genre}
-          />
+          /> */}
+          <Select data={selectOptions} onSelectChange={onSelectChange} />
           <Input
             overview
             label="Overview"
