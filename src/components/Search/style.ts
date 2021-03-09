@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { breakpoints } from '../../styles/consts';
+import styled from 'styled-components';
+import { mediaQueries } from '../../styles/consts';
 
 export const Search = styled.div`
   padding: 25px 55px 55px 55px;
@@ -17,28 +17,22 @@ export const Search = styled.div`
     color: white;
     text-transform: uppercase;
 
-    ${css`
-      @media screen and ${breakpoints.lg} {
-        text-align: center;
-      }
+    ${mediaQueries('lg')`
+      text-align: center;
     `}
 
-    ${css`
-      @media screen and ${breakpoints.xl} {
-        margin: 0;
+    ${mediaQueries('xl')`
+      margin: 0;
 
-        font-size: 25px;
-        text-align: center;
-      }
+      font-size: 25px;
+      text-align: center;
     `}
 
-    ${css`
-      @media screen and ${breakpoints.xxm} {
-        margin: 0;
+    ${mediaQueries('xxm')`
+      margin: 0;
 
-        font-size: 23px;
-        text-align: center;
-      }
+      font-size: 23px;
+      text-align: center;
     `}
   }
 `;
@@ -47,10 +41,8 @@ export const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  ${css`
-    @media screen and ${breakpoints.xlg} {
+  ${mediaQueries('xlg')`
       flex-direction: column;
       align-items: center;
-    }
   `}
 `;

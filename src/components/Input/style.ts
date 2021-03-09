@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { breakpoints } from '../../styles/consts';
+import { mediaQueries } from '../../styles/consts';
 
 interface InputProps {
   search?: boolean;
@@ -35,16 +35,12 @@ export const Input = styled.div<InputProps>`
       font-weight: 100;
     }
 
-    ${css`
-      @media screen and ${breakpoints.l} {
-        width: 320px;
-      }
+    ${mediaQueries('l')`
+      width: 320px;
     `}
 
-    ${css`
-      @media screen and ${breakpoints.s} {
-        width: 300px;
-      }
+    ${mediaQueries('s')`
+      width: 300px;
     `}
   }
 
@@ -69,17 +65,13 @@ export const Input = styled.div<InputProps>`
           font-size: 20px;
           font-weight: 100;
 
-          ${css`
-            @media screen and ${breakpoints.xs} {
-              font-size: 16px;
-            }
+          ${mediaQueries('xs')`
+            font-size: 16px;
           `}
         }
 
-        ${css`
-          @media screen and ${breakpoints.xlg} {
-            margin-right: 0px;
-          }
+        ${mediaQueries('xlg')`
+          margin-right: 0px;
         `}
       }
     `};

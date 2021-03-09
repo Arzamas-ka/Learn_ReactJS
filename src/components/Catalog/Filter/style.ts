@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { breakpoints } from '../../../styles/consts';
+import styled from 'styled-components';
+import { mediaQueries } from '../../../styles/consts';
 
 export const FilterList = styled.ul`
   display: flex;
@@ -9,11 +9,9 @@ export const FilterList = styled.ul`
   color: white;
   text-transform: uppercase;
 
-  ${css`
-    @media screen and ${breakpoints.m} {
-      flex-direction: column;
-      align-items: center;
-    }
+  ${mediaQueries("m")`
+    flex-direction: column;
+    align-items: center;
   `}
 `;
 

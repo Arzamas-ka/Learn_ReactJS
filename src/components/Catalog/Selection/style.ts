@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { breakpoints } from '../../../styles/consts';
+import { mediaQueries } from '../../../styles/consts';
 
 export const Sort = styled.div`
   ul {
@@ -10,12 +10,10 @@ export const Sort = styled.div`
     color: white;
     text-transform: uppercase;
 
-    ${css`
-      @media screen and ${breakpoints.m} {
-        flex-direction: column;
-        align-items: center;
-      }
-    `}
+    ${mediaQueries('m')`
+      flex-direction: column;
+      align-items: center;
+  `}
   }
 
   li {

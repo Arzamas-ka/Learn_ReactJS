@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { breakpoints } from '../../styles/consts';
+import styled from 'styled-components';
+import { mediaQueries } from '../../styles/consts';
 
 import bgrImage from '../../assets/images/background.jpg';
 
@@ -21,10 +21,8 @@ export const HeaderWrapper = styled.div`
 
     padding: 25px 55px 25px 55px;
 
-    ${css`
-      @media screen and ${breakpoints.xm} {
-        flex-direction: column;
-      }
+    ${mediaQueries('xm')`
+      flex-direction: column;
     `}
   }
 `;

@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { breakpoints } from '../../styles/consts';
+import styled from 'styled-components';
+import { mediaQueries } from '../../styles/consts';
 
 export const Catalog = styled.div`
   color: #424242;
@@ -12,13 +12,11 @@ export const FilterSelectionWrapper = styled.div`
   margin: 0 65px;
   border-bottom: 2px solid #555555;
 
-  ${css`
-    @media screen and ${breakpoints.lg} {
-      flex-direction: column;
-      align-items: center;
+  ${mediaQueries('lg')`
+    flex-direction: column;
+    align-items: center;
 
-      border-bottom: none;
-    }
+    border-bottom: none;
   `}
 `;
 
@@ -29,10 +27,8 @@ export const NumberMovies = styled.h3`
   font-weight: 100;
   color: white;
 
-  ${css`
-    @media screen and ${breakpoints.lg} {
-      text-align: center;
-    }
+  ${mediaQueries('lg')`
+    text-align: center;
   `}
 
   span {

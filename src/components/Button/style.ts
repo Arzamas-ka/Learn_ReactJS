@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { breakpoints } from '../../styles/consts';
+import { mediaQueries } from '../../styles/consts';
 
 interface ButtonProps {
   button?: boolean;
@@ -37,11 +37,11 @@ export const Button = styled.button<ButtonProps>`
       background-color: #f65261;
       text-transform: uppercase;
 
-      @media screen and ${breakpoints.xlg} {
+      ${mediaQueries('xlg')`
         align-self: center;
 
         margin-top: 20px;
-      }
+      `}
 
       :hover {
         color: #424242;
@@ -61,11 +61,11 @@ export const Button = styled.button<ButtonProps>`
       background-color: transparent;
       text-transform: uppercase;
 
-      @media screen and ${breakpoints.xlg} {
+      ${mediaQueries('xlg')`
         align-self: center;
 
         margin-top: 20px;
-      }
+      `}
 
       &:hover {
         color: #424242;
