@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mediaQueries } from '../../styles/consts';
+import { mediaQueries, colors, colorsRgba, rgbaMap } from '../../styles/consts';
 
 interface InputProps {
   search?: boolean;
@@ -23,14 +23,14 @@ export const Input = styled.div<InputProps>`
     width: 520px;
     padding: 15px 20px;
 
-    color: white;
+    color: ${colors.white};
     border: none;
     border-radius: 4px;
     outline: none;
-    background-color: rgba(85, 85, 85, 0.3);
+    background-color: ${rgbaMap(colorsRgba.rgba_grey_light, 0.3)};
 
     &::placeholder {
-      color: #555555;
+      color: ${colors.grey_light};
       font-size: 18px;
       font-weight: 100;
     }
@@ -47,7 +47,7 @@ export const Input = styled.div<InputProps>`
   label {
     margin: 15px 0;
 
-    color: #f65261;
+    color: ${colors.grey_coral};
     font-size: 14px;
     text-transform: uppercase;
   }

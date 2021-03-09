@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mediaQueries } from '../../styles/consts';
+import { mediaQueries, colors, colorsRgba, rgbaMap } from '../../styles/consts';
 
 interface ButtonProps {
   button?: boolean;
@@ -14,13 +14,13 @@ export const Button = styled.button<ButtonProps>`
       padding: 10px 20px;
 
       font-size: 16px;
-      color: #f65261;
+      color: ${colors.grey_coral};
       border-radius: 4px;
-      background-color: rgba(85, 85, 85, 0.9);
+      background-color: ${rgbaMap(colorsRgba.rgba_grey_light, 0.9)};
       text-transform: uppercase;
 
       :hover {
-        color: white;
+        color: ${colors.white};
       }
     `};
 
@@ -32,9 +32,9 @@ export const Button = styled.button<ButtonProps>`
       padding: 16px 45px;
 
       font-size: 16px;
-      color: white;
+      color: ${colors.white};
       border-radius: 4px;
-      background-color: #f65261;
+      background-color: ${colors.grey_coral};
       text-transform: uppercase;
 
       ${mediaQueries('sizeXXXL')`
@@ -44,7 +44,7 @@ export const Button = styled.button<ButtonProps>`
       `}
 
       :hover {
-        color: #424242;
+        color: ${colors.grey};
       }
     `};
 
@@ -55,9 +55,9 @@ export const Button = styled.button<ButtonProps>`
       margin-right: 15px;
 
       font-size: 16px;
-      color: white;
+      color: ${colors.white};
       border-radius: 4px;
-      border: 1px solid #f65261;
+      border: 1px solid ${colors.grey_coral};
       background-color: transparent;
       text-transform: uppercase;
 
@@ -68,7 +68,7 @@ export const Button = styled.button<ButtonProps>`
       `}
 
       &:hover {
-        color: #424242;
+        color: ${colors.grey};
       }
     `};
 `;

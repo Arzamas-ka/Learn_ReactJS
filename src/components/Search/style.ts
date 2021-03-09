@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mediaQueries } from '../../styles/consts';
+import { mediaQueries, colors } from '../../styles/consts';
 
 export const Search = styled.div`
   padding: 25px 55px 55px 55px;
@@ -14,7 +14,7 @@ export const Search = styled.div`
 
     font-size: 30px;
     font-weight: 400;
-    color: white;
+    color: ${colors.white};
     text-transform: uppercase;
 
     ${mediaQueries('sizeXXL')`

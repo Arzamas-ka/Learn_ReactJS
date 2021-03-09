@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../styles/consts';
 
 export const Close = styled.a`
   position: absolute;
@@ -16,7 +17,7 @@ export const Close = styled.a`
 
     height: 33px;
     width: 2px;
-    background-color: white;
+    background-color: ${colors.white};
   }
 
   &:hover::before,
@@ -27,7 +28,7 @@ export const Close = styled.a`
 
     height: 33px;
     width: 2px;
-    background-color: #f65261;
+    background-color: ${colors.grey_coral};
   }
 
   &::before {

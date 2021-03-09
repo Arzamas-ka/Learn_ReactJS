@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { mediaQueries } from '../../../styles/consts';
+import styled from 'styled-components';
+import { mediaQueries, colors } from '../../../styles/consts';
 
 export const Sort = styled.div`
   ul {
@@ -7,7 +7,7 @@ export const Sort = styled.div`
     justify-content: space-between;
 
     font-size: 16px;
-    color: white;
+    color: ${colors.white};
     text-transform: uppercase;
 
     ${mediaQueries('sizeM')`
@@ -43,11 +43,11 @@ export const Sort = styled.div`
     }
 
     &:hover {
-      color: #f65261;
+      color: ${colors.grey_coral};
     }
 
     &:active {
-      color: #555555;
+      color: ${colors.grey_light};
     }
   }
 `;

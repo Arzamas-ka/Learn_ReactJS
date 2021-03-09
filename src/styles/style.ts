@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+import { colors } from '../styles/consts';
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -20,7 +21,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  background-color: #232323;
+  background-color: ${colors.grey_dark};
 }
 
 h1,

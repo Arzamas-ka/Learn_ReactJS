@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { mediaQueries } from '../../../styles/consts';
+import { mediaQueries, colors } from '../../../styles/consts';
 
 export const FilterList = styled.ul`
   display: flex;
   justify-content: space-between;
 
   font-size: 16px;
-  color: white;
+  color: ${colors.white};
   text-transform: uppercase;
 
-  ${mediaQueries("sizeM")`
+  ${mediaQueries('sizeM')`
     flex-direction: column;
     align-items: center;
   `}
@@ -43,10 +43,10 @@ export const FilterItem = styled.li`
   }
 
   &:hover {
-    color: #f65261;
+    color: ${colors.grey_coral};
   }
 
   &:active {
-    color: #555555;
+    color: ${colors.grey_light};
   }
 `;

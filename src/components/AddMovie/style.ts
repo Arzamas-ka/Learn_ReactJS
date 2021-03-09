@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../styles/consts';
 
 export const AddMovie = styled.div`
   display: flex;
@@ -11,8 +12,8 @@ export const AddMovie = styled.div`
   top: 50%;
   left: 50%;
 
-  color: white;
-  background-color: #232323;
+  color: ${colors.white};
+  background-color: ${colors.grey_dark};
   border-radius: 4px;
   z-index: 10;
   overflow: scroll;
@@ -28,7 +29,7 @@ export const AddMovieTitle = styled.h2`
 
   font-size: 30px;
   font-weight: 400;
-  color: white;
+  color: ${colors.white};
   text-transform: uppercase;
 `;
 

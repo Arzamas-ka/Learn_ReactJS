@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { mediaQueries } from '../../styles/consts';
+import { mediaQueries, colors } from '../../styles/consts';
 
 export const Catalog = styled.div`
-  color: #424242;
+  color: ${colors.grey};
 `;
 
 export const FilterSelectionWrapper = styled.div`
@@ -25,7 +25,7 @@ export const NumberMovies = styled.h3`
 
   font-size: 18px;
   font-weight: 100;
-  color: white;
+  color: ${colors.white};
 
   ${mediaQueries('sizeXXL')`
     text-align: center;
