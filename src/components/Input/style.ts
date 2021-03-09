@@ -35,11 +35,11 @@ export const Input = styled.div<InputProps>`
       font-weight: 100;
     }
 
-    ${mediaQueries('l')`
+    ${mediaQueries('sizeXL')`
       width: 320px;
     `}
 
-    ${mediaQueries('s')`
+    ${mediaQueries('sizeXXS')`
       width: 300px;
     `}
   }
@@ -65,12 +65,12 @@ export const Input = styled.div<InputProps>`
           font-size: 20px;
           font-weight: 100;
 
-          ${mediaQueries('xs')`
+          ${mediaQueries('sizeXXS')`
             font-size: 16px;
           `}
         }
 
-        ${mediaQueries('xlg')`
+        ${mediaQueries('sizeXXXL')`
           margin-right: 0px;
         `}
       }

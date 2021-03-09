@@ -12,7 +12,7 @@ export const FilterSelectionWrapper = styled.div`
   margin: 0 65px;
   border-bottom: 2px solid #555555;
 
-  ${mediaQueries('lg')`
+  ${mediaQueries('sizeXXL')`
     flex-direction: column;
     align-items: center;
 
@@ -27,7 +27,7 @@ export const NumberMovies = styled.h3`
   font-weight: 100;
   color: white;
 
-  ${mediaQueries('lg')`
+  ${mediaQueries('sizeXXL')`
     text-align: center;
   `}
 

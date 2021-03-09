@@ -17,18 +17,18 @@ export const Search = styled.div`
     color: white;
     text-transform: uppercase;
 
-    ${mediaQueries('lg')`
+    ${mediaQueries('sizeXXL')`
       text-align: center;
     `}
 
-    ${mediaQueries('xl')`
+    ${mediaQueries('sizeL')`
       margin: 0;
 
       font-size: 25px;
       text-align: center;
     `}
 
-    ${mediaQueries('xxm')`
+    ${mediaQueries('sizeS')`
       margin: 0;
 
       font-size: 23px;
@@ -41,7 +41,7 @@ export const InputWrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  ${mediaQueries('xlg')`
+  ${mediaQueries('sizeXXXL')`
       flex-direction: column;
       align-items: center;
   `}

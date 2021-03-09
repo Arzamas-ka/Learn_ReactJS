@@ -37,7 +37,7 @@ export const Button = styled.button<ButtonProps>`
       background-color: #f65261;
       text-transform: uppercase;
 
-      ${mediaQueries('xlg')`
+      ${mediaQueries('sizeXXXL')`
         align-self: center;
 
         margin-top: 20px;
@@ -61,7 +61,7 @@ export const Button = styled.button<ButtonProps>`
       background-color: transparent;
       text-transform: uppercase;
 
-      ${mediaQueries('xlg')`
+      ${mediaQueries('sizeXXXL')`
         align-self: center;
 
         margin-top: 20px;

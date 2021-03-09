@@ -9,7 +9,7 @@ export const FilterList = styled.ul`
   color: white;
   text-transform: uppercase;
 
-  ${mediaQueries("m")`
+  ${mediaQueries("sizeM")`
     flex-direction: column;
     align-items: center;
   `}

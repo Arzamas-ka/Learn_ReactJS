@@ -1,13 +1,12 @@
 const breakpoints = {
-  xs: 370,
-  s: 380,
-  xm: 430,
-  xxm: 450,
-  m: 490,
-  xl: 510,
-  l: 600,
-  xlg: 970,
-  lg: 880,
+  sizeXXS: 380,
+  sizeXS: 430,
+  sizeS: 450,
+  sizeM: 490,
+  sizeL: 510,
+  sizeXL: 600,
+  sizeXXL: 880,
+  sizeXXXL: 970,
 };
 
 export const mediaQueries = (key: keyof typeof breakpoints) => {

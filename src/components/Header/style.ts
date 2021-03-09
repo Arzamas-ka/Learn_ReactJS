@@ -21,7 +21,7 @@ export const HeaderWrapper = styled.div`
 
     padding: 25px 55px 25px 55px;
 
-    ${mediaQueries('xm')`
+    ${mediaQueries('sizeXS')`
       flex-direction: column;
     `}
   }

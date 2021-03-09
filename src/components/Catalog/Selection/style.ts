@@ -10,7 +10,7 @@ export const Sort = styled.div`
     color: white;
     text-transform: uppercase;
 
-    ${mediaQueries('m')`
+    ${mediaQueries('sizeM')`
       flex-direction: column;
       align-items: center;
   `}
