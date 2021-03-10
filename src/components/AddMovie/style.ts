@@ -7,10 +7,10 @@ export const AddMovie = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  /* display: none; */
+  display: none;
 
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 20%;
   left: 50%;
 
   color: ${colors.white};
