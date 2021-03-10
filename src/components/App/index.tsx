@@ -5,10 +5,11 @@ import { App as AppStyled, Backdrop } from './style';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 import Header from 'components/Header';
-import Catalog from 'components/Catalog';
 import Footer from 'components/Footer';
-import EditMovie from 'components/EditMovie';
+import Catalog from 'components/Catalog';
 import AddMovie from 'components/AddMovie';
+import EditMovie from 'components/EditMovie';
+import DeleteMovie from 'components/DeleteMovie';
 
 const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(true);
@@ -17,6 +18,7 @@ const App: FC = () => {
     <AppStyled>
       <Backdrop active={isActiveBackdrop} />
       <GlobalStyle />
+      <DeleteMovie />
       <EditMovie />
       <AddMovie />
       <Header />
