@@ -6,4 +6,5 @@ export interface ButtonProps {
   button?: boolean;
   submit?: boolean;
   reset?: boolean;
+  save?: boolean;
 }

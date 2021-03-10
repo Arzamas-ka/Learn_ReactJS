@@ -15,4 +15,6 @@ export interface InputProps {
   genre?: boolean;
   overview?: boolean;
   runtime?: boolean;
+  numberId?: boolean;
+  url?: boolean;
 }
