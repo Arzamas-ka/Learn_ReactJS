@@ -5,7 +5,6 @@ import {
   Select as SelectStyled,
   SelectTitle,
   SelectMain,
-  // ArrowIcon,
 } from './style';
 
 const Select: FC<SelectTypes> = ({ data, onSelectChange }) => {
@@ -31,7 +30,6 @@ const Select: FC<SelectTypes> = ({ data, onSelectChange }) => {
         <option hidden>Select Genre</option>
         {options}
       </SelectMain>
-      {/* <ArrowIcon /> */}
     </SelectStyled>
   );
 };

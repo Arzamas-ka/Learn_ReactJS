@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, FormEvent } from 'react';
 
 import {
   AddMovie as AddMovieWrapper,
@@ -34,21 +34,22 @@ const AddMovie: FC = () => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+
     setValues({
       ...values,
       [name]: value,
     });
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     console.log(JSON.stringify(values, null, 2));
   };
 
   const onSelectChange = (event) => {
-    console.log(event.target.value);
-  }
+    console.log('event: ', event);
+  };
 
   return (
     <AddMovieWrapper>
@@ -75,15 +76,6 @@ const AddMovie: FC = () => {
             onChange={handleOnChange}
             value={values.movie}
           />
-          {/* <Input
-            genre
-            label="Genre"
-            name="genre"
-            type="text"
-            placeholder="Select Genre"
-            onChange={handleOnChange}
-            value={values.genre}
-          /> */}
           <Select data={selectOptions} onSelectChange={onSelectChange} />
           <Input
             overview
