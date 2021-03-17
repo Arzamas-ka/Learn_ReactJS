@@ -2,29 +2,29 @@ import React, { FC } from 'react';
 
 // types and styled
 import {
-  StyledDeleteMovieWrapper,
+  StyledDeleteMoviePopupWrapper,
   StyledButtonContainer,
   StyledCloseIcon,
-  StyledDeleteMovieText,
-  StyledDeleteMovieTitle,
+  StyledDeleteMoviePopupText,
+  StyledDeleteMoviePopupTitle,
 } from './style';
 
 // components
 import Button from 'components/Button';
 
-const DeleteMovie: FC = () => {
+const DeleteMoviePopup: FC = () => {
   return (
-    <StyledDeleteMovieWrapper>
+    <StyledDeleteMoviePopupWrapper>
       <StyledCloseIcon />
-      <StyledDeleteMovieTitle>Delete Movie</StyledDeleteMovieTitle>
-      <StyledDeleteMovieText>
+      <StyledDeleteMoviePopupTitle>Delete Movie</StyledDeleteMoviePopupTitle>
+      <StyledDeleteMoviePopupText>
         Are you sure you want to delete this movie?
-      </StyledDeleteMovieText>
+      </StyledDeleteMoviePopupText>
       <StyledButtonContainer>
         <Button submit type="submit" onClick={null} text="Confirm" />
       </StyledButtonContainer>
-    </StyledDeleteMovieWrapper>
+    </StyledDeleteMoviePopupWrapper>
   );
 };
 
-export default DeleteMovie;
+export default DeleteMoviePopup;

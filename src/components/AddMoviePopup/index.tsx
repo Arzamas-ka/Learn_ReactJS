@@ -2,11 +2,11 @@ import React, { FC, useState, FormEvent } from 'react';
 
 // types and styles
 import {
-  StyledEditMovieWrapper,
+  StyledAddMoviePopupWrapper,
   StyledButtonContainer,
   StyledCloseIcon,
-  StyledEditMovieContainer,
-  StyledEditMovieTitle,
+  StyledAddMoviePopupContainer,
+  StyledAddMoviePopupTitle,
 } from './style';
 
 // components
@@ -16,9 +16,8 @@ import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
 const initialValues = {
-  number: '',
   title: '',
-  url: '',
+  movie: '',
   genre: '',
   overview: '',
   runtime: '',
@@ -30,17 +29,15 @@ const selectOptions = [
   { id: 3, name: 'Oscar winning movie' },
 ];
 
-const EditMovie: FC = () => {
+const AddMoviePopup: FC = () => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = (event) => {
-    const target = event.target;
+  const handleOnChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
 
     setValues({
       ...values,
-      [name]: value,
+      [target.name]: value,
     });
   };
 
@@ -55,19 +52,11 @@ const EditMovie: FC = () => {
   };
 
   return (
-    <StyledEditMovieWrapper>
+    <StyledAddMoviePopupWrapper>
       <StyledCloseIcon />
-      <StyledEditMovieTitle>Edit Movie</StyledEditMovieTitle>
+      <StyledAddMoviePopupTitle>Add Movie</StyledAddMoviePopupTitle>
       <form onSubmit={handleSubmit}>
-        <StyledEditMovieContainer>
-          <Input
-            label="Movie id"
-            name="number"
-            type="text"
-            placeholder="m032820th"
-            onChange={handleOnChange}
-            value={values.number}
-          />
+        <StyledAddMoviePopupContainer>
           <Input
             label="Title"
             name="title"
@@ -79,11 +68,11 @@ const EditMovie: FC = () => {
           <Calendar />
           <Input
             label="Movie url"
-            name="url"
+            name="movie"
             type="text"
-            placeholder="www.moana.com"
+            placeholder="Movie url here"
             onChange={handleOnChange}
-            value={values.url}
+            value={values.movie}
           />
           <Select data={selectOptions} onSelectChange={onSelectChange} />
           <Input
@@ -102,15 +91,15 @@ const EditMovie: FC = () => {
             onChange={handleOnChange}
             value={values.runtime}
           />
-        </StyledEditMovieContainer>
+        </StyledAddMoviePopupContainer>
 
         <StyledButtonContainer>
           <Button reset type="reset" onClick={null} text="Reset"></Button>
-          <Button submit type="button" onClick={null} text="Save" />
+          <Button submit type="submit" onClick={null} text="Submit" />
         </StyledButtonContainer>
       </form>
-    </StyledEditMovieWrapper>
+    </StyledAddMoviePopupWrapper>
   );
 };
 
-export default EditMovie;
+export default AddMoviePopup;

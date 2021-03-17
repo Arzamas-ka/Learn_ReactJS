@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
 import { colors } from '../../styles/consts';
 
-export const StyledDeleteMovieWrapper = styled.div`
+export const StyledDeleteMoviePopupWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -22,13 +22,13 @@ export const StyledDeleteMovieWrapper = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const StyledDeleteMovieText = styled.p`
+export const StyledDeleteMoviePopupText = styled.p`
   padding: 50px;
 
   font-size: 20px;
 `;
 
-export const StyledDeleteMovieTitle = styled.h2`
+export const StyledDeleteMoviePopupTitle = styled.h2`
   padding: 85px 0 0 50px;
 
   font-size: 30px;
