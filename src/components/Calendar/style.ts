@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BiCalendar } from 'react-icons/bi';
 
-export const Calendar = styled.div`
+export const StyledCalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -14,7 +14,7 @@ export const Calendar = styled.div`
   }
 `;
 
-export const CalendarIcon = styled(BiCalendar)`
+export const StyledCalendarIcon = styled(BiCalendar)`
   position: absolute;
   top: 53px;
   right: 20px;

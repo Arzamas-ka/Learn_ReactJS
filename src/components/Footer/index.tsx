@@ -1,13 +1,15 @@
 import React, { FC } from 'react';
 
-import { Footer as FooterWrapper } from './style';
+// types and styles
+import { StyledFooter } from './style';
 
+// components
 import Logo from 'components/Logo';
 
 const Footer: FC = () => (
-  <FooterWrapper>
+  <StyledFooter>
     <Logo />
-  </FooterWrapper>
+  </StyledFooter>
 );
 
 export default Footer;

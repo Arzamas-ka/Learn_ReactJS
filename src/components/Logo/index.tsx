@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 
-import { Logo as LogoWrapper } from './style';
-
+// types and styles
+import { StyledLogo, StyledSpan } from './style';
 
 const Logo: FC = () => (
-  <LogoWrapper href="#">
+  <StyledLogo href="#">
     <h2>
-      netflix<span>roulette</span>
+      netflix<StyledSpan>roulette</StyledSpan>
     </h2>
-  </LogoWrapper>
+  </StyledLogo>
 );
 
 export default Logo;

@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 
-import { Sort as SortWrapper } from './style';
+// types and styles
+import { StyledList, StyledItem } from './style';
 
-import { sortData } from 'data/data';
+// constants
+import { SORT_DATA } from '@constants';
 
 const Sort: FC = () => (
-  <SortWrapper>
-    <ul>
-      {sortData.map((item) => (
-        <li key={item} className="active-link">
-          {item}
-        </li>
-      ))}
-    </ul>
-  </SortWrapper>
+  <StyledList>
+    {SORT_DATA.map((item) => (
+      <StyledItem key={item} className="active-link">
+        {item}
+      </StyledItem>
+    ))}
+  </StyledList>
 );
 
 export default Sort;

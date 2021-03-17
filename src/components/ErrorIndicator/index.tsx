@@ -1,10 +1,17 @@
 import React, { FC } from 'react';
 
+// types and styled
 import { ErrorIndicator } from './models';
-import { Error } from './style';
+import {
+  StyledErrorWrapper,
+  StyledErrorImage,
+  StyledErrorMessage,
+} from './style';
 
+// images
 import imageError from '../../assets/images/error-boundary.png';
 
+// components
 import Button from 'components/Button';
 
 const ErrorIndicator: FC<ErrorIndicator> = ({
@@ -19,16 +26,11 @@ const ErrorIndicator: FC<ErrorIndicator> = ({
   };
 
   return (
-    <Error>
-      <img src={imageError} alt="Error Indicator" />
-      <p>Something went wrong !</p>
-      <p>We are working on it!</p>
-      <Button
-        type="button"
-        onClick={handleOnClick}
-        text="Go Home"
-      />
-    </Error>
+    <StyledErrorWrapper>
+      <StyledErrorMessage>No Movie Found</StyledErrorMessage>
+      <StyledErrorImage src={imageError} alt="Error Indicator" />
+      <Button reset type="button" onClick={handleOnClick} text="Go back to home" />
+    </StyledErrorWrapper>
   );
 };
 

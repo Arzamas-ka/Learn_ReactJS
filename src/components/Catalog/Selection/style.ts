@@ -1,53 +1,51 @@
 import styled from 'styled-components';
 import { mediaQueries, colors } from '../../../styles/consts';
 
-export const Sort = styled.div`
-  ul {
-    display: flex;
-    justify-content: space-between;
+export const StyledList = styled.ul`
+  display: flex;
+  justify-content: space-between;
 
-    font-size: 16px;
-    color: ${colors.white};
-    text-transform: uppercase;
+  font-size: 16px;
+  color: ${colors.white};
+  text-transform: uppercase;
 
-    ${mediaQueries('sizeM')`
+  ${mediaQueries('sizeM')`
       flex-direction: column;
       align-items: center;
   `}
+`;
+
+export const StyledItem = styled.li`
+  position: relative;
+
+  margin: 25px 15px;
+  cursor: pointer;
+
+  &.active-link {
+    text-decoration: none;
   }
 
-  li {
-    position: relative;
+  &.active-link::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    margin-top: 25px;
 
-    margin: 25px 15px;
-    cursor: pointer;
+    background: #f65261;
+    transition: width 0.3s;
+  }
 
-    &.active-link {
-      text-decoration: none;
-    }
+  &.active-link:hover::after {
+    width: 100%;
+  }
 
-    &.active-link::after {
-      position: absolute;
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      margin-top: 25px;
+  &:hover {
+    color: ${colors.coral};
+  }
 
-      background: #f65261;
-      transition: width 0.3s;
-    }
-
-    &.active-link:hover::after {
-      width: 100%;
-    }
-
-    &:hover {
-      color: ${colors.grey_coral};
-    }
-
-    &:active {
-      color: ${colors.grey_light};
-    }
+  &:active {
+    color: ${colors.grey_light};
   }
 `;

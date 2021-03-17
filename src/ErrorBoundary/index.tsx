@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-import { PropsEB, StateEB } from './models';
+// types and styles
+import { ErrorBoundaryProps, ErrorBoundaryState } from './models';
 
+// components
 import ErrorIndicator from 'components/ErrorIndicator';
-class ErrorBoundary extends Component<PropsEB, StateEB> {
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props) {
     super(props);
 
@@ -29,7 +31,7 @@ class ErrorBoundary extends Component<PropsEB, StateEB> {
     if (hasError) {
       return <ErrorIndicator handleCloseError={this.handleCloseError} />;
     }
-    
+
     return children;
   }
 }

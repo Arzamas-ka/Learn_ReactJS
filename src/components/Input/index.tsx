@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 
+// types and styles
 import { InputProps } from './models';
-import { Input as InputStyled } from './style';
+import { StyledInputWrapper, StyledInput, StyledLabel } from './style';
 
 const Input: FC<InputProps> = ({
   type,
@@ -12,16 +13,16 @@ const Input: FC<InputProps> = ({
   name,
   ...props
 }) => (
-  <InputStyled placeholder={placeholder} {...props}>
-    {label && <label htmlFor="input-field">{label}</label>}
-    <input
+  <StyledInputWrapper placeholder={placeholder} {...props}>
+    {label && <StyledLabel htmlFor="input-field">{label}</StyledLabel>}
+    <StyledInput
       type={type}
       placeholder={placeholder}
       onChange={onChange}
       value={value}
       name={name}
     />
-  </InputStyled>
+  </StyledInputWrapper>
 );
 
 export default Input;

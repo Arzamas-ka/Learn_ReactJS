@@ -1,9 +1,11 @@
 import React, { FC, useState } from 'react';
 
+// types and styles
 import { GlobalStyle } from '../../styles/style';
-import { App as AppStyled, Backdrop } from './style';
+import { StyledApp, StyledBackdrop } from './style';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
+// components
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import Catalog from 'components/Catalog';
@@ -15,8 +17,8 @@ const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
 
   return (
-    <AppStyled>
-      <Backdrop active={isActiveBackdrop} />
+    <StyledApp>
+      <StyledBackdrop active={isActiveBackdrop} />
       <GlobalStyle />
       <DeleteMovie />
       <EditMovie />
@@ -24,7 +26,7 @@ const App: FC = () => {
       <Header />
       <Catalog />
       <Footer />
-    </AppStyled>
+    </StyledApp>
   );
 };
 

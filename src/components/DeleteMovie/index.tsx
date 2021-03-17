@@ -1,26 +1,29 @@
-import React, { FC, useState, FormEvent } from 'react';
+import React, { FC } from 'react';
 
+// types and styled
 import {
-  DeleteMovie as DeleteMovieWrapper,
-  ButtonContainer,
-  CloseIcon,
-  DeleteMovieText,
-  DeleteMovieTitle,
+  StyledDeleteMovieWrapper,
+  StyledButtonContainer,
+  StyledCloseIcon,
+  StyledDeleteMovieText,
+  StyledDeleteMovieTitle,
 } from './style';
 
+// components
 import Button from 'components/Button';
 
 const DeleteMovie: FC = () => {
-
   return (
-    <DeleteMovieWrapper>
-      <CloseIcon />
-      <DeleteMovieTitle>Delete Movie</DeleteMovieTitle>
-      <DeleteMovieText>Are you sure you want to delete this movie?</DeleteMovieText>
-      <ButtonContainer>
+    <StyledDeleteMovieWrapper>
+      <StyledCloseIcon />
+      <StyledDeleteMovieTitle>Delete Movie</StyledDeleteMovieTitle>
+      <StyledDeleteMovieText>
+        Are you sure you want to delete this movie?
+      </StyledDeleteMovieText>
+      <StyledButtonContainer>
         <Button submit type="submit" onClick={null} text="Confirm" />
-      </ButtonContainer>
-    </DeleteMovieWrapper>
+      </StyledButtonContainer>
+    </StyledDeleteMovieWrapper>
   );
 };
 

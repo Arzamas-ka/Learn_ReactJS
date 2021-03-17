@@ -1,7 +1,13 @@
 import React, { SyntheticEvent, FC, FormEvent, useState } from 'react';
 
-import { Search as SearchStyled, InputWrapper } from './style';
+// types and styles
+import {
+  StyledSearchWrapper,
+  StyledSearchTitle,
+  StyledInputSearchContainer,
+} from './style';
 
+// components
 import Input from 'components/Input';
 import Button from 'components/Button';
 
@@ -15,10 +21,10 @@ const Search: FC = () => {
   };
 
   return (
-    <SearchStyled>
-      <h2>Find your movie</h2>
+    <StyledSearchWrapper>
+      <StyledSearchTitle>Find your movie</StyledSearchTitle>
       <form onSubmit={(event: SyntheticEvent) => event.preventDefault()}>
-        <InputWrapper>
+        <StyledInputSearchContainer>
           <Input
             search
             label={null}
@@ -29,9 +35,9 @@ const Search: FC = () => {
             value={value}
           />
           <Button submit type="submit" onClick={null} text="Search" />
-        </InputWrapper>
+        </StyledInputSearchContainer>
       </form>
-    </SearchStyled>
+    </StyledSearchWrapper>
   );
 };
 

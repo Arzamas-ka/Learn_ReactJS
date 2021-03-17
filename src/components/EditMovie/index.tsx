@@ -1,13 +1,15 @@
 import React, { FC, useState, FormEvent } from 'react';
 
+// types and styles
 import {
-  EditMovie as EditMovieWrapper,
-  ButtonContainer,
-  CloseIcon,
-  EditMovieContainer,
-  EditMovieTitle,
+  StyledEditMovieWrapper,
+  StyledButtonContainer,
+  StyledCloseIcon,
+  StyledEditMovieContainer,
+  StyledEditMovieTitle,
 } from './style';
 
+// components
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
@@ -53,13 +55,12 @@ const EditMovie: FC = () => {
   };
 
   return (
-    <EditMovieWrapper>
-      <CloseIcon />
-      <EditMovieTitle>Edit Movie</EditMovieTitle>
+    <StyledEditMovieWrapper>
+      <StyledCloseIcon />
+      <StyledEditMovieTitle>Edit Movie</StyledEditMovieTitle>
       <form onSubmit={handleSubmit}>
-        <EditMovieContainer>
+        <StyledEditMovieContainer>
           <Input
-            numberId
             label="Movie id"
             name="number"
             type="text"
@@ -68,7 +69,6 @@ const EditMovie: FC = () => {
             value={values.number}
           />
           <Input
-            topic
             label="Title"
             name="title"
             type="text"
@@ -78,7 +78,6 @@ const EditMovie: FC = () => {
           />
           <Calendar />
           <Input
-            url
             label="Movie url"
             name="url"
             type="text"
@@ -88,7 +87,6 @@ const EditMovie: FC = () => {
           />
           <Select data={selectOptions} onSelectChange={onSelectChange} />
           <Input
-            overview
             label="Overview"
             name="overview"
             type="text"
@@ -97,7 +95,6 @@ const EditMovie: FC = () => {
             value={values.overview}
           />
           <Input
-            runtime
             label="Runtime"
             name="runtime"
             type="text"
@@ -105,14 +102,14 @@ const EditMovie: FC = () => {
             onChange={handleOnChange}
             value={values.runtime}
           />
-        </EditMovieContainer>
+        </StyledEditMovieContainer>
 
-        <ButtonContainer>
+        <StyledButtonContainer>
           <Button reset type="reset" onClick={null} text="Reset"></Button>
           <Button submit type="button" onClick={null} text="Save" />
-        </ButtonContainer>
+        </StyledButtonContainer>
       </form>
-    </EditMovieWrapper>
+    </StyledEditMovieWrapper>
   );
 };
 

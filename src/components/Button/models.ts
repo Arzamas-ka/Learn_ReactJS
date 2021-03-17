@@ -8,3 +8,9 @@ export interface ButtonProps {
   reset?: boolean;
   save?: boolean;
 }
+
+export interface StyledButtonProps {
+  button?: boolean;
+  submit?: boolean;
+  reset?: boolean;
+}

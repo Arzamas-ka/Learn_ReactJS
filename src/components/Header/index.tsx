@@ -1,7 +1,10 @@
 import React, { FC, SyntheticEvent } from 'react';
 
-import { HeaderWrapper } from './style';
+// types and styles
+import { StyledHeaderWrapper, StyledHeaderTop } from './style';
 
+
+// components
 import Button from 'components/Button';
 import Search from 'components/Search';
 import Logo from 'components/Logo';
@@ -14,8 +17,8 @@ const Header: FC = () => {
   };
 
   return (
-    <HeaderWrapper>
-      <div className="header-top">
+    <StyledHeaderWrapper>
+      <StyledHeaderTop className="header-top">
         <Logo />
         <Button
           button
@@ -23,9 +26,9 @@ const Header: FC = () => {
           onClick={handleOnClick}
           text="+ Add Movie"
         />
-      </div>
+      </StyledHeaderTop>
       <Search />
-    </HeaderWrapper>
+    </StyledHeaderWrapper>
   );
 };
 

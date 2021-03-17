@@ -1,19 +1,19 @@
 import React, { FC } from 'react';
 
-import { FilterList, FilterItem } from './style';
+// types and styles
+import { StyledFilterList, StyledFilterItem } from './style';
 
-import { filterData } from 'data/data';
+// constants
+import { FILTER_DATA } from '@constants';
 
 const Filter: FC = () => (
-  <>
-    <FilterList>
-      {filterData.map((item) => (
-        <FilterItem key={item} className="active-link">
-          {item}
-        </FilterItem>
-      ))}
-    </FilterList>
-  </>
+  <StyledFilterList>
+    {FILTER_DATA.map((item) => (
+      <StyledFilterItem key={item} className="active-link">
+        {item}
+      </StyledFilterItem>
+    ))}
+  </StyledFilterList>
 );
 
 export default Filter;

@@ -1,13 +1,15 @@
 import React, { FC, useState, FormEvent } from 'react';
 
+// types and styles
 import {
-  AddMovie as AddMovieWrapper,
-  ButtonContainer,
-  CloseIcon,
-  AddMovieContainer,
-  AddMovieTitle,
+  StyledAddMovieWrapper,
+  StyledButtonContainer,
+  StyledCloseIcon,
+  StyledAddMovieContainer,
+  StyledAddMovieTitle,
 } from './style';
 
+// components
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
@@ -50,13 +52,12 @@ const AddMovie: FC = () => {
   };
 
   return (
-    <AddMovieWrapper>
-      <CloseIcon />
-      <AddMovieTitle>Add Movie</AddMovieTitle>
+    <StyledAddMovieWrapper>
+      <StyledCloseIcon />
+      <StyledAddMovieTitle>Add Movie</StyledAddMovieTitle>
       <form onSubmit={handleSubmit}>
-        <AddMovieContainer>
+        <StyledAddMovieContainer>
           <Input
-            topic
             label="Title"
             name="title"
             type="text"
@@ -66,7 +67,6 @@ const AddMovie: FC = () => {
           />
           <Calendar />
           <Input
-            movie
             label="Movie url"
             name="movie"
             type="text"
@@ -76,7 +76,6 @@ const AddMovie: FC = () => {
           />
           <Select data={selectOptions} onSelectChange={onSelectChange} />
           <Input
-            overview
             label="Overview"
             name="overview"
             type="text"
@@ -85,7 +84,6 @@ const AddMovie: FC = () => {
             value={values.overview}
           />
           <Input
-            runtime
             label="Runtime"
             name="runtime"
             type="text"
@@ -93,14 +91,14 @@ const AddMovie: FC = () => {
             onChange={handleOnChange}
             value={values.runtime}
           />
-        </AddMovieContainer>
+        </StyledAddMovieContainer>
 
-        <ButtonContainer>
+        <StyledButtonContainer>
           <Button reset type="reset" onClick={null} text="Reset"></Button>
           <Button submit type="submit" onClick={null} text="Submit" />
-        </ButtonContainer>
+        </StyledButtonContainer>
       </form>
-    </AddMovieWrapper>
+    </StyledAddMovieWrapper>
   );
 };
 

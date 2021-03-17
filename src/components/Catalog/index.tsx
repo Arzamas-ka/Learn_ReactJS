@@ -1,26 +1,28 @@
 import React, { FC } from 'react';
 
+// types and styles
 import {
-  Catalog as CatalogWrapper,
-  FilterSelectionWrapper,
-  NumberMovies,
+  StyledCatalogWrapper,
+  StyledFilterSelectionWrapper,
+  StyledNumberMovies,
 } from './style';
 
+// components
 import Filter from './Filter';
 import Selection from './Selection';
 import Posters from './Posters';
 
 const Catalog: FC = () => (
-  <CatalogWrapper>
-    <FilterSelectionWrapper>
+  <StyledCatalogWrapper>
+    <StyledFilterSelectionWrapper>
       <Filter />
       <Selection />
-    </FilterSelectionWrapper>
-    <NumberMovies>
+    </StyledFilterSelectionWrapper>
+    <StyledNumberMovies>
       <span>10</span> movie found
-    </NumberMovies>
+    </StyledNumberMovies>
     <Posters />
-  </CatalogWrapper>
+  </StyledCatalogWrapper>
 );
 
 export default Catalog;

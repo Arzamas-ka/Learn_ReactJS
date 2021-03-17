@@ -1,13 +1,14 @@
 import React, { FC, useState } from 'react';
 
-import { SelectTypes } from './models';
+// types and styles
+import { SelectProps } from './models';
 import {
-  Select as SelectStyled,
-  SelectTitle,
-  SelectMain,
+  StyledSelectWrapper,
+  StyledSelectTitle,
+  StyledSelectMain,
 } from './style';
 
-const Select: FC<SelectTypes> = ({ data, onSelectChange }) => {
+const Select: FC<SelectProps> = ({ data, onSelectChange }) => {
   const [dataSelect] = useState(data);
   const [selectedData, updateSelectedData] = useState('');
 
@@ -24,13 +25,13 @@ const Select: FC<SelectTypes> = ({ data, onSelectChange }) => {
   ));
 
   return (
-    <SelectStyled>
-      <SelectTitle>Genre</SelectTitle>
-      <SelectMain name="genre" onChange={handleChange}>
+    <StyledSelectWrapper>
+      <StyledSelectTitle>Genre</StyledSelectTitle>
+      <StyledSelectMain name="genre" onChange={handleChange}>
         <option hidden>Select Genre</option>
         {options}
-      </SelectMain>
-    </SelectStyled>
+      </StyledSelectMain>
+    </StyledSelectWrapper>
   );
 };
 

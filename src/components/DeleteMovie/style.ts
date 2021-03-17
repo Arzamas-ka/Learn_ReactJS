@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
 import { colors } from '../../styles/consts';
 
-export const DeleteMovie = styled.div`
+export const StyledDeleteMovieWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -22,13 +22,13 @@ export const DeleteMovie = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const DeleteMovieText = styled.p`
+export const StyledDeleteMovieText = styled.p`
   padding: 50px;
 
   font-size: 20px;
 `;
 
-export const DeleteMovieTitle = styled.h2`
+export const StyledDeleteMovieTitle = styled.h2`
   padding: 85px 0 0 50px;
 
   font-size: 30px;
@@ -37,14 +37,14 @@ export const DeleteMovieTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const ButtonContainer = styled.div`
+export const StyledButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
   margin: 10px 40px 40px 40px;
 `;
 
-export const CloseIcon = styled(AiOutlineClose)`
+export const StyledCloseIcon = styled(AiOutlineClose)`
   position: absolute;
   right: 32px;
   top: 32px;

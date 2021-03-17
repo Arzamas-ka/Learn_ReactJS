@@ -1,20 +1,15 @@
 import styled, { css } from 'styled-components';
+import { StyledButtonProps } from './models';
 import { mediaQueries, colors, colorsRgba, rgbaMap } from '../../styles/consts';
 
-interface ButtonProps {
-  button?: boolean;
-  submit?: boolean;
-  reset?: boolean;
-}
-
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button<StyledButtonProps>`
   ${({ button }) =>
     button &&
     css`
       padding: 10px 20px;
 
       font-size: 16px;
-      color: ${colors.grey_coral};
+      color: ${colors.coral};
       border-radius: 4px;
       background-color: ${rgbaMap(colorsRgba.rgba_grey_light, 0.9)};
       text-transform: uppercase;
@@ -34,7 +29,7 @@ export const Button = styled.button<ButtonProps>`
       font-size: 16px;
       color: ${colors.white};
       border-radius: 4px;
-      background-color: ${colors.grey_coral};
+      background-color: ${colors.coral};
       text-transform: uppercase;
 
       ${mediaQueries('sizeXXXL')`
@@ -55,9 +50,9 @@ export const Button = styled.button<ButtonProps>`
       margin-right: 15px;
 
       font-size: 16px;
-      color: ${colors.white};
+      color: ${colors.coral};
       border-radius: 4px;
-      border: 1px solid ${colors.grey_coral};
+      border: 1px solid ${colors.coral};
       background-color: transparent;
       text-transform: uppercase;
 

@@ -1,15 +1,12 @@
 import styled, { css } from 'styled-components';
+import { StyledBackdropProps } from './models';
 import { colorsRgba, rgbaMap } from '../../styles/consts';
 
-interface BackdropProps {
-  active: boolean;
-}
-
-export const App = styled.div`
+export const StyledApp = styled.div`
   margin: 0 auto;
 `;
 
-export const Backdrop = styled.div<BackdropProps>`
+export const StyledBackdrop = styled.div<StyledBackdropProps>`
   position: absolute;
 
   ${({ active }) =>

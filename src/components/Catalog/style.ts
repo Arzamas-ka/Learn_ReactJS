@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { mediaQueries, colors } from '../../styles/consts';
 
-export const Catalog = styled.div`
+export const StyledCatalogWrapper = styled.div`
   color: ${colors.grey};
 `;
 
-export const FilterSelectionWrapper = styled.div`
+export const StyledFilterSelectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -20,7 +20,7 @@ export const FilterSelectionWrapper = styled.div`
   `}
 `;
 
-export const NumberMovies = styled.h3`
+export const StyledNumberMovies = styled.h3`
   padding: 25px 70px;
 
   font-size: 18px;

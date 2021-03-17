@@ -1,33 +1,34 @@
 import React, { FC } from 'react';
 
+// types and styles
 import {
-  Posters as PostersWrapper,
-  PostersList,
-  PostersItem,
-  PostersWrapTitle,
-  PostersTitle,
-  PostersTitleYear,
-  PostersImg,
-  PostersGenre,
+  StyledPostersWrapper,
+  StyledPostersList,
+  StyledPostersItem,
+  StyledPostersWrapTitle,
+  StyledPostersTitle,
+  StyledPostersTitleYear,
+  StyledPostersImg,
+  StyledPostersGenre,
 } from './style';
 
 import PostersData from '../../../../data';
 
 const Posters: FC = () => (
-  <PostersWrapper>
-    <PostersList>
+  <StyledPostersWrapper>
+    <StyledPostersList>
       {PostersData.map((poster) => (
-        <PostersItem key={poster.id}>
-          <PostersImg src={poster.poster} alt={poster.title} />
-          <PostersWrapTitle>
-            <PostersTitle>{poster.title}</PostersTitle>
-            <PostersTitleYear>{poster.year}</PostersTitleYear>
-          </PostersWrapTitle>
-          <PostersGenre>{poster.genre}</PostersGenre>
-        </PostersItem>
+        <StyledPostersItem key={poster.id}>
+          <StyledPostersImg src={poster.poster} alt={poster.title} />
+          <StyledPostersWrapTitle>
+            <StyledPostersTitle>{poster.title}</StyledPostersTitle>
+            <StyledPostersTitleYear>{poster.year}</StyledPostersTitleYear>
+          </StyledPostersWrapTitle>
+          <StyledPostersGenre>{poster.genre}</StyledPostersGenre>
+        </StyledPostersItem>
       ))}
-    </PostersList>
-  </PostersWrapper>
+    </StyledPostersList>
+  </StyledPostersWrapper>
 );
 
 export default Posters;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mediaQueries, colors } from '../../../styles/consts';
 
-export const FilterList = styled.ul`
+export const StyledFilterList = styled.ul`
   display: flex;
   justify-content: space-between;
 
@@ -15,7 +15,7 @@ export const FilterList = styled.ul`
   `}
 `;
 
-export const FilterItem = styled.li`
+export const StyledFilterItem = styled.li`
   position: relative;
 
   margin: 25px 15px;
@@ -43,7 +43,7 @@ export const FilterItem = styled.li`
   }
 
   &:hover {
-    color: ${colors.grey_coral};
+    color: ${colors.coral};
   }
 
   &:active {
