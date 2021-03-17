@@ -12,7 +12,7 @@ import EditMovie from 'components/EditMovie';
 import DeleteMovie from 'components/DeleteMovie';
 
 const App: FC = () => {
-  const [isActiveBackdrop, setIsActiveBackdrop] = useState(true);
+  const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
 
   return (
     <AppStyled>
