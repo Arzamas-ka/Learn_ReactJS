@@ -8,28 +8,16 @@ import {
   StyledSelectMain,
 } from './style';
 
-const Select: FC<SelectProps> = ({ data, onSelectChange }) => {
-  const [dataSelect] = useState(data);
-  const [selectedData, updateSelectedData] = useState('');
-
-  const handleChange = (event) => {
-    updateSelectedData(event.target.value);
-
-    if (onSelectChange) onSelectChange(selectedData);
-  };
-
-  let options = dataSelect.map((data) => (
-    <option key={data.id} value={data.id}>
-      {data.name}
-    </option>
-  ));
-
+const Select: FC<SelectProps> = ({ onChange, name }) => {
   return (
     <StyledSelectWrapper>
       <StyledSelectTitle>Genre</StyledSelectTitle>
-      <StyledSelectMain name="genre" onChange={handleChange}>
+      <StyledSelectMain name={name} onChange={onChange}>
         <option hidden>Select Genre</option>
-        {options}
+        <option>Crime</option>
+        <option>Documentary</option>
+        <option>Horror</option>
+        <option>Comedy</option>
       </StyledSelectMain>
     </StyledSelectWrapper>
   );

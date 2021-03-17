@@ -24,12 +24,6 @@ const initialValues = {
   runtime: '',
 };
 
-const selectOptions = [
-  { id: 1, name: 'Action & Adventure' },
-  { id: 2, name: 'Drama, Biography, Music' },
-  { id: 3, name: 'Oscar winning movie' },
-];
-
 const EditMoviePopup: FC = () => {
   const [values, setValues] = useState(initialValues);
 
@@ -46,10 +40,6 @@ const EditMoviePopup: FC = () => {
     event.preventDefault();
 
     console.log(JSON.stringify(values, null, 2));
-  };
-
-  const onSelectChange = (event) => {
-    console.log('event: ', event);
   };
 
   return (
@@ -86,7 +76,7 @@ const EditMoviePopup: FC = () => {
             value={values.url}
             autoComplete="off"
           />
-          <Select data={selectOptions} onSelectChange={onSelectChange} />
+          <Select onChange={handleOnChange} value={values.genre} name="genre" />
           <Input
             label="Overview"
             name="overview"
