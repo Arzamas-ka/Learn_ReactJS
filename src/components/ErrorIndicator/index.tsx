@@ -27,7 +27,7 @@ const ErrorIndicator: FC<ErrorIndicator> = ({
 
   return (
     <StyledErrorWrapper>
-      <StyledErrorMessage>No Movie Found</StyledErrorMessage>
+      <StyledErrorMessage>Page Not Found</StyledErrorMessage>
       <StyledErrorImage src={imageError} alt="Error Indicator" />
       <Button reset type="button" onClick={handleOnClick} text="Go back to home" />
     </StyledErrorWrapper>

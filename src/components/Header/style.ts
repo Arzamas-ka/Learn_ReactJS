@@ -20,7 +20,7 @@ export const StyledHeaderTop = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 25px 55px 25px 55px;
+  padding: 25px 55px 0 55px;
 
   ${mediaQueries('sizeXS')`
       flex-direction: column;
