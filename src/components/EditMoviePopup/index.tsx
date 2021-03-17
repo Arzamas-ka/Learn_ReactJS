@@ -33,14 +33,12 @@ const selectOptions = [
 const EditMoviePopup: FC = () => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = (event) => {
-    const target = event.target;
+  const handleOnChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
 
     setValues({
       ...values,
-      [name]: value,
+      [target.name]: value,
     });
   };
 
