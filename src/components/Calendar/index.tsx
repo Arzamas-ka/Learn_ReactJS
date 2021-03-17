@@ -21,6 +21,7 @@ const Calendar: FC = () => {
           onChange={(date) => setStartDate(date)}
           value={value}
           onClick={onClick}
+          autoComplete="off"
         />
         <StyledCalendarIcon onClick={onClick} />
       </>

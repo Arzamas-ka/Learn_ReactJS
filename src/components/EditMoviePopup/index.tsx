@@ -65,6 +65,7 @@ const EditMoviePopup: FC = () => {
             placeholder="m032820th"
             onChange={handleOnChange}
             value={values.number}
+            autoComplete="off"
           />
           <Input
             label="Title"
@@ -73,6 +74,7 @@ const EditMoviePopup: FC = () => {
             placeholder="Moana"
             onChange={handleOnChange}
             value={values.title}
+            autoComplete="off"
           />
           <Calendar />
           <Input
@@ -82,6 +84,7 @@ const EditMoviePopup: FC = () => {
             placeholder="www.moana.com"
             onChange={handleOnChange}
             value={values.url}
+            autoComplete="off"
           />
           <Select data={selectOptions} onSelectChange={onSelectChange} />
           <Input
@@ -91,6 +94,7 @@ const EditMoviePopup: FC = () => {
             placeholder="Overview here"
             onChange={handleOnChange}
             value={values.overview}
+            autoComplete="off"
           />
           <Input
             label="Runtime"
@@ -99,6 +103,7 @@ const EditMoviePopup: FC = () => {
             placeholder="Runtime here"
             onChange={handleOnChange}
             value={values.runtime}
+            autoComplete="off"
           />
         </StyledEditMoviePopupContainer>
 

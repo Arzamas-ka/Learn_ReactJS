@@ -11,6 +11,7 @@ const Input: FC<InputProps> = ({
   value,
   label,
   name,
+  autoComplete,
   ...props
 }) => (
   <StyledInputWrapper placeholder={placeholder} {...props}>
@@ -21,6 +22,7 @@ const Input: FC<InputProps> = ({
       onChange={onChange}
       value={value}
       name={name}
+      autoComplete={autoComplete}
     />
   </StyledInputWrapper>
 );

@@ -8,6 +8,7 @@ export interface InputProps {
   onClick?: () => void;
   name: string;
   search?: boolean;
+  autoComplete?: string;
 }
 
 export interface StyledInputProps {
