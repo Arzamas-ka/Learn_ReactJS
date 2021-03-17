@@ -7,7 +7,7 @@ export const DeleteMovie = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  /* display: none; */
+  display: none;
 
   position: absolute;
   top: 350px;

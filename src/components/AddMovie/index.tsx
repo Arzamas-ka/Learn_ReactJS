@@ -30,12 +30,12 @@ const selectOptions = [
 const AddMovie: FC = () => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = ({target, name }) => {
+  const handleOnChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     setValues({
       ...values,
-      [name]: value,
+      [target.name]: value,
     });
   };
 
