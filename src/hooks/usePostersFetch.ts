@@ -19,9 +19,9 @@ export const usePostersFetch = () => {
 
       setMovies((prev) => ({
         ...prev,
-        movies: [...posters.data],
+        movies: [...prev.movies, ...posters.data],
         currentPage: posters.offset,
-        totalPages: posters.totalAmount / posters.limit,
+        totalPages: posters.totalAmount / posters.limit - posters.offset,
       }));
     } catch (error) {
       setError(true);

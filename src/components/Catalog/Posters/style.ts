@@ -60,7 +60,7 @@ export const StyledPostersWrapTitle = styled.div`
   width: 300px;
   padding: 10px 0;
 
-  color: ${colors.grey};
+  color: ${colors.grey_native};
 `;
 
 export const StyledPostersTitle = styled.h2`
@@ -87,7 +87,7 @@ export const StyledPostersGenre = styled.p`
   padding-bottom: 15px;
   width: 300px;
 
-  color: ${colors.grey};
+  color: ${colors.grey_native};
 `;
 
 export const StyledPostersError = styled.div`

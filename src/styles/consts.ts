@@ -23,6 +23,7 @@ export const colors = {
   grey: '#424242',
   grey_dark: '#232323',
   coral: '#f65261',
+  grey_native: '#808080',
 };
 
 export const colorsRgba = {

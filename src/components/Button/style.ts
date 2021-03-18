@@ -66,4 +66,34 @@ export const Button = styled.button<StyledButtonProps>`
         color: ${colors.grey};
       }
     `};
+
+  ${({ load }) =>
+    load &&
+    css`
+      display: block;
+      margin: 0 auto;
+      padding: 15px 30px;
+      margin-bottom: 80px;
+
+      font-size: 15px;
+      color: ${colors.white};
+      border-radius: 30px;
+      border: 1px solid ${colors.white};
+      background-color: transparent;
+      text-transform: uppercase;
+
+      ${mediaQueries('sizeXXXL')`
+        align-self: center;
+
+        margin-top: 20px;
+      `}
+
+      &:hover {
+        color: ${colors.grey};
+      }
+
+      &:active {
+        border-color: ${colors.grey};
+      }
+    `};
 `;
