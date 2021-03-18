@@ -13,4 +13,6 @@ export interface HeaderProps {
     genres: string[];
     id: number;
   };
+  // isShowing: boolean;
+  hide: () => void;
 }

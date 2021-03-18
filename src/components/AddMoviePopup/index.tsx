@@ -1,5 +1,6 @@
 import React, { FC, useState, FormEvent } from 'react';
 // types and styles
+import { AppMoviePopup } from './models';
 import {
   StyledAddMoviePopupWrapper,
   StyledButtonContainer,
@@ -21,7 +22,7 @@ const initialValues = {
   runtime: '',
 };
 
-const AddMoviePopup: FC = () => {
+const AddMoviePopup: FC<AppMoviePopup> = ({ hide, isShowing }) => {
   const [values, setValues] = useState(initialValues);
 
   const handleOnChange = ({ target }) => {
@@ -41,7 +42,7 @@ const AddMoviePopup: FC = () => {
 
   return (
     <StyledAddMoviePopupWrapper>
-      <StyledCloseIcon />
+      <StyledCloseIcon onClick={hide} />
       <StyledAddMoviePopupTitle>Add Movie</StyledAddMoviePopupTitle>
       <form onSubmit={handleSubmit}>
         <StyledAddMoviePopupContainer>
