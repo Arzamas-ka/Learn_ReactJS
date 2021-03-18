@@ -1,29 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 // libs
 import axios from 'axios';
 // constants
 import { API_BASE } from '../@constants/index';
 
 const useMoreDetailsMovie = () => {
-  const [movieDetails, setMovieDetails] = useState({});
+  const [movieDetails, setMovieDetails]: any = useState(null);
   const [loadingMovieDetails, setLoadingMovieDetails] = useState(true);
   const [errorMovieDetails, setErrorMovieDetails] = useState(false);
 
-  const fetchMovieDetails = async (id) => {
-    setErrorMovieDetails(false);
-    setLoadingMovieDetails(true);
+  const fetchMovieDetails = useCallback(
+    async (id) => {
+      setErrorMovieDetails(false);
+      setLoadingMovieDetails(true);
 
-    try {
-      const response = await axios.get(`${API_BASE}/${id}`);
-      const movieDetails = response.data;
+      try {
+        const response = await axios.get(`${API_BASE}/${id}`);
+        const responseMovieDetails = response.data;
 
-      console.log('repDetails: ', movieDetails);
-    } catch (error) {
-      setErrorMovieDetails(true);
-    }
+        setMovieDetails(responseMovieDetails);
+      } catch (error) {
+        setErrorMovieDetails(true);
+      }
 
-    setLoadingMovieDetails(false);
-  };
+      setLoadingMovieDetails(false);
+    },
+    [movieDetails],
+  );
 
   return {
     movieDetails,

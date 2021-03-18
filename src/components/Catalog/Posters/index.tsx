@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useEffect } from 'react';
 import shortid from 'shortid';
 // types and styles
 import { PostersProps } from './models';
@@ -26,7 +26,7 @@ import { API_PAGE } from '@constants';
 import Button from 'components/Button';
 import { Spinner } from 'components/Spinner';
 
-const Posters: FC = () => {
+const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
   const { movies, error, loading, fetchMovies }: any = usePostersFetch();
   const {
     movieDetails,
@@ -42,10 +42,12 @@ const Posters: FC = () => {
   };
 
   const handleMoreDetails = (id) => {
-    console.log('id: ', id);
-
     fetchMovieDetails(id);
   };
+
+  useEffect(() => {
+    setMovieDetails(movieDetails);
+  }, [movieDetails]);
 
   const addDefaultSrc = useCallback(({ target }) => {
     target.src = defaultImgMovie;

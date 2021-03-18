@@ -13,6 +13,7 @@ import DeleteMoviePopup from 'components/DeleteMoviePopup';
 
 const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
+  const [movieDetails, setMovieDetails] = useState(null);
 
   return (
     <StyledApp>
@@ -21,8 +22,8 @@ const App: FC = () => {
       <DeleteMoviePopup />
       <EditMoviePopup />
       <AddMoviePopup />
-      <Header />
-      <Catalog />
+      <Header movieDetails={movieDetails} />
+      <Catalog setMovieDetails={setMovieDetails} />
       <Footer />
     </StyledApp>
   );
