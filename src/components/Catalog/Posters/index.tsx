@@ -13,6 +13,7 @@ import {
   StyledPostersGenre,
   StyledPostersLink,
   StyledNumberMovies,
+  StyledPostersError,
 } from './style';
 
 // hooks
@@ -23,27 +24,31 @@ const Posters: FC = () => {
 
   console.log('movies: ', movies.movies);
 
-  const posters = movies.movies.map((poster) => (
-    <StyledPostersItem key={shortid.generate()}>
-      <StyledPostersLink>
-        <StyledPostersImg src={poster.poster_path} alt={poster.title} />
-        <StyledPostersWrapTitle>
-          <StyledPostersTitle>{poster.title}</StyledPostersTitle>
-          <StyledPostersTitleYear>{poster.release_date}</StyledPostersTitleYear>
-        </StyledPostersWrapTitle>
-        <StyledPostersGenre>
-          {poster.genres.map((genre) => (
-            <span key={shortid.generate()}> {genre}, </span>
-          ))}
-        </StyledPostersGenre>
-      </StyledPostersLink>
-    </StyledPostersItem>
-  ));
+  const posters = movies.movies.map((poster) => {
+    const genre = poster.genres.map((genre) => (
+      <span key={shortid.generate()}> {genre}, </span>
+    ));
+
+    return (
+      <StyledPostersItem key={shortid.generate()}>
+        <StyledPostersLink>
+          <StyledPostersImg src={poster.poster_path} alt={poster.title} />
+          <StyledPostersWrapTitle>
+            <StyledPostersTitle>{poster.title}</StyledPostersTitle>
+            <StyledPostersTitleYear>
+              {poster.release_date}
+            </StyledPostersTitleYear>
+          </StyledPostersWrapTitle>
+          <StyledPostersGenre>{genre}</StyledPostersGenre>
+        </StyledPostersLink>
+      </StyledPostersItem>
+    );
+  });
 
   return (
     <StyledPostersWrapper>
-      {error && <div>No Movie Found</div>}
-      {!loading && (
+      {!error && <StyledPostersError>No Movie Found</StyledPostersError>}
+      {loading && (
         <>
           {' '}
           <StyledNumberMovies>

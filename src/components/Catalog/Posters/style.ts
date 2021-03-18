@@ -84,3 +84,12 @@ export const StyledPostersGenre = styled.p`
 
   color: grey;
 `;
+
+export const StyledPostersError = styled.div`
+  margin: 150px;
+
+  color: ${colors.white};
+  font-weight: 200;
+  font-size: 32px;
+  text-align: center;
+`;
