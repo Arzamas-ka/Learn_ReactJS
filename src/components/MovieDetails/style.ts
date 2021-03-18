@@ -26,6 +26,8 @@ export const StyledMovieDetailsDescription = styled.div`
 `;
 
 export const StyledMovieDetailsTitle = styled.h3`
+  margin-right: 20px;
+
   font-size: 35px;
   font-weight: 100;
 `;
@@ -56,4 +58,19 @@ export const StyledMovieDetailsArticle = styled.p`
   font-size: 16px;
   font-weight: 100;
   line-height: 1.7;
+`;
+
+export const StyledMovieDetailsAverage = styled.span`
+  width: 50px;
+  padding: 10px;
+
+  font-size: 20px;
+  border: 1px solid ${colors.white};
+  border-radius: 50%;
+  color: green;
+`;
+
+export const StyledMovieDetailsTitleContainer = styled.div`
+  display: flex;
+  justify-content: end;
 `;

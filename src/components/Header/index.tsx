@@ -21,12 +21,14 @@ const Header: FC<HeaderProps> = ({ movieDetails }) => {
     <StyledHeaderWrapper>
       <StyledHeaderTop className="header-top">
         <Logo />
-        <Button
-          button
-          type="button"
-          onClick={handleOnClick}
-          text="+ Add Movie"
-        />
+        {!movieDetails && (
+          <Button
+            button
+            type="button"
+            onClick={handleOnClick}
+            text="+ Add Movie"
+          />
+        )}
       </StyledHeaderTop>
       {movieDetails && <MovieDetails movieDetails={movieDetails} />}
       {!movieDetails && <Search />}

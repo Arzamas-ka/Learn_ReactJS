@@ -11,6 +11,8 @@ import {
   StyledMovieDetailsYear,
   StyledMovieDetailsTime,
   StyledMovieDetailsArticle,
+  StyledMovieDetailsAverage,
+  StyledMovieDetailsTitleContainer,
 } from './style';
 // images
 import defaultImgMovie from '../../assets/images/fallback_movie.png';
@@ -31,7 +33,14 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
         onError={addDefaultSrc}
       />
       <StyledMovieDetailsDescription>
-        <StyledMovieDetailsTitle>{movieDetails.title}</StyledMovieDetailsTitle>
+        <StyledMovieDetailsTitleContainer>
+          <StyledMovieDetailsTitle>
+            {movieDetails.title}
+          </StyledMovieDetailsTitle>
+          <StyledMovieDetailsAverage>
+            {movieDetails.vote_average}
+          </StyledMovieDetailsAverage>
+        </StyledMovieDetailsTitleContainer>
         <StyledMovieDetailsWin>{movieDetails.tagline}</StyledMovieDetailsWin>
         <StyledMovieDetailsDate>
           <StyledMovieDetailsYear>
