@@ -96,4 +96,25 @@ export const Button = styled.button<StyledButtonProps>`
         border-color: ${colors.grey};
       }
     `};
+
+  ${({ magnifier }) =>
+    magnifier &&
+    css`
+      display: block;
+      padding: 15px 30px;
+
+      font-size: 50px;
+      background-color: transparent;
+      color: ${colors.coral};
+
+      ${mediaQueries('sizeXXXL')`
+        align-self: center;
+
+        margin-top: 20px;
+      `}
+
+      &:hover {
+        transform: scale(1.2)
+      }
+    `};
 `;

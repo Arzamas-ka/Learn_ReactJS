@@ -21,6 +21,9 @@ const Header: FC<HeaderProps> = ({ movieDetails }) => {
     <StyledHeaderWrapper>
       <StyledHeaderTop className="header-top">
         <Logo />
+        {movieDetails && (
+          <Button magnifier type="button" onClick={handleOnClick} text="&#x2315;" />
+        )}
         {!movieDetails && (
           <Button
             button

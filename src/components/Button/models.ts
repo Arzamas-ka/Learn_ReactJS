@@ -8,6 +8,7 @@ export interface ButtonProps {
   reset?: boolean;
   save?: boolean;
   load?: boolean;
+  magnifier?: boolean;
 }
 
 export interface StyledButtonProps {
@@ -15,4 +16,5 @@ export interface StyledButtonProps {
   submit?: boolean;
   reset?: boolean;
   load?: boolean;
+  magnifier?: boolean;
 }

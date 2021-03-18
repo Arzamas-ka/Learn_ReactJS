@@ -62,7 +62,8 @@ export const StyledMovieDetailsArticle = styled.p`
 
 export const StyledMovieDetailsAverage = styled.span`
   width: 50px;
-  padding: 10px;
+  height: 50px;
+  padding: 13px 10px 10px 10px;
 
   font-size: 20px;
   border: 1px solid ${colors.white};
