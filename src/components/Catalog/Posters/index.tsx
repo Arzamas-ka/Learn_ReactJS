@@ -16,24 +16,35 @@ import {
   StyledPostersError,
 } from './style';
 // hooks
-import { usePostersFetch } from 'hooks/usePostersFetch';
+import usePostersFetch from 'hooks/usePostersFetch';
+import useMoreDetailsMovie from 'hooks/useMoreDetailsMovie';
 // images
 import defaultImgMovie from '../../../assets/images/fallback_movie.png';
 // constants
 import { API_PAGE } from '@constants';
 // components
 import Button from 'components/Button';
+import { Spinner } from 'components/Spinner';
 
 const Posters: FC = () => {
   const { movies, error, loading, fetchMovies }: any = usePostersFetch();
+  const {
+    movieDetails,
+    loadingMovieDetails,
+    errorMovieDetails,
+    fetchMovieDetails,
+  }: any = useMoreDetailsMovie();
 
-  console.log('movies: ', movies);
   const loadMorePosters = () => {
     const loadMorePostersEndpoint = `${API_PAGE}${movies.currentPage + 1}`;
 
-    console.log('loadMorePostersEndpoint: ', loadMorePostersEndpoint);
-
     fetchMovies(loadMorePostersEndpoint);
+  };
+
+  const handleMoreDetails = (id) => {
+    console.log('id: ', id);
+
+    fetchMovieDetails(id);
   };
 
   const addDefaultSrc = useCallback(({ target }) => {
@@ -48,7 +59,7 @@ const Posters: FC = () => {
 
     return (
       <StyledPostersItem key={shortid.generate()}>
-        <StyledPostersLink>
+        <StyledPostersLink onClick={() => handleMoreDetails(poster.id)}>
           <StyledPostersImg
             src={poster.poster_path}
             alt={poster.title}
@@ -69,7 +80,7 @@ const Posters: FC = () => {
   return (
     <StyledPostersWrapper>
       {error && <StyledPostersError>No Movie Found</StyledPostersError>}
-      {/* {loading && <Spinner />} */}
+      {loading && <Spinner />}
       <>
         {' '}
         <StyledNumberMovies>

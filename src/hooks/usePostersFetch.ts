@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+// libs
 import axios from 'axios';
+// constants
 import { API_BASE } from '../@constants/index';
 
-export const usePostersFetch = () => {
+const usePostersFetch = () => {
   const [movies, setMovies] = useState({ movies: [] });
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -36,3 +38,5 @@ export const usePostersFetch = () => {
 
   return { movies, error, loading, fetchMovies };
 };
+
+export default usePostersFetch;
