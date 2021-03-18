@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-
 // types and styles
 import { InputProps } from './models';
 import { StyledInputWrapper, StyledInput, StyledLabel } from './style';

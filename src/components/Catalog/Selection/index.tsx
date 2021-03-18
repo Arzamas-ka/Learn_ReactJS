@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
-
 // types and styles
 import { StyledList, StyledItem } from './style';
-
 // constants
 import { SORT_DATA } from '@constants';
 

@@ -1,5 +1,4 @@
 import React, { FC, useState, FormEvent } from 'react';
-
 // types and styles
 import {
   StyledAddMoviePopupWrapper,
@@ -8,7 +7,6 @@ import {
   StyledAddMoviePopupContainer,
   StyledAddMoviePopupTitle,
 } from './style';
-
 // components
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -66,7 +64,7 @@ const AddMoviePopup: FC = () => {
             value={values.movie}
             autoComplete="off"
           />
-          <Select onChange={handleOnChange} value={values.genre} name="genre"/>
+          <Select onChange={handleOnChange} value={values.genre} name="genre" />
           <Input
             label="Overview"
             name="overview"

@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-
 // types and styled
 import {
   StyledDeleteMoviePopupWrapper,
@@ -8,7 +7,6 @@ import {
   StyledDeleteMoviePopupText,
   StyledDeleteMoviePopupTitle,
 } from './style';
-
 // components
 import Button from 'components/Button';
 

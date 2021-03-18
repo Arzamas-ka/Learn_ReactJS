@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
-
 // types and styles
 import { StyledFilterList, StyledFilterItem } from './style';
-
 // constants
 import { FILTER_DATA } from '@constants';
 

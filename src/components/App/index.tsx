@@ -1,10 +1,8 @@
 import React, { FC, useState } from 'react';
-
 // types and styles
 import { GlobalStyle } from '../../styles/style';
 import { StyledApp, StyledBackdrop } from './style';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-
 // components
 import Header from 'components/Header';
 import Footer from 'components/Footer';

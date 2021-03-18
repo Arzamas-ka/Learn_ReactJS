@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-
 // types and styles
 import { StyledLogo, StyledSpan } from './style';
 

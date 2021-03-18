@@ -1,9 +1,6 @@
 import React, { FC, SyntheticEvent } from 'react';
-
 // types and styles
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';
-
-
 // components
 import Button from 'components/Button';
 import Search from 'components/Search';

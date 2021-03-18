@@ -1,9 +1,7 @@
 import React, { FC, forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
-
 // types and styles
 import { StyledCalendarWrapper, StyledCalendarIcon } from './style';
-
 // components
 import Input from 'components/Input';
 

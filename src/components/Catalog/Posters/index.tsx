@@ -1,6 +1,5 @@
 import React, { FC, useCallback } from 'react';
 import shortid from 'shortid';
-
 // types and styles
 import { PostersProps } from './models';
 import {
