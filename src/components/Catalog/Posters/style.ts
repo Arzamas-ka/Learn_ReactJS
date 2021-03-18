@@ -80,5 +80,7 @@ export const StyledPostersImg = styled.img`
 
 export const StyledPostersGenre = styled.p`
   padding-bottom: 15px;
+  width: 300px;
+
   color: grey;
 `;

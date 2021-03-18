@@ -18,6 +18,12 @@ const Select: FC<SelectProps> = ({ onChange, name }) => {
         <option>Documentary</option>
         <option>Horror</option>
         <option>Comedy</option>
+        <option>Action</option>
+        <option>Adventure</option>
+        <option>Drama</option>
+        <option>Fantasy</option>
+        <option>Romance</option>
+        <option>Science Fiction</option>
       </StyledSelectMain>
     </StyledSelectWrapper>
   );

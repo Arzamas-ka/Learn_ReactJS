@@ -33,7 +33,7 @@ const Posters: FC = () => {
         </StyledPostersWrapTitle>
         <StyledPostersGenre>
           {poster.genres.map((genre) => (
-            <span key={shortid.generate()}> /{genre}  </span>
+            <span key={shortid.generate()}> {genre}, </span>
           ))}
         </StyledPostersGenre>
       </StyledPostersLink>
