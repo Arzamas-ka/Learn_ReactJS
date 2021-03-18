@@ -27,7 +27,8 @@ export const colors = {
 
 export const colorsRgba = {
   rgba_grey_light: '85, 85, 85',
-  grey_dark: '12, 13, 14',
+  rgba_grey_dark: '12, 13, 14',
+  rgba_white: '255, 255, 255',
 };
 
 export const rgbaMap = (main, opacity) => {

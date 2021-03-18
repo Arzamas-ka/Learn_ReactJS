@@ -16,7 +16,7 @@ export const StyledBackdrop = styled.div<StyledBackdropProps>`
       min-height: 100vh;
       min-height: -webkit-fill-available;
 
-      background-color: ${rgbaMap(colorsRgba.grey_dark, 0.7)};
+      background-color: ${rgbaMap(colorsRgba.rgba_grey_dark, 0.7)};
       backdrop-filter: blur(50px);
       opacity: 0.7;
       z-index: 5;

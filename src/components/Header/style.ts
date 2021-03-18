@@ -6,8 +6,8 @@ import bgrImage from '../../assets/images/background.jpg';
 export const StyledHeaderWrapper = styled.div`
   background-image: linear-gradient(
       to right,
-      ${rgbaMap(colorsRgba.grey_dark, 0.7)},
-      ${rgbaMap(colorsRgba.grey_dark, 0.7)}
+      ${rgbaMap(colorsRgba.rgba_grey_dark, 0.7)},
+      ${rgbaMap(colorsRgba.rgba_grey_dark, 0.7)}
     ),
     url(${bgrImage});
   background-repeat: no-repeat;

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import shortid from 'shortid';
 
 // types and styles
@@ -19,10 +19,18 @@ import {
 // hooks
 import { usePostersFetch } from 'hooks/usePostersFetch';
 
+// images
+import defaultImgMovie from '../../../assets/images/fallback_movie.png';
+
 const Posters: FC = () => {
   const { movies, error, loading, fetchMovies } = usePostersFetch();
 
   console.log('movies: ', movies.movies);
+
+  const addDefaultSrc = useCallback(({ target }) => {
+    target.src = defaultImgMovie;
+    target.alt = 'image not found';
+  }, []);
 
   const posters = movies.movies.map((poster) => {
     const genre = poster.genres.map((genre) => (
@@ -32,7 +40,11 @@ const Posters: FC = () => {
     return (
       <StyledPostersItem key={shortid.generate()}>
         <StyledPostersLink>
-          <StyledPostersImg src={poster.poster_path} alt={poster.title} />
+          <StyledPostersImg
+            src={poster.poster_path}
+            alt={poster.title}
+            onError={addDefaultSrc}
+          />
           <StyledPostersWrapTitle>
             <StyledPostersTitle>{poster.title}</StyledPostersTitle>
             <StyledPostersTitleYear>
@@ -47,8 +59,8 @@ const Posters: FC = () => {
 
   return (
     <StyledPostersWrapper>
-      {!error && <StyledPostersError>No Movie Found</StyledPostersError>}
-      {loading && (
+      {error && <StyledPostersError>No Movie Found</StyledPostersError>}
+      {!loading && (
         <>
           {' '}
           <StyledNumberMovies>

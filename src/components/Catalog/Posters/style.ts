@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { mediaQueries, colors } from '../../../styles/consts';
+import {
+  mediaQueries,
+  colors,
+  rgbaMap,
+  colorsRgba,
+} from '../../../styles/consts';
 
 export const StyledPostersWrapper = styled.div`
   padding: 0 30px 30px 30px;
@@ -36,11 +41,11 @@ export const StyledPostersItem = styled.li`
   padding: 15px;
   height: 620px;
 
-  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px 0 ${rgbaMap(colorsRgba.rgba_white, 0.2)};
   transition: 0.3s;
 
   :hover {
-    box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 16px 0 ${rgbaMap(colorsRgba.rgba_white, 0.2)};
   }
 `;
 
@@ -55,7 +60,7 @@ export const StyledPostersWrapTitle = styled.div`
   width: 300px;
   padding: 10px 0;
 
-  color: grey;
+  color: ${colors.grey};
 `;
 
 export const StyledPostersTitle = styled.h2`
@@ -82,7 +87,7 @@ export const StyledPostersGenre = styled.p`
   padding-bottom: 15px;
   width: 300px;
 
-  color: grey;
+  color: ${colors.grey};
 `;
 
 export const StyledPostersError = styled.div`
