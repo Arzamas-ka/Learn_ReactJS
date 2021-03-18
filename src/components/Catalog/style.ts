@@ -19,20 +19,3 @@ export const StyledFilterSelectionWrapper = styled.div`
     border-bottom: none;
   `}
 `;
-
-export const StyledNumberMovies = styled.h3`
-  padding: 25px 70px;
-
-  font-size: 18px;
-  font-weight: 100;
-  color: ${colors.white};
-
-  ${mediaQueries('sizeXXL')`
-    text-align: center;
-  `}
-
-  span {
-    font-size: 22px;
-    font-weight: 600;
-  }
-`;

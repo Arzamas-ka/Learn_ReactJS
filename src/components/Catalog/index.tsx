@@ -1,11 +1,7 @@
 import React, { FC } from 'react';
 
 // types and styles
-import {
-  StyledCatalogWrapper,
-  StyledFilterSelectionWrapper,
-  StyledNumberMovies,
-} from './style';
+import { StyledCatalogWrapper, StyledFilterSelectionWrapper } from './style';
 
 // components
 import Filter from './Filter';
@@ -18,9 +14,6 @@ const Catalog: FC = () => (
       <Filter />
       <Selection />
     </StyledFilterSelectionWrapper>
-    <StyledNumberMovies>
-      <span>10</span> movie found
-    </StyledNumberMovies>
     <Posters />
   </StyledCatalogWrapper>
 );

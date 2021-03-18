@@ -12,6 +12,7 @@ import {
   StyledPostersImg,
   StyledPostersGenre,
   StyledPostersLink,
+  StyledNumberMovies,
 } from './style';
 
 // hooks
@@ -32,7 +33,7 @@ const Posters: FC = () => {
         </StyledPostersWrapTitle>
         <StyledPostersGenre>
           {poster.genres.map((genre) => (
-            <span key={shortid.generate()}> {genre} </span>
+            <span key={shortid.generate()}> /{genre}  </span>
           ))}
         </StyledPostersGenre>
       </StyledPostersLink>
@@ -41,7 +42,16 @@ const Posters: FC = () => {
 
   return (
     <StyledPostersWrapper>
-      <StyledPostersList>{posters}</StyledPostersList>
+      {error && <div>No Movie Found</div>}
+      {!loading && (
+        <>
+          {' '}
+          <StyledNumberMovies>
+            <span>{movies.movies.length}</span> movie found
+          </StyledNumberMovies>
+          <StyledPostersList>{posters}</StyledPostersList>
+        </>
+      )}
     </StyledPostersWrapper>
   );
 };
