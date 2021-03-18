@@ -11,12 +11,11 @@ export const StyledSelectWrapper = styled.div`
   width: 100%;
 `;
 
-export const StyledSelectTitle = styled.h3`
+export const StyledSelectTitle = styled.label`
   margin: 15px 0;
 
   color: ${colors.coral};
   font-size: 14px;
-  font-weight: 100;
   text-transform: uppercase;
 `;
 

@@ -15,6 +15,10 @@ export const StyledPostersItem = styled.li`
   margin: 0 15px;
 `;
 
+export const StyledPostersLink = styled.a`
+  //
+`;
+
 export const StyledPostersWrapTitle = styled.div`
   display: flex;
   justify-content: space-between;
@@ -33,7 +37,7 @@ export const StyledPostersTitleYear = styled.span`
 `;
 
 export const StyledPostersImg = styled.img`
-  width: 320px;
+  width: 300px;
   height: 455px;
 `;
 

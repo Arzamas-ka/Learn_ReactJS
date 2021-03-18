@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import shortid from 'shortid';
 
 // types and styles
 import {
@@ -10,25 +11,39 @@ import {
   StyledPostersTitleYear,
   StyledPostersImg,
   StyledPostersGenre,
+  StyledPostersLink,
 } from './style';
 
-import PostersData from '../../../../data';
+// hooks
+import { usePostersFetch } from 'hooks/usePostersFetch';
 
-const Posters: FC = () => (
-  <StyledPostersWrapper>
-    <StyledPostersList>
-      {PostersData.map((poster) => (
-        <StyledPostersItem key={poster.id}>
-          <StyledPostersImg src={poster.poster} alt={poster.title} />
-          <StyledPostersWrapTitle>
-            <StyledPostersTitle>{poster.title}</StyledPostersTitle>
-            <StyledPostersTitleYear>{poster.year}</StyledPostersTitleYear>
-          </StyledPostersWrapTitle>
-          <StyledPostersGenre>{poster.genre}</StyledPostersGenre>
-        </StyledPostersItem>
-      ))}
-    </StyledPostersList>
-  </StyledPostersWrapper>
-);
+const Posters: FC = () => {
+  const { movies, error, loading, fetchMovies } = usePostersFetch();
+
+  console.log('movies: ', movies.movies);
+
+  const posters = movies.movies.map((poster) => (
+    <StyledPostersItem key={shortid.generate()}>
+      <StyledPostersLink>
+        <StyledPostersImg src={poster.poster_path} alt={poster.title} />
+        <StyledPostersWrapTitle>
+          <StyledPostersTitle>{poster.title}</StyledPostersTitle>
+          <StyledPostersTitleYear>{poster.release_date}</StyledPostersTitleYear>
+        </StyledPostersWrapTitle>
+        <StyledPostersGenre>
+          {poster.genres.map((genre) => (
+            <span key={shortid.generate()}> {genre} </span>
+          ))}
+        </StyledPostersGenre>
+      </StyledPostersLink>
+    </StyledPostersItem>
+  ));
+
+  return (
+    <StyledPostersWrapper>
+      <StyledPostersList>{posters}</StyledPostersList>
+    </StyledPostersWrapper>
+  );
+};
 
 export default Posters;
