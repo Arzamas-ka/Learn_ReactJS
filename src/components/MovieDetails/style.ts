@@ -1,17 +1,20 @@
 import styled from 'styled-components';
-import { mediaQueries, colors } from '../../styles/consts';
+import { mediaQueries, colors, rgbaMap, colorsRgba } from '../../styles/consts';
 
 export const StyledMovieDetailsWrapper = styled.div`
   display: flex;
   justify-content: space-around;
 
-  padding: 25px 55px 50px 55px;
+  margin: 20px;
+  padding: 20px 55px;
   color: ${colors.white};
+  border-radius: 10px;
+  background-color: ${rgbaMap(colorsRgba.rgba_grey_dark, 0.7)};
 `;
 
 export const StyledMovieDetailsImage = styled.img`
   width: 300px;
-  height: 400px;
+  height: 350px;
 `;
 
 export const StyledMovieDetailsDescription = styled.div`
@@ -29,6 +32,7 @@ export const StyledMovieDetailsTitle = styled.h3`
 
 export const StyledMovieDetailsWin = styled.span`
   font-size: 15px;
+  font-weight: 100;
 `;
 
 export const StyledMovieDetailsDate = styled.div`
@@ -49,5 +53,7 @@ export const StyledMovieDetailsTime = styled.span`
 `;
 
 export const StyledMovieDetailsArticle = styled.p`
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 1.7;
 `;

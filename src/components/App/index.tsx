@@ -13,7 +13,7 @@ import DeleteMoviePopup from 'components/DeleteMoviePopup';
 
 const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [movieDetails, setMovieDetails]: any = useState(null);
 
   return (
     <StyledApp>

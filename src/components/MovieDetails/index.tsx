@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 // types and styles
 import { MovieDetailsProps } from './models';
 import {
@@ -12,13 +12,24 @@ import {
   StyledMovieDetailsTime,
   StyledMovieDetailsArticle,
 } from './style';
+// images
+import defaultImgMovie from '../../assets/images/fallback_movie.png';
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
   console.log('componentMovieDetails: ', movieDetails);
 
+  const addDefaultSrc = useCallback(({ target }) => {
+    target.src = defaultImgMovie;
+    target.alt = 'image not found';
+  }, []);
+
   return (
     <StyledMovieDetailsWrapper>
-      <StyledMovieDetailsImage src={movieDetails.poster_path} />
+      <StyledMovieDetailsImage
+        src={movieDetails.poster_path}
+        alt={movieDetails.title}
+        onError={addDefaultSrc}
+      />
       <StyledMovieDetailsDescription>
         <StyledMovieDetailsTitle>{movieDetails.title}</StyledMovieDetailsTitle>
         <StyledMovieDetailsWin>{movieDetails.tagline}</StyledMovieDetailsWin>

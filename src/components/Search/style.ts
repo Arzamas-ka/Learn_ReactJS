@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { mediaQueries, colors } from '../../styles/consts';
 
 export const StyledSearchWrapper = styled.div`
-  padding: 0 55px 155px 55px;
+  padding: 55px 55px 218px 55px;
 
   ${mediaQueries('sizeL')`
     padding: 25px 15px 55px 15px;

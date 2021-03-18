@@ -13,6 +13,7 @@ export const StyledHeaderWrapper = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
+  overflow: auto;
 `;
 
 export const StyledHeaderTop = styled.div`
@@ -20,7 +21,7 @@ export const StyledHeaderTop = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  padding: 25px 55px 0 55px;
+  padding: 0 55px;
 
   ${mediaQueries('sizeXS')`
       flex-direction: column;
