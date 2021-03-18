@@ -10,11 +10,20 @@ export const StyledMovieDetailsWrapper = styled.div`
   color: ${colors.white};
   border-radius: 10px;
   background-color: ${rgbaMap(colorsRgba.rgba_grey_dark, 0.7)};
+
+  ${mediaQueries('sizeXXL')`
+    flex-direction: column;
+    align-items: center;
+  `}
 `;
 
 export const StyledMovieDetailsImage = styled.img`
   width: 300px;
   height: 350px;
+
+  ${mediaQueries('sizeXXL')`
+     width: 250px;
+  `}
 `;
 
 export const StyledMovieDetailsDescription = styled.div`
@@ -23,6 +32,10 @@ export const StyledMovieDetailsDescription = styled.div`
   justify-content: space-around;
 
   padding: 30px 55px;
+
+  ${mediaQueries('sizeXXL')`
+    align-items: center;
+  `}
 `;
 
 export const StyledMovieDetailsTitle = styled.h3`
@@ -33,6 +46,8 @@ export const StyledMovieDetailsTitle = styled.h3`
 `;
 
 export const StyledMovieDetailsWin = styled.span`
+  padding: 5px;
+
   font-size: 15px;
   font-weight: 100;
 `;
@@ -40,6 +55,8 @@ export const StyledMovieDetailsWin = styled.span`
 export const StyledMovieDetailsDate = styled.div`
   display: flex;
   justify-content: end;
+
+  padding: 5px;
 `;
 
 export const StyledMovieDetailsYear = styled.span`
