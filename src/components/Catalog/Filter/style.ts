@@ -34,7 +34,7 @@ export const StyledFilterItem = styled.li`
     height: 2px;
     margin-top: 25px;
 
-    background: #f65261;
+    background: ${colors.coral};
     transition: width 0.3s;
   }
 

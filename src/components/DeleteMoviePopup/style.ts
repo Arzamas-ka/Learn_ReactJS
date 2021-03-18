@@ -53,6 +53,6 @@ export const StyledCloseIcon = styled(AiOutlineClose)`
   height: 32px;
 
   :hover {
-    color: #f65261;
+    color: ${colors.coral};
   }
 `;

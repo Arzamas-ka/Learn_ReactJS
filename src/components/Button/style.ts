@@ -3,17 +3,18 @@ import { StyledButtonProps } from './models';
 import { mediaQueries, colors, colorsRgba, rgbaMap } from '../../styles/consts';
 
 export const Button = styled.button<StyledButtonProps>`
+  font-size: 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+
   ${({ button }) =>
     button &&
     css`
       padding: 10px 20px;
 
-      font-size: 16px;
       color: ${colors.coral};
-      border-radius: 4px;
       background-color: ${rgbaMap(colorsRgba.rgba_grey_light, 0.9)};
-      text-transform: uppercase;
-
+      
       :hover {
         color: ${colors.white};
       }
@@ -26,11 +27,8 @@ export const Button = styled.button<StyledButtonProps>`
 
       padding: 16px 45px;
 
-      font-size: 16px;
       color: ${colors.white};
-      border-radius: 4px;
       background-color: ${colors.coral};
-      text-transform: uppercase;
 
       ${mediaQueries('sizeXXXL')`
         align-self: center;
@@ -49,12 +47,9 @@ export const Button = styled.button<StyledButtonProps>`
       padding: 16px 40px;
       margin-right: 15px;
 
-      font-size: 16px;
       color: ${colors.coral};
-      border-radius: 4px;
       border: 1px solid ${colors.coral};
       background-color: transparent;
-      text-transform: uppercase;
 
       ${mediaQueries('sizeXXXL')`
         align-self: center;
@@ -75,12 +70,10 @@ export const Button = styled.button<StyledButtonProps>`
       padding: 15px 30px;
       margin-bottom: 80px;
 
-      font-size: 15px;
       color: ${colors.white};
       border-radius: 30px;
       border: 1px solid ${colors.white};
       background-color: transparent;
-      text-transform: uppercase;
 
       ${mediaQueries('sizeXXXL')`
         align-self: center;
@@ -114,7 +107,7 @@ export const Button = styled.button<StyledButtonProps>`
       `}
 
       &:hover {
-        transform: scale(1.2)
+        transform: scale(1.2);
       }
     `};
 `;
