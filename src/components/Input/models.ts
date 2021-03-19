@@ -6,6 +6,7 @@ export interface InputProps {
   placeholder: string;
   value: string;
   onChange: (event: FormEvent<HTMLInputElement>) => void;
+  onClick?: () => void;
   name: string;
   search?: boolean;
   topic?: boolean;
@@ -14,4 +15,6 @@ export interface InputProps {
   genre?: boolean;
   overview?: boolean;
   runtime?: boolean;
+  numberId?: boolean;
+  url?: boolean;
 }

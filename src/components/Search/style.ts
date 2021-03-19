@@ -4,9 +4,9 @@ import { mediaQueries, colors } from '../../styles/consts';
 export const Search = styled.div`
   padding: 25px 55px 55px 55px;
 
-  @media screen and (max-width: 510px) {
+  ${mediaQueries('sizeL')`
     padding: 25px 15px 55px 15px;
-  }
+  `}
 
   h2 {
     padding: 35px 0;

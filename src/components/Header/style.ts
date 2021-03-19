@@ -14,7 +14,7 @@ export const HeaderWrapper = styled.div`
   background-position: 50% 50%;
   background-size: cover;
 
-  & .header-top {
+  .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;

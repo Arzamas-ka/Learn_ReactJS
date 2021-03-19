@@ -1,11 +1,11 @@
 import React, { FC, useState, FormEvent } from 'react';
 
 import {
-  AddMovie as AddMovieWrapper,
+  EditMovie as EditMovieWrapper,
   ButtonContainer,
   CloseIcon,
-  AddMovieContainer,
-  AddMovieTitle,
+  EditMovieContainer,
+  EditMovieTitle,
 } from './style';
 
 import Input from 'components/Input';
@@ -14,8 +14,9 @@ import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
 const initialValues = {
+  number: '',
   title: '',
-  movie: '',
+  url: '',
   genre: '',
   overview: '',
   runtime: '',
@@ -27,15 +28,17 @@ const selectOptions = [
   { id: 3, name: 'Oscar winning movie' },
 ];
 
-const AddMovie: FC = () => {
+const EditMovie: FC = () => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = ({ target }) => {
+  const handleOnChange = (event) => {
+    const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
     setValues({
       ...values,
-      [target.name]: value,
+      [name]: value,
     });
   };
 
@@ -50,11 +53,20 @@ const AddMovie: FC = () => {
   };
 
   return (
-    <AddMovieWrapper>
+    <EditMovieWrapper>
       <CloseIcon />
-      <AddMovieTitle>Add Movie</AddMovieTitle>
+      <EditMovieTitle>Edit Movie</EditMovieTitle>
       <form onSubmit={handleSubmit}>
-        <AddMovieContainer>
+        <EditMovieContainer>
+          <Input
+            numberId
+            label="Movie id"
+            name="number"
+            type="text"
+            placeholder="m032820th"
+            onChange={handleOnChange}
+            value={values.number}
+          />
           <Input
             topic
             label="Title"
@@ -66,13 +78,13 @@ const AddMovie: FC = () => {
           />
           <Calendar />
           <Input
-            movie
+            url
             label="Movie url"
-            name="movie"
+            name="url"
             type="text"
-            placeholder="Movie url here"
+            placeholder="www.moana.com"
             onChange={handleOnChange}
-            value={values.movie}
+            value={values.url}
           />
           <Select data={selectOptions} onSelectChange={onSelectChange} />
           <Input
@@ -93,15 +105,15 @@ const AddMovie: FC = () => {
             onChange={handleOnChange}
             value={values.runtime}
           />
-        </AddMovieContainer>
+        </EditMovieContainer>
 
         <ButtonContainer>
           <Button reset type="reset" onClick={null} text="Reset"></Button>
-          <Button submit type="submit" onClick={null} text="Submit" />
+          <Button submit type="button" onClick={null} text="Save" />
         </ButtonContainer>
       </form>
-    </AddMovieWrapper>
+    </EditMovieWrapper>
   );
 };
 
-export default AddMovie;
+export default EditMovie;
