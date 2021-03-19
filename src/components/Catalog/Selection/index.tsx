@@ -1,19 +1,15 @@
 import React, { FC } from 'react';
 
-import { Sort as SortWrapper } from './style';
+import { SelectionList, SelectionItem } from './style';
 
 import { sortData } from 'data/data';
 
-const Sort: FC = () => (
-  <SortWrapper>
-    <ul>
-      {sortData.map((item) => (
-        <li key={item} className="active-link">
-          {item}
-        </li>
-      ))}
-    </ul>
-  </SortWrapper>
+const Selection: FC = () => (
+  <SelectionList>
+    {sortData.map((item) => (
+      <SelectionItem key={item}>{item}</SelectionItem>
+    ))}
+  </SelectionList>
 );
 
-export default Sort;
+export default Selection;

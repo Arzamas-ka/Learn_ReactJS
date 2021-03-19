@@ -16,17 +16,15 @@ export const FilterList = styled.ul`
 `;
 
 export const FilterItem = styled.li`
+  display: inline-block;
+  text-decoration: none;
+
   position: relative;
 
   margin: 25px 15px;
   cursor: pointer;
 
-  &.active-link {
-    display: inline-block;
-    text-decoration: none;
-  }
-
-  &.active-link::after {
+  ::after {
     position: absolute;
     content: '';
     display: block;
@@ -38,15 +36,15 @@ export const FilterItem = styled.li`
     transition: width 0.3s;
   }
 
-  &.active-link:hover::after {
+  :hover::after {
     width: 100%;
   }
 
-  &:hover {
+  :hover {
     color: ${colors.grey_coral};
   }
 
-  &:active {
+  :active {
     color: ${colors.grey_light};
   }
 `;
