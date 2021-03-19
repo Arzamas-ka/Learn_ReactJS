@@ -1,19 +1,25 @@
 import styled from 'styled-components';
+import { colors } from '../../styles/consts';
 
-export const Error = styled.div`
+export const StyledErrorWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  font-weight: 100;
+  font-family: Montserrat, Arial, sans-serif;
+  background-color: ${colors.grey_dark};
+`;
 
-  & img {
-    width: 30%;
-    margin-top: 10%;
-    margin-bottom: 20px;
-  }
+export const StyledErrorImage = styled.img`
+  width: 50%;
+  margin-top: 70px;
+  margin-bottom: 100px;
+`;
 
-  & p {
-    padding: 10px;
-    font-size: 25px;
-  }
+export const StyledErrorMessage = styled.p`
+  padding: 10px;
+  font-size: 35px;
+  color: ${colors.white};
 `;
