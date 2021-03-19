@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 
 import { ErrorIndicator } from './models';
-import { Error } from './style';
+import {
+  StyledErrorWrapper,
+  StyledErrorImage,
+  StyledErrorMessage,
+} from './style';
 
 import imageError from '../../assets/images/error-boundary.png';
 
@@ -19,16 +23,16 @@ const ErrorIndicator: FC<ErrorIndicator> = ({
   };
 
   return (
-    <Error>
-      <img src={imageError} alt="Error Indicator" />
-      <p>Something went wrong !</p>
-      <p>We are working on it!</p>
+    <StyledErrorWrapper>
+      <StyledErrorMessage>Page Not Found</StyledErrorMessage>
+      <StyledErrorImage src={imageError} alt="Error Indicator" />
       <Button
+        reset
         type="button"
         onClick={handleOnClick}
-        text="Go Home"
+        text="Go back to home"
       />
-    </Error>
+    </StyledErrorWrapper>
   );
 };
 
