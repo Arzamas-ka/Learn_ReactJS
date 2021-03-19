@@ -18,15 +18,13 @@ export const StyledFilterList = styled.ul`
 export const StyledFilterItem = styled.li`
   position: relative;
 
+  display: inline-block;
   margin: 25px 15px;
+
+  text-decoration: none;
   cursor: pointer;
 
-  &.active-link {
-    display: inline-block;
-    text-decoration: none;
-  }
-
-  &.active-link::after {
+  ::after {
     position: absolute;
     content: '';
     display: block;
@@ -38,15 +36,15 @@ export const StyledFilterItem = styled.li`
     transition: width 0.3s;
   }
 
-  &.active-link:hover::after {
+  :hover::after {
     width: 100%;
   }
 
-  &:hover {
+  :hover {
     color: ${colors.coral};
   }
 
-  &:active {
+  :active {
     color: ${colors.grey_light};
   }
 `;

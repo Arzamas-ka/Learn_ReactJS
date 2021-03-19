@@ -7,9 +7,7 @@ import { FILTER_DATA } from '@constants';
 const Filter: FC = () => (
   <StyledFilterList>
     {FILTER_DATA.map((item) => (
-      <StyledFilterItem key={item} className="active-link">
-        {item}
-      </StyledFilterItem>
+      <StyledFilterItem key={item}>{item}</StyledFilterItem>
     ))}
   </StyledFilterList>
 );

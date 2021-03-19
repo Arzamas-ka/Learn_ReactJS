@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 // types and styled
-import { ErrorIndicator } from './models';
+import { ErrorIndicatorProps } from './models';
 import {
   StyledErrorWrapper,
   StyledErrorImage,
@@ -11,9 +11,7 @@ import imageError from '../../assets/images/error-boundary.png';
 // components
 import Button from 'components/Button';
 
-const ErrorIndicator: FC<ErrorIndicator> = ({
-  handleCloseError,
-}: ErrorIndicator) => {
+const ErrorIndicator: FC<ErrorIndicatorProps> = ({ handleCloseError }) => {
   const handleOnClick = () => {
     console.log(`
       = = = = = = = = = = = = = 
@@ -26,7 +24,12 @@ const ErrorIndicator: FC<ErrorIndicator> = ({
     <StyledErrorWrapper>
       <StyledErrorMessage>Page Not Found</StyledErrorMessage>
       <StyledErrorImage src={imageError} alt="Error Indicator" />
-      <Button reset type="button" onClick={handleOnClick} text="Go back to home" />
+      <Button
+        reset
+        type="button"
+        onClick={handleOnClick}
+        text="Go back to home"
+      />
     </StyledErrorWrapper>
   );
 };

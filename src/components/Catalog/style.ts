@@ -10,7 +10,7 @@ export const StyledFilterSelectionWrapper = styled.div`
   justify-content: space-between;
 
   margin: 0 65px;
-  border-bottom: 2px solid #555555;
+  border-bottom: 2px solid ${colors.grey_light};
 
   ${mediaQueries('sizeXXL')`
     flex-direction: column;

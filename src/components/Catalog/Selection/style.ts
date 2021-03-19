@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mediaQueries, colors } from '../../../styles/consts';
 
-export const StyledList = styled.ul`
+export const StyledSelectionList = styled.ul`
   display: flex;
   justify-content: space-between;
 
@@ -15,17 +15,15 @@ export const StyledList = styled.ul`
   `}
 `;
 
-export const StyledItem = styled.li`
+export const StyledSelectionItem = styled.li`
   position: relative;
 
   margin: 25px 15px;
+
+  text-decoration: none;
   cursor: pointer;
 
-  &.active-link {
-    text-decoration: none;
-  }
-
-  &.active-link::after {
+  ::after {
     position: absolute;
     content: '';
     display: block;
@@ -37,15 +35,15 @@ export const StyledItem = styled.li`
     transition: width 0.3s;
   }
 
-  &.active-link:hover::after {
+  :hover::after {
     width: 100%;
   }
 
-  &:hover {
+  :hover {
     color: ${colors.coral};
   }
 
-  &:active {
+  :active {
     color: ${colors.grey_light};
   }
 `;

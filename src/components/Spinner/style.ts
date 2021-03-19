@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { mediaQueries, rgbaMap, colorsRgba, colors } from '../../styles/consts';
 
 export const StyledSpinner = styled.img`
   display: block;

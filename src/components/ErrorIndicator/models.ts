@@ -1,3 +1,3 @@
-export interface ErrorIndicator {
+export interface ErrorIndicatorProps {
   handleCloseError: () => void;
 }

@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 // types and styles
-import { StyledList, StyledItem } from './style';
+import { StyledSelectionList, StyledSelectionItem } from './style';
 // constants
-import { SORT_DATA } from '@constants';
+import { SELECTION_DATA } from '@constants';
 
-const Sort: FC = () => (
-  <StyledList>
-    {SORT_DATA.map((item) => (
-      <StyledItem key={item} className="active-link">
+const Selection: FC = () => (
+  <StyledSelectionList>
+    {SELECTION_DATA.map((item) => (
+      <StyledSelectionItem key={item}>
         {item}
-      </StyledItem>
+      </StyledSelectionItem>
     ))}
-  </StyledList>
+  </StyledSelectionList>
 );
 
-export default Sort;
+export default Selection;

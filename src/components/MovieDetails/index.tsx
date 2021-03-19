@@ -22,7 +22,7 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
 
   const addDefaultSrc = useCallback(({ target }) => {
     target.src = defaultImgMovie;
-    target.alt = 'image not found';
+    target.alt = 'Image not found';
   }, []);
 
   return (
