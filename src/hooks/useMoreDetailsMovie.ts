@@ -21,9 +21,9 @@ const useMoreDetailsMovie = () => {
         setMovieDetails(responseMovieDetails);
       } catch (error) {
         setErrorMovieDetails(true);
+      } finally {
+        setLoadingMovieDetails(false);
       }
-
-      setLoadingMovieDetails(false);
     },
     [movieDetails],
   );
