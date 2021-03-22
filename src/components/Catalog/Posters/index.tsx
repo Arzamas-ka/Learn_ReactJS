@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect } from 'react';
 import shortid from 'shortid';
-// types and styles
+
 import { PostersProps } from './models';
 import {
   StyledPostersWrapper,
@@ -15,14 +15,14 @@ import {
   StyledNumberMovies,
   StyledPostersError,
 } from './style';
-// hooks
+
 import usePostersFetch from 'hooks/usePostersFetch';
 import useMoreDetailsMovie from 'hooks/useMoreDetailsMovie';
-// images
+
 import defaultImgMovie from '../../../assets/images/fallback_movie.png';
-// constants
+
 import { API_PAGE } from '@constants';
-// components
+
 import Button from 'components/Button';
 import { Spinner } from 'components/Spinner';
 

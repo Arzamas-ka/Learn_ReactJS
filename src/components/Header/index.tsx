@@ -1,8 +1,8 @@
 import React, { FC, SyntheticEvent } from 'react';
-// types and styles
+
 import { HeaderProps } from './models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';
-// components
+
 import Button from 'components/Button';
 import Search from 'components/Search';
 import Logo from 'components/Logo';

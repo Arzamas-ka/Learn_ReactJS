@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// types and styles
+
 import { ErrorBoundaryProps, ErrorBoundaryState } from './models';
-// components
+
 import ErrorIndicator from 'components/ErrorIndicator';
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {

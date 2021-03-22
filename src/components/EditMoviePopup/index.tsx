@@ -1,5 +1,5 @@
 import React, { FC, useState, FormEvent } from 'react';
-// types and styles
+
 import {
   StyledEditMoviePopupWrapper,
   StyledButtonContainer,
@@ -7,7 +7,7 @@ import {
   StyledEditMoviePopupContainer,
   StyledEditMoviePopupTitle,
 } from './style';
-// components
+
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';

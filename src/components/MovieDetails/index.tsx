@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-// types and styles
+
 import { MovieDetailsProps } from './models';
 import {
   StyledMovieDetailsWrapper,
@@ -14,7 +14,7 @@ import {
   StyledMovieDetailsAverage,
   StyledMovieDetailsTitleContainer,
 } from './style';
-// images
+
 import defaultImgMovie from '../../assets/images/fallback_movie.png';
 
 const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {

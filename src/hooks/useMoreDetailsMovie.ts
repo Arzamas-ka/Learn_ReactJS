@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-// libs
+
 import axios from 'axios';
-// constants
+
 import { API_BASE } from '../@constants/index';
 
 const useMoreDetailsMovie = () => {

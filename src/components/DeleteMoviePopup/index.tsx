@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-// types and styled
+
 import {
   StyledDeleteMoviePopupWrapper,
   StyledButtonContainer,
@@ -7,7 +7,7 @@ import {
   StyledDeleteMoviePopupText,
   StyledDeleteMoviePopupTitle,
 } from './style';
-// components
+
 import Button from 'components/Button';
 
 const DeleteMoviePopup: FC = () => {

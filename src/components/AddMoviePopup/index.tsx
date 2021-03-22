@@ -1,5 +1,5 @@
 import React, { FC, useState, FormEvent } from 'react';
-// types and styles
+
 import { AppMoviePopup } from './models';
 import {
   StyledAddMoviePopupWrapper,
@@ -8,7 +8,7 @@ import {
   StyledAddMoviePopupContainer,
   StyledAddMoviePopupTitle,
 } from './style';
-// components
+
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';

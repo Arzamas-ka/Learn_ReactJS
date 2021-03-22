@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-// types and styles
+
 import { SelectProps } from './models';
 import {
   StyledSelectWrapper,

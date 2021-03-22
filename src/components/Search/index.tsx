@@ -1,11 +1,11 @@
 import React, { SyntheticEvent, FC, FormEvent, useState } from 'react';
-// types and styles
+
 import {
   StyledSearchWrapper,
   StyledSearchTitle,
   StyledInputSearchContainer,
 } from './style';
-// components
+
 import Input from 'components/Input';
 import Button from 'components/Button';
 
