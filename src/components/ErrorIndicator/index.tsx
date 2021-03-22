@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-// types and styled
+
 import { ErrorIndicatorProps } from './models';
 import {
   StyledErrorWrapper,
   StyledErrorImage,
   StyledErrorMessage,
 } from './style';
-// images
+
 import imageError from '../../assets/images/error-boundary.png';
-// components
+
 import Button from 'components/Button';
 
 const ErrorIndicator: FC<ErrorIndicatorProps> = ({ handleCloseError }) => {

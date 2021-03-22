@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent } from 'react';
+import React, { FC, useState, FormEvent, useCallback } from 'react';
 
 import { AppMoviePopup } from './models';
 import {
@@ -22,23 +22,23 @@ const initialValues = {
   runtime: '',
 };
 
-const AddMoviePopup: FC<AppMoviePopup> = ({ hide, isShowing }) => {
+const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = ({ target }) => {
+  const handleOnChange = useCallback(({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     setValues({
       ...values,
       [target.name]: value,
     });
-  };
+  }, []);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     console.log(JSON.stringify(values, null, 2));
-  };
+  }, []);
 
   return (
     <StyledAddMoviePopupWrapper>
@@ -87,7 +87,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hide, isShowing }) => {
         </StyledAddMoviePopupContainer>
 
         <StyledButtonContainer>
-          <Button reset type="reset" onClick={null} text="Reset"></Button>
+          <Button reset type="reset" onClick={null} text="Reset"/>
           <Button submit type="submit" onClick={null} text="Submit" />
         </StyledButtonContainer>
       </form>

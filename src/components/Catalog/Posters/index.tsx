@@ -35,15 +35,15 @@ const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
     fetchMovieDetails,
   }: any = useMoreDetailsMovie();
 
-  const loadMorePosters = () => {
+  const loadMorePosters = useCallback(() => {
     const loadMorePostersEndpoint = `${API_PAGE}${movies.currentPage + 1}`;
 
     fetchMovies(loadMorePostersEndpoint);
-  };
+  }, []);
 
-  const handleMoreDetails = (id) => {
+  const handleMoreDetails = useCallback((id) => {
     fetchMovieDetails(id);
-  };
+  }, []);
 
   useEffect(() => {
     setMovieDetails(movieDetails);
