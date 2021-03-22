@@ -1,4 +1,5 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import shortid from 'shortid';
 
 import { SelectProps } from './models';
 import {
@@ -7,21 +8,19 @@ import {
   StyledSelectMain,
 } from './style';
 
+import { SELECT_OPTIONS } from '@constants';
+
 const Select: FC<SelectProps> = ({ onChange, name }) => {
+  const options = SELECT_OPTIONS.map((option) => (
+    <option key={shortid.generate()}>{option}</option>
+  ));
+
   return (
     <StyledSelectWrapper>
       <StyledSelectTitle>Genre</StyledSelectTitle>
       <StyledSelectMain name={name} onChange={onChange}>
         <option hidden>Select Genre</option>
-        <option>Crime</option>
-        <option>Documentary</option>
-        <option>Horror</option>
-        <option>Comedy</option>
-        <option>Action</option>
-        <option>Adventure</option>
-        <option>Drama</option>
-        <option>Fantasy</option>
-        <option>Romance</option>
+        {options}
         <option>Science Fiction</option>
       </StyledSelectMain>
     </StyledSelectWrapper>
