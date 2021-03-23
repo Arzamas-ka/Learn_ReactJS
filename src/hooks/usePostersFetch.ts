@@ -27,9 +27,9 @@ const usePostersFetch = () => {
       }));
     } catch (error) {
       setError(true);
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   useEffect(() => {

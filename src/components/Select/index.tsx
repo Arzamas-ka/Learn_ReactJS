@@ -21,7 +21,6 @@ const Select: FC<SelectProps> = ({ onChange, name }) => {
       <StyledSelectMain name={name} onChange={onChange}>
         <option hidden>Select Genre</option>
         {options}
-        <option>Science Fiction</option>
       </StyledSelectMain>
     </StyledSelectWrapper>
   );
