@@ -1,13 +1,23 @@
 import React, { FC } from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import App from 'components/App';
 import ErrorBoundary from './ErrorBoundary';
 
-const Index: FC = () => (
-  <ErrorBoundary>
-    <App />
-  </ErrorBoundary>
-);
+import store from './store/index.js';
 
-ReactDOM.render(<Index />, document.getElementById('root'));
+const Index: FC = () => {
+  return (
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  );
+};
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Index />
+  </Provider>,
+  document.getElementById('root'),
+);

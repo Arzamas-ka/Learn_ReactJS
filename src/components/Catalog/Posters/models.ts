@@ -1,5 +1,5 @@
 export interface PostersProps {
-  setMovieDetails: {
+  setMovieDetails?: {
     title: string;
     tagline: string;
     vote_average: number;
