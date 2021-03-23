@@ -14,12 +14,13 @@ import Button from 'components/Button';
 import { Spinner } from 'components/Spinner';
 import PosterItem from './PosterItem';
 
-import { moviesAction } from 'actions/actions';
-import { getMovies } from 'api';
+import { moviesAction, loadMoreMoviesAction } from 'actions/actions';
+import { getMovies, getMoreMovies } from 'api';
 
 const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
   const dispatch = useDispatch();
   const movies = useSelector(({ movies }) => movies);
+  const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
   const error = useSelector(({ movies: { error } }) => error);
   const loading = useSelector(({ movies: { loading } }) => loading);
 
@@ -27,15 +28,16 @@ const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
   console.log('posterError: ', error);
 
   useEffect(() => {
-    console.log('useEffect');
     moviesAction(getMovies()(dispatch));
   }, []);
 
-  // const loadMorePosters = useCallback(() => {
-  //   const loadMorePostersEndpoint = `${API_PAGE}${movies.currentPage + 1}`;
+  const loadMoreMovies = useCallback(() => {
+    // const loadMoreMoviesEndpoint = `${API_PAGE}${movies.currentPage + 1}`;
 
-  //   fetchMovies(loadMorePostersEndpoint);
-  // }, []);
+    // fetchMovies(loadMoreMoviesEndpoint);
+
+    loadMoreMoviesAction(getMoreMovies(currentPage)(dispatch));
+  }, []);
 
   const posters = movies.items.map((poster) => {
     const genre = poster.genres.map((genre) => (
@@ -67,8 +69,7 @@ const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
             load
             text="Load more posters"
             type="button"
-            // onClick={loadMorePosters}
-            onClick={null}
+            onClick={loadMoreMovies}
           />
         </>
       )}
