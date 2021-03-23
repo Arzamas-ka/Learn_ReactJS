@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { ErrorIndicator } from './models';
+import { ErrorIndicatorProps } from './models';
 import {
   StyledErrorWrapper,
   StyledErrorImage,
@@ -11,9 +11,7 @@ import imageError from '../../assets/images/error-boundary.png';
 
 import Button from 'components/Button';
 
-const ErrorIndicator: FC<ErrorIndicator> = ({
-  handleCloseError,
-}: ErrorIndicator) => {
+const ErrorIndicator: FC<ErrorIndicatorProps> = ({ handleCloseError }) => {
   const handleOnClick = () => {
     console.log(`
       = = = = = = = = = = = = = 

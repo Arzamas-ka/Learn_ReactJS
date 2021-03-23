@@ -1,15 +1,12 @@
 import styled, { css } from 'styled-components';
+import { StyledBackdropProps } from './models';
 import { colorsRgba, rgbaMap } from '../../styles/consts';
 
-interface BackdropProps {
-  active: boolean;
-}
-
-export const App = styled.div`
+export const StyledApp = styled.div`
   margin: 0 auto;
 `;
 
-export const Backdrop = styled.div<BackdropProps>`
+export const StyledBackdrop = styled.div<StyledBackdropProps>`
   position: absolute;
 
   ${({ active }) =>
@@ -19,7 +16,7 @@ export const Backdrop = styled.div<BackdropProps>`
       min-height: 100vh;
       min-height: -webkit-fill-available;
 
-      background-color: ${rgbaMap(colorsRgba.grey_dark, 0.7)};
+      background-color: ${rgbaMap(colorsRgba.rgba_grey_dark, 0.7)};
       backdrop-filter: blur(50px);
       opacity: 0.7;
       z-index: 5;

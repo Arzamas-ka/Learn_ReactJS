@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { BiCalendar } from 'react-icons/bi';
+import { colors } from './../../styles/consts';
 
-export const Calendar = styled.div`
+export const StyledCalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -14,7 +15,7 @@ export const Calendar = styled.div`
   }
 `;
 
-export const CalendarIcon = styled(BiCalendar)`
+export const StyledCalendarIcon = styled(BiCalendar)`
   position: absolute;
   top: 53px;
   right: 20px;
@@ -22,6 +23,6 @@ export const CalendarIcon = styled(BiCalendar)`
   width: 30px;
   height: 30px;
 
-  color: #f65261;
+  color: ${colors.coral};
   cursor: pointer;
 `;

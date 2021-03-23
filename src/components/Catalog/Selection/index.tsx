@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
 
-import { SelectionList, SelectionItem } from './style';
+import { StyledSelectionList, StyledSelectionItem } from './style';
 
-import { sortData } from 'data/data';
+import { SELECTION_DATA } from '@constants';
 
 const Selection: FC = () => (
-  <SelectionList>
-    {sortData.map((item) => (
-      <SelectionItem key={item}>{item}</SelectionItem>
+  <StyledSelectionList>
+    {SELECTION_DATA.map((item) => (
+      <StyledSelectionItem key={item}>
+        {item}
+      </StyledSelectionItem>
     ))}
-  </SelectionList>
+  </StyledSelectionList>
 );
 
 export default Selection;

@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { mediaQueries, colors } from '../../styles/consts';
 
-export const Catalog = styled.div`
+export const StyledCatalogWrapper = styled.div`
   color: ${colors.grey};
 `;
 
-export const FilterSelectionWrapper = styled.div`
+export const StyledFilterSelectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
   margin: 0 65px;
-  border-bottom: 2px solid #555555;
+  border-bottom: 2px solid ${colors.grey_light};
 
   ${mediaQueries('sizeXXL')`
     flex-direction: column;
@@ -18,21 +18,4 @@ export const FilterSelectionWrapper = styled.div`
 
     border-bottom: none;
   `}
-`;
-
-export const NumberMovies = styled.h3`
-  padding: 25px 70px;
-
-  font-size: 18px;
-  font-weight: 100;
-  color: ${colors.white};
-
-  ${mediaQueries('sizeXXL')`
-    text-align: center;
-  `}
-
-  span {
-    font-size: 22px;
-    font-weight: 600;
-  }
 `;

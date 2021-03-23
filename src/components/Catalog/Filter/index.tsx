@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 
-import { FilterList, FilterItem } from './style';
+import { StyledFilterList, StyledFilterItem } from './style';
 
-import { filterData } from 'data/data';
+import { FILTER_DATA } from '@constants';
 
 const Filter: FC = () => (
-  <FilterList>
-    {filterData.map((item) => (
-      <FilterItem key={item}>{item}</FilterItem>
+  <StyledFilterList>
+    {FILTER_DATA.map((item) => (
+      <StyledFilterItem key={item}>{item}</StyledFilterItem>
     ))}
-  </FilterList>
+  </StyledFilterList>
 );
 
 export default Filter;

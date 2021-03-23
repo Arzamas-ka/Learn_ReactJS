@@ -17,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;

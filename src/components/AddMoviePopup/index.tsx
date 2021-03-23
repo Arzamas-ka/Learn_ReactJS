@@ -1,11 +1,12 @@
-import React, { FC, useState, FormEvent } from 'react';
+import React, { FC, useState, FormEvent, useCallback } from 'react';
 
+import { AppMoviePopup } from './models';
 import {
-  AddMovie as AddMovieWrapper,
-  ButtonContainer,
-  CloseIcon,
-  AddMovieContainer,
-  AddMovieTitle,
+  StyledAddMoviePopupWrapper,
+  StyledButtonContainer,
+  StyledCloseIcon,
+  StyledAddMoviePopupContainer,
+  StyledAddMoviePopupTitle,
 } from './style';
 
 import Input from 'components/Input';
@@ -21,87 +22,77 @@ const initialValues = {
   runtime: '',
 };
 
-const selectOptions = [
-  { id: 1, name: 'Action & Adventure' },
-  { id: 2, name: 'Drama, Biography, Music' },
-  { id: 3, name: 'Oscar winning movie' },
-];
-
-const AddMovie: FC = () => {
+const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = ({ target }) => {
+  const handleOnChange = useCallback(({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     setValues({
       ...values,
       [target.name]: value,
     });
-  };
+  }, []);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     console.log(JSON.stringify(values, null, 2));
-  };
-
-  const onSelectChange = (event) => {
-    console.log('event: ', event);
-  };
+  }, []);
 
   return (
-    <AddMovieWrapper>
-      <CloseIcon />
-      <AddMovieTitle>Add Movie</AddMovieTitle>
+    <StyledAddMoviePopupWrapper>
+      <StyledCloseIcon onClick={hide} />
+      <StyledAddMoviePopupTitle>Add Movie</StyledAddMoviePopupTitle>
       <form onSubmit={handleSubmit}>
-        <AddMovieContainer>
+        <StyledAddMoviePopupContainer>
           <Input
-            topic
             label="Title"
             name="title"
             type="text"
             placeholder="Moana"
             onChange={handleOnChange}
             value={values.title}
+            autoComplete="off"
           />
           <Calendar />
           <Input
-            movie
             label="Movie url"
             name="movie"
             type="text"
             placeholder="Movie url here"
             onChange={handleOnChange}
             value={values.movie}
+            autoComplete="off"
           />
-          <Select data={selectOptions} onSelectChange={onSelectChange} />
+          <Select onChange={handleOnChange} value={values.genre} name="genre" />
           <Input
-            overview
             label="Overview"
             name="overview"
             type="text"
             placeholder="Overview here"
             onChange={handleOnChange}
             value={values.overview}
+            autoComplete="off"
           />
           <Input
-            runtime
             label="Runtime"
             name="runtime"
             type="text"
             placeholder="Runtime here"
             onChange={handleOnChange}
             value={values.runtime}
+            autoComplete="off"
           />
-        </AddMovieContainer>
+        </StyledAddMoviePopupContainer>
 
-        <ButtonContainer>
-          <Button reset type="reset" onClick={null} text="Reset"></Button>
+        <StyledButtonContainer>
+          <Button reset type="reset" onClick={null} text="Reset"/>
           <Button submit type="submit" onClick={null} text="Submit" />
-        </ButtonContainer>
+        </StyledButtonContainer>
       </form>
-    </AddMovieWrapper>
+    </StyledAddMoviePopupWrapper>
   );
 };
 
-export default AddMovie;
+export default AddMoviePopup;

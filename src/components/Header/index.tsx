@@ -1,31 +1,41 @@
 import React, { FC, SyntheticEvent } from 'react';
 
-import { HeaderWrapper } from './style';
+import { HeaderProps } from './models';
+import { StyledHeaderWrapper, StyledHeaderTop } from './style';
 
 import Button from 'components/Button';
 import Search from 'components/Search';
 import Logo from 'components/Logo';
+import MovieDetails from 'components/MovieDetails';
 
-const Header: FC = () => {
+const Header: FC<HeaderProps> = ({ movieDetails, hide }) => {
   const handleOnClick = (event: SyntheticEvent): void => {
     event.preventDefault();
 
     console.log('click: ', event);
   };
 
+  console.log('movieDetailsHeader: ', movieDetails);
+
   return (
-    <HeaderWrapper>
-      <div className="header-top">
+    <StyledHeaderWrapper>
+      <StyledHeaderTop className="header-top">
         <Logo />
-        <Button
-          button
-          type="button"
-          onClick={handleOnClick}
-          text="+ Add Movie"
-        />
-      </div>
-      <Search />
-    </HeaderWrapper>
+        {movieDetails && (
+          <Button
+            magnifier
+            type="button"
+            onClick={handleOnClick}
+            text="&#x2315;"
+          />
+        )}
+        {!movieDetails && (
+          <Button button type="button" onClick={hide} text="+ Add Movie" />
+        )}
+      </StyledHeaderTop>
+      {movieDetails && <MovieDetails movieDetails={movieDetails} />}
+      {!movieDetails && <Search />}
+    </StyledHeaderWrapper>
   );
 };
 

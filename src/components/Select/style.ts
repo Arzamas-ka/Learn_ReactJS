@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import ArrowIcon from '../../assets/images/drop-down-arrow.svg';
 import { mediaQueries, rgbaMap, colorsRgba, colors } from '../../styles/consts';
 
-export const Select = styled.div`
+export const StyledSelectWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -11,16 +11,15 @@ export const Select = styled.div`
   width: 100%;
 `;
 
-export const SelectTitle = styled.h3`
+export const StyledSelectTitle = styled.label`
   margin: 15px 0;
 
-  color: ${colors.grey_coral};
+  color: ${colors.coral};
   font-size: 14px;
-  font-weight: 100;
   text-transform: uppercase;
 `;
 
-export const SelectMain = styled.select`
+export const StyledSelectMain = styled.select`
   width: 520px;
   padding: 15px 20px;
   appearance: none;

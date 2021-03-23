@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
 import { colors } from '../../styles/consts';
 
-export const EditMovie = styled.div`
+export const StyledDeleteMoviePopupWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -10,8 +10,9 @@ export const EditMovie = styled.div`
   display: none;
 
   position: absolute;
-  top: 20%;
+  top: 350px;
   left: 50%;
+  min-width: 320px;
 
   color: ${colors.white};
   background-color: ${colors.grey_dark};
@@ -21,12 +22,14 @@ export const EditMovie = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const EditMovieContainer = styled.div`
-  margin: 10px 40px 40px 40px;
+export const StyledDeleteMoviePopupText = styled.p`
+  padding: 50px;
+
+  font-size: 20px;
 `;
 
-export const EditMovieTitle = styled.h2`
-  padding: 50px 0 0 50px;
+export const StyledDeleteMoviePopupTitle = styled.h2`
+  padding: 85px 0 0 50px;
 
   font-size: 30px;
   font-weight: 400;
@@ -34,14 +37,14 @@ export const EditMovieTitle = styled.h2`
   text-transform: uppercase;
 `;
 
-export const ButtonContainer = styled.div`
+export const StyledButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
   margin: 10px 40px 40px 40px;
 `;
 
-export const CloseIcon = styled(AiOutlineClose)`
+export const StyledCloseIcon = styled(AiOutlineClose)`
   position: absolute;
   right: 32px;
   top: 32px;
@@ -50,6 +53,6 @@ export const CloseIcon = styled(AiOutlineClose)`
   height: 32px;
 
   :hover {
-    color: #f65261;
+    color: ${colors.coral};
   }
 `;

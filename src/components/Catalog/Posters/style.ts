@@ -1,43 +1,41 @@
 import styled from 'styled-components';
+import { mediaQueries, colors } from '../../../styles/consts';
 
-export const Posters = styled.div`
+export const StyledPostersWrapper = styled.div`
   padding: 0 30px 30px 30px;
 `;
 
-export const PostersList = styled.ul`
+export const StyledNumberMovies = styled.h3`
+  padding: 25px 70px;
+
+  font-size: 18px;
+  font-weight: 100;
+  color: ${colors.white};
+
+  ${mediaQueries('sizeXXL')`
+    text-align: center;
+  `}
+
+  span {
+    font-size: 22px;
+    font-weight: 600;
+  }
+`;
+
+export const StyledPostersList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+
+  margin-bottom: 70px;
 `;
 
-export const PostersItem = styled.li`
-  margin: 0 15px;
-`;
+export const StyledPostersError = styled.div`
+  margin: 150px;
 
-export const PostersWrapTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  color: grey;
-`;
-
-export const PostersTitle = styled.h2`
-  font-size: 22px;
-`;
-
-export const PostersTitleYear = styled.span`
-  padding: 5px 10px;
-  border: 1px solid grey;
-  border-radius: 4px;
-`;
-
-export const PostersImg = styled.img`
-  width: 320px;
-  height: 455px;
-`;
-
-export const PostersGenre = styled.p`
-  padding-bottom: 15px;
-  color: grey;
+  color: ${colors.white};
+  font-weight: 200;
+  font-size: 32px;
+  text-align: center;
 `;

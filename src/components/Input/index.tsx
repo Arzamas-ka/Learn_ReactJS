@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { InputProps } from './models';
-import { Input as InputStyled } from './style';
+import { StyledInputWrapper, StyledInput, StyledLabel } from './style';
 
 const Input: FC<InputProps> = ({
   type,
@@ -10,18 +10,20 @@ const Input: FC<InputProps> = ({
   value,
   label,
   name,
+  autoComplete,
   ...props
 }) => (
-  <InputStyled placeholder={placeholder} {...props}>
-    {label && <label htmlFor="input-field">{label}</label>}
-    <input
+  <StyledInputWrapper placeholder={placeholder} {...props}>
+    {label && <StyledLabel htmlFor="input-field">{label}</StyledLabel>}
+    <StyledInput
       type={type}
       placeholder={placeholder}
       onChange={onChange}
       value={value}
       name={name}
+      autoComplete={autoComplete}
     />
-  </InputStyled>
+  </StyledInputWrapper>
 );
 
 export default Input;

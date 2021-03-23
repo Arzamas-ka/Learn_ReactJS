@@ -1,29 +1,24 @@
 import styled from 'styled-components';
 import { mediaQueries, colors } from '../../../styles/consts';
 
-export const FilterList = styled.ul`
+export const StyledFilterList = styled.ul`
   display: flex;
   justify-content: space-between;
-
   font-size: 16px;
   color: ${colors.white};
   text-transform: uppercase;
-
   ${mediaQueries('sizeM')`
     flex-direction: column;
     align-items: center;
   `}
 `;
 
-export const FilterItem = styled.li`
-  display: inline-block;
-  text-decoration: none;
-
+export const StyledFilterItem = styled.li`
   position: relative;
-
+  display: inline-block;
   margin: 25px 15px;
+  text-decoration: none;
   cursor: pointer;
-
   ::after {
     position: absolute;
     content: '';
@@ -31,19 +26,15 @@ export const FilterItem = styled.li`
     width: 0;
     height: 2px;
     margin-top: 25px;
-
-    background: #f65261;
+    background: ${colors.coral};
     transition: width 0.3s;
   }
-
   :hover::after {
     width: 100%;
   }
-
   :hover {
-    color: ${colors.grey_coral};
+    color: ${colors.coral};
   }
-
   :active {
     color: ${colors.grey_light};
   }

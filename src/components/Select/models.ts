@@ -1,9 +1,7 @@
 import { ChangeEvent } from 'react';
 
-export interface SelectTypes {
-  data: {
-    id: number;
-    name: string;
-  }[];
-  onSelectChange: (selectType:string) => void;
+export interface SelectProps {
+  value: string;
+  name: string;
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 }

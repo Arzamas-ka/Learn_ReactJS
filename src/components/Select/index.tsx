@@ -1,36 +1,28 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import shortid from 'shortid';
 
-import { SelectTypes } from './models';
+import { SelectProps } from './models';
 import {
-  Select as SelectStyled,
-  SelectTitle,
-  SelectMain,
+  StyledSelectWrapper,
+  StyledSelectTitle,
+  StyledSelectMain,
 } from './style';
 
-const Select: FC<SelectTypes> = ({ data, onSelectChange }) => {
-  const [dataSelect] = useState(data);
-  const [selectedData, updateSelectedData] = useState('');
+import { SELECT_OPTIONS } from '@constants';
 
-  const handleChange = (event) => {
-    updateSelectedData(event.target.value);
-
-    if (onSelectChange) onSelectChange(selectedData);
-  };
-
-  let options = dataSelect.map((data) => (
-    <option key={data.id} value={data.id}>
-      {data.name}
-    </option>
+const Select: FC<SelectProps> = ({ onChange, name }) => {
+  const options = SELECT_OPTIONS.map((option) => (
+    <option key={shortid.generate()}>{option}</option>
   ));
 
   return (
-    <SelectStyled>
-      <SelectTitle>Genre</SelectTitle>
-      <SelectMain name="genre" onChange={handleChange}>
+    <StyledSelectWrapper>
+      <StyledSelectTitle>Genre</StyledSelectTitle>
+      <StyledSelectMain name={name} onChange={onChange}>
         <option hidden>Select Genre</option>
         {options}
-      </SelectMain>
-    </SelectStyled>
+      </StyledSelectMain>
+    </StyledSelectWrapper>
   );
 };
 

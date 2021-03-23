@@ -1,33 +1,65 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback, memo } from 'react';
+import shortid from 'shortid';
 
+import { PostersProps } from './models';
 import {
-  Posters as PostersWrapper,
-  PostersList,
-  PostersItem,
-  PostersWrapTitle,
-  PostersTitle,
-  PostersTitleYear,
-  PostersImg,
-  PostersGenre,
+  StyledPostersWrapper,
+  StyledPostersList,
+  StyledNumberMovies,
+  StyledPostersError,
 } from './style';
 
-import PostersData from '../../../../data';
+import usePostersFetch from 'hooks/usePostersFetch';
 
-const Posters: FC = () => (
-  <PostersWrapper>
-    <PostersList>
-      {PostersData.map((poster) => (
-        <PostersItem key={poster.id}>
-          <PostersImg src={poster.poster} alt={poster.title} />
-          <PostersWrapTitle>
-            <PostersTitle>{poster.title}</PostersTitle>
-            <PostersTitleYear>{poster.year}</PostersTitleYear>
-          </PostersWrapTitle>
-          <PostersGenre>{poster.genre}</PostersGenre>
-        </PostersItem>
-      ))}
-    </PostersList>
-  </PostersWrapper>
-);
+import { API_PAGE } from '@constants';
 
-export default Posters;
+import Button from 'components/Button';
+import { Spinner } from 'components/Spinner';
+import PosterItem from './PosterItem';
+
+const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
+  const { movies, error, loading, fetchMovies }: any = usePostersFetch();
+
+  const loadMorePosters = useCallback(() => {
+    const loadMorePostersEndpoint = `${API_PAGE}${movies.currentPage + 1}`;
+
+    fetchMovies(loadMorePostersEndpoint);
+  }, []);
+
+  const posters = movies.movies.map((poster) => {
+    const genre = poster.genres.map((genre) => (
+      <span key={shortid.generate()}> {genre}, </span>
+    ));
+
+    return (
+      <PosterItem
+        key={shortid.generate()}
+        setMovieDetails={setMovieDetails}
+        poster={poster}
+        genre={genre}
+      />
+    );
+  });
+
+  return (
+    <StyledPostersWrapper>
+      {error && <StyledPostersError>No Movie Found</StyledPostersError>}
+      {loading && <Spinner />}
+      <>
+        {' '}
+        <StyledNumberMovies>
+          <span>{movies.movies.length}</span> movie found
+        </StyledNumberMovies>
+        <StyledPostersList>{posters}</StyledPostersList>
+      </>
+      <Button
+        load
+        text="Load more posters"
+        type="button"
+        onClick={loadMorePosters}
+      />
+    </StyledPostersWrapper>
+  );
+};
+
+export default memo(Posters);

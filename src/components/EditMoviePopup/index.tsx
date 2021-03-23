@@ -1,11 +1,11 @@
 import React, { FC, useState, FormEvent } from 'react';
 
 import {
-  EditMovie as EditMovieWrapper,
-  ButtonContainer,
-  CloseIcon,
-  EditMovieContainer,
-  EditMovieTitle,
+  StyledEditMoviePopupWrapper,
+  StyledButtonContainer,
+  StyledCloseIcon,
+  StyledEditMoviePopupContainer,
+  StyledEditMoviePopupTitle,
 } from './style';
 
 import Input from 'components/Input';
@@ -22,23 +22,15 @@ const initialValues = {
   runtime: '',
 };
 
-const selectOptions = [
-  { id: 1, name: 'Action & Adventure' },
-  { id: 2, name: 'Drama, Biography, Music' },
-  { id: 3, name: 'Oscar winning movie' },
-];
-
-const EditMovie: FC = () => {
+const EditMoviePopup: FC = () => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = (event) => {
-    const target = event.target;
+  const handleOnChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
 
     setValues({
       ...values,
-      [name]: value,
+      [target.name]: value,
     });
   };
 
@@ -48,72 +40,68 @@ const EditMovie: FC = () => {
     console.log(JSON.stringify(values, null, 2));
   };
 
-  const onSelectChange = (event) => {
-    console.log('event: ', event);
-  };
-
   return (
-    <EditMovieWrapper>
-      <CloseIcon />
-      <EditMovieTitle>Edit Movie</EditMovieTitle>
+    <StyledEditMoviePopupWrapper>
+      <StyledCloseIcon />
+      <StyledEditMoviePopupTitle>Edit Movie</StyledEditMoviePopupTitle>
       <form onSubmit={handleSubmit}>
-        <EditMovieContainer>
+        <StyledEditMoviePopupContainer>
           <Input
-            numberId
             label="Movie id"
             name="number"
             type="text"
             placeholder="m032820th"
             onChange={handleOnChange}
             value={values.number}
+            autoComplete="off"
           />
           <Input
-            topic
             label="Title"
             name="title"
             type="text"
             placeholder="Moana"
             onChange={handleOnChange}
             value={values.title}
+            autoComplete="off"
           />
           <Calendar />
           <Input
-            url
             label="Movie url"
             name="url"
             type="text"
             placeholder="www.moana.com"
             onChange={handleOnChange}
             value={values.url}
+            autoComplete="off"
           />
-          <Select data={selectOptions} onSelectChange={onSelectChange} />
+          <Select onChange={handleOnChange} value={values.genre} name="genre" />
           <Input
-            overview
             label="Overview"
             name="overview"
             type="text"
             placeholder="Overview here"
             onChange={handleOnChange}
             value={values.overview}
+            autoComplete="off"
           />
           <Input
-            runtime
             label="Runtime"
             name="runtime"
             type="text"
             placeholder="Runtime here"
             onChange={handleOnChange}
             value={values.runtime}
+            autoComplete="off"
           />
-        </EditMovieContainer>
+        </StyledEditMoviePopupContainer>
 
-        <ButtonContainer>
+        <StyledButtonContainer>
           <Button reset type="reset" onClick={null} text="Reset"></Button>
           <Button submit type="button" onClick={null} text="Save" />
-        </ButtonContainer>
+        </StyledButtonContainer>
       </form>
-    </EditMovieWrapper>
+    </StyledEditMoviePopupWrapper>
   );
 };
 
-export default EditMovie;
+export default EditMoviePopup;
