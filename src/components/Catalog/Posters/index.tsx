@@ -31,13 +31,9 @@ const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
     moviesAction(getMovies()(dispatch));
   }, []);
 
-  const loadMoreMovies = useCallback(() => {
-    // const loadMoreMoviesEndpoint = `${API_PAGE}${movies.currentPage + 1}`;
-
-    // fetchMovies(loadMoreMoviesEndpoint);
-
+  const loadMoreMovies = () => {
     loadMoreMoviesAction(getMoreMovies(currentPage)(dispatch));
-  }, []);
+  };
 
   const posters = movies.items.map((poster) => {
     const genre = poster.genres.map((genre) => (

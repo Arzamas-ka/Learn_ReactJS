@@ -5,7 +5,7 @@ const usePopup = () => {
 
   const toggle = useCallback(() => {
     setIsShowing(!isShowing);
-  }, []);
+  }, [isShowing]);
 
   return { isShowing, toggle };
 };

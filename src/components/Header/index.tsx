@@ -15,8 +15,6 @@ const Header: FC<HeaderProps> = ({ movieDetails, hide }) => {
     console.log('click: ', event);
   };
 
-  console.log('movieDetailsHeader: ', movieDetails);
-
   return (
     <StyledHeaderWrapper>
       <StyledHeaderTop className="header-top">

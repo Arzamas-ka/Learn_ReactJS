@@ -1,18 +1,15 @@
 import {
   moviesAction,
   loadMoreMoviesAction,
-  moviesErrorTrueAction,
-  moviesErrorFalseAction,
-  moviesLoadingTrueAction,
-  moviesLoadingFalseAction,
+  isLoadingMovies,
+  isErrorMovies,
 } from 'actions/actions';
 import axios from 'axios';
 
 import { API_BASE, API_PAGE } from '../@constants/index';
 
 export const getMovies = () => (dispatch) => {
-  dispatch(moviesErrorFalseAction());
-  dispatch(moviesLoadingTrueAction());
+  dispatch(isLoadingMovies());
 
   axios
     .get(API_BASE)
@@ -20,16 +17,12 @@ export const getMovies = () => (dispatch) => {
       dispatch(moviesAction(data));
     })
     .catch((error) => {
-      dispatch(moviesErrorTrueAction());
-    })
-    .finally(() => {
-      dispatch(moviesLoadingFalseAction());
+      dispatch(isErrorMovies());
     });
 };
 
 export const getMoreMovies = (currentPage) => (dispatch) => {
-  dispatch(moviesErrorFalseAction());
-  dispatch(moviesLoadingTrueAction());
+  dispatch(isLoadingMovies());
 
   axios
     .get(`${API_PAGE}${currentPage + 1}`)
@@ -37,9 +30,6 @@ export const getMoreMovies = (currentPage) => (dispatch) => {
       dispatch(loadMoreMoviesAction(data));
     })
     .catch((error) => {
-      dispatch(moviesErrorTrueAction());
-    })
-    .finally(() => {
-      dispatch(moviesLoadingFalseAction());
+      dispatch(isErrorMovies());
     });
 };

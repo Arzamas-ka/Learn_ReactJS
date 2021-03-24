@@ -1,9 +1,7 @@
 import {
   FETCH_MOVIES,
-  ERROR_MOVIES_TRUE,
-  ERROR_MOVIES_FALSE,
-  LOADING_MOVIES_TRUE,
-  LOADING_MOVIES_FALSE,
+  ERROR_MOVIES,
+  LOADING_MOVIES,
   FETCH_LOAD_MORE_MOVIES,
 } from '../actions/types';
 
@@ -23,38 +21,30 @@ export const movies = (state = initialState, { type, payload }) => {
         items: payload.data,
         currentPage: payload.offset,
         totalPages: payload.totalAmount / payload.limit - payload.offset,
+        error: null,
+        loading: false,
       };
 
     case FETCH_LOAD_MORE_MOVIES:
-      console.log('payload: ', payload);
-      console.log('state: ', state);
-
       return {
         ...state,
         items: [...state.items, ...payload.data],
-        currentPage: payload.offset + 1,
+        currentPage: payload.offset,
+        totalPages: payload.totalAmount / payload.limit - payload.offset,
+        error: null,
+        loading: false,
       };
 
-    case ERROR_MOVIES_TRUE:
+    case ERROR_MOVIES:
       return {
         ...state,
         error: true,
       };
-    case ERROR_MOVIES_FALSE:
-      return {
-        ...state,
-        error: false,
-      };
 
-    case LOADING_MOVIES_TRUE:
+    case LOADING_MOVIES:
       return {
         ...state,
         loading: true,
-      };
-    case LOADING_MOVIES_FALSE:
-      return {
-        ...state,
-        loading: false,
       };
 
     default:
