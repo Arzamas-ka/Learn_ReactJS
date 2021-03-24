@@ -7,9 +7,7 @@ export const StyledEditMoviePopupWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  display: none;
-
-  position: absolute;
+  position: fixed;
   top: 450px;
   left: 50%;
 

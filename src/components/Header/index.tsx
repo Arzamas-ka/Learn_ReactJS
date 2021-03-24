@@ -12,7 +12,8 @@ const Header: FC<HeaderProps> = ({
   movieDetails,
   loadingMovieDetails,
   errorMovieDetails,
-  hide,
+  hideAdd,
+  setIsActiveBackdrop,
 }) => {
   const handleOnClick = (event: SyntheticEvent): void => {
     event.preventDefault();
@@ -33,7 +34,14 @@ const Header: FC<HeaderProps> = ({
           />
         )}
         {!movieDetails && (
-          <Button button type="button" onClick={hide} text="+ Add Movie" />
+          <Button
+            button
+            type="button"
+            onClick={() => {
+              hideAdd(), setIsActiveBackdrop(true);
+            }}
+            text="+ Add Movie"
+          />
         )}
       </StyledHeaderTop>
       {movieDetails && (

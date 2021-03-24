@@ -24,6 +24,9 @@ const PosterItem: FC<PosterItemProps> = ({
   setErrorMovieDetails,
   genre,
   poster,
+  hideEdit,
+  hideDelete,
+  setIsActiveBackdrop,
 }: any) => {
   const {
     movieDetails,
@@ -54,7 +57,7 @@ const PosterItem: FC<PosterItemProps> = ({
 
   return (
     <StyledPostersItem key={shortid.generate()}>
-      <DropdownMenu />
+      <DropdownMenu hideEdit={hideEdit} hideDelete={hideDelete} setIsActiveBackdrop={setIsActiveBackdrop}/>
       <StyledPostersLink onClick={() => handleMoreDetails(poster.id)}>
         <StyledPostersImg
           src={poster.poster_path}

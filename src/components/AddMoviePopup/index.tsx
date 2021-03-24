@@ -22,7 +22,7 @@ const initialValues = {
   runtime: '',
 };
 
-const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
+const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const [values, setValues] = useState(initialValues);
 
   const handleOnChange = useCallback(({ target }) => {
@@ -42,7 +42,11 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
 
   return (
     <StyledAddMoviePopupWrapper>
-      <StyledCloseIcon onClick={hide} />
+      <StyledCloseIcon
+        onClick={() => {
+          hideAdd(), setIsActiveBackdrop(false);
+        }}
+      />
       <StyledAddMoviePopupTitle>Add Movie</StyledAddMoviePopupTitle>
       <form onSubmit={handleSubmit}>
         <StyledAddMoviePopupContainer>
@@ -87,7 +91,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
         </StyledAddMoviePopupContainer>
 
         <StyledButtonContainer>
-          <Button reset type="reset" onClick={null} text="Reset"/>
+          <Button reset type="reset" onClick={null} text="Reset" />
           <Button submit type="submit" onClick={null} text="Submit" />
         </StyledButtonContainer>
       </form>

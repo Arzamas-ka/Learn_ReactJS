@@ -11,6 +11,9 @@ const Catalog: FC<CatalogProps> = ({
   setMovieDetails,
   setLoadingMovieDetails,
   setErrorMovieDetails,
+  hideEdit,
+  hideDelete,
+  setIsActiveBackdrop,
 }) => (
   <StyledCatalogWrapper>
     <StyledFilterSelectionWrapper>
@@ -21,6 +24,9 @@ const Catalog: FC<CatalogProps> = ({
       setMovieDetails={setMovieDetails}
       setLoadingMovieDetails={setLoadingMovieDetails}
       setErrorMovieDetails={setErrorMovieDetails}
+      hideEdit={hideEdit}
+      hideDelete={hideDelete}
+      setIsActiveBackdrop={setIsActiveBackdrop}
     />
   </StyledCatalogWrapper>
 );

@@ -7,9 +7,7 @@ export const StyledDeleteMoviePopupWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  display: none;
-
-  position: absolute;
+  position: fixed;
   top: 350px;
   left: 50%;
   min-width: 320px;

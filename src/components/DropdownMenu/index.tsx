@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
+import { DropdownMenuProps } from './models';
 import {
   StyledDropdownMenuContainer,
   StyledDropdownMenuMoreMenu,
@@ -12,7 +13,11 @@ import {
 
 import usePopup from 'hooks/usePopup';
 
-const DropdownMenu = () => {
+const DropdownMenu: FC<DropdownMenuProps> = ({
+  hideEdit,
+  hideDelete,
+  setIsActiveBackdrop,
+}) => {
   const { isShowing, toggle } = usePopup();
 
   return (
@@ -27,12 +32,18 @@ const DropdownMenu = () => {
           <StyledDropdownMenuMoreMenu>
             <StyledDropdownMenuItems>
               <StyledDropdownMenuItem>
-                <StyledDropdownMenuButton type="button">
+                <StyledDropdownMenuButton
+                  type="button"
+                  onClick={() => (hideEdit(), setIsActiveBackdrop(true))}
+                >
                   Edit
                 </StyledDropdownMenuButton>
               </StyledDropdownMenuItem>
               <StyledDropdownMenuItem>
-                <StyledDropdownMenuButton type="button">
+                <StyledDropdownMenuButton
+                  type="button"
+                  onClick={() => (hideDelete(), setIsActiveBackdrop(true))}
+                >
                   Delete
                 </StyledDropdownMenuButton>
               </StyledDropdownMenuItem>

@@ -1,4 +1,5 @@
 export interface AppMoviePopup {
-  isShowing: boolean;
-  hide: () => void;
+  isShowingAdd: boolean;
+  hideAdd: () => void;
+  setIsActiveBackdrop: any;
 }

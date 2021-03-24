@@ -4,5 +4,6 @@ export interface HeaderProps {
   loadingMovieDetails: boolean;
   errorMovieDetails: boolean;
   movieDetails: movie;
-  hide: () => void;
+  hideAdd: () => void;
+  setIsActiveBackdrop: any;
 }

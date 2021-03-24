@@ -7,8 +7,8 @@ export const StyledAddMoviePopupWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  position: absolute;
-  top: 450px;
+  position: fixed;
+  top: 460px;
   left: 50%;
 
   color: ${colors.white};

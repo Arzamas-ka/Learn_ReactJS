@@ -21,6 +21,9 @@ const Posters: FC<PostersProps> = ({
   setMovieDetails,
   setLoadingMovieDetails,
   setErrorMovieDetails,
+  hideEdit,
+  hideDelete,
+  setIsActiveBackdrop,
 }) => {
   const dispatch = useDispatch();
   const movies = useSelector(({ movies }) => movies);
@@ -57,6 +60,9 @@ const Posters: FC<PostersProps> = ({
         setErrorMovieDetails={setErrorMovieDetails}
         poster={poster}
         genre={genre}
+        hideEdit={hideEdit}
+        hideDelete={hideDelete}
+        setIsActiveBackdrop={setIsActiveBackdrop}
       />
     );
   });

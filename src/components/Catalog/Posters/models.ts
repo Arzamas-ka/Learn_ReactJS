@@ -16,4 +16,7 @@ export interface PostersProps {
   setLoadingMovieDetails: boolean;
   setErrorMovieDetails: boolean;
   setMovieDetails: movie;
+  hideEdit: () => void;
+  hideDelete: () => void;
+  setIsActiveBackdrop: any;
 }

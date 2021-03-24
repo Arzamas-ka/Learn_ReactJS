@@ -1,5 +1,6 @@
 import React, { FC, useState, FormEvent } from 'react';
 
+import { EditMoviePopupProps } from './models';
 import {
   StyledEditMoviePopupWrapper,
   StyledButtonContainer,
@@ -22,7 +23,10 @@ const initialValues = {
   runtime: '',
 };
 
-const EditMoviePopup: FC = () => {
+const EditMoviePopup: FC<EditMoviePopupProps> = ({
+  hideEdit,
+  setIsActiveBackdrop,
+}) => {
   const [values, setValues] = useState(initialValues);
 
   const handleOnChange = ({ target }) => {
@@ -42,7 +46,11 @@ const EditMoviePopup: FC = () => {
 
   return (
     <StyledEditMoviePopupWrapper>
-      <StyledCloseIcon />
+      <StyledCloseIcon
+        onClick={() => {
+          hideEdit(), setIsActiveBackdrop(false);
+        }}
+      />
       <StyledEditMoviePopupTitle>Edit Movie</StyledEditMoviePopupTitle>
       <form onSubmit={handleSubmit}>
         <StyledEditMoviePopupContainer>

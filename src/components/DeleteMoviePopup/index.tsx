@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 
+import { DeleteMoviePopupProps } from './models';
 import {
   StyledDeleteMoviePopupWrapper,
   StyledButtonContainer,
@@ -10,10 +11,17 @@ import {
 
 import Button from 'components/Button';
 
-const DeleteMoviePopup: FC = () => {
+const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
+  hideDelete,
+  setIsActiveBackdrop,
+}) => {
   return (
     <StyledDeleteMoviePopupWrapper>
-      <StyledCloseIcon />
+      <StyledCloseIcon
+        onClick={() => {
+          hideDelete(), setIsActiveBackdrop(false);
+        }}
+      />
       <StyledDeleteMoviePopupTitle>Delete Movie</StyledDeleteMoviePopupTitle>
       <StyledDeleteMoviePopupText>
         Are you sure you want to delete this movie?
