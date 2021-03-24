@@ -17,15 +17,12 @@ import PosterItem from './PosterItem';
 import { moviesAction, loadMoreMoviesAction } from 'actions/actions';
 import { getMovies, getMoreMovies } from 'api';
 
-const Posters: FC<PostersProps> = ({ setMovieDetails }: any) => {
+const Posters: FC<PostersProps> = ({ setMovieDetails }) => {
   const dispatch = useDispatch();
   const movies = useSelector(({ movies }) => movies);
   const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
   const error = useSelector(({ movies: { error } }) => error);
   const loading = useSelector(({ movies: { loading } }) => loading);
-
-  console.log('posterLoader: ', loading);
-  console.log('posterError: ', error);
 
   useEffect(() => {
     moviesAction(getMovies()(dispatch));

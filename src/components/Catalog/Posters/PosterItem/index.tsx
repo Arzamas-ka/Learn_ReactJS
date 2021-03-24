@@ -26,7 +26,7 @@ const PosterItem: FC<PosterItemProps> = ({
     loadingMovieDetails,
     errorMovieDetails,
     fetchMovieDetails,
-  }: any = useMoreDetailsMovie();
+  } = useMoreDetailsMovie();
 
   const handleMoreDetails = useCallback((id) => {
     fetchMovieDetails(id);
