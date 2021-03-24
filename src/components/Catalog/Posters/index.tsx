@@ -36,7 +36,7 @@ const Posters: FC<PostersProps> = ({
     loadMoreMoviesAction(getMoreMovies(currentPage)(dispatch));
   };
 
-  useEffect(() => {ƒ
+  useEffect(() => {
     window.scrollTo({
       left: 0,
       top: document.body.scrollHeight,

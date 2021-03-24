@@ -83,6 +83,7 @@ export const StyledMovieDetailsAverage = styled.span`
   padding: 13px 10px 10px 10px;
 
   font-size: 20px;
+  text-align: center;
   border: 1px solid ${colors.white};
   border-radius: 50%;
   color: green;

@@ -30,9 +30,6 @@ const MovieDetails: FC<MovieDetailsProps> = ({
     target.alt = 'Image not found';
   }, []);
 
-  console.log('loadingMovieDetails: ', loadingMovieDetails);
-  console.log('errorMovieDetails: ', errorMovieDetails);
-
   return (
     <StyledMovieDetailsWrapper>
       {errorMovieDetails && (

@@ -16,8 +16,8 @@ import DeleteMoviePopup from 'components/DeleteMoviePopup';
 const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
   const [movieDetails, setMovieDetails]: any = useState(null);
-  const [loadingMovieDetails, setLoadingMovieDetails] = useState(true);
-  const [errorMovieDetails, setErrorMovieDetails] = useState(false);
+  const [loadingMovieDetails, setLoadingMovieDetails]: any = useState(true);
+  const [errorMovieDetails, setErrorMovieDetails]: any = useState(false);
   const { isShowing, toggle } = usePopup();
 
   return (

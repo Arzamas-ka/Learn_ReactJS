@@ -13,5 +13,7 @@ export interface movie {
   id: number;
 }
 export interface PostersProps {
+  setLoadingMovieDetails: boolean;
+  setErrorMovieDetails: boolean;
   setMovieDetails: movie;
 }
