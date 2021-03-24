@@ -92,3 +92,12 @@ export const StyledMovieDetailsTitleContainer = styled.div`
   display: flex;
   justify-content: end;
 `;
+
+export const StyledMovieDetailsError = styled.div`
+  margin: 50px;
+
+  color: ${colors.white};
+  font-weight: 200;
+  font-size: 32px;
+  text-align: center;
+`;

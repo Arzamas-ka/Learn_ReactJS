@@ -8,7 +8,12 @@ import Search from 'components/Search';
 import Logo from 'components/Logo';
 import MovieDetails from 'components/MovieDetails';
 
-const Header: FC<HeaderProps> = ({ movieDetails, hide }) => {
+const Header: FC<HeaderProps> = ({
+  movieDetails,
+  loadingMovieDetails,
+  errorMovieDetails,
+  hide,
+}) => {
   const handleOnClick = (event: SyntheticEvent): void => {
     event.preventDefault();
 
@@ -31,7 +36,13 @@ const Header: FC<HeaderProps> = ({ movieDetails, hide }) => {
           <Button button type="button" onClick={hide} text="+ Add Movie" />
         )}
       </StyledHeaderTop>
-      {movieDetails && <MovieDetails movieDetails={movieDetails} />}
+      {movieDetails && (
+        <MovieDetails
+          movieDetails={movieDetails}
+          loadingMovieDetails={loadingMovieDetails}
+          errorMovieDetails={errorMovieDetails}
+        />
+      )}
       {!movieDetails && <Search />}
     </StyledHeaderWrapper>
   );

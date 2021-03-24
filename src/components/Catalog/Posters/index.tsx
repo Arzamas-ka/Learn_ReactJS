@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, memo } from 'react';
+import React, { FC, useEffect, memo, useCallback } from 'react';
 import shortid from 'shortid';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -17,7 +17,11 @@ import PosterItem from './PosterItem';
 import { moviesAction, loadMoreMoviesAction } from 'actions/actions';
 import { getMovies, getMoreMovies } from 'api';
 
-const Posters: FC<PostersProps> = ({ setMovieDetails }) => {
+const Posters: FC<PostersProps> = ({
+  setMovieDetails,
+  setLoadingMovieDetails,
+  setErrorMovieDetails,
+}) => {
   const dispatch = useDispatch();
   const movies = useSelector(({ movies }) => movies);
   const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
@@ -32,6 +36,14 @@ const Posters: FC<PostersProps> = ({ setMovieDetails }) => {
     loadMoreMoviesAction(getMoreMovies(currentPage)(dispatch));
   };
 
+  useEffect(() => {ƒ
+    window.scrollTo({
+      left: 0,
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [currentPage]);
+
   const posters = movies.items.map((poster) => {
     const genre = poster.genres.map((genre) => (
       <span key={shortid.generate()}> {genre}, </span>
@@ -41,6 +53,8 @@ const Posters: FC<PostersProps> = ({ setMovieDetails }) => {
       <PosterItem
         key={shortid.generate()}
         setMovieDetails={setMovieDetails}
+        setLoadingMovieDetails={setLoadingMovieDetails}
+        setErrorMovieDetails={setErrorMovieDetails}
         poster={poster}
         genre={genre}
       />

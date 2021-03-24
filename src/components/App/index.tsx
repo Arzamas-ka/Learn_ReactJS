@@ -16,6 +16,8 @@ import DeleteMoviePopup from 'components/DeleteMoviePopup';
 const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
   const [movieDetails, setMovieDetails]: any = useState(null);
+  const [loadingMovieDetails, setLoadingMovieDetails] = useState(true);
+  const [errorMovieDetails, setErrorMovieDetails] = useState(false);
   const { isShowing, toggle } = usePopup();
 
   return (
@@ -25,8 +27,17 @@ const App: FC = () => {
       <DeleteMoviePopup />
       <EditMoviePopup />
       {isShowing && <AddMoviePopup hide={toggle} isShowing={isShowing} />}
-      <Header movieDetails={movieDetails} hide={toggle} />
-      <Catalog setMovieDetails={setMovieDetails} />
+      <Header
+        movieDetails={movieDetails}
+        loadingMovieDetails={loadingMovieDetails}
+        errorMovieDetails={errorMovieDetails}
+        hide={toggle}
+      />
+      <Catalog
+        setMovieDetails={setMovieDetails}
+        setLoadingMovieDetails={setLoadingMovieDetails}
+        setErrorMovieDetails={setErrorMovieDetails}
+      />
       <Footer />
     </StyledApp>
   );

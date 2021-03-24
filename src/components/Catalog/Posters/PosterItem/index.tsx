@@ -18,6 +18,8 @@ import defaultImgMovie from '../../../../assets/images/fallback_movie.png';
 
 const PosterItem: FC<PosterItemProps> = ({
   setMovieDetails,
+  setLoadingMovieDetails,
+  setErrorMovieDetails,
   genre,
   poster,
 }: any) => {
@@ -30,11 +32,18 @@ const PosterItem: FC<PosterItemProps> = ({
 
   const handleMoreDetails = useCallback((id) => {
     fetchMovieDetails(id);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
 
   useEffect(() => {
+    setLoadingMovieDetails(loadingMovieDetails);
+    setErrorMovieDetails(errorMovieDetails);
     setMovieDetails(movieDetails);
-  }, [movieDetails]);
+  }, [movieDetails, loadingMovieDetails, errorMovieDetails]);
 
   const addDefaultSrc = useCallback(({ target }) => {
     target.src = defaultImgMovie;

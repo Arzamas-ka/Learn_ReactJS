@@ -7,13 +7,21 @@ import Filter from './Filter';
 import Selection from './Selection';
 import Posters from './Posters';
 
-const Catalog: FC<CatalogProps> = ({ setMovieDetails }) => (
+const Catalog: FC<CatalogProps> = ({
+  setMovieDetails,
+  setLoadingMovieDetails,
+  setErrorMovieDetails,
+}) => (
   <StyledCatalogWrapper>
     <StyledFilterSelectionWrapper>
       <Filter />
       <Selection />
     </StyledFilterSelectionWrapper>
-    <Posters setMovieDetails={setMovieDetails} />
+    <Posters
+      setMovieDetails={setMovieDetails}
+      setLoadingMovieDetails={setLoadingMovieDetails}
+      setErrorMovieDetails={setErrorMovieDetails}
+    />
   </StyledCatalogWrapper>
 );
 
