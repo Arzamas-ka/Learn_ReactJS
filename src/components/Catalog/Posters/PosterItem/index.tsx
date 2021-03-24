@@ -16,6 +16,8 @@ import useMoreDetailsMovie from 'hooks/useMoreDetailsMovie';
 
 import defaultImgMovie from '../../../../assets/images/fallback_movie.png';
 
+import DropdownMenu from 'components/DropdownMenu';
+
 const PosterItem: FC<PosterItemProps> = ({
   setMovieDetails,
   setLoadingMovieDetails,
@@ -52,6 +54,7 @@ const PosterItem: FC<PosterItemProps> = ({
 
   return (
     <StyledPostersItem key={shortid.generate()}>
+      <DropdownMenu />
       <StyledPostersLink onClick={() => handleMoreDetails(poster.id)}>
         <StyledPostersImg
           src={poster.poster_path}

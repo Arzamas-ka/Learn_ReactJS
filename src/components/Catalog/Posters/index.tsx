@@ -32,9 +32,9 @@ const Posters: FC<PostersProps> = ({
     moviesAction(getMovies()(dispatch));
   }, []);
 
-  const loadMoreMovies = () => {
+  const loadMoreMovies = useCallback(() => {
     loadMoreMoviesAction(getMoreMovies(currentPage)(dispatch));
-  };
+  }, []);
 
   useEffect(() => {
     window.scrollTo({

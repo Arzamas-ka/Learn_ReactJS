@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { colors, rgbaMap, colorsRgba } from '../../../../styles/consts';
 
 export const StyledPostersItem = styled.li`
+  position: relative;
   margin: 15px;
   padding: 15px;
   height: 620px;
