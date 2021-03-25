@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { DropdownMenuProps } from './models';
 import {
@@ -13,12 +14,24 @@ import {
 
 import usePopup from 'hooks/usePopup';
 
+import { deleteMovieIdAction } from 'actions/actions';
+
 const DropdownMenu: FC<DropdownMenuProps> = ({
   hideEdit,
   hideDelete,
   setIsActiveBackdrop,
+  posterId,
 }) => {
+  const dispatch = useDispatch();
   const { isShowing, toggle } = usePopup();
+
+  const handleOnDelete = () => {
+    hideDelete(),
+      setIsActiveBackdrop(true),
+      dispatch(deleteMovieIdAction(posterId));
+
+    console.log('posterId: ', posterId);
+  };
 
   return (
     <StyledDropdownMenuContainer>
@@ -42,7 +55,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
               <StyledDropdownMenuItem>
                 <StyledDropdownMenuButton
                   type="button"
-                  onClick={() => (hideDelete(), setIsActiveBackdrop(true))}
+                  onClick={handleOnDelete}
                 >
                   Delete
                 </StyledDropdownMenuButton>

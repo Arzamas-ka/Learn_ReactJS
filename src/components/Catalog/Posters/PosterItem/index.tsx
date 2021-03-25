@@ -38,6 +38,8 @@ const PosterItem: FC<PosterItemProps> = ({
   const handleMoreDetails = useCallback((id) => {
     fetchMovieDetails(id);
 
+    console.log('id: ', id);
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -57,7 +59,12 @@ const PosterItem: FC<PosterItemProps> = ({
 
   return (
     <StyledPostersItem key={shortid.generate()}>
-      <DropdownMenu hideEdit={hideEdit} hideDelete={hideDelete} setIsActiveBackdrop={setIsActiveBackdrop}/>
+      <DropdownMenu
+        hideEdit={hideEdit}
+        hideDelete={hideDelete}
+        setIsActiveBackdrop={setIsActiveBackdrop}
+        posterId={poster.id}
+      />
       <StyledPostersLink onClick={() => handleMoreDetails(poster.id)}>
         <StyledPostersImg
           src={poster.poster_path}

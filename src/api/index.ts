@@ -3,6 +3,7 @@ import {
   loadMoreMoviesAction,
   isLoadingMovies,
   isErrorMovies,
+  deleteMovieAction,
 } from 'actions/actions';
 import axios from 'axios';
 
@@ -28,6 +29,17 @@ export const getMoreMovies = (currentPage) => (dispatch) => {
     .get(`${API_PAGE}${currentPage + 1}`)
     .then(({ data }) => {
       dispatch(loadMoreMoviesAction(data));
+    })
+    .catch((error) => {
+      dispatch(isErrorMovies());
+    });
+};
+
+export const deleteMovie = (id) => (dispatch) => {
+  axios
+    .delete(`${API_BASE}/${id}`)
+    .then(({ data }) => {
+      dispatch(deleteMovieAction({ data, id }));
     })
     .catch((error) => {
       dispatch(isErrorMovies());
