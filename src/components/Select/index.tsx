@@ -12,19 +12,18 @@ import {
 
 import { SELECT_OPTIONS } from '@constants';
 
-const Select: FC<SelectProps> = () => {
+const Select: FC<SelectProps> = ({ selected, onChange }) => {
   const [isOpen, setOpen] = useState(false);
-  const [selected, setSelected] = useState([]);
 
   const handleOnSelected = (selectedOption) => {
     if (selected.includes(selectedOption)) {
       const newSelected = selected.filter(
         (option) => option !== selectedOption,
       );
-      setSelected(newSelected);
+      onChange(newSelected);
     } else {
       const newSelected = [...selected, selectedOption];
-      setSelected(newSelected);
+      onChange(newSelected);
     }
   };
 
@@ -44,8 +43,6 @@ const Select: FC<SelectProps> = () => {
   });
 
   const value = selected.join(' ');
-
-  console.log('selected: ', selected);
 
   return (
     <StyledSelectWrapper>

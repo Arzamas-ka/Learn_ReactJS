@@ -16,8 +16,9 @@ import Select from 'components/Select';
 
 const initialValues = {
   title: '',
-  movie: '',
-  genre: '',
+  release_date: '', // calendar
+  'poster_path': '',
+  genres: [],
   overview: '',
   runtime: '',
 };
@@ -25,20 +26,29 @@ const initialValues = {
 const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = useCallback(({ target }) => {
+  console.log('values: ', values);
+
+  const handleOnChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     setValues({
       ...values,
       [target.name]: value,
     });
-  }, []);
+  };
 
-  const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
+  const handleOnSelect = (selected) => {
+    setValues({
+      ...values,
+      genres: selected,
+    });
+  }
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     console.log(JSON.stringify(values, null, 2));
-  }, []);
+  };
 
   return (
     <StyledAddMoviePopupWrapper>
@@ -62,14 +72,19 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
           <Calendar />
           <Input
             label="Movie url"
-            name="movie"
+            name="poster_path"
             type="text"
             placeholder="Movie url here"
             onChange={handleOnChange}
-            value={values.movie}
+            value={values['poster_path']}
             autoComplete="off"
           />
-          <Select onChange={handleOnChange} value={values.genre} name="genre" />
+          <Select
+            onChange={handleOnSelect}
+            value={values.genres}
+            name="genres"
+            selected={values.genres}
+          />
           <Input
             label="Overview"
             name="overview"

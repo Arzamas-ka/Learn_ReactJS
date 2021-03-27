@@ -25,6 +25,8 @@ export const getMovies = () => (dispatch) => {
 export const getMoreMovies = (currentPage) => (dispatch) => {
   dispatch(isLoadingMovies());
 
+  console.log('currentPage: ', currentPage);
+
   axios
     .get(`${API_PAGE}${currentPage + 1}`)
     .then(({ data }) => {

@@ -14,7 +14,6 @@ import Button from 'components/Button';
 import { Spinner } from 'components/Spinner';
 import PosterItem from './PosterItem';
 
-import { moviesAction, loadMoreMoviesAction } from 'actions/actions';
 import { getMovies, getMoreMovies } from 'api';
 
 const Posters: FC<PostersProps> = ({
@@ -32,12 +31,12 @@ const Posters: FC<PostersProps> = ({
   const loading = useSelector(({ movies: { loading } }) => loading);
 
   useEffect(() => {
-    moviesAction(getMovies()(dispatch));
+    dispatch(getMovies());
   }, []);
 
   const loadMoreMovies = useCallback(() => {
-    loadMoreMoviesAction(getMoreMovies(currentPage)(dispatch));
-  }, []);
+    dispatch(getMoreMovies(currentPage));
+  }, [currentPage]);
 
   useEffect(() => {
     window.scrollTo({

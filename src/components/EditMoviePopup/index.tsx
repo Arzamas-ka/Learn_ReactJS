@@ -18,7 +18,7 @@ const initialValues = {
   number: '',
   title: '',
   url: '',
-  genre: '',
+  genres: [],
   overview: '',
   runtime: '',
 };
@@ -82,7 +82,11 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
             value={values.url}
             autoComplete="off"
           />
-          <Select onChange={handleOnChange} value={values.genre} name="genre" />
+          <Select
+            onChange={handleOnChange}
+            value={values.genres}
+            name="genre"
+          />
           <Input
             label="Overview"
             name="overview"
