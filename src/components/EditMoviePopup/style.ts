@@ -20,7 +20,7 @@ export const StyledEditMoviePopupWrapper = styled.div`
 `;
 
 export const StyledEditMoviePopupContainer = styled.div`
-  margin: 10px 40px 40px 40px;
+  margin: 0 40px 40px 40px;
 `;
 
 export const StyledEditMoviePopupTitle = styled.h2`
