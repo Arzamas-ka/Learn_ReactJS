@@ -21,11 +21,13 @@ const Header: FC<HeaderProps> = ({
     console.log('click: ', event);
   };
 
+  const showByCondition = errorMovieDetails || movieDetails;
+
   return (
     <StyledHeaderWrapper>
       <StyledHeaderTop className="header-top">
         <Logo />
-        {movieDetails && (
+        {showByCondition && (
           <Button
             magnifier
             type="button"
@@ -33,7 +35,7 @@ const Header: FC<HeaderProps> = ({
             text="&#x2315;"
           />
         )}
-        {!movieDetails && (
+        {!showByCondition && (
           <Button
             button
             type="button"
@@ -44,14 +46,15 @@ const Header: FC<HeaderProps> = ({
           />
         )}
       </StyledHeaderTop>
-      {movieDetails && (
+      {showByCondition && (
         <MovieDetails
           movieDetails={movieDetails}
           loadingMovieDetails={loadingMovieDetails}
           errorMovieDetails={errorMovieDetails}
         />
       )}
-      {!movieDetails && <Search />}
+
+      {!showByCondition && <Search />}
     </StyledHeaderWrapper>
   );
 };
