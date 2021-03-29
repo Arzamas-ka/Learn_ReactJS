@@ -5,6 +5,8 @@ import {
   FETCH_LOAD_MORE_MOVIES,
   DELETE_MOVIE_ON_UI,
   DELETE_MOVIE_ID,
+  ADD_MOVIE,
+  ADD_MOVIE_ON_UI,
 } from '../actions/types';
 
 export const moviesAction = (payload) => {
@@ -29,4 +31,13 @@ export const deleteMovieAction = (payload) => {
 
 export const deleteMovieIdAction = (payload) => {
   return { type: DELETE_MOVIE_ID, payload };
+};
+
+export const addMovieAction = (payload) => {
+  return { type: ADD_MOVIE, payload };
+};
+
+export const addMovieUiAction = (payload) => {
+  console.log('payloadAction: ', payload)
+  return { type: ADD_MOVIE_ON_UI, payload };
 };

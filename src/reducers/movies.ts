@@ -5,6 +5,7 @@ import {
   FETCH_LOAD_MORE_MOVIES,
   DELETE_MOVIE_ID,
   DELETE_MOVIE_ON_UI,
+  ADD_MOVIE_ON_UI,
 } from '../actions/types';
 
 const initialState = {
@@ -42,6 +43,12 @@ export const movies = (state = initialState, { type, payload }) => {
       return {
         ...state,
         deleteId: payload,
+      };
+
+    case ADD_MOVIE_ON_UI:
+      return {
+        ...state,
+        items: [payload, ...state.items],
       };
 
     case DELETE_MOVIE_ON_UI:

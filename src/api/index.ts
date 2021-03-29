@@ -4,6 +4,8 @@ import {
   isLoadingMovies,
   isErrorMovies,
   deleteMovieAction,
+  addMovieAction,
+  addMovieUiAction,
 } from 'actions/actions';
 import axios from 'axios';
 
@@ -25,8 +27,6 @@ export const getMovies = () => (dispatch) => {
 export const getMoreMovies = (currentPage) => (dispatch) => {
   dispatch(isLoadingMovies());
 
-  console.log('currentPage: ', currentPage);
-
   axios
     .get(`${API_PAGE}${currentPage + 1}`)
     .then(({ data }) => {
@@ -43,6 +43,17 @@ export const deleteMovie = (id) => (dispatch) => {
     .then(({ data }) => {
       dispatch(deleteMovieAction({ data, id }));
     })
+    .catch((error) => {
+      dispatch(isErrorMovies());
+    });
+};
+
+export const addMovie = (values) => (dispatch) => {
+  const body = { ...values, runtime: parseInt(values.runtime) };
+
+  axios
+    .post(API_BASE, body)
+    .then(dispatch(addMovieUiAction(body)))
     .catch((error) => {
       dispatch(isErrorMovies());
     });
