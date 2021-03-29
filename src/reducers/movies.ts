@@ -3,7 +3,7 @@ import {
   ERROR_MOVIES,
   LOADING_MOVIES,
   FETCH_LOAD_MORE_MOVIES,
-  DELETE_MOVIE_ID,
+  POSTER_ID,
   DELETE_MOVIE_ON_UI,
   ADD_MOVIE_ON_UI,
   EDIT_MOVIE_ON_UI,
@@ -15,7 +15,7 @@ const initialState = {
   totalPages: 0,
   error: null,
   loading: false,
-  deleteId: null,
+  posterId: null,
 };
 
 export const movies = (state = initialState, { type, payload }) => {
@@ -40,10 +40,10 @@ export const movies = (state = initialState, { type, payload }) => {
         loading: false,
       };
 
-    case DELETE_MOVIE_ID:
+    case POSTER_ID:
       return {
         ...state,
-        deleteId: payload,
+        posterId: payload,
       };
 
     case ADD_MOVIE_ON_UI:

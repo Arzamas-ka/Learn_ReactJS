@@ -26,9 +26,15 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
   const { isShowing, toggle } = usePopup();
 
   const handleOnDelete = () => {
-    hideDelete(),
-      setIsActiveBackdrop(true),
-      dispatch(deleteMovieIdAction(posterId));
+    hideDelete();
+    setIsActiveBackdrop(true);
+    dispatch(deleteMovieIdAction(posterId));
+  };
+
+  const handleOnEdit = () => {
+    hideEdit();
+    setIsActiveBackdrop(true);
+    dispatch(deleteMovieIdAction(posterId));
   };
 
   return (
@@ -43,10 +49,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
           <StyledDropdownMenuMoreMenu>
             <StyledDropdownMenuItems>
               <StyledDropdownMenuItem>
-                <StyledDropdownMenuButton
-                  type="button"
-                  onClick={() => (hideEdit(), setIsActiveBackdrop(true))}
-                >
+                <StyledDropdownMenuButton type="button" onClick={handleOnEdit}>
                   Edit
                 </StyledDropdownMenuButton>
               </StyledDropdownMenuItem>

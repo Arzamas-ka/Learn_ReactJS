@@ -4,7 +4,7 @@ import {
   LOADING_MOVIES,
   FETCH_LOAD_MORE_MOVIES,
   DELETE_MOVIE_ON_UI,
-  DELETE_MOVIE_ID,
+  POSTER_ID,
   ADD_MOVIE,
   ADD_MOVIE_ON_UI,
   EDIT_MOVIE,
@@ -32,7 +32,7 @@ export const deleteMovieAction = (payload) => {
 };
 
 export const deleteMovieIdAction = (payload) => {
-  return { type: DELETE_MOVIE_ID, payload };
+  return { type: POSTER_ID, payload };
 };
 
 export const addMovieAction = (payload) => {

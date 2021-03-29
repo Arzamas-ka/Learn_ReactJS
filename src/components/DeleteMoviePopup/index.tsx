@@ -19,10 +19,10 @@ const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
   setIsActiveBackdrop,
 }) => {
   const dispatch = useDispatch();
-  const deleteId = useSelector(({ movies: { deleteId } }) => deleteId);
+  const posterId = useSelector(({ movies: { posterId } }) => posterId);
 
   const handleConfirm = () => {
-    dispatch(deleteMovie(deleteId));
+    dispatch(deleteMovie(posterId));
     hideDelete();
     setIsActiveBackdrop(false);
   };

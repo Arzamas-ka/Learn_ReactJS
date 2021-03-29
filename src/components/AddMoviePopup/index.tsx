@@ -137,7 +137,12 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
         </StyledAddMoviePopupContainer>
 
         <StyledButtonContainer>
-          <Button reset type="reset" onClick={null} text="Reset" />
+          <Button
+            reset
+            type="reset"
+            onClick={() => setValues(initialValues)}
+            text="Reset"
+          />
           <Button submit type="submit" onClick={null} text="Submit" />
         </StyledButtonContainer>
       </form>

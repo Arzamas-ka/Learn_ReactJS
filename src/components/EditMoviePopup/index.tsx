@@ -1,6 +1,6 @@
 import React, { FC, useState, FormEvent, useCallback } from 'react';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { EditMoviePopupProps } from './models';
 import {
@@ -32,8 +32,12 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
   hideEdit,
   setIsActiveBackdrop,
 }) => {
+  const posterId = useSelector(({ movies: { posterId } }) => posterId);
+  const movie = useSelector(({ movies: { items } }) =>
+    items.find((movie) => movie.id === posterId),
+  );
   const dispatch = useDispatch();
-  const [values, setValues] = useState(initialValues);
+  const [values, setValues] = useState({ ...initialValues, ...movie });
 
   const handleOnChange = useCallback(
     ({ target }) => {
@@ -149,7 +153,12 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
         </StyledEditMoviePopupContainer>
 
         <StyledButtonContainer>
-          <Button reset type="reset" onClick={null} text="Reset"></Button>
+          <Button
+            reset
+            type="reset"
+            onClick={() => setValues(initialValues)}
+            text="Reset"
+          ></Button>
           <Button submit type="submit" onClick={null} text="Save" />
         </StyledButtonContainer>
       </form>
