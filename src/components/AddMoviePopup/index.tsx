@@ -1,4 +1,5 @@
 import React, { FC, useState, FormEvent, useCallback } from 'react';
+import moment from 'moment';
 
 import { AppMoviePopup } from './models';
 import {
@@ -16,8 +17,8 @@ import Select from 'components/Select';
 
 const initialValues = {
   title: '',
-  release_date: '', // calendar
-  'poster_path': '',
+  release_date: '',
+  poster_path: '',
   genres: [],
   overview: '',
   runtime: '',
@@ -26,29 +27,50 @@ const initialValues = {
 const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const [values, setValues] = useState(initialValues);
 
-  console.log('values: ', values);
+  const handleOnChange = useCallback(
+    ({ target }) => {
+      const value = target.type === 'checkbox' ? target.checked : target.value;
 
-  const handleOnChange = ({ target }) => {
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+      setValues({
+        ...values,
+        [target.name]: value,
+      });
+    },
+    [values],
+  );
 
-    setValues({
-      ...values,
-      [target.name]: value,
-    });
-  };
+  const handleOnSelect = useCallback(
+    (selected) => {
+      setValues({
+        ...values,
+        genres: selected,
+      });
+    },
+    [values],
+  );
 
-  const handleOnSelect = (selected) => {
-    setValues({
-      ...values,
-      genres: selected,
-    });
-  }
+  const handleOnCalendar = useCallback(
+    (data) => {
+      const formattedDate = moment(data).format('YYYY-MM-DD');
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+      console.log('formattedDate: ', formattedDate);
 
-    console.log(JSON.stringify(values, null, 2));
-  };
+      setValues({
+        ...values,
+        release_date: formattedDate,
+      });
+    },
+    [values],
+  );
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      console.log(JSON.stringify(values, null, 2));
+    },
+    [values],
+  );
 
   return (
     <StyledAddMoviePopupWrapper>
@@ -69,7 +91,11 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
             value={values.title}
             autoComplete="off"
           />
-          <Calendar />
+          <Calendar
+            name="release_date"
+            onChange={handleOnCalendar}
+            value={values['release_date']}
+          />
           <Input
             label="Movie url"
             name="poster_path"

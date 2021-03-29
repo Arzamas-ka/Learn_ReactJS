@@ -5,11 +5,11 @@ import { StyledCalendarWrapper, StyledCalendarIcon } from './style';
 
 import Input from 'components/Input';
 
-const Calendar: FC = () => {
+const Calendar: FC<any> = ({ onChange, name, value }) => {
   const [startDate, setStartDate] = useState(null);
 
   const DatePickerCustomInput = forwardRef(
-    ({ value, onClick }: any, ref: any) => (
+    ({ onClick }: any, ref: any) => (
       <>
         <Input
           label="Release Date"
@@ -30,7 +30,7 @@ const Calendar: FC = () => {
     <StyledCalendarWrapper>
       <DatePicker
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        onChange={onChange}
         placeholderText="Select date"
         showYearDropdown={true}
         customInput={<DatePickerCustomInput />}

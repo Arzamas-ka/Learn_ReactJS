@@ -17,8 +17,6 @@ const initialState = {
 };
 
 export const movies = (state = initialState, { type, payload }) => {
-  console.log('payload: ', payload);
-
   switch (type) {
     case FETCH_MOVIES:
       return {
