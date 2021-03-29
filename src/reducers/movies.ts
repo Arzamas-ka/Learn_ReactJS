@@ -6,6 +6,7 @@ import {
   DELETE_MOVIE_ID,
   DELETE_MOVIE_ON_UI,
   ADD_MOVIE_ON_UI,
+  EDIT_MOVIE_ON_UI,
 } from '../actions/types';
 
 const initialState = {
@@ -49,6 +50,17 @@ export const movies = (state = initialState, { type, payload }) => {
       return {
         ...state,
         items: [payload, ...state.items],
+      };
+
+    case EDIT_MOVIE_ON_UI:
+      let updatedMovie = state.items.find(movie => {
+        return movie.id === payload.id;
+      });
+
+      Object.assign(updatedMovie, payload);
+
+      return {
+        items: [...state.items],
       };
 
     case DELETE_MOVIE_ON_UI:

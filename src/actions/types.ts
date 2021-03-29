@@ -6,3 +6,5 @@ export const DELETE_MOVIE_ON_UI = 'DELETE_MOVIE';
 export const DELETE_MOVIE_ID = 'DELETE_MOVIE_ID';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const ADD_MOVIE_ON_UI = 'ADD_MOVIE_ON_UI';
+export const EDIT_MOVIE = 'EDIT_MOVIE';
+export const EDIT_MOVIE_ON_UI = 'EDIT_MOVIE_ON_UI';

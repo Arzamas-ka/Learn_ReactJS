@@ -21,10 +21,8 @@ const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
   const dispatch = useDispatch();
   const deleteId = useSelector(({ movies: { deleteId } }) => deleteId);
 
-  console.log('ID: ', deleteId);
-
   const handleConfirm = () => {
-    deleteMovie(deleteId)(dispatch);
+    dispatch(deleteMovie(deleteId));
     hideDelete();
     setIsActiveBackdrop(false);
   };

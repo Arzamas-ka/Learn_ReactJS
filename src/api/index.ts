@@ -4,7 +4,7 @@ import {
   isLoadingMovies,
   isErrorMovies,
   deleteMovieAction,
-  addMovieAction,
+  editMovieUiAction,
   addMovieUiAction,
 } from 'actions/actions';
 import axios from 'axios';
@@ -54,6 +54,21 @@ export const addMovie = (values) => (dispatch) => {
   axios
     .post(API_BASE, body)
     .then(dispatch(addMovieUiAction(body)))
+    .catch((error) => {
+      dispatch(isErrorMovies());
+    });
+};
+
+export const editMovie = (values) => (dispatch) => {
+  const body = {
+    ...values,
+    runtime: parseInt(values.runtime),
+    id: parseInt(values.id),
+  };
+
+  axios
+    .put(API_BASE, body)
+    .then(dispatch(editMovieUiAction(body)))
     .catch((error) => {
       dispatch(isErrorMovies());
     });

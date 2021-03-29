@@ -7,6 +7,8 @@ import {
   DELETE_MOVIE_ID,
   ADD_MOVIE,
   ADD_MOVIE_ON_UI,
+  EDIT_MOVIE,
+  EDIT_MOVIE_ON_UI,
 } from '../actions/types';
 
 export const moviesAction = (payload) => {
@@ -38,6 +40,13 @@ export const addMovieAction = (payload) => {
 };
 
 export const addMovieUiAction = (payload) => {
-  console.log('payloadAction: ', payload)
   return { type: ADD_MOVIE_ON_UI, payload };
+};
+
+export const editMovie = (payload) => {
+  return { type: EDIT_MOVIE, payload };
+};
+
+export const editMovieUiAction = (payload) => {
+  return { type: EDIT_MOVIE_ON_UI, payload };
 };

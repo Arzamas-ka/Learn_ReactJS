@@ -1,5 +1,6 @@
 import React, { FC, useState, FormEvent, useCallback } from 'react';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
 
 import { EditMoviePopupProps } from './models';
 import {
@@ -9,6 +10,8 @@ import {
   StyledEditMoviePopupContainer,
   StyledEditMoviePopupTitle,
 } from './style';
+
+import { editMovie } from 'api';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -29,6 +32,7 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
   hideEdit,
   setIsActiveBackdrop,
 }) => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState(initialValues);
 
   const handleOnChange = useCallback(
@@ -69,7 +73,9 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      console.log(JSON.stringify(values, null, 2));
+      dispatch(editMovie(values));
+      hideEdit();
+      setIsActiveBackdrop(false);
     },
     [values],
   );

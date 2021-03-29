@@ -38,8 +38,6 @@ const PosterItem: FC<PosterItemProps> = ({
   const handleMoreDetails = useCallback((id) => {
     fetchMovieDetails(id);
 
-    console.log('id: ', id);
-
     window.scrollTo({
       top: 0,
       behavior: 'smooth',

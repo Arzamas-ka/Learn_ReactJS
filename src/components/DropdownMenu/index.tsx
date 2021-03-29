@@ -29,8 +29,6 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
     hideDelete(),
       setIsActiveBackdrop(true),
       dispatch(deleteMovieIdAction(posterId));
-
-    console.log('posterId: ', posterId);
   };
 
   return (
