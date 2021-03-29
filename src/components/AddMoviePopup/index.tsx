@@ -1,5 +1,6 @@
 import React, { FC, useState, FormEvent, useCallback } from 'react';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
 
 import { AppMoviePopup } from './models';
 import {
@@ -9,6 +10,8 @@ import {
   StyledAddMoviePopupContainer,
   StyledAddMoviePopupTitle,
 } from './style';
+
+import { addMovie } from 'api';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -25,6 +28,7 @@ const initialValues = {
 };
 
 const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState(initialValues);
 
   const handleOnChange = useCallback(
@@ -66,8 +70,9 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-
-      console.log(JSON.stringify(values, null, 2));
+      dispatch(addMovie(values));
+      hideAdd();
+      setIsActiveBackdrop(false);
     },
     [values],
   );

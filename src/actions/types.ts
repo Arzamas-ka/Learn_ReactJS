@@ -4,3 +4,5 @@ export const LOADING_MOVIES = 'LOADING_MOVIES';
 export const FETCH_LOAD_MORE_MOVIES = 'FETCH_LOAD_MORE_MOVIES';
 export const DELETE_MOVIE_ON_UI = 'DELETE_MOVIE';
 export const DELETE_MOVIE_ID = 'DELETE_MOVIE_ID';
+export const ADD_MOVIE = 'ADD_MOVIE';
+export const ADD_MOVIE_ON_UI = 'ADD_MOVIE_ON_UI';
