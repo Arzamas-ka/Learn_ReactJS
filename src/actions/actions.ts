@@ -8,6 +8,7 @@ import {
   ADD_MOVIE_UI,
   EDIT_MOVIE,
   EDIT_MOVIE_UI,
+  FILTER_MOVIES
 } from '../actions/types';
 
 export const fetchMovies = (payload) => {
@@ -44,4 +45,8 @@ export const editMovie = (payload) => {
 
 export const editMovieUI = (payload) => {
   return { type: EDIT_MOVIE_UI, payload };
+};
+
+export const filterMovies = (payload) => {
+  return { type: FILTER_MOVIES, payload };
 };

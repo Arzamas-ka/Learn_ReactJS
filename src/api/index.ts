@@ -6,6 +6,7 @@ import {
   deleteMovie,
   editMovieUI,
   addMovieUI,
+  filterMovies,
 } from 'actions/actions';
 import axios from 'axios';
 
@@ -69,6 +70,17 @@ export const editMovie = (values) => (dispatch) => {
   axios
     .put(API_BASE, body)
     .then(dispatch(editMovieUI(body)))
+    .catch((error) => {
+      dispatch(errorMovies());
+    });
+};
+
+export const getFilterMovies = (genre) => (dispatch) => {
+  axios
+    .get(`${API_BASE}?filter=${genre}`)
+    .then(({ data }) => {
+      dispatch(filterMovies(data));
+    })
     .catch((error) => {
       dispatch(errorMovies());
     });

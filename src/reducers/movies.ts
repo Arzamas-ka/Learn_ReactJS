@@ -7,9 +7,10 @@ import {
   DELETE_MOVIE,
   ADD_MOVIE_UI,
   EDIT_MOVIE_UI,
+  FILTER_MOVIES,
 } from '../actions/types';
 
-const initialState = {
+export const initialState = {
   items: [],
   currentPage: 0,
   totalPages: 0,
@@ -53,7 +54,7 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case EDIT_MOVIE_UI:
-      let updatedMovie = state.items.find(movie => {
+      let updatedMovie = state.items.find((movie) => {
         return movie.id === payload.id;
       });
 
@@ -70,6 +71,12 @@ export const movies = (state = initialState, { type, payload }) => {
           ...state.items.filter((item) => item.id !== payload.id),
           ...payload.data,
         ],
+      };
+
+    case FILTER_MOVIES:
+      return {
+        ...state,
+        items: payload.data,
       };
 
     case ERROR_MOVIES:

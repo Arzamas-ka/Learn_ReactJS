@@ -7,3 +7,4 @@ export const POSTER_ID = 'POSTER_ID';
 export const ADD_MOVIE_UI = 'ADD_MOVIE_UI';
 export const EDIT_MOVIE = 'EDIT_MOVIE';
 export const EDIT_MOVIE_UI = 'EDIT_MOVIE_UI';
+export const FILTER_MOVIES = 'FILTER_MOVIES';
