@@ -31,6 +31,7 @@ export const StyledSelectMain = styled.input`
   border: none;
   border-radius: 4px;
   outline: none;
+  cursor: pointer;
 
   background: ${rgbaMap(colorsRgba.rgba_grey_light, 0.3)} url(${ArrowIcon})
     no-repeat 95%;

@@ -47,6 +47,8 @@ export const StyledCloseIcon = styled(AiOutlineClose)`
   width: 32px;
   height: 32px;
 
+  cursor: pointer;
+
   :hover {
     color: ${colors.coral};
   }

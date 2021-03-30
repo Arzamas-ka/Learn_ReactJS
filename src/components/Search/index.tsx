@@ -1,4 +1,10 @@
-import React, { SyntheticEvent, FC, FormEvent, useState } from 'react';
+import React, {
+  SyntheticEvent,
+  FC,
+  FormEvent,
+  useState,
+  useCallback,
+} from 'react';
 
 import {
   StyledSearchWrapper,
@@ -12,11 +18,14 @@ import Button from 'components/Button';
 const Search: FC = () => {
   const [value, setValue] = useState('');
 
-  const handleOnChange = (event: FormEvent<HTMLInputElement>): void => {
-    console.log('input: ', event.currentTarget.value);
+  const handleOnChange = useCallback(
+    (event: FormEvent<HTMLInputElement>): void => {
+      console.log('input: ', event.currentTarget.value);
 
-    setValue(event.currentTarget.value);
-  };
+      setValue(event.currentTarget.value);
+    },
+    [],
+  );
 
   return (
     <StyledSearchWrapper>

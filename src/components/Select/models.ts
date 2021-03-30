@@ -7,6 +7,4 @@ export interface SelectProps {
   setSelected?: any;
   name: string;
   onChange: (event: ChangeEvent<HTMLSelectElement> | string[]) => void;
-  // onChange: (event: ChangeEvent<HTMLSelectElement>) => (selectedOption: any) => void;
-  // onChange?: (event: ChangeEvent<{ arg1: any[] }>) => void;
 }

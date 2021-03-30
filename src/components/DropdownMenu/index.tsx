@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { DropdownMenuProps } from './models';
 import {
@@ -14,7 +14,7 @@ import {
 
 import usePopup from 'hooks/usePopup';
 
-import { deleteMovieIdAction } from 'actions/actions';
+import { deleteMovieId } from 'actions/actions';
 
 const DropdownMenu: FC<DropdownMenuProps> = ({
   hideEdit,
@@ -25,17 +25,17 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
   const dispatch = useDispatch();
   const { isShowing, toggle } = usePopup();
 
-  const handleOnDelete = () => {
+  const handleOnDelete = useCallback(() => {
     hideDelete();
     setIsActiveBackdrop(true);
-    dispatch(deleteMovieIdAction(posterId));
-  };
+    dispatch(deleteMovieId(posterId));
+  }, []);
 
-  const handleOnEdit = () => {
+  const handleOnEdit = useCallback(() => {
     hideEdit();
     setIsActiveBackdrop(true);
-    dispatch(deleteMovieIdAction(posterId));
-  };
+    dispatch(deleteMovieId(posterId));
+  }, []);
 
   return (
     <StyledDropdownMenuContainer>

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { DeleteMoviePopupProps } from './models';
@@ -10,7 +10,7 @@ import {
   StyledDeleteMoviePopupTitle,
 } from './style';
 
-import { deleteMovie } from 'api';
+import { deleteMovieFetch } from 'api';
 
 import Button from 'components/Button';
 
@@ -21,11 +21,11 @@ const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
   const dispatch = useDispatch();
   const posterId = useSelector(({ movies: { posterId } }) => posterId);
 
-  const handleConfirm = () => {
-    dispatch(deleteMovie(posterId));
+  const handleConfirm = useCallback(() => {
+    dispatch(deleteMovieFetch(posterId));
     hideDelete();
     setIsActiveBackdrop(false);
-  };
+  }, []);
 
   return (
     <StyledDeleteMoviePopupWrapper>

@@ -34,7 +34,7 @@ const Posters: FC<PostersProps> = ({
     dispatch(getMovies());
   }, []);
 
-  const loadMoreMovies = useCallback(() => {
+  const handleLoadMoreMovies = useCallback(() => {
     dispatch(getMoreMovies(currentPage));
   }, [currentPage]);
 
@@ -81,7 +81,7 @@ const Posters: FC<PostersProps> = ({
             load
             text="Load more posters"
             type="button"
-            onClick={loadMoreMovies}
+            onClick={handleLoadMoreMovies}
           />
         </>
       )}

@@ -22,6 +22,8 @@ const App: FC = () => {
   const { isShowing: isShowingEdit, toggle: toggleEdit } = usePopup();
   const { isShowing: isShowingDelete, toggle: toggleDelete } = usePopup();
 
+  console.log('movieDetails: ', movieDetails);
+
   return (
     <StyledApp>
       <StyledBackdrop active={isActiveBackdrop} />

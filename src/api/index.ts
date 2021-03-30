@@ -1,11 +1,11 @@
 import {
-  moviesAction,
-  loadMoreMoviesAction,
+  fetchMovies,
+  loadMoreMovies,
   isLoadingMovies,
-  isErrorMovies,
-  deleteMovieAction,
-  editMovieUiAction,
-  addMovieUiAction,
+  errorMovies,
+  deleteMovie,
+  editMovieUI,
+  addMovieUI,
 } from 'actions/actions';
 import axios from 'axios';
 
@@ -17,10 +17,10 @@ export const getMovies = () => (dispatch) => {
   axios
     .get(API_BASE)
     .then(({ data }) => {
-      dispatch(moviesAction(data));
+      dispatch(fetchMovies(data));
     })
     .catch((error) => {
-      dispatch(isErrorMovies());
+      dispatch(errorMovies());
     });
 };
 
@@ -30,21 +30,21 @@ export const getMoreMovies = (currentPage) => (dispatch) => {
   axios
     .get(`${API_PAGE}${currentPage + 1}`)
     .then(({ data }) => {
-      dispatch(loadMoreMoviesAction(data));
+      dispatch(loadMoreMovies(data));
     })
     .catch((error) => {
-      dispatch(isErrorMovies());
+      dispatch(errorMovies());
     });
 };
 
-export const deleteMovie = (id) => (dispatch) => {
+export const deleteMovieFetch = (id) => (dispatch) => {
   axios
     .delete(`${API_BASE}/${id}`)
     .then(({ data }) => {
-      dispatch(deleteMovieAction({ data, id }));
+      dispatch(deleteMovie({ data, id }));
     })
     .catch((error) => {
-      dispatch(isErrorMovies());
+      dispatch(errorMovies());
     });
 };
 
@@ -53,9 +53,9 @@ export const addMovie = (values) => (dispatch) => {
 
   axios
     .post(API_BASE, body)
-    .then(dispatch(addMovieUiAction(body)))
+    .then(dispatch(addMovieUI(body)))
     .catch((error) => {
-      dispatch(isErrorMovies());
+      dispatch(errorMovies());
     });
 };
 
@@ -68,8 +68,8 @@ export const editMovie = (values) => (dispatch) => {
 
   axios
     .put(API_BASE, body)
-    .then(dispatch(editMovieUiAction(body)))
+    .then(dispatch(editMovieUI(body)))
     .catch((error) => {
-      dispatch(isErrorMovies());
+      dispatch(errorMovies());
     });
 };

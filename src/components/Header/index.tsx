@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent } from 'react';
+import React, { FC, SyntheticEvent, useCallback } from 'react';
 
 import { HeaderProps } from './models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';
@@ -15,11 +15,11 @@ const Header: FC<HeaderProps> = ({
   hideAdd,
   setIsActiveBackdrop,
 }) => {
-  const handleOnClick = (event: SyntheticEvent): void => {
+  const handleOnClick = useCallback((event: SyntheticEvent): void => {
     event.preventDefault();
 
     console.log('click: ', event);
-  };
+  }, []);
 
   const showByCondition = errorMovieDetails || movieDetails;
 

@@ -5,7 +5,7 @@ import { StyledCalendarWrapper, StyledCalendarIcon } from './style';
 
 import Input from 'components/Input';
 
-const Calendar: FC<any> = ({ onChange, name, value }) => {
+const Calendar: FC<any> = ({ onChange, value }) => {
   const [startDate, setStartDate] = useState(null);
 
   const DatePickerCustomInput = forwardRef(
