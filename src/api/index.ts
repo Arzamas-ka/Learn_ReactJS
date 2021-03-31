@@ -10,7 +10,12 @@ import {
 } from 'actions/actions';
 import axios from 'axios';
 
-import { API_BASE, API_PAGE } from '../@constants/index';
+import {
+  API_BASE,
+  API_PAGE,
+  API_FILTER,
+  API_SORT_BY,
+} from '../@constants/index';
 
 export const getMovies = () => (dispatch) => {
   dispatch(isLoadingMovies());
@@ -77,7 +82,7 @@ export const editMovie = (values) => (dispatch) => {
 
 export const getFilterMovies = (genre) => (dispatch) => {
   axios
-    .get(`${API_BASE}?filter=${genre}`)
+    .get(`${API_FILTER}${genre}`)
     .then(({ data }) => {
       dispatch(filterMovies(data));
     })
@@ -88,7 +93,7 @@ export const getFilterMovies = (genre) => (dispatch) => {
 
 export const getSortByMovies = (sortItem) => (dispatch) => {
   axios
-    .get(`${API_BASE}?sortBy=${sortItem}`)
+    .get(`${API_SORT_BY}${sortItem}`)
     .then(({ data }) => {
       dispatch(filterMovies(data));
     })

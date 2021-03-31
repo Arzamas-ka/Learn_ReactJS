@@ -18,8 +18,6 @@ const Selection: FC = () => {
   const handleOnItem = useCallback(({ target }) => {
     const sortBy = target.value;
 
-    console.log('sortBy: ', sortBy);
-
     dispatch(getSortByMovies(sortBy));
   }, []);
 

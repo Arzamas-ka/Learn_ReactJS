@@ -4,7 +4,7 @@ import { GlobalStyle } from '../../styles/style';
 import { StyledApp, StyledBackdrop } from './style';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-import usePopup from 'hooks/usePopup';
+import usePopupToggle from 'hooks/usePopupToggle';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -18,9 +18,9 @@ const App: FC = () => {
   const [movieDetails, setMovieDetails]: any = useState(null);
   const [loadingMovieDetails, setLoadingMovieDetails]: any = useState(true);
   const [errorMovieDetails, setErrorMovieDetails]: any = useState(false);
-  const { isShowing: isShowingAdd, toggle: toggleAdd } = usePopup();
-  const { isShowing: isShowingEdit, toggle: toggleEdit } = usePopup();
-  const { isShowing: isShowingDelete, toggle: toggleDelete } = usePopup();
+  const { isShowing: isShowingAdd, toggle: toggleAdd } = usePopupToggle();
+  const { isShowing: isShowingEdit, toggle: toggleEdit } = usePopupToggle();
+  const { isShowing: isShowingDelete, toggle: toggleDelete } = usePopupToggle();
 
   return (
     <StyledApp>

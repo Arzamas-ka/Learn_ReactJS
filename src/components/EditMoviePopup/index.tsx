@@ -40,12 +40,12 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
   const [values, setValues] = useState({ ...initialValues, ...movie });
 
   const handleOnChange = useCallback(
-    ({ target }) => {
-      const value = target.type === 'checkbox' ? target.checked : target.value;
+    ({ target: { type, checked, value, name } }) => {
+      const val = type === 'checkbox' ? checked : value;
 
       setValues({
         ...values,
-        [target.name]: value,
+        [name]: val,
       });
     },
     [values],

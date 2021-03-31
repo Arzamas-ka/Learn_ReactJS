@@ -32,12 +32,12 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const [values, setValues] = useState(initialValues);
 
   const handleOnChange = useCallback(
-    ({ target }) => {
-      const value = target.type === 'checkbox' ? target.checked : target.value;
+    ({ target: { type, checked, value, name } }) => {
+      const val = type === 'checkbox' ? checked : value;
 
       setValues({
         ...values,
-        [target.name]: value,
+        [name]: val,
       });
     },
     [values],
@@ -56,8 +56,6 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const handleOnCalendar = useCallback(
     (data) => {
       const formattedDate = moment(data).format('YYYY-MM-DD');
-
-      console.log('formattedDate: ', formattedDate);
 
       setValues({
         ...values,

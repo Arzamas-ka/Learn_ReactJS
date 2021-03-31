@@ -12,7 +12,7 @@ import {
   StyledDropdownMenuDots,
 } from './style';
 
-import usePopup from 'hooks/usePopup';
+import usePopupToggle from 'hooks/usePopupToggle';
 
 import { deleteMovieId } from 'actions/actions';
 
@@ -23,7 +23,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
   posterId,
 }) => {
   const dispatch = useDispatch();
-  const { isShowing, toggle } = usePopup();
+  const { isShowing, toggle } = usePopupToggle();
 
   const handleOnDelete = useCallback(() => {
     hideDelete();
