@@ -8,6 +8,7 @@ import {
   ADD_MOVIE_UI,
   EDIT_MOVIE_UI,
   FILTER_MOVIES,
+  SORT_BY_MOVIES,
 } from '../actions/types';
 
 export const initialState = {
@@ -74,6 +75,12 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case FILTER_MOVIES:
+      return {
+        ...state,
+        items: payload.data,
+      };
+
+    case SORT_BY_MOVIES:
       return {
         ...state,
         items: payload.data,

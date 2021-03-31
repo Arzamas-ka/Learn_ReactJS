@@ -8,3 +8,4 @@ export const ADD_MOVIE_UI = 'ADD_MOVIE_UI';
 export const EDIT_MOVIE = 'EDIT_MOVIE';
 export const EDIT_MOVIE_UI = 'EDIT_MOVIE_UI';
 export const FILTER_MOVIES = 'FILTER_MOVIES';
+export const SORT_BY_MOVIES = 'SORT_BY_MOVIES';

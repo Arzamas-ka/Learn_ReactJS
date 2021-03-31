@@ -85,3 +85,14 @@ export const getFilterMovies = (genre) => (dispatch) => {
       dispatch(errorMovies());
     });
 };
+
+export const getSortByMovies = (sortItem) => (dispatch) => {
+  axios
+    .get(`${API_BASE}?sortBy=${sortItem}`)
+    .then(({ data }) => {
+      dispatch(filterMovies(data));
+    })
+    .catch((error) => {
+      dispatch(errorMovies());
+    });
+};
