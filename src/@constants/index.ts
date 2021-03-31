@@ -1,15 +1,15 @@
 export const FILTER_DATA = ['all', 'documentary', 'comedy', 'horror', 'crime'];
-export const SELECTION_DATA = ['sort by', 'release date'];
+export const SELECTION_DATA = ['release date', 'rating', 'genre'];
 export const SELECT_OPTIONS = [
   'Crime',
-  'Documentary',
+  'Drama',
   'Horror',
   'Comedy',
   'Action',
-  'Adventure',
-  'Drama',
   'Fantasy',
   'Romance',
+  'Adventure',
+  'Documentary',
   'Science Fiction',
 ];
 

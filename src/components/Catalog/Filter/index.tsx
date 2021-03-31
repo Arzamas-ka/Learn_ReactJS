@@ -13,8 +13,6 @@ const Filter: FC = () => {
   const handleOnItem = useCallback(({ currentTarget }) => {
     const genre = currentTarget.innerHTML;
 
-    console.log('genre: ', genre);
-
     if (genre === 'all') {
       dispatch(getMovies());
     } else {
