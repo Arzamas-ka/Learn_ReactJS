@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent, useCallback } from 'react';
+import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { useFormik } from 'formik';
@@ -44,12 +44,15 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
 
   const validationSchema = Yup.object({
     title: Yup.string().required('Required'),
-    poster_path: Yup.string().url('The field "Movie url" is not a valid URL.'),
+    poster_path: Yup.string()
+      .required('Required')
+      .url('The "Movie url" field is not a valid URL.'),
     overview: Yup.string().required('Required'),
     runtime: Yup.number()
       .required('Required')
-      .typeError('The field "Runtime" must be a Number.')
-      .positive('The field "Runtime" must be a Positive Number.'),
+      .typeError('The "Runtime" field must be a Number.')
+      .positive('The "Runtime" field must be a Positive Number.'),
+    genres: Yup.array().min(1, 'The "Genres" field must have at least 1 items'),
   });
 
   const {
@@ -67,16 +70,6 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
     onSubmit,
     validationSchema,
   });
-
-  // const handleOnSelect = useCallback(
-  //   (selected) => {
-  //     setValues({
-  //       ...values,
-  //       genres: selected,
-  //     });
-  //   },
-  //   [values],
-  // );
 
   const handleOnSelect = (selected) => {
     setFieldValue('genres', selected);
@@ -140,6 +133,11 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
             value={values.genres}
             selected={values.genres}
           />
+          {
+            <StyledAddMoviePopupError>
+              {touched.genres && errors.genres ? errors.genres : ''}
+            </StyledAddMoviePopupError>
+          }
           <Input
             label="Overview"
             name="overview"
@@ -177,7 +175,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
             type="submit"
             onClick={null}
             text="Submit"
-            // disabled={!isValid || isSubmitting}
+            disabled={!isValid || isSubmitting}
           />
         </StyledButtonContainer>
       </form>
