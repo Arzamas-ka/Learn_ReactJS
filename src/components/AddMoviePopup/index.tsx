@@ -22,13 +22,17 @@ import Select from 'components/Select';
 
 import { initialValues, validationSchema } from './config';
 
-const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
+const AddMoviePopup: FC<AppMoviePopup> = ({
+  hideAdd,
+  setIsActiveBackdrop,
+  hideCongratulations,
+}) => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
     dispatch(addMovie(values));
     hideAdd();
-    setIsActiveBackdrop(false);
+    hideCongratulations();
   };
 
   const {
