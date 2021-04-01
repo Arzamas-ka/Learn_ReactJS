@@ -53,3 +53,11 @@ export const StyledCloseIcon = styled(AiOutlineClose)`
     color: ${colors.coral};
   }
 `;
+
+export const StyledAddMoviePopupError = styled.div`
+  height: 10px;
+  padding-top: 3px;
+
+  font-size: 11px;
+  color: ${colors.coral};
+`;

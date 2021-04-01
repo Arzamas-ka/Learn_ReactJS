@@ -47,6 +47,8 @@ const Posters: FC<PostersProps> = ({
   }, [currentPage]);
 
   const posters = movies.items.map((poster) => {
+    if (!poster.genres) poster.genres = [];
+
     const genre = poster.genres.map((genre) => (
       <span key={shortid.generate()}> {genre}, </span>
     ));

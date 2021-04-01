@@ -63,6 +63,5 @@ export const StyledLabel = styled.label`
   margin: 15px 0;
 
   color: ${colors.coral};
-  font-size: 14px;
   text-transform: uppercase;
 `;
