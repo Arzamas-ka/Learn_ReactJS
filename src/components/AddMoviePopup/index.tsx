@@ -43,10 +43,11 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   };
 
   const validationSchema = Yup.object({
-    title: Yup.string(),
+    title: Yup.string().required('Required'),
     poster_path: Yup.string().url('The field "Movie url" is not a valid URL.'),
-    overview: Yup.string(),
+    overview: Yup.string().required('Required'),
     runtime: Yup.number()
+      .required('Required')
       .typeError('The field "Runtime" must be a Number.')
       .positive('The field "Runtime" must be a Positive Number.'),
   });
@@ -176,7 +177,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
             type="submit"
             onClick={null}
             text="Submit"
-            disabled={!isValid || isSubmitting}
+            // disabled={!isValid || isSubmitting}
           />
         </StyledButtonContainer>
       </form>

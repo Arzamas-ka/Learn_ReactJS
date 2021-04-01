@@ -59,7 +59,7 @@ export const addMovie = (values) => (dispatch) => {
 
   axios
     .post(API_BASE, body)
-    .then(dispatch(addMovieUI(body)))
+    .then(({ data: { id } }) => dispatch(addMovieUI({ ...body, id })))
     .catch((error) => {
       dispatch(errorMovies());
     });
