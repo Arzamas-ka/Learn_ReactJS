@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 
 import { AppMoviePopup } from './models';
 import {
@@ -21,15 +20,7 @@ import Button from 'components/Button';
 import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
-const initialValues = {
-  title: '',
-  release_date: '',
-  poster_path:
-    'https://image.tmdb.org/t/p/w500/coss7RgL0NH6g4fC2s5atvf3dFO.jpg',
-  genres: [],
-  overview: '',
-  runtime: '',
-};
+import { initialValues, validationSchema } from './config';
 
 const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const dispatch = useDispatch();
@@ -41,19 +32,6 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
 
     console.log('values: ', values);
   };
-
-  const validationSchema = Yup.object({
-    title: Yup.string().required('Required'),
-    poster_path: Yup.string()
-      .required('Required')
-      .url('The "Movie url" field is not a valid URL.'),
-    overview: Yup.string().required('Required'),
-    runtime: Yup.number()
-      .required('Required')
-      .typeError('The "Runtime" field must be a Number.')
-      .positive('The "Runtime" field must be a Positive Number.'),
-    genres: Yup.array().min(1, 'The "Genres" field must have at least 1 items'),
-  });
 
   const {
     handleSubmit,
