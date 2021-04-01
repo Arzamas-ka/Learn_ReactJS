@@ -1,6 +1,7 @@
-import React, { FC, useState, FormEvent, useCallback } from 'react';
-import moment from 'moment';
+import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+import { useFormik } from 'formik';
 
 import { EditMoviePopupProps } from './models';
 import {
@@ -9,6 +10,7 @@ import {
   StyledCloseIcon,
   StyledEditMoviePopupContainer,
   StyledEditMoviePopupTitle,
+  StyledEditMoviePopupError,
 } from './style';
 
 import { editMovie } from 'api';
@@ -18,15 +20,7 @@ import Button from 'components/Button';
 import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
-const initialValues = {
-  id: '',
-  title: '',
-  release_date: '',
-  poster_path: '',
-  genres: [],
-  overview: '',
-  runtime: '',
-};
+import { initialValue, validationSchema } from './config';
 
 const EditMoviePopup: FC<EditMoviePopupProps> = ({
   hideEdit,
@@ -37,52 +31,39 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
     items.find((movie) => movie.id === posterId),
   );
   const dispatch = useDispatch();
-  const [values, setValues] = useState({ ...initialValues, ...movie });
+  const initialValues = { ...initialValue, ...movie };
 
-  const handleOnChange = useCallback(
-    ({ target: { type, checked, value, name } }) => {
-      const val = type === 'checkbox' ? checked : value;
+  const onSubmit = (values) => {
+    dispatch(editMovie(values));
+    hideEdit();
+    setIsActiveBackdrop(false);
+  };
 
-      setValues({
-        ...values,
-        [name]: val,
-      });
-    },
-    [values],
-  );
+  const {
+    handleSubmit,
+    handleChange,
+    values,
+    errors,
+    touched,
+    resetForm,
+    isValid,
+    isSubmitting,
+    setFieldValue,
+  } = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  });
 
-  const handleOnSelect = useCallback(
-    (selected) => {
-      setValues({
-        ...values,
-        genres: selected,
-      });
-    },
-    [values],
-  );
+  const handleOnSelect = (selected) => {
+    setFieldValue('genres', selected);
+  };
 
-  const handleOnCalendar = useCallback(
-    (data) => {
-      const formattedDate = moment(data).format('YYYY-MM-DD');
+  const handleOnCalendar = (data) => {
+    const formattedDate = moment(data).format('YYYY-MM-DD');
 
-      setValues({
-        ...values,
-        release_date: formattedDate,
-      });
-    },
-    [values],
-  );
-
-  const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-
-      dispatch(editMovie(values));
-      hideEdit();
-      setIsActiveBackdrop(false);
-    },
-    [values],
-  );
+    setFieldValue('release_date', formattedDate);
+  };
 
   return (
     <StyledEditMoviePopupWrapper>
@@ -98,22 +79,32 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
             label="Movie id"
             name="id"
             type="text"
-            placeholder="313369"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.id}
             autoComplete="off"
+            disabled
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.id && errors.id ? errors.id : ''}
+            </StyledEditMoviePopupError>
+          }
           <Input
             label="Title"
             name="title"
             type="text"
-            placeholder="Moana"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.title}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.title && errors.title ? errors.title : ''}
+            </StyledEditMoviePopupError>
+          }
           <Calendar
             name="release_date"
+            type="text"
             onChange={handleOnCalendar}
             value={values['release_date']}
           />
@@ -121,42 +112,61 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
             label="Movie url"
             name="poster_path"
             type="text"
-            placeholder="www.moana.com"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values['poster_path']}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched['poster_path'] && errors['poster_path']
+                ? errors['poster_path']
+                : ''}
+            </StyledEditMoviePopupError>
+          }
           <Select
             name="genres"
             onChange={handleOnSelect}
             value={values.genres}
             selected={values.genres}
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.genres && errors.genres ? errors.genres : ''}
+            </StyledEditMoviePopupError>
+          }
           <Input
             label="Overview"
             name="overview"
             type="text"
-            placeholder="Overview here"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.overview}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.overview && errors.overview ? errors.overview : ''}
+            </StyledEditMoviePopupError>
+          }
           <Input
             label="Runtime"
             name="runtime"
             type="text"
-            placeholder="Runtime here"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.runtime}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.runtime && errors.runtime ? errors.runtime : ''}
+            </StyledEditMoviePopupError>
+          }
         </StyledEditMoviePopupContainer>
 
         <StyledButtonContainer>
           <Button
             reset
             type="reset"
-            onClick={() => setValues(initialValues)}
+            onClick={() => resetForm()}
             text="Reset"
           ></Button>
           <Button submit type="submit" onClick={null} text="Save" />

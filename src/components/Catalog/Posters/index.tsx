@@ -39,11 +39,15 @@ const Posters: FC<PostersProps> = ({
   }, [currentPage]);
 
   useEffect(() => {
-    window.scrollTo({
-      left: 0,
-      top: document.body.scrollHeight,
-      behavior: 'smooth',
-    });
+    if (currentPage === undefined) {
+      return;
+    } else {
+      window.scrollTo({
+        left: 0,
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
   }, [currentPage]);
 
   const posters = movies.items.map((poster) => {

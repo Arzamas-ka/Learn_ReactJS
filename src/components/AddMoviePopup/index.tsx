@@ -29,8 +29,6 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
     dispatch(addMovie(values));
     hideAdd();
     setIsActiveBackdrop(false);
-
-    console.log('values: ', values);
   };
 
   const {
