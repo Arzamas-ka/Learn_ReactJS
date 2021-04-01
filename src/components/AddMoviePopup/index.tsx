@@ -23,10 +23,10 @@ import Select from 'components/Select';
 
 const initialValues = {
   title: '',
-  // release_date: '',
+  release_date: '',
   poster_path:
     'https://image.tmdb.org/t/p/w500/coss7RgL0NH6g4fC2s5atvf3dFO.jpg',
-  // genres: [],
+  genres: [],
   overview: '',
   runtime: '',
 };
@@ -35,11 +35,11 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    console.log('запрос: ');
-
     dispatch(addMovie(values));
     hideAdd();
     setIsActiveBackdrop(false);
+
+    console.log('values: ', values);
   };
 
   const validationSchema = Yup.object({
@@ -61,6 +61,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
     resetForm,
     isValid,
     isSubmitting,
+    setFieldValue,
   } = useFormik({
     initialValues,
     onSubmit,
@@ -77,17 +78,15 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
   //   [values],
   // );
 
-  // const handleOnCalendar = useCallback(
-  //   (data) => {
-  //     const formattedDate = moment(data).format('YYYY-MM-DD');
+  const handleOnSelect = (selected) => {
+    setFieldValue('genres', selected);
+  };
 
-  //     setValues({
-  //       ...values,
-  //       release_date: formattedDate,
-  //     });
-  //   },
-  //   [values],
-  // );
+  const handleOnCalendar = (data) => {
+    const formattedDate = moment(data).format('YYYY-MM-DD');
+
+    setFieldValue('release_date', formattedDate);
+  };
 
   return (
     <StyledAddMoviePopupWrapper>
@@ -113,11 +112,12 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
               {touched.title && errors.title ? errors.title : ''}
             </StyledAddMoviePopupError>
           }
-          {/* <Calendar
+          <Calendar
             name="release_date"
-            onChange={handleOnCalendar}
+            type="text"
             value={values['release_date']}
-          />*/}
+            onChange={handleOnCalendar}
+          />
           <Input
             label="Movie url"
             name="poster_path"
@@ -134,12 +134,12 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
                 : ''}
             </StyledAddMoviePopupError>
           }
-          {/* <Select
+          <Select
+            name="genres"
             onChange={handleOnSelect}
             value={values.genres}
-            name="genres"
             selected={values.genres}
-          /> */}
+          />
           <Input
             label="Overview"
             name="overview"
