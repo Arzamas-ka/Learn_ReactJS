@@ -42,8 +42,6 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
     errors,
     touched,
     resetForm,
-    isValid,
-    isSubmitting,
     setFieldValue,
   } = useFormik({
     initialValues,
@@ -150,13 +148,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
 
         <StyledButtonContainer>
           <Button reset type="reset" onClick={() => resetForm()} text="Reset" />
-          <Button
-            submit
-            type="submit"
-            onClick={null}
-            text="Submit"
-            disabled={!isValid || isSubmitting}
-          />
+          <Button submit type="submit" onClick={null} text="Submit" />
         </StyledButtonContainer>
       </form>
     </StyledAddMoviePopupWrapper>

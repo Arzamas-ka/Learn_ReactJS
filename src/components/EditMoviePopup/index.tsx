@@ -46,8 +46,6 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
     errors,
     touched,
     resetForm,
-    isValid,
-    isSubmitting,
     setFieldValue,
   } = useFormik({
     initialValues,
