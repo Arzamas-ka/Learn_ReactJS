@@ -1,22 +1,22 @@
 import React, { FC, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 
 import { StyledFilterList, StyledFilterItem } from './style';
 
-import { FILTER_DATA } from '@constants';
-
-import { getFilterMovies, getMovies } from 'api';
+import { FILTER_DATA, API_BASE } from '@constants';
+import { getFilterMovies } from 'api';
+import { useApiRequest } from 'hooks/useApiRequest';
+import { fetchMovies } from 'actions/actions';
 
 const Filter: FC = () => {
-  const dispatch = useDispatch();
+  const { fetchData: getMovies } = useApiRequest('get', API_BASE, fetchMovies);
 
   const handleOnItem = useCallback(({ currentTarget }) => {
     const genre = currentTarget.innerHTML;
 
     if (genre === 'all') {
-      dispatch(getMovies());
+      getMovies();
     } else {
-      dispatch(getFilterMovies(genre));
+      // dispatch(getFilterMovies(genre));
     }
   }, []);
 

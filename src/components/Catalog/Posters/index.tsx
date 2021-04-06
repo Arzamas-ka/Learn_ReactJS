@@ -1,6 +1,6 @@
 import React, { FC, useEffect, memo, useCallback } from 'react';
 import shortid from 'shortid';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { PostersProps } from './models';
 import {
@@ -14,7 +14,9 @@ import Button from 'components/Button';
 import { Spinner } from 'components/Spinner';
 import PosterItem from './PosterItem';
 
-import { getMovies, getMoreMovies } from 'api';
+import { useApiRequest } from 'hooks/useApiRequest';
+import { API_BASE, API_PAGE } from '@constants';
+import { fetchMovies, loadMoreMovies } from 'actions/actions';
 
 const Posters: FC<PostersProps> = ({
   setMovieDetails,
@@ -24,22 +26,27 @@ const Posters: FC<PostersProps> = ({
   hideDelete,
   setIsActiveBackdrop,
 }) => {
-  const dispatch = useDispatch();
   const movies = useSelector(({ movies }) => movies);
   const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
   const error = useSelector(({ movies: { error } }) => error);
   const loading = useSelector(({ movies: { loading } }) => loading);
+  const { fetchData: getMovies } = useApiRequest('get', API_BASE, fetchMovies);
+  const { fetchData: getMoreMovies } = useApiRequest(
+    'get',
+    API_PAGE,
+    loadMoreMovies,
+  );
 
   useEffect(() => {
-    dispatch(getMovies());
+    getMovies();
   }, []);
 
   const handleLoadMoreMovies = useCallback(() => {
-    dispatch(getMoreMovies(currentPage));
+    getMoreMovies(currentPage);
   }, [currentPage]);
 
   useEffect(() => {
-    if (currentPage === undefined) {
+    if (currentPage === 1) {
       return;
     } else {
       window.scrollTo({

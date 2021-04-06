@@ -21,12 +21,15 @@ export const initialState = {
 };
 
 export const movies = (state = initialState, { type, payload }) => {
+  console.log('payload: ', payload);
+  console.log('payload.offset: ', payload?.offset);
+
   switch (type) {
     case FETCH_MOVIES:
       return {
         ...state,
         items: payload.data,
-        currentPage: payload.offset,
+        currentPage: payload.offset + 1,
         totalPages: payload.totalAmount / payload.limit - payload.offset,
         error: null,
         loading: false,
@@ -36,7 +39,7 @@ export const movies = (state = initialState, { type, payload }) => {
       return {
         ...state,
         items: [...state.items, ...payload.data],
-        currentPage: payload.offset,
+        currentPage: payload.offset + 1,
         totalPages: payload.totalAmount / payload.limit - payload.offset,
         error: null,
         loading: false,
