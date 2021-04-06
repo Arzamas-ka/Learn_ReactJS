@@ -9,6 +9,9 @@ export const useApiRequest = (method, endpoint, action) => {
 
   const fetchData = useCallback(
     (params = '') => {
+      console.log('params: ', params);
+      console.log('URL:', `${endpoint}${params}`);
+
       dispatch(isLoadingMovies());
       axios[method](`${endpoint}${params}`)
         .then(({ data }) => {

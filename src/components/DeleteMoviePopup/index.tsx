@@ -1,5 +1,5 @@
 import React, { FC, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { DeleteMoviePopupProps } from './models';
 import {
@@ -10,19 +10,25 @@ import {
   StyledDeleteMoviePopupTitle,
 } from './style';
 
-import { deleteMovieFetch } from 'api';
-
 import Button from 'components/Button';
+
+import { API_DELETE } from '@constants';
+import { useApiRequest } from 'hooks/useApiRequest';
+import { deleteMovie } from 'actions/actions';
 
 const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
   hideDelete,
   setIsActiveBackdrop,
 }) => {
-  const dispatch = useDispatch();
   const posterId = useSelector(({ movies: { posterId } }) => posterId);
+  const { fetchData: deleteMovieFetch } = useApiRequest(
+    'delete',
+    API_DELETE,
+    deleteMovie,
+  );
 
   const handleConfirm = useCallback(() => {
-    dispatch(deleteMovieFetch(posterId));
+    deleteMovieFetch(posterId);
     hideDelete();
     setIsActiveBackdrop(false);
   }, []);

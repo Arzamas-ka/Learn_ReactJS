@@ -43,16 +43,16 @@ import {
 //     });
 // };
 
-export const deleteMovieFetch = (id) => (dispatch) => {
-  axios
-    .delete(`${API_BASE}/${id}`)
-    .then(({ data }) => {
-      dispatch(deleteMovie({ data, id }));
-    })
-    .catch((error) => {
-      dispatch(errorMovies());
-    });
-};
+// export const deleteMovieFetch = (id) => (dispatch) => {
+//   axios
+//     .delete(`${API_BASE}/${id}`)
+//     .then(({ data }) => {
+//       dispatch(deleteMovie({ data, id }));
+//     })
+//     .catch((error) => {
+//       dispatch(errorMovies());
+//     });
+// };
 
 export const addMovie = (values) => (dispatch) => {
   const body = { ...values, runtime: parseInt(values.runtime) };

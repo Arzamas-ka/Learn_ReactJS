@@ -21,9 +21,6 @@ export const initialState = {
 };
 
 export const movies = (state = initialState, { type, payload }) => {
-  console.log('payload: ', payload);
-  console.log('payload.offset: ', payload?.offset);
-
   switch (type) {
     case FETCH_MOVIES:
       return {
@@ -69,12 +66,12 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case DELETE_MOVIE:
+      console.log('payload: ', payload);
+
       return {
         ...state,
-        items: [
-          ...state.items.filter((item) => item.id !== payload.id),
-          ...payload.data,
-        ],
+        items: [...state.items.filter((item) => item.id !== state.posterId)],
+        loading: false,
       };
 
     case FILTER_MOVIES:
