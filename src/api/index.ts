@@ -17,31 +17,31 @@ import {
   API_SORT_BY,
 } from '../@constants/index';
 
-export const getMovies = () => (dispatch) => {
-  dispatch(isLoadingMovies());
+// export const getMovies = () => (dispatch) => {
+//   dispatch(isLoadingMovies());
 
-  axios
-    .get(API_BASE)
-    .then(({ data }) => {
-      dispatch(fetchMovies(data));
-    })
-    .catch((error) => {
-      dispatch(errorMovies());
-    });
-};
+//   axios
+//     .get(API_BASE)
+//     .then(({ data }) => {
+//       dispatch(fetchMovies(data));
+//     })
+//     .catch((error) => {
+//       dispatch(errorMovies());
+//     });
+// };
 
-export const getMoreMovies = (currentPage) => (dispatch) => {
-  dispatch(isLoadingMovies());
+// export const getMoreMovies = (currentPage) => (dispatch) => {
+//   dispatch(isLoadingMovies());
 
-  axios
-    .get(`${API_PAGE}${currentPage + 1}`)
-    .then(({ data }) => {
-      dispatch(loadMoreMovies(data));
-    })
-    .catch((error) => {
-      dispatch(errorMovies());
-    });
-};
+//   axios
+//     .get(`${API_PAGE}${currentPage + 1}`)
+//     .then(({ data }) => {
+//       dispatch(loadMoreMovies(data));
+//     })
+//     .catch((error) => {
+//       dispatch(errorMovies());
+//     });
+// };
 
 export const deleteMovieFetch = (id) => (dispatch) => {
   axios
