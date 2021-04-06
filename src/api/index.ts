@@ -54,16 +54,16 @@ import {
 //     });
 // };
 
-export const addMovie = (values) => (dispatch) => {
-  const body = { ...values, runtime: parseInt(values.runtime) };
+// export const addMovie = (values) => (dispatch) => {
+//   const body = { ...values, runtime: parseInt(values.runtime) };
 
-  axios
-    .post(API_BASE, body)
-    .then(({ data: { id } }) => dispatch(addMovieUI({ ...body, id })))
-    .catch((error) => {
-      dispatch(errorMovies());
-    });
-};
+//   axios
+//     .post(API_BASE, body)
+//     .then(({ data: { id } }) => dispatch(addMovieUI({ ...body, id })))
+//     .catch((error) => {
+//       dispatch(errorMovies());
+//     });
+// };
 
 export const editMovie = (values) => (dispatch) => {
   const body = {

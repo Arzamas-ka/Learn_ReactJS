@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import { useFormik } from 'formik';
 
@@ -13,8 +12,6 @@ import {
   StyledAddMoviePopupError,
 } from './style';
 
-import { addMovie } from 'api';
-
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
@@ -22,15 +19,20 @@ import Select from 'components/Select';
 
 import { initialValues, validationSchema } from './config';
 
+import { API_BASE } from '@constants';
+import { useApiRequest } from 'hooks/useApiRequest';
+import { addMovieUI } from 'actions/actions';
+
 const AddMoviePopup: FC<AppMoviePopup> = ({
   hideAdd,
   setIsActiveBackdrop,
   hideCongratulations,
 }) => {
-  const dispatch = useDispatch();
+  const { fetchData: addMovie } = useApiRequest('post', API_BASE, addMovieUI);
 
   const onSubmit = (values) => {
-    dispatch(addMovie(values));
+    const body = { ...values, runtime: parseInt(values.runtime) };
+    addMovie(undefined, body);
     hideAdd();
     hideCongratulations();
   };

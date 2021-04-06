@@ -51,7 +51,8 @@ export const movies = (state = initialState, { type, payload }) => {
     case ADD_MOVIE_UI:
       return {
         ...state,
-        items: [payload, ...state.items],
+        items: [{ id: state.posterId, ...payload }, ...state.items],
+        loading: false,
       };
 
     case EDIT_MOVIE_UI:
@@ -66,8 +67,6 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case DELETE_MOVIE:
-      console.log('payload: ', payload);
-
       return {
         ...state,
         items: [...state.items.filter((item) => item.id !== state.posterId)],
