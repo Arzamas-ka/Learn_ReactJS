@@ -1,6 +1,4 @@
 export const FETCH_MOVIES = 'FETCH_MOVIES';
-export const ERROR_MOVIES = 'ERROR_MOVIES';
-export const LOADING_MOVIES = 'LOADING_MOVIES';
 export const FETCH_LOAD_MORE_MOVIES = 'FETCH_LOAD_MORE_MOVIES';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const POSTER_ID = 'POSTER_ID';

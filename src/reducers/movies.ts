@@ -1,7 +1,5 @@
 import {
   FETCH_MOVIES,
-  ERROR_MOVIES,
-  LOADING_MOVIES,
   FETCH_LOAD_MORE_MOVIES,
   POSTER_ID,
   DELETE_MOVIE,
@@ -16,7 +14,7 @@ export const initialState = {
   currentPage: 0,
   totalPages: 0,
   error: null,
-  loading: false,
+  loading: true,
   posterId: null,
 };
 
@@ -80,22 +78,10 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case SORT_BY_MOVIES:
-      console.log('sort: ', payload.data)
+      console.log('sort: ', payload.data);
       return {
         ...state,
         items: payload.data,
-      };
-
-    case ERROR_MOVIES:
-      return {
-        ...state,
-        error: true,
-      };
-
-    case LOADING_MOVIES:
-      return {
-        ...state,
-        loading: true,
       };
 
     default:
