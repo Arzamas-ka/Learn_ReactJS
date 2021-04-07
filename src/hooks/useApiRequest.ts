@@ -12,7 +12,7 @@ export const useApiRequest = (method, endpoint, action) => {
       console.log('params: ', params);
       console.log('URL:', `${endpoint}${params}`);
 
-      dispatch(isLoadingMovies());
+      // dispatch(isLoadingMovies());
       axios[method](`${endpoint}${params}`, body)
         .then(({ data }) => {
           dispatch(action(data));

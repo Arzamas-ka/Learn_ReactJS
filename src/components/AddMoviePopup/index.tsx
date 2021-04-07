@@ -21,18 +21,22 @@ import { initialValues, validationSchema } from './config';
 
 import { API_BASE } from '@constants';
 import { useApiRequest } from 'hooks/useApiRequest';
-import { addMovieUI } from 'actions/actions';
+import { addMovie } from 'actions/actions';
 
 const AddMoviePopup: FC<AppMoviePopup> = ({
   hideAdd,
   setIsActiveBackdrop,
   hideCongratulations,
 }) => {
-  const { fetchData: addMovie } = useApiRequest('post', API_BASE, addMovieUI);
+  const { fetchData: fetchAddMovie } = useApiRequest(
+    'post',
+    API_BASE,
+    addMovie,
+  );
 
   const onSubmit = (values) => {
     const body = { ...values, runtime: parseInt(values.runtime) };
-    addMovie(undefined, body);
+    fetchAddMovie(undefined, body);
     hideAdd();
     hideCongratulations();
   };

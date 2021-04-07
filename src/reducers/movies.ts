@@ -5,8 +5,8 @@ import {
   FETCH_LOAD_MORE_MOVIES,
   POSTER_ID,
   DELETE_MOVIE,
-  ADD_MOVIE_UI,
-  EDIT_MOVIE_UI,
+  ADD_MOVIE,
+  EDIT_MOVIE,
   FILTER_MOVIES,
   SORT_BY_MOVIES,
 } from '../actions/types';
@@ -48,14 +48,14 @@ export const movies = (state = initialState, { type, payload }) => {
         posterId: payload,
       };
 
-    case ADD_MOVIE_UI:
+    case ADD_MOVIE:
       return {
         ...state,
         items: [{ id: state.posterId, ...payload }, ...state.items],
         loading: false,
       };
 
-    case EDIT_MOVIE_UI:
+    case EDIT_MOVIE:
       let updatedMovie = state.items.find((movie) => {
         return movie.id === payload.id;
       });
@@ -80,6 +80,7 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case SORT_BY_MOVIES:
+      console.log('sort: ', payload.data)
       return {
         ...state,
         items: payload.data,

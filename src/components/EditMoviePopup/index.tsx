@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
 import { useFormik } from 'formik';
 
@@ -13,14 +13,16 @@ import {
   StyledEditMoviePopupError,
 } from './style';
 
-import { editMovie } from 'api';
-
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
 import { initialValue, validationSchema } from './config';
+
+import { API_BASE } from '@constants';
+import { useApiRequest } from 'hooks/useApiRequest';
+import { editMovie } from 'actions/actions';
 
 const EditMoviePopup: FC<EditMoviePopupProps> = ({
   hideEdit,
@@ -30,11 +32,20 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
   const movie = useSelector(({ movies: { items } }) =>
     items.find((movie) => movie.id === posterId),
   );
-  const dispatch = useDispatch();
   const initialValues = { ...initialValue, ...movie };
+  const { fetchData: fetchEditMovie } = useApiRequest(
+    'put',
+    API_BASE,
+    editMovie,
+  );
 
   const onSubmit = (values) => {
-    dispatch(editMovie(values));
+    const body = {
+      ...values,
+      runtime: parseInt(values.runtime),
+      id: parseInt(values.id),
+    };
+    fetchEditMovie(undefined, body);
     hideEdit();
     setIsActiveBackdrop(false);
   };

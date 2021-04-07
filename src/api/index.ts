@@ -4,8 +4,8 @@ import {
   isLoadingMovies,
   errorMovies,
   deleteMovie,
-  editMovieUI,
-  addMovieUI,
+  // editMovieUI,
+  // addMovieUI,
   filterMovies,
 } from 'actions/actions';
 import axios from 'axios';
@@ -65,39 +65,39 @@ import {
 //     });
 // };
 
-export const editMovie = (values) => (dispatch) => {
-  const body = {
-    ...values,
-    runtime: parseInt(values.runtime),
-    id: parseInt(values.id),
-  };
+// export const editMovie = (values) => (dispatch) => {
+//   const body = {
+//     ...values,
+//     runtime: parseInt(values.runtime),
+//     id: parseInt(values.id),
+//   };
 
-  axios
-    .put(API_BASE, body)
-    .then(dispatch(editMovieUI(body)))
-    .catch((error) => {
-      dispatch(errorMovies());
-    });
-};
+//   axios
+//     .put(API_BASE, body)
+//     .then(dispatch(editMovieUI(body)))
+//     .catch((error) => {
+//       dispatch(errorMovies());
+//     });
+// };
 
-export const getFilterMovies = (genre) => (dispatch) => {
-  axios
-    .get(`${API_FILTER}${genre}`)
-    .then(({ data }) => {
-      dispatch(filterMovies(data));
-    })
-    .catch((error) => {
-      dispatch(errorMovies());
-    });
-};
+// export const getFilterMovies = (genre) => (dispatch) => {
+//   axios
+//     .get(`${API_FILTER}${genre}`)
+//     .then(({ data }) => {
+//       dispatch(filterMovies(data));
+//     })
+//     .catch((error) => {
+//       dispatch(errorMovies());
+//     });
+// };
 
-export const getSortByMovies = (sortItem) => (dispatch) => {
-  axios
-    .get(`${API_SORT_BY}${sortItem}`)
-    .then(({ data }) => {
-      dispatch(filterMovies(data));
-    })
-    .catch((error) => {
-      dispatch(errorMovies());
-    });
-};
+// export const getSortByMovies = (sortItem) => (dispatch) => {
+//   axios
+//     .get(`${API_SORT_BY}${sortItem}`)
+//     .then(({ data }) => {
+//       dispatch(filterMovies(data));
+//     })
+//     .catch((error) => {
+//       dispatch(errorMovies());
+//     });
+// };
