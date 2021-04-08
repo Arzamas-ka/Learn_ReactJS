@@ -16,7 +16,7 @@ import PosterItem from './PosterItem';
 
 import { useApiRequest } from 'hooks/useApiRequest';
 import { API_BASE, API_PAGE } from '@constants';
-import { fetchMovies, loadMoreMovies } from 'actions/actions';
+import { fetchMovies } from 'actions/actions';
 
 const Posters: FC<PostersProps> = ({
   setMovieDetails,
@@ -34,7 +34,7 @@ const Posters: FC<PostersProps> = ({
   const { fetchData: getMoreMovies } = useApiRequest(
     'get',
     API_PAGE,
-    loadMoreMovies,
+    fetchMovies,
   );
 
   useEffect(() => {

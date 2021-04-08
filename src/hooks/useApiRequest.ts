@@ -7,6 +7,7 @@ export const useApiRequest = (method, endpoint, action) => {
 
   const fetchData = useCallback(
     (params = '', body = {}) => {
+      console.log('endpoint: ', `${endpoint}${params}`)
       axios[method](`${endpoint}${params}`, body)
         .then(({ data }) => {
           dispatch(action(data));

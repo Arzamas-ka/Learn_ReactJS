@@ -4,14 +4,14 @@ import { StyledFilterList, StyledFilterItem } from './style';
 
 import { FILTER_DATA, API_BASE, API_FILTER } from '@constants';
 import { useApiRequest } from 'hooks/useApiRequest';
-import { fetchMovies } from 'actions/actions';
+import { fetchMovies, filterMovies } from 'actions/actions';
 
 const Filter: FC = () => {
   const { fetchData: getMovies } = useApiRequest('get', API_BASE, fetchMovies);
-  const { fetchData: filterMovies } = useApiRequest(
+  const { fetchData: filteredMovies } = useApiRequest(
     'get',
     API_FILTER,
-    fetchMovies,
+    filterMovies,
   );
 
   const handleOnItem = useCallback(({ currentTarget }) => {
@@ -20,7 +20,7 @@ const Filter: FC = () => {
     if (genre === 'all') {
       getMovies();
     } else {
-      filterMovies(genre);
+      filteredMovies(genre);
     }
   }, []);
 

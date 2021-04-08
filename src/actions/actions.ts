@@ -1,20 +1,14 @@
 import {
   FETCH_MOVIES,
-  FETCH_LOAD_MORE_MOVIES,
   DELETE_MOVIE,
   POSTER_ID,
   ADD_MOVIE,
   EDIT_MOVIE,
   FILTER_MOVIES,
-  SORT_BY_MOVIES,
 } from '../actions/types';
 
 export const fetchMovies = (payload) => {
   return { type: FETCH_MOVIES, payload };
-};
-
-export const loadMoreMovies = (payload) => {
-  return { type: FETCH_LOAD_MORE_MOVIES, payload };
 };
 
 export const deleteMovie = (payload) => {
@@ -35,8 +29,4 @@ export const editMovie = (payload) => {
 
 export const filterMovies = (payload) => {
   return { type: FILTER_MOVIES, payload };
-};
-
-export const sortByMovies = (payload) => {
-  return { type: SORT_BY_MOVIES, payload };
 };

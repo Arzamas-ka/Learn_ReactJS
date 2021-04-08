@@ -1,12 +1,10 @@
 import {
   FETCH_MOVIES,
-  FETCH_LOAD_MORE_MOVIES,
   POSTER_ID,
   DELETE_MOVIE,
   ADD_MOVIE,
   EDIT_MOVIE,
   FILTER_MOVIES,
-  SORT_BY_MOVIES,
 } from '../actions/types';
 
 export const initialState = {
@@ -21,16 +19,6 @@ export const initialState = {
 export const movies = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_MOVIES:
-      return {
-        ...state,
-        items: payload.data,
-        currentPage: payload.offset + 1,
-        totalPages: payload.totalAmount / payload.limit - payload.offset,
-        error: null,
-        loading: false,
-      };
-
-    case FETCH_LOAD_MORE_MOVIES:
       return {
         ...state,
         items: [...state.items, ...payload.data],
@@ -74,14 +62,7 @@ export const movies = (state = initialState, { type, payload }) => {
     case FILTER_MOVIES:
       return {
         ...state,
-        items: payload.data,
-      };
-
-    case SORT_BY_MOVIES:
-      console.log('sort: ', payload.data);
-      return {
-        ...state,
-        items: payload.data,
+        items: payload.data
       };
 
     default:
