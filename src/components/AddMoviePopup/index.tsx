@@ -61,7 +61,6 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
 
   const handleOnCalendar = (data) => {
     const formattedDate = moment(data).format('YYYY-MM-DD');
-
     setFieldValue('release_date', formattedDate);
   };
 
