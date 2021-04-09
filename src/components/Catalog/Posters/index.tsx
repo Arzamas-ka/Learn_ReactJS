@@ -15,8 +15,8 @@ import { Spinner } from 'components/Spinner';
 import PosterItem from './PosterItem';
 
 import { useApiRequest } from 'hooks/useApiRequest';
-import { API_BASE, API_PAGE } from '@constants';
-import { fetchMovies } from 'actions/actions';
+import { API_BASE, API_FILTER, API_PAGE } from '@constants';
+import { fetchMovies, filterMovies } from 'actions/actions';
 
 const Posters: FC<PostersProps> = ({
   setMovieDetails,
@@ -26,7 +26,8 @@ const Posters: FC<PostersProps> = ({
   hideDelete,
   setIsActiveBackdrop,
 }) => {
-  const movies = useSelector(({ movies }) => movies);
+  const filterItem = useSelector(({ movies: { filterItem } }) => filterItem);
+  const movies = useSelector(({ movies: { items } }) => items);
   const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
   const error = useSelector(({ movies: { error } }) => error);
   const loading = useSelector(({ movies: { loading } }) => loading);
@@ -36,14 +37,23 @@ const Posters: FC<PostersProps> = ({
     API_PAGE,
     fetchMovies,
   );
+  const { fetchData: filteredMovies } = useApiRequest(
+    'get',
+    `${API_FILTER}${filterItem}`,
+    filterMovies,
+  );
 
   useEffect(() => {
     getMovies();
   }, []);
 
   const handleLoadMoreMovies = useCallback(() => {
-    getMoreMovies(currentPage);
-  }, [currentPage]);
+    if (filterItem !== 'all') {
+      filteredMovies(`&offset=${currentPage}`);
+    } else {
+      getMoreMovies(currentPage);
+    }
+  }, [currentPage, filterItem]);
 
   useEffect(() => {
     if (currentPage === 1) {
@@ -57,7 +67,7 @@ const Posters: FC<PostersProps> = ({
     }
   }, [currentPage]);
 
-  const posters = movies.items.map((poster) => {
+  const posters = movies.map((poster) => {
     if (!poster.genres) poster.genres = [];
 
     const genre = poster.genres.map((genre) => (
@@ -87,7 +97,7 @@ const Posters: FC<PostersProps> = ({
         <>
           {' '}
           <StyledNumberMovies>
-            <span>{movies.items.length}</span> movie found
+            <span>{movies.length}</span> movie found
           </StyledNumberMovies>
           <StyledPostersList>{posters}</StyledPostersList>
           <Button

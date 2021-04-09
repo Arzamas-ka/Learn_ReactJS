@@ -5,6 +5,7 @@ import {
   ADD_MOVIE,
   EDIT_MOVIE,
   FILTER_MOVIES,
+  FILTER_ITEM,
 } from '../actions/types';
 
 export const fetchMovies = (payload) => {
@@ -15,7 +16,7 @@ export const deleteMovie = (payload) => {
   return { type: DELETE_MOVIE, payload };
 };
 
-export const deleteMovieId = (payload) => {
+export const putPosterId = (payload) => {
   return { type: POSTER_ID, payload };
 };
 
@@ -29,4 +30,8 @@ export const editMovie = (payload) => {
 
 export const filterMovies = (payload) => {
   return { type: FILTER_MOVIES, payload };
+};
+
+export const filterItem = (payload) => {
+  return { type: FILTER_ITEM, payload };
 };

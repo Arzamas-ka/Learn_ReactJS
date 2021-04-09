@@ -5,6 +5,7 @@ import {
   ADD_MOVIE,
   EDIT_MOVIE,
   FILTER_MOVIES,
+  FILTER_ITEM,
 } from '../actions/types';
 
 export const initialState = {
@@ -14,6 +15,7 @@ export const initialState = {
   error: null,
   loading: true,
   posterId: null,
+  filterItem: 'all',
 };
 
 export const movies = (state = initialState, { type, payload }) => {
@@ -23,7 +25,9 @@ export const movies = (state = initialState, { type, payload }) => {
         ...state,
         items: [...state.items, ...payload.data],
         currentPage: payload.offset + 1,
-        totalPages: payload.totalAmount / payload.limit - payload.offset,
+        totalPages: Math.floor(
+          payload.totalAmount / payload.limit - payload.offset,
+        ),
         error: null,
         loading: false,
       };
@@ -62,7 +66,22 @@ export const movies = (state = initialState, { type, payload }) => {
     case FILTER_MOVIES:
       return {
         ...state,
-        items: payload.data
+        items: [...state.items, ...payload.data],
+        currentPage: payload.offset + 1,
+        totalPages: Math.floor(
+          payload.totalAmount / payload.limit - payload.offset,
+        ),
+        error: null,
+        loading: false,
+      };
+
+    case FILTER_ITEM:
+      return {
+        ...state,
+        currentPage: 0,
+        filterItem: payload,
+        items: [],
+        loading: true,
       };
 
     default:
