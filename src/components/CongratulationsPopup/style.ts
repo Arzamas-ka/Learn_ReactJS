@@ -36,7 +36,7 @@ export const StyledCongratulationsPopupTitle = styled.h2`
   font-weight: 400;
   color: ${colors.white};
   text-transform: uppercase;
-  letter-spacing: 1ю2;
+  letter-spacing: 1.2;
 `;
 
 export const StyledCloseIcon = styled(AiOutlineClose)`

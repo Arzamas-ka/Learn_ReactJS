@@ -28,7 +28,6 @@ export const movies = (state = initialState, { type, payload }) => {
         totalPages: Math.floor(
           payload.totalAmount / payload.limit - payload.offset,
         ),
-        error: null,
         loading: false,
       };
 
