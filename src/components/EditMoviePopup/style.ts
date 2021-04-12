@@ -7,9 +7,7 @@ export const StyledEditMoviePopupWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
-  display: none;
-
-  position: absolute;
+  position: fixed;
   top: 450px;
   left: 50%;
 
@@ -22,7 +20,7 @@ export const StyledEditMoviePopupWrapper = styled.div`
 `;
 
 export const StyledEditMoviePopupContainer = styled.div`
-  margin: 10px 40px 40px 40px;
+  margin: 0 40px 40px 40px;
 `;
 
 export const StyledEditMoviePopupTitle = styled.h2`
@@ -48,6 +46,8 @@ export const StyledCloseIcon = styled(AiOutlineClose)`
 
   width: 32px;
   height: 32px;
+
+  cursor: pointer;
 
   :hover {
     color: ${colors.coral};

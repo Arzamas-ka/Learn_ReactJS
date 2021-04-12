@@ -1,5 +1,8 @@
-import React, { FC, useState, FormEvent } from 'react';
+import React, { FC, useState, FormEvent, useCallback } from 'react';
+import moment from 'moment';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { EditMoviePopupProps } from './models';
 import {
   StyledEditMoviePopupWrapper,
   StyledButtonContainer,
@@ -8,51 +11,96 @@ import {
   StyledEditMoviePopupTitle,
 } from './style';
 
+import { editMovie } from 'api';
+
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
 const initialValues = {
-  number: '',
+  id: '',
   title: '',
-  url: '',
-  genre: '',
+  release_date: '',
+  poster_path: '',
+  genres: [],
   overview: '',
   runtime: '',
 };
 
-const EditMoviePopup: FC = () => {
-  const [values, setValues] = useState(initialValues);
+const EditMoviePopup: FC<EditMoviePopupProps> = ({
+  hideEdit,
+  setIsActiveBackdrop,
+}) => {
+  const posterId = useSelector(({ movies: { posterId } }) => posterId);
+  const movie = useSelector(({ movies: { items } }) =>
+    items.find((movie) => movie.id === posterId),
+  );
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({ ...initialValues, ...movie });
 
-  const handleOnChange = ({ target }) => {
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+  const handleOnChange = useCallback(
+    ({ target }) => {
+      const value = target.type === 'checkbox' ? target.checked : target.value;
 
-    setValues({
-      ...values,
-      [target.name]: value,
-    });
-  };
+      setValues({
+        ...values,
+        [target.name]: value,
+      });
+    },
+    [values],
+  );
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleOnSelect = useCallback(
+    (selected) => {
+      setValues({
+        ...values,
+        genres: selected,
+      });
+    },
+    [values],
+  );
 
-    console.log(JSON.stringify(values, null, 2));
-  };
+  const handleOnCalendar = useCallback(
+    (data) => {
+      const formattedDate = moment(data).format('YYYY-MM-DD');
+
+      setValues({
+        ...values,
+        release_date: formattedDate,
+      });
+    },
+    [values],
+  );
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      dispatch(editMovie(values));
+      hideEdit();
+      setIsActiveBackdrop(false);
+    },
+    [values],
+  );
 
   return (
     <StyledEditMoviePopupWrapper>
-      <StyledCloseIcon />
+      <StyledCloseIcon
+        onClick={() => {
+          hideEdit(), setIsActiveBackdrop(false);
+        }}
+      />
       <StyledEditMoviePopupTitle>Edit Movie</StyledEditMoviePopupTitle>
       <form onSubmit={handleSubmit}>
         <StyledEditMoviePopupContainer>
           <Input
             label="Movie id"
-            name="number"
+            name="id"
             type="text"
-            placeholder="m032820th"
+            placeholder="313369"
             onChange={handleOnChange}
-            value={values.number}
+            value={values.id}
             autoComplete="off"
           />
           <Input
@@ -64,17 +112,26 @@ const EditMoviePopup: FC = () => {
             value={values.title}
             autoComplete="off"
           />
-          <Calendar />
+          <Calendar
+            name="release_date"
+            onChange={handleOnCalendar}
+            value={values['release_date']}
+          />
           <Input
             label="Movie url"
-            name="url"
+            name="poster_path"
             type="text"
             placeholder="www.moana.com"
             onChange={handleOnChange}
-            value={values.url}
+            value={values['poster_path']}
             autoComplete="off"
           />
-          <Select onChange={handleOnChange} value={values.genre} name="genre" />
+          <Select
+            name="genres"
+            onChange={handleOnSelect}
+            value={values.genres}
+            selected={values.genres}
+          />
           <Input
             label="Overview"
             name="overview"
@@ -96,8 +153,13 @@ const EditMoviePopup: FC = () => {
         </StyledEditMoviePopupContainer>
 
         <StyledButtonContainer>
-          <Button reset type="reset" onClick={null} text="Reset"></Button>
-          <Button submit type="button" onClick={null} text="Save" />
+          <Button
+            reset
+            type="reset"
+            onClick={() => setValues(initialValues)}
+            text="Reset"
+          ></Button>
+          <Button submit type="submit" onClick={null} text="Save" />
         </StyledButtonContainer>
       </form>
     </StyledEditMoviePopupWrapper>

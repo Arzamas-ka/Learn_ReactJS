@@ -13,13 +13,18 @@ import {
   StyledMovieDetailsArticle,
   StyledMovieDetailsAverage,
   StyledMovieDetailsTitleContainer,
+  StyledMovieDetailsError,
 } from './style';
 
 import defaultImgMovie from '../../assets/images/fallback_movie.png';
 
-const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
-  console.log('componentMovieDetails: ', movieDetails);
+import { Spinner } from 'components/Spinner';
 
+const MovieDetails: FC<MovieDetailsProps> = ({
+  movieDetails,
+  loadingMovieDetails,
+  errorMovieDetails,
+}) => {
   const addDefaultSrc = useCallback(({ target }) => {
     target.src = defaultImgMovie;
     target.alt = 'Image not found';
@@ -27,31 +32,43 @@ const MovieDetails: FC<MovieDetailsProps> = ({ movieDetails }) => {
 
   return (
     <StyledMovieDetailsWrapper>
-      <StyledMovieDetailsImage
-        src={movieDetails.poster_path}
-        alt={movieDetails.title}
-        onError={addDefaultSrc}
-      />
-      <StyledMovieDetailsDescription>
-        <StyledMovieDetailsTitleContainer>
-          <StyledMovieDetailsTitle>
-            {movieDetails.title}
-          </StyledMovieDetailsTitle>
-          <StyledMovieDetailsAverage>
-            {movieDetails.vote_average}
-          </StyledMovieDetailsAverage>
-        </StyledMovieDetailsTitleContainer>
-        <StyledMovieDetailsWin>{movieDetails.tagline}</StyledMovieDetailsWin>
-        <StyledMovieDetailsDate>
-          <StyledMovieDetailsYear>
-            {movieDetails.release_date}
-          </StyledMovieDetailsYear>
-          <StyledMovieDetailsTime>{`${movieDetails.runtime} min`}</StyledMovieDetailsTime>
-        </StyledMovieDetailsDate>
-        <StyledMovieDetailsArticle>
-          {movieDetails.overview}
-        </StyledMovieDetailsArticle>
-      </StyledMovieDetailsDescription>
+      {errorMovieDetails && (
+        <StyledMovieDetailsError>
+          No Movie Details Found
+        </StyledMovieDetailsError>
+      )}
+      {loadingMovieDetails && <Spinner />}
+      {!errorMovieDetails && !loadingMovieDetails && (
+        <>
+          <StyledMovieDetailsImage
+            src={movieDetails.poster_path}
+            alt={movieDetails.title}
+            onError={addDefaultSrc}
+          />
+          <StyledMovieDetailsDescription>
+            <StyledMovieDetailsTitleContainer>
+              <StyledMovieDetailsTitle>
+                {movieDetails.title}
+              </StyledMovieDetailsTitle>
+              <StyledMovieDetailsAverage>
+                {movieDetails.vote_average}
+              </StyledMovieDetailsAverage>
+            </StyledMovieDetailsTitleContainer>
+            <StyledMovieDetailsWin>
+              {movieDetails.tagline}
+            </StyledMovieDetailsWin>
+            <StyledMovieDetailsDate>
+              <StyledMovieDetailsYear>
+                {movieDetails.release_date}
+              </StyledMovieDetailsYear>
+              <StyledMovieDetailsTime>{`${movieDetails.runtime} min`}</StyledMovieDetailsTime>
+            </StyledMovieDetailsDate>
+            <StyledMovieDetailsArticle>
+              {movieDetails.overview}
+            </StyledMovieDetailsArticle>
+          </StyledMovieDetailsDescription>
+        </>
+      )}
     </StyledMovieDetailsWrapper>
   );
 };

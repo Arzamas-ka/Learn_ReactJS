@@ -12,6 +12,7 @@ export const StyledSelectWrapper = styled.div`
 `;
 
 export const StyledSelectTitle = styled.label`
+  display: block;
   margin: 15px 0;
 
   color: ${colors.coral};
@@ -19,18 +20,18 @@ export const StyledSelectTitle = styled.label`
   text-transform: uppercase;
 `;
 
-export const StyledSelectMain = styled.select`
+export const StyledSelectMain = styled.input`
   width: 520px;
   padding: 15px 20px;
   appearance: none;
 
-  color: ${colors.grey_light};
+  color: ${colors.white};
   font-size: 18px;
   font-weight: 100;
   border: none;
   border-radius: 4px;
   outline: none;
-  background-color: ${rgbaMap(colorsRgba.rgba_grey_light, 0.3)};
+  cursor: pointer;
 
   background: ${rgbaMap(colorsRgba.rgba_grey_light, 0.3)} url(${ArrowIcon})
     no-repeat 95%;
@@ -42,4 +43,30 @@ export const StyledSelectMain = styled.select`
   ${mediaQueries('sizeXXS')`
     width: 300px;
   `}
+`;
+
+export const StyledSelectOver = styled.div`
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
+
+export const StyledSelectLabel = styled.label`
+  display: block;
+  padding: 5px;
+
+  font-size: 18px;
+  background-color: ${colors.grey};
+
+  :hover {
+    background-color: ${colors.coral};
+  }
+`;
+
+export const StyledSelectInput = styled.input`
+  margin-left: 15px;
+
+  font-size: 30px;
 `;

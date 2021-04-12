@@ -1,4 +1,6 @@
 import React, { FC, useState, FormEvent, useCallback } from 'react';
+import moment from 'moment';
+import { useDispatch } from 'react-redux';
 
 import { AppMoviePopup } from './models';
 import {
@@ -9,6 +11,8 @@ import {
   StyledAddMoviePopupTitle,
 } from './style';
 
+import { addMovie } from 'api';
+
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
@@ -16,33 +20,70 @@ import Select from 'components/Select';
 
 const initialValues = {
   title: '',
-  movie: '',
-  genre: '',
+  release_date: '',
+  poster_path: '',
+  genres: [],
   overview: '',
   runtime: '',
 };
 
-const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
+const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState(initialValues);
 
-  const handleOnChange = useCallback(({ target }) => {
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+  const handleOnChange = useCallback(
+    ({ target }) => {
+      const value = target.type === 'checkbox' ? target.checked : target.value;
 
-    setValues({
-      ...values,
-      [target.name]: value,
-    });
-  }, []);
+      setValues({
+        ...values,
+        [target.name]: value,
+      });
+    },
+    [values],
+  );
 
-  const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleOnSelect = useCallback(
+    (selected) => {
+      setValues({
+        ...values,
+        genres: selected,
+      });
+    },
+    [values],
+  );
 
-    console.log(JSON.stringify(values, null, 2));
-  }, []);
+  const handleOnCalendar = useCallback(
+    (data) => {
+      const formattedDate = moment(data).format('YYYY-MM-DD');
+
+      console.log('formattedDate: ', formattedDate);
+
+      setValues({
+        ...values,
+        release_date: formattedDate,
+      });
+    },
+    [values],
+  );
+
+  const handleSubmit = useCallback(
+    (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      dispatch(addMovie(values));
+      hideAdd();
+      setIsActiveBackdrop(false);
+    },
+    [values],
+  );
 
   return (
     <StyledAddMoviePopupWrapper>
-      <StyledCloseIcon onClick={hide} />
+      <StyledCloseIcon
+        onClick={() => {
+          hideAdd(), setIsActiveBackdrop(false);
+        }}
+      />
       <StyledAddMoviePopupTitle>Add Movie</StyledAddMoviePopupTitle>
       <form onSubmit={handleSubmit}>
         <StyledAddMoviePopupContainer>
@@ -55,17 +96,26 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
             value={values.title}
             autoComplete="off"
           />
-          <Calendar />
+          <Calendar
+            name="release_date"
+            onChange={handleOnCalendar}
+            value={values['release_date']}
+          />
           <Input
             label="Movie url"
-            name="movie"
+            name="poster_path"
             type="text"
             placeholder="Movie url here"
             onChange={handleOnChange}
-            value={values.movie}
+            value={values['poster_path']}
             autoComplete="off"
           />
-          <Select onChange={handleOnChange} value={values.genre} name="genre" />
+          <Select
+            onChange={handleOnSelect}
+            value={values.genres}
+            name="genres"
+            selected={values.genres}
+          />
           <Input
             label="Overview"
             name="overview"
@@ -87,7 +137,12 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hide }) => {
         </StyledAddMoviePopupContainer>
 
         <StyledButtonContainer>
-          <Button reset type="reset" onClick={null} text="Reset"/>
+          <Button
+            reset
+            type="reset"
+            onClick={() => setValues(initialValues)}
+            text="Reset"
+          />
           <Button submit type="submit" onClick={null} text="Submit" />
         </StyledButtonContainer>
       </form>

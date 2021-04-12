@@ -16,25 +16,39 @@ import useMoreDetailsMovie from 'hooks/useMoreDetailsMovie';
 
 import defaultImgMovie from '../../../../assets/images/fallback_movie.png';
 
+import DropdownMenu from 'components/DropdownMenu';
+
 const PosterItem: FC<PosterItemProps> = ({
   setMovieDetails,
+  setLoadingMovieDetails,
+  setErrorMovieDetails,
   genre,
   poster,
+  hideEdit,
+  hideDelete,
+  setIsActiveBackdrop,
 }: any) => {
   const {
     movieDetails,
     loadingMovieDetails,
     errorMovieDetails,
     fetchMovieDetails,
-  }: any = useMoreDetailsMovie();
+  } = useMoreDetailsMovie();
 
   const handleMoreDetails = useCallback((id) => {
     fetchMovieDetails(id);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, []);
 
   useEffect(() => {
+    setLoadingMovieDetails(loadingMovieDetails);
+    setErrorMovieDetails(errorMovieDetails);
     setMovieDetails(movieDetails);
-  }, [movieDetails]);
+  }, [movieDetails, loadingMovieDetails, errorMovieDetails]);
 
   const addDefaultSrc = useCallback(({ target }) => {
     target.src = defaultImgMovie;
@@ -43,6 +57,12 @@ const PosterItem: FC<PosterItemProps> = ({
 
   return (
     <StyledPostersItem key={shortid.generate()}>
+      <DropdownMenu
+        hideEdit={hideEdit}
+        hideDelete={hideDelete}
+        setIsActiveBackdrop={setIsActiveBackdrop}
+        posterId={poster.id}
+      />
       <StyledPostersLink onClick={() => handleMoreDetails(poster.id)}>
         <StyledPostersImg
           src={poster.poster_path}

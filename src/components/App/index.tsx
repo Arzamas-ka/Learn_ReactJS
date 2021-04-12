@@ -16,17 +16,50 @@ import DeleteMoviePopup from 'components/DeleteMoviePopup';
 const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
   const [movieDetails, setMovieDetails]: any = useState(null);
-  const { isShowing, toggle } = usePopup();
+  const [loadingMovieDetails, setLoadingMovieDetails]: any = useState(true);
+  const [errorMovieDetails, setErrorMovieDetails]: any = useState(false);
+  const { isShowing: isShowingAdd, toggle: toggleAdd } = usePopup();
+  const { isShowing: isShowingEdit, toggle: toggleEdit } = usePopup();
+  const { isShowing: isShowingDelete, toggle: toggleDelete } = usePopup();
 
   return (
     <StyledApp>
       <StyledBackdrop active={isActiveBackdrop} />
       <GlobalStyle />
-      <DeleteMoviePopup />
-      <EditMoviePopup />
-      {isShowing && <AddMoviePopup hide={toggle} isShowing={isShowing} />}
-      <Header movieDetails={movieDetails} hide={toggle} />
-      <Catalog setMovieDetails={setMovieDetails} />
+      {isShowingDelete && (
+        <DeleteMoviePopup
+          hideDelete={toggleDelete}
+          setIsActiveBackdrop={setIsActiveBackdrop}
+        />
+      )}
+      {isShowingEdit && (
+        <EditMoviePopup
+          hideEdit={toggleEdit}
+          setIsActiveBackdrop={setIsActiveBackdrop}
+        />
+      )}
+      {isShowingAdd && (
+        <AddMoviePopup
+          hideAdd={toggleAdd}
+          isShowingAdd={isShowingAdd}
+          setIsActiveBackdrop={setIsActiveBackdrop}
+        />
+      )}
+      <Header
+        movieDetails={movieDetails}
+        loadingMovieDetails={loadingMovieDetails}
+        errorMovieDetails={errorMovieDetails}
+        hideAdd={toggleAdd}
+        setIsActiveBackdrop={setIsActiveBackdrop}
+      />
+      <Catalog
+        setMovieDetails={setMovieDetails}
+        setLoadingMovieDetails={setLoadingMovieDetails}
+        setErrorMovieDetails={setErrorMovieDetails}
+        hideEdit={toggleEdit}
+        hideDelete={toggleDelete}
+        setIsActiveBackdrop={setIsActiveBackdrop}
+      />
       <Footer />
     </StyledApp>
   );

@@ -5,9 +5,6 @@ export interface InputProps {
   placeholder: string;
   value: string;
   onChange: (event: FormEvent<HTMLInputElement>) => void;
-  // onChange: (
-  //   event: FormEvent<HTMLInputElement> | [Date, Date] | null | '',
-  // ) => void;
   onClick?: () => void;
   name: string;
   search?: boolean;

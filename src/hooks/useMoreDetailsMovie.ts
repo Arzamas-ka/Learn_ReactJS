@@ -11,10 +11,13 @@ const useMoreDetailsMovie = () => {
 
   const fetchMovieDetails = useCallback(
     async (id) => {
-      setErrorMovieDetails(false);
-      setLoadingMovieDetails(true);
+      if (!id) {
+        setErrorMovieDetails(true);
+        setLoadingMovieDetails(false);
+      }
 
       try {
+        setLoadingMovieDetails(true);
         const response = await axios.get(`${API_BASE}/${id}`);
         const responseMovieDetails = response.data;
 

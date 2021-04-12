@@ -1,17 +1,40 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { StyledSelectionList, StyledSelectionItem } from './style';
+import {
+  StyledSelectionSelect,
+  StyledSelectionOption,
+  StyledSelectionTitle,
+  StyledSelectionContainer,
+} from './style';
 
 import { SELECTION_DATA } from '@constants';
 
-const Selection: FC = () => (
-  <StyledSelectionList>
-    {SELECTION_DATA.map((item) => (
-      <StyledSelectionItem key={item}>
-        {item}
-      </StyledSelectionItem>
-    ))}
-  </StyledSelectionList>
-);
+import { getSortByMovies } from 'api';
+
+const Selection: FC = () => {
+  const dispatch = useDispatch();
+
+  const handleOnItem = useCallback(({ target }) => {
+    const sortBy = target.value;
+
+    console.log('sortBy: ', sortBy);
+
+    dispatch(getSortByMovies(sortBy));
+  }, []);
+
+  return (
+    <StyledSelectionContainer>
+      <StyledSelectionTitle>Sort by</StyledSelectionTitle>
+      <StyledSelectionSelect onChange={handleOnItem}>
+        {SELECTION_DATA.map((item) => (
+          <StyledSelectionOption key={item} value={item}>
+            {item}
+          </StyledSelectionOption>
+        ))}
+      </StyledSelectionSelect>
+    </StyledSelectionContainer>
+  );
+};
 
 export default Selection;

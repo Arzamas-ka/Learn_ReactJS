@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent } from 'react';
+import React, { FC, SyntheticEvent, useCallback } from 'react';
 
 import { HeaderProps } from './models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';
@@ -8,20 +8,26 @@ import Search from 'components/Search';
 import Logo from 'components/Logo';
 import MovieDetails from 'components/MovieDetails';
 
-const Header: FC<HeaderProps> = ({ movieDetails, hide }) => {
-  const handleOnClick = (event: SyntheticEvent): void => {
+const Header: FC<HeaderProps> = ({
+  movieDetails,
+  loadingMovieDetails,
+  errorMovieDetails,
+  hideAdd,
+  setIsActiveBackdrop,
+}) => {
+  const handleOnClick = useCallback((event: SyntheticEvent): void => {
     event.preventDefault();
 
     console.log('click: ', event);
-  };
+  }, []);
 
-  console.log('movieDetailsHeader: ', movieDetails);
+  const showByCondition = errorMovieDetails || movieDetails;
 
   return (
     <StyledHeaderWrapper>
       <StyledHeaderTop className="header-top">
         <Logo />
-        {movieDetails && (
+        {showByCondition && (
           <Button
             magnifier
             type="button"
@@ -29,12 +35,26 @@ const Header: FC<HeaderProps> = ({ movieDetails, hide }) => {
             text="&#x2315;"
           />
         )}
-        {!movieDetails && (
-          <Button button type="button" onClick={hide} text="+ Add Movie" />
+        {!showByCondition && (
+          <Button
+            button
+            type="button"
+            onClick={() => {
+              hideAdd(), setIsActiveBackdrop(true);
+            }}
+            text="+ Add Movie"
+          />
         )}
       </StyledHeaderTop>
-      {movieDetails && <MovieDetails movieDetails={movieDetails} />}
-      {!movieDetails && <Search />}
+      {showByCondition && (
+        <MovieDetails
+          movieDetails={movieDetails}
+          loadingMovieDetails={loadingMovieDetails}
+          errorMovieDetails={errorMovieDetails}
+        />
+      )}
+
+      {!showByCondition && <Search />}
     </StyledHeaderWrapper>
   );
 };

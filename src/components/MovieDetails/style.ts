@@ -83,6 +83,7 @@ export const StyledMovieDetailsAverage = styled.span`
   padding: 13px 10px 10px 10px;
 
   font-size: 20px;
+  text-align: center;
   border: 1px solid ${colors.white};
   border-radius: 50%;
   color: green;
@@ -91,4 +92,13 @@ export const StyledMovieDetailsAverage = styled.span`
 export const StyledMovieDetailsTitleContainer = styled.div`
   display: flex;
   justify-content: end;
+`;
+
+export const StyledMovieDetailsError = styled.div`
+  margin: 50px;
+
+  color: ${colors.white};
+  font-weight: 200;
+  font-size: 32px;
+  text-align: center;
 `;
