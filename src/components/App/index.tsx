@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { GlobalStyle } from '../../styles/style';
 import { StyledApp, StyledBackdrop } from './style';
@@ -14,6 +14,7 @@ import AddMoviePopup from 'components/AddMoviePopup';
 import EditMoviePopup from 'components/EditMoviePopup';
 import DeleteMoviePopup from 'components/DeleteMoviePopup';
 import CongratulationsPopup from 'components/CongratulationsPopup';
+import NoMatch from 'components/NoMatch';
 
 const App: FC = () => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
@@ -58,23 +59,28 @@ const App: FC = () => {
           setIsActiveBackdrop={setIsActiveBackdrop}
         />
       )}
-      {/* <Switch> */}
-      <Header
-        movieDetails={movieDetails}
-        loadingMovieDetails={loadingMovieDetails}
-        errorMovieDetails={errorMovieDetails}
-        hideAdd={toggleAdd}
-        setIsActiveBackdrop={setIsActiveBackdrop}
-      />
-      <Catalog
-        setMovieDetails={setMovieDetails}
-        setLoadingMovieDetails={setLoadingMovieDetails}
-        setErrorMovieDetails={setErrorMovieDetails}
-        hideEdit={toggleEdit}
-        hideDelete={toggleDelete}
-        setIsActiveBackdrop={setIsActiveBackdrop}
-      />
-      {/* </Switch> */}
+      <Switch>
+        <Route path="/" exact>
+          <Header
+            movieDetails={movieDetails}
+            loadingMovieDetails={loadingMovieDetails}
+            errorMovieDetails={errorMovieDetails}
+            hideAdd={toggleAdd}
+            setIsActiveBackdrop={setIsActiveBackdrop}
+          />
+          <Catalog
+            setMovieDetails={setMovieDetails}
+            setLoadingMovieDetails={setLoadingMovieDetails}
+            setErrorMovieDetails={setErrorMovieDetails}
+            hideEdit={toggleEdit}
+            hideDelete={toggleDelete}
+            setIsActiveBackdrop={setIsActiveBackdrop}
+          />
+        </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
+      </Switch>
       <Footer />
     </StyledApp>
   );

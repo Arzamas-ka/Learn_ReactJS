@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/consts';
 
-export const StyledNotFoundWrapper = styled.div`
+export const StyledNoMatchWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,13 +12,13 @@ export const StyledNotFoundWrapper = styled.div`
   background-color: ${colors.grey_dark};
 `;
 
-export const StyledNotFoundImage = styled.img`
+export const StyledNoMatchImage = styled.img`
   width: 50%;
   margin-top: 70px;
   margin-bottom: 100px;
 `;
 
-export const StyledNotFoundMessage = styled.p`
+export const StyledNoMatchMessage = styled.p`
   padding: 10px;
   font-size: 35px;
   color: ${colors.white};
