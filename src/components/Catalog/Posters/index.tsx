@@ -55,18 +55,6 @@ const Posters: FC<PostersProps> = ({
     }
   }, [currentPage, filterItem]);
 
-  useEffect(() => {
-    if (currentPage === 1) {
-      return;
-    } else {
-      window.scrollTo({
-        left: 0,
-        top: document.body.scrollHeight,
-        behavior: 'smooth',
-      });
-    }
-  }, [currentPage]);
-
   const posters = movies.map((poster) => {
     if (!poster.genres) poster.genres = [];
 
