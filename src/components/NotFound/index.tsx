@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 
-import { NotFoundIndicatorProps } from './models';
 import {
   StyledNotFoundWrapper,
   StyledNotFoundImage,
@@ -11,8 +10,7 @@ import fourZeroFourImg from '../../assets/images/four_zero_four.png';
 
 import Button from 'components/Button';
 
-const NotFound: FC<NotFoundIndicatorProps> = ({ handleCloseNotFound }) => {
-  
+const NotFound: FC = () => {
   const handleOnClick = () => {
     console.log('click NotFound');
   };

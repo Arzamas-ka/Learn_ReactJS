@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { Switch } from 'react-router-dom';
 
 import { GlobalStyle } from '../../styles/style';
 import { StyledApp, StyledBackdrop } from './style';
@@ -57,6 +58,7 @@ const App: FC = () => {
           setIsActiveBackdrop={setIsActiveBackdrop}
         />
       )}
+      {/* <Switch> */}
       <Header
         movieDetails={movieDetails}
         loadingMovieDetails={loadingMovieDetails}
@@ -72,6 +74,7 @@ const App: FC = () => {
         hideDelete={toggleDelete}
         setIsActiveBackdrop={setIsActiveBackdrop}
       />
+      {/* </Switch> */}
       <Footer />
     </StyledApp>
   );
