@@ -9,6 +9,7 @@ export interface ButtonProps {
   save?: boolean;
   load?: boolean;
   magnifier?: boolean;
+  disabled?: boolean;
 }
 
 export interface StyledButtonProps {

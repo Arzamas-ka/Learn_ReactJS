@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
+import { IoMdCheckmarkCircle } from 'react-icons/io';
 import { colors } from '../../styles/consts';
 
-export const StyledAddMoviePopupWrapper = styled.div`
+export const StyledCongratulationsPopupWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 
   position: fixed;
-  top: 460px;
+  top: 350px;
   left: 50%;
+  min-width: 320px;
 
   color: ${colors.white};
   background-color: ${colors.grey_dark};
@@ -19,24 +21,22 @@ export const StyledAddMoviePopupWrapper = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const StyledAddMoviePopupContainer = styled.div`
-  margin: 10px 40px 40px 40px;
+export const StyledCongratulationsPopupText = styled.p`
+  padding: 50px;
+
+  font-size: 20px;
+  text-align: center;
 `;
 
-export const StyledAddMoviePopupTitle = styled.h2`
-  padding: 50px 0 0 50px;
+export const StyledCongratulationsPopupTitle = styled.h2`
+  margin: 0 auto;
+  padding-top: 40px;
 
   font-size: 30px;
   font-weight: 400;
   color: ${colors.white};
   text-transform: uppercase;
-`;
-
-export const StyledButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  margin: 10px 40px 40px 40px;
+  letter-spacing: 1.2;
 `;
 
 export const StyledCloseIcon = styled(AiOutlineClose)`
@@ -47,17 +47,16 @@ export const StyledCloseIcon = styled(AiOutlineClose)`
   width: 32px;
   height: 32px;
 
-  cursor: pointer;
-
   :hover {
     color: ${colors.coral};
   }
 `;
 
-export const StyledAddMoviePopupError = styled.div`
-  height: 10px;
-  padding-top: 3px;
+export const StyledDoneIcon = styled(IoMdCheckmarkCircle)`
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 50px;
 
-  font-size: 11px;
   color: ${colors.coral};
 `;

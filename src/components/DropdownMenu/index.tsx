@@ -12,9 +12,9 @@ import {
   StyledDropdownMenuDots,
 } from './style';
 
-import usePopup from 'hooks/usePopup';
+import usePopupToggle from 'hooks/usePopupToggle';
 
-import { deleteMovieId } from 'actions/actions';
+import { putPosterId } from 'actions/actions';
 
 const DropdownMenu: FC<DropdownMenuProps> = ({
   hideEdit,
@@ -23,18 +23,18 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
   posterId,
 }) => {
   const dispatch = useDispatch();
-  const { isShowing, toggle } = usePopup();
+  const { isShowing, toggle } = usePopupToggle();
 
   const handleOnDelete = useCallback(() => {
     hideDelete();
     setIsActiveBackdrop(true);
-    dispatch(deleteMovieId(posterId));
+    dispatch(putPosterId(posterId));
   }, []);
 
   const handleOnEdit = useCallback(() => {
     hideEdit();
     setIsActiveBackdrop(true);
-    dispatch(deleteMovieId(posterId));
+    dispatch(putPosterId(posterId));
   }, []);
 
   return (

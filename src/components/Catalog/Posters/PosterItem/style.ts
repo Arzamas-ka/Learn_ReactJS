@@ -34,9 +34,10 @@ export const StyledPostersTitle = styled.h2`
 `;
 
 export const StyledPostersTitleYear = styled.span`
-  align-self: center;
-
+  width: 74px;
+  height: 25px;
   padding: 5px;
+  text-align: center;
 
   font-size: 12px;
   white-space: nowrap;

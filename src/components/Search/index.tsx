@@ -20,8 +20,6 @@ const Search: FC = () => {
 
   const handleOnChange = useCallback(
     (event: FormEvent<HTMLInputElement>): void => {
-      console.log('input: ', event.currentTarget.value);
-
       setValue(event.currentTarget.value);
     },
     [],

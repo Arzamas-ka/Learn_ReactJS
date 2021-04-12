@@ -1,6 +1,7 @@
-import React, { FC, useState, FormEvent, useCallback } from 'react';
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
-import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 
 import { EditMoviePopupProps } from './models';
 import {
@@ -9,24 +10,19 @@ import {
   StyledCloseIcon,
   StyledEditMoviePopupContainer,
   StyledEditMoviePopupTitle,
+  StyledEditMoviePopupError,
 } from './style';
-
-import { editMovie } from 'api';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
-const initialValues = {
-  id: '',
-  title: '',
-  release_date: '',
-  poster_path: '',
-  genres: [],
-  overview: '',
-  runtime: '',
-};
+import { initialValue, validationSchema } from './config';
+
+import { API_BASE } from '@constants';
+import { useApiRequest } from 'hooks/useApiRequest';
+import { editMovie } from 'actions/actions';
 
 const EditMoviePopup: FC<EditMoviePopupProps> = ({
   hideEdit,
@@ -36,53 +32,47 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
   const movie = useSelector(({ movies: { items } }) =>
     items.find((movie) => movie.id === posterId),
   );
-  const dispatch = useDispatch();
-  const [values, setValues] = useState({ ...initialValues, ...movie });
-
-  const handleOnChange = useCallback(
-    ({ target }) => {
-      const value = target.type === 'checkbox' ? target.checked : target.value;
-
-      setValues({
-        ...values,
-        [target.name]: value,
-      });
-    },
-    [values],
+  const initialValues = { ...initialValue, ...movie };
+  const { fetchData: fetchEditMovie } = useApiRequest(
+    'put',
+    API_BASE,
+    editMovie,
   );
 
-  const handleOnSelect = useCallback(
-    (selected) => {
-      setValues({
-        ...values,
-        genres: selected,
-      });
-    },
-    [values],
-  );
+  const onSubmit = (values) => {
+    const body = {
+      ...values,
+      runtime: parseInt(values.runtime),
+      id: parseInt(values.id),
+    };
+    fetchEditMovie(undefined, body);
+    hideEdit();
+    setIsActiveBackdrop(false);
+  };
 
-  const handleOnCalendar = useCallback(
-    (data) => {
-      const formattedDate = moment(data).format('YYYY-MM-DD');
+  const {
+    handleSubmit,
+    handleChange,
+    values,
+    errors,
+    touched,
+    resetForm,
+    setFieldValue,
+  } = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  });
 
-      setValues({
-        ...values,
-        release_date: formattedDate,
-      });
-    },
-    [values],
-  );
+  const handleOnSelect = (selected) => {
+    setFieldValue('genres', selected);
+  };
 
-  const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
+  const handleOnCalendar = (data) => {
+    const formattedDate = moment(data).format('YYYY-MM-DD');
 
-      dispatch(editMovie(values));
-      hideEdit();
-      setIsActiveBackdrop(false);
-    },
-    [values],
-  );
+    setFieldValue('release_date', formattedDate);
+  };
 
   return (
     <StyledEditMoviePopupWrapper>
@@ -98,22 +88,32 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
             label="Movie id"
             name="id"
             type="text"
-            placeholder="313369"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.id}
             autoComplete="off"
+            disabled
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.id && errors.id ? errors.id : ''}
+            </StyledEditMoviePopupError>
+          }
           <Input
             label="Title"
             name="title"
             type="text"
-            placeholder="Moana"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.title}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.title && errors.title ? errors.title : ''}
+            </StyledEditMoviePopupError>
+          }
           <Calendar
             name="release_date"
+            type="text"
             onChange={handleOnCalendar}
             value={values['release_date']}
           />
@@ -121,42 +121,61 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
             label="Movie url"
             name="poster_path"
             type="text"
-            placeholder="www.moana.com"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values['poster_path']}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched['poster_path'] && errors['poster_path']
+                ? errors['poster_path']
+                : ''}
+            </StyledEditMoviePopupError>
+          }
           <Select
             name="genres"
             onChange={handleOnSelect}
             value={values.genres}
             selected={values.genres}
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.genres && errors.genres ? errors.genres : ''}
+            </StyledEditMoviePopupError>
+          }
           <Input
             label="Overview"
             name="overview"
             type="text"
-            placeholder="Overview here"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.overview}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.overview && errors.overview ? errors.overview : ''}
+            </StyledEditMoviePopupError>
+          }
           <Input
             label="Runtime"
             name="runtime"
             type="text"
-            placeholder="Runtime here"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.runtime}
             autoComplete="off"
           />
+          {
+            <StyledEditMoviePopupError>
+              {touched.runtime && errors.runtime ? errors.runtime : ''}
+            </StyledEditMoviePopupError>
+          }
         </StyledEditMoviePopupContainer>
 
         <StyledButtonContainer>
           <Button
             reset
             type="reset"
-            onClick={() => setValues(initialValues)}
+            onClick={() => resetForm()}
             text="Reset"
           ></Button>
           <Button submit type="submit" onClick={null} text="Save" />

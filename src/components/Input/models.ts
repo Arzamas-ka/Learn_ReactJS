@@ -2,7 +2,7 @@ import { FormEvent } from 'react';
 export interface InputProps {
   type: string;
   label: string | null;
-  placeholder: string;
+  placeholder?: string;
   value: string;
   onChange: (event: FormEvent<HTMLInputElement>) => void;
   onClick?: () => void;
@@ -10,6 +10,7 @@ export interface InputProps {
   search?: boolean;
   autoComplete?: string;
   calendar?: string;
+  disabled?: boolean;
 }
 
 export interface StyledInputProps {

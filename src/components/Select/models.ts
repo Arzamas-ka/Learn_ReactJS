@@ -1,4 +1,3 @@
-import { ChangeEventHandler } from 'react';
 import { ChangeEvent } from 'react';
 
 export interface SelectProps {

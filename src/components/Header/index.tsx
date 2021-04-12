@@ -17,8 +17,6 @@ const Header: FC<HeaderProps> = ({
 }) => {
   const handleOnClick = useCallback((event: SyntheticEvent): void => {
     event.preventDefault();
-
-    console.log('click: ', event);
   }, []);
 
   const showByCondition = errorMovieDetails || movieDetails;

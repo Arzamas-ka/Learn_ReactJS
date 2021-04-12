@@ -1,6 +1,6 @@
-import React, { FC, useState, FormEvent, useCallback } from 'react';
+import React, { FC } from 'react';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
+import { useFormik } from 'formik';
 
 import { AppMoviePopup } from './models';
 import {
@@ -9,73 +9,60 @@ import {
   StyledCloseIcon,
   StyledAddMoviePopupContainer,
   StyledAddMoviePopupTitle,
+  StyledAddMoviePopupError,
 } from './style';
-
-import { addMovie } from 'api';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
 import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
-const initialValues = {
-  title: '',
-  release_date: '',
-  poster_path: '',
-  genres: [],
-  overview: '',
-  runtime: '',
-};
+import { initialValues, validationSchema } from './config';
 
-const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
-  const dispatch = useDispatch();
-  const [values, setValues] = useState(initialValues);
+import { API_BASE } from '@constants';
+import { useApiRequest } from 'hooks/useApiRequest';
+import { addMovie } from 'actions/actions';
 
-  const handleOnChange = useCallback(
-    ({ target }) => {
-      const value = target.type === 'checkbox' ? target.checked : target.value;
-
-      setValues({
-        ...values,
-        [target.name]: value,
-      });
-    },
-    [values],
+const AddMoviePopup: FC<AppMoviePopup> = ({
+  hideAdd,
+  setIsActiveBackdrop,
+  hideCongratulations,
+}) => {
+  const { fetchData: fetchAddMovie } = useApiRequest(
+    'post',
+    API_BASE,
+    addMovie,
   );
 
-  const handleOnSelect = useCallback(
-    (selected) => {
-      setValues({
-        ...values,
-        genres: selected,
-      });
-    },
-    [values],
-  );
+  const onSubmit = (values) => {
+    const body = { ...values, runtime: parseInt(values.runtime) };
+    fetchAddMovie(undefined, body);
+    hideAdd();
+    hideCongratulations();
+  };
 
-  const handleOnCalendar = useCallback(
-    (data) => {
-      const formattedDate = moment(data).format('YYYY-MM-DD');
+  const {
+    handleSubmit,
+    handleChange,
+    values,
+    errors,
+    touched,
+    resetForm,
+    setFieldValue,
+  } = useFormik({
+    initialValues,
+    onSubmit,
+    validationSchema,
+  });
 
-      console.log('formattedDate: ', formattedDate);
+  const handleOnSelect = (selected) => {
+    setFieldValue('genres', selected);
+  };
 
-      setValues({
-        ...values,
-        release_date: formattedDate,
-      });
-    },
-    [values],
-  );
-
-  const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      dispatch(addMovie(values));
-      hideAdd();
-      setIsActiveBackdrop(false);
-    },
-    [values],
-  );
+  const handleOnCalendar = (data) => {
+    const formattedDate = moment(data).format('YYYY-MM-DD');
+    setFieldValue('release_date', formattedDate);
+  };
 
   return (
     <StyledAddMoviePopupWrapper>
@@ -92,57 +79,80 @@ const AddMoviePopup: FC<AppMoviePopup> = ({ hideAdd, setIsActiveBackdrop }) => {
             name="title"
             type="text"
             placeholder="Moana"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.title}
             autoComplete="off"
           />
+          {
+            <StyledAddMoviePopupError>
+              {touched.title && errors.title ? errors.title : ''}
+            </StyledAddMoviePopupError>
+          }
           <Calendar
             name="release_date"
-            onChange={handleOnCalendar}
+            type="text"
             value={values['release_date']}
+            onChange={handleOnCalendar}
           />
           <Input
             label="Movie url"
             name="poster_path"
             type="text"
             placeholder="Movie url here"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values['poster_path']}
             autoComplete="off"
           />
+          {
+            <StyledAddMoviePopupError>
+              {touched['poster_path'] && errors['poster_path']
+                ? errors['poster_path']
+                : ''}
+            </StyledAddMoviePopupError>
+          }
           <Select
+            name="genres"
             onChange={handleOnSelect}
             value={values.genres}
-            name="genres"
             selected={values.genres}
           />
+          {
+            <StyledAddMoviePopupError>
+              {touched.genres && errors.genres ? errors.genres : ''}
+            </StyledAddMoviePopupError>
+          }
           <Input
             label="Overview"
             name="overview"
             type="text"
             placeholder="Overview here"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.overview}
             autoComplete="off"
           />
+          {
+            <StyledAddMoviePopupError>
+              {touched.overview && errors.overview ? errors.overview : ''}
+            </StyledAddMoviePopupError>
+          }
           <Input
             label="Runtime"
             name="runtime"
             type="text"
             placeholder="Runtime here"
-            onChange={handleOnChange}
+            onChange={handleChange}
             value={values.runtime}
             autoComplete="off"
           />
+          {
+            <StyledAddMoviePopupError>
+              {touched.runtime && errors.runtime ? errors.runtime : ''}
+            </StyledAddMoviePopupError>
+          }
         </StyledAddMoviePopupContainer>
 
         <StyledButtonContainer>
-          <Button
-            reset
-            type="reset"
-            onClick={() => setValues(initialValues)}
-            text="Reset"
-          />
+          <Button reset type="reset" onClick={() => resetForm()} text="Reset" />
           <Button submit type="submit" onClick={null} text="Submit" />
         </StyledButtonContainer>
       </form>
