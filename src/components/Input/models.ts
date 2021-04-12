@@ -1,3 +1,4 @@
+import { Ref } from 'react';
 import { FormEvent } from 'react';
 export interface InputProps {
   type: string;
@@ -11,6 +12,7 @@ export interface InputProps {
   autoComplete?: string;
   calendar?: string;
   disabled?: boolean;
+  ref?: Ref<HTMLInputElement>;
 }
 
 export interface StyledInputProps {

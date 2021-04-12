@@ -63,7 +63,10 @@ const PosterItem: FC<PosterItemProps> = ({
         setIsActiveBackdrop={setIsActiveBackdrop}
         posterId={poster.id}
       />
-      <StyledPostersLink onClick={() => handleMoreDetails(poster.id)}>
+      <StyledPostersLink
+        to={`/film/${poster.id}`}
+        onClick={() => handleMoreDetails(poster.id)}
+      >
         <StyledPostersImg
           src={poster.poster_path}
           alt={poster.title}

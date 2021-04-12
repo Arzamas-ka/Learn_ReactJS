@@ -19,8 +19,8 @@ const Filter: FC = () => {
 
   const handleOnItem = useCallback((genre) => {
     setActive(genre);
-
     dispatch(filterItem(genre));
+    
     if (genre === 'all') {
       getMovies();
     } else {

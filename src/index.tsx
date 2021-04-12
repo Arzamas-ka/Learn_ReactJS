@@ -8,16 +8,16 @@ import ErrorBoundary from './ErrorBoundary';
 
 import store from './store/index.js';
 
-// const Index: FC = () => {
-//   return <App />;
-// };
+import ModalsContextProvider from './components/App/ModalsContext';
 
 ReactDOM.render(
   <Provider store={store}>
     <ErrorBoundary>
+    <ModalsContextProvider>
       <Router>
         <App />
       </Router>
+      </ModalsContextProvider>
     </ErrorBoundary>
   </Provider>,
   document.getElementById('root'),
