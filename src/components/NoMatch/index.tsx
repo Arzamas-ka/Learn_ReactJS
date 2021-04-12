@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import {
   StyledNoMatchWrapper,
@@ -12,8 +13,10 @@ import Button from 'components/Button';
 import Logo from 'components/Logo';
 
 const NoMatch: FC = () => {
+  const history = useHistory();
+
   const handleOnClick = () => {
-    console.log('click NoMatch');
+    history.push('/');
   };
 
   return (

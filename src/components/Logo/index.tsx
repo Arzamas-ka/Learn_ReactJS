@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { StyledLogo, StyledSpan } from './style';
 
 const Logo: FC = () => (
-  <StyledLogo href="#">
+  <StyledLogo to="/">
     <h2>
       netflix<StyledSpan>roulette</StyledSpan>
     </h2>

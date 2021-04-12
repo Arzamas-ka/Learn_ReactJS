@@ -18,7 +18,8 @@ module.exports = {
   output: {
     filename: `./js/${filename('js')}`,
     chunkFilename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
@@ -32,6 +33,7 @@ module.exports = {
     port: 4001,
     open: true,
     hot: true,
+    historyApiFallback: true,
   },
   optimization: {
     splitChunks: {

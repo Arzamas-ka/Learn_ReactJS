@@ -6,6 +6,7 @@ export const StyledErrorWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   height: 100vh;
   font-weight: 100;
   font-family: Montserrat, Arial, sans-serif;
@@ -16,10 +17,4 @@ export const StyledErrorImage = styled.img`
   width: 50%;
   margin-top: 70px;
   margin-bottom: 100px;
-`;
-
-export const StyledErrorMessage = styled.p`
-  padding: 10px;
-  font-size: 35px;
-  color: ${colors.white};
 `;

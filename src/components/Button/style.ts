@@ -6,6 +6,7 @@ export const Button = styled.button<StyledButtonProps>`
   font-size: 16px;
   border-radius: 4px;
   text-transform: uppercase;
+  cursor: pointer;
 
   ${({ button }) =>
     button &&

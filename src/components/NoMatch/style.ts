@@ -5,7 +5,7 @@ export const StyledNoMatchWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  
   height: 100vh;
   font-weight: 100;
   font-family: Montserrat, Arial, sans-serif;
@@ -19,7 +19,7 @@ export const StyledNoMatchImage = styled.img`
 `;
 
 export const StyledNoMatchMessage = styled.p`
-  padding: 10px;
+  padding: 30px;
   font-size: 35px;
   color: ${colors.white};
 `;

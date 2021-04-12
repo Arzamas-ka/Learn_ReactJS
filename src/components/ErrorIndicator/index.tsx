@@ -1,28 +1,27 @@
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { ErrorIndicatorProps } from './models';
 import {
   StyledErrorWrapper,
   StyledErrorImage,
-  StyledErrorMessage,
 } from './style';
 
 import imageError from '../../assets/images/error-boundary.png';
 
 import Button from 'components/Button';
+import Logo from 'components/Logo';
 
 const ErrorIndicator: FC<ErrorIndicatorProps> = ({ handleCloseError }) => {
+  const history = useHistory();
+
   const handleOnClick = () => {
-    console.log(`
-      = = = = = = = = = = = = = 
-      CLICK BUTTON: GO HOME !!
-      = = = = = = = = = = = = =
-    `);
+    history.push('/');
+    handleCloseError();
   };
 
   return (
     <StyledErrorWrapper>
-      <StyledErrorMessage>Page Not Found</StyledErrorMessage>
       <StyledErrorImage src={imageError} alt="Error Indicator" />
       <Button
         reset
