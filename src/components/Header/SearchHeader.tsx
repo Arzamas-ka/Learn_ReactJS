@@ -1,5 +1,4 @@
 import React, { FC, SyntheticEvent, useCallback } from 'react';
-import { Route, useParams } from 'react-router-dom';
 
 import { SearchHeaderProps } from './models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';

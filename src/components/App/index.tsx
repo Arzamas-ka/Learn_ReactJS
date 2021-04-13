@@ -1,4 +1,4 @@
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { GlobalStyle } from '../../styles/style';
 import { StyledApp, StyledBackdrop } from './style';
@@ -6,9 +6,8 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 import Router from './Router';
 import Modals from './Modals';
-
-import { ModalsContext } from './ModalsContext';
 import Footer from 'components/Footer';
+import { ModalsContext } from './ModalsContext';
 
 const App: FC = () => {
   const { isActiveBackdrop } = useContext(ModalsContext);

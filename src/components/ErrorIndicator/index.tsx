@@ -1,22 +1,16 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import { ErrorIndicatorProps } from './models';
-import {
-  StyledErrorWrapper,
-  StyledErrorImage,
-} from './style';
+import { StyledErrorWrapper, StyledErrorImage } from './style';
 
 import imageError from '../../assets/images/error-boundary.png';
 
 import Button from 'components/Button';
-import Logo from 'components/Logo';
 
 const ErrorIndicator: FC<ErrorIndicatorProps> = ({ handleCloseError }) => {
-  const history = useHistory();
-
   const handleOnClick = () => {
-    history.push('/');
+    <Redirect to="/" />;
     handleCloseError();
   };
 

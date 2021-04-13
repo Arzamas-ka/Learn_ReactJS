@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+
 import Catalog from 'components/Catalog';
-import { ModalsContext } from 'components/App/ModalsContext';
 import AddHeader from 'components/Header/AddHeader';
+import { ModalsContext } from 'components/App/ModalsContext';
 
 const Home = () => {
   const {
@@ -9,11 +10,10 @@ const Home = () => {
     setIsActiveBackdrop,
     toggleEdit,
     toggleAdd,
+    setMovieDetails,
+    setLoadingMovieDetails,
+    setErrorMovieDetails,
   } = useContext(ModalsContext);
-
-  const [movieDetails, setMovieDetails]: any = useState(null);
-  const [loadingMovieDetails, setLoadingMovieDetails]: any = useState(true);
-  const [errorMovieDetails, setErrorMovieDetails]: any = useState(false);
 
   return (
     <>

@@ -1,11 +1,15 @@
-import usePopupToggle from 'hooks/usePopupToggle';
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 
-export const ModalsContext = React.createContext(null);
+import usePopupToggle from 'hooks/usePopupToggle';
+
+export const ModalsContext = createContext(null);
 
 const ModalsContextProvider = ({ children }) => {
   const [isActiveBackdrop, setIsActiveBackdrop] = useState(false);
 
+  const [movieDetails, setMovieDetails] = useState(null);
+  const [loadingMovieDetails, setLoadingMovieDetails] = useState(true);
+  const [errorMovieDetails, setErrorMovieDetails] = useState(false);
   const { isShowing: isShowingAdd, toggle: toggleAdd } = usePopupToggle();
   const { isShowing: isShowingEdit, toggle: toggleEdit } = usePopupToggle();
   const { isShowing: isShowingDelete, toggle: toggleDelete } = usePopupToggle();
@@ -27,6 +31,12 @@ const ModalsContextProvider = ({ children }) => {
         toggleDelete,
         isShowingCongratulations,
         toggleCongratulations,
+        movieDetails,
+        setMovieDetails,
+        setLoadingMovieDetails,
+        setErrorMovieDetails,
+        loadingMovieDetails,
+        errorMovieDetails,
       }}
     >
       {children}

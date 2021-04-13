@@ -1,24 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Catalog from '../components/Catalog';
-import SearchHeader from '../components/Header/SearchHeader';
-
-import { ModalsContext } from '../components/App/ModalsContext';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { ParamTypes } from './models';
+
 import useMoreDetailsMovie from 'hooks/useMoreDetailsMovie';
 
-interface ParamTypes {
-  id: string;
-}
+import Catalog from '../components/Catalog';
+import SearchHeader from '../components/Header/SearchHeader';
+import { ModalsContext } from '../components/App/ModalsContext';
 
 const MovieDetails = () => {
-  const [, setMovieDetails]: any = useState(null);
-  const [, setLoadingMovieDetails]: any = useState(true);
-  const [, setErrorMovieDetails]: any = useState(false);
-
+  const {
+    toggleDelete,
+    setIsActiveBackdrop,
+    toggleEdit,
+    setMovieDetails,
+    setLoadingMovieDetails,
+    setErrorMovieDetails,
+  } = useContext(ModalsContext);
   const { id } = useParams<ParamTypes>();
-
-  console.log('id: ', id);
-
   const {
     movieDetails,
     loadingMovieDetails,
@@ -28,11 +28,12 @@ const MovieDetails = () => {
 
   useEffect(() => {
     fetchMovieDetails(id);
-  }, [id]);
 
-  const { toggleDelete, setIsActiveBackdrop, toggleEdit } = useContext(
-    ModalsContext,
-  );
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [id]);
 
   return (
     <>

@@ -6,7 +6,6 @@ import React, {
   useCallback,
   useRef,
   useEffect,
-  useImperativeHandle,
 } from 'react';
 import { useSelector } from 'react-redux';
 

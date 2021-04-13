@@ -1,13 +1,20 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 
 import axios from 'axios';
 
 import { API_BASE } from '../@constants/index';
 
+import { ModalsContext } from 'components/App/ModalsContext';
+
 const useMoreDetailsMovie = () => {
-  const [movieDetails, setMovieDetails]: any = useState(null);
-  const [loadingMovieDetails, setLoadingMovieDetails] = useState(true);
-  const [errorMovieDetails, setErrorMovieDetails] = useState(false);
+  const {
+    setErrorMovieDetails,
+    setLoadingMovieDetails,
+    setMovieDetails,
+    movieDetails,
+    loadingMovieDetails,
+    errorMovieDetails,
+  } = useContext(ModalsContext);
 
   const fetchMovieDetails = useCallback(
     async (id) => {
