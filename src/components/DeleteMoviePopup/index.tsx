@@ -37,7 +37,8 @@ const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
     <StyledDeleteMoviePopupWrapper>
       <StyledCloseIcon
         onClick={() => {
-          hideDelete(), setIsActiveBackdrop(false);
+          hideDelete();
+          setIsActiveBackdrop(false);
         }}
       />
       <StyledDeleteMoviePopupTitle>Delete Movie</StyledDeleteMoviePopupTitle>

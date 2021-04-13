@@ -78,7 +78,8 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
     <StyledEditMoviePopupWrapper>
       <StyledCloseIcon
         onClick={() => {
-          hideEdit(), setIsActiveBackdrop(false);
+          hideEdit();
+          setIsActiveBackdrop(false);
         }}
       />
       <StyledEditMoviePopupTitle>Edit Movie</StyledEditMoviePopupTitle>

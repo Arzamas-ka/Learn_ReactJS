@@ -18,7 +18,8 @@ const CongratulationsPopup: FC<CongratulationsPopupProps> = ({
     <StyledCongratulationsPopupWrapper>
       <StyledCloseIcon
         onClick={() => {
-          hideCongratulations(), setIsActiveBackdrop(false);
+          hideCongratulations();
+          setIsActiveBackdrop(false);
         }}
       />
       <StyledDoneIcon />

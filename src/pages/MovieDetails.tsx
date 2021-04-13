@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { memo, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ParamTypes } from './models';
@@ -54,4 +54,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default memo(MovieDetails);

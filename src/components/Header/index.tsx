@@ -2,17 +2,13 @@ import React, { FC, SyntheticEvent, useCallback } from 'react';
 import { Route, useParams } from 'react-router-dom';
 
 import { HeaderProps } from './models';
+import { ParamTypes } from 'pages/models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';
 
 import Button from 'components/Button';
 import Search from 'components/Search';
 import Logo from 'components/Logo';
 import MovieDetails from 'components/MovieDetails';
-
-interface ParamTypes {
-  id: string
-}
-
 
 const Header: FC<HeaderProps> = ({
   movieDetails,
@@ -21,9 +17,7 @@ const Header: FC<HeaderProps> = ({
   hideAdd,
   setIsActiveBackdrop,
 }) => {
-  const { id = null } = useParams<ParamTypes>();
-
-  console.log('id: ', id);
+  const { id } = useParams<ParamTypes>();
 
   const handleOnClick = useCallback((event: SyntheticEvent): void => {
     event.preventDefault();
@@ -48,7 +42,8 @@ const Header: FC<HeaderProps> = ({
             button
             type="button"
             onClick={() => {
-              hideAdd(), setIsActiveBackdrop(true);
+              hideAdd();
+              setIsActiveBackdrop(true);
             }}
             text="+ Add Movie"
           />

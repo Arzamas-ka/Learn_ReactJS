@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 import shortid from 'shortid';
 
 import { PosterItemProps } from './models';
@@ -52,4 +52,4 @@ const PosterItem: FC<PosterItemProps> = ({
   );
 };
 
-export default PosterItem;
+export default memo(PosterItem);

@@ -25,7 +25,7 @@ import { filterMovies } from 'actions/actions';
 const Search: FC = () => {
   const inputRef = useRef(null);
   const [value, setValue] = useState('');
-  const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
+  // const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
   const { fetchData: getSearchMovies } = useApiRequest(
     'get',
     API_SEARCH,
@@ -46,7 +46,8 @@ const Search: FC = () => {
   );
 
   const handleOnSearch = useCallback(() => {
-    getSearchMovies(`${value}&searchBy=title&offset=${currentPage}`);
+    // getSearchMovies(`${value}&searchBy=title&offset=${currentPage}`);
+    getSearchMovies(`${value}&searchBy=title`);
     setValue('');
   }, [value]);
 
