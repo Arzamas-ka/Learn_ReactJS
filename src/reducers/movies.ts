@@ -21,6 +21,7 @@ export const initialState = {
 export const movies = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_MOVIES:
+      console.log('FETCH_MOVIES');
       return {
         ...state,
         items: [...state.items, ...payload.data],
@@ -63,6 +64,8 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case FILTER_MOVIES:
+      console.log('FILTER_MOVIES: ');
+
       return {
         ...state,
         items: [...state.items, ...payload.data],

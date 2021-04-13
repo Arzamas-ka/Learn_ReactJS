@@ -1,4 +1,5 @@
 import React, { FC, SyntheticEvent, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { SearchHeaderProps } from './models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';
@@ -12,8 +13,12 @@ const SearchHeader: FC<SearchHeaderProps> = ({
   loadingMovieDetails,
   errorMovieDetails,
 }) => {
+  const history = useHistory();
+
   const handleOnClick = useCallback((event: SyntheticEvent): void => {
     event.preventDefault();
+
+    history.push('/');
   }, []);
 
   return (

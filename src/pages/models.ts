@@ -1,3 +1,4 @@
 export interface ParamTypes {
-  id: string;
+  id?: string;
+  slug?: string;
 }

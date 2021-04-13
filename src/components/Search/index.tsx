@@ -7,7 +7,7 @@ import React, {
   useRef,
   useEffect,
 } from 'react';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import {
   StyledSearchWrapper,
@@ -18,19 +18,12 @@ import {
 import Input from 'components/Input';
 import Button from 'components/Button';
 
-import { useApiRequest } from 'hooks/useApiRequest';
-import { API_SEARCH } from '@constants';
-import { filterMovies } from 'actions/actions';
+import { encodeURL } from 'helpers';
 
 const Search: FC = () => {
   const inputRef = useRef(null);
   const [value, setValue] = useState('');
-  // const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
-  const { fetchData: getSearchMovies } = useApiRequest(
-    'get',
-    API_SEARCH,
-    filterMovies,
-  );
+  const encode = encodeURL(value);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -46,8 +39,6 @@ const Search: FC = () => {
   );
 
   const handleOnSearch = useCallback(() => {
-    // getSearchMovies(`${value}&searchBy=title&offset=${currentPage}`);
-    getSearchMovies(`${value}&searchBy=title`);
     setValue('');
   }, [value]);
 
@@ -66,7 +57,15 @@ const Search: FC = () => {
             value={value}
             ref={inputRef}
           />
-          <Button submit type="submit" onClick={handleOnSearch} text="Search" />
+
+          <Link to={`/search/${encode}`}>
+            <Button
+              submit
+              type="submit"
+              onClick={handleOnSearch}
+              text="Search"
+            />
+          </Link>
         </StyledInputSearchContainer>
       </form>
     </StyledSearchWrapper>

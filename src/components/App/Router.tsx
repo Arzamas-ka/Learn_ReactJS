@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from 'pages/Home';
 import MovieDetails from 'pages/MovieDetails';
 import NoMatch from 'components/NoMatch';
-
+import SearchMovies from 'pages/SearchMovies';
 
 const AppRouter = () => {
   return (
@@ -14,6 +14,9 @@ const AppRouter = () => {
       </Route>
       <Route path="/film/:id">
         <MovieDetails />
+      </Route>
+      <Route path="/search/:slug">
+        <SearchMovies />
       </Route>
       <Route path="*">
         <NoMatch />
