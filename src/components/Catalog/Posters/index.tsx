@@ -56,6 +56,8 @@ const Posters: FC<PostersProps> = ({
     getMovies();
   }, []);
 
+  console.log('errorMessage: ', error);
+
   const handleLoadMoreMovies = useCallback(() => {
     if (filterItem !== 'all' || encode !== 'undefined') {
       filteredMovies(`&offset=${currentPage}`);
@@ -88,7 +90,7 @@ const Posters: FC<PostersProps> = ({
 
   return (
     <StyledPostersWrapper>
-      {error && <StyledPostersError>No Movie Found</StyledPostersError>}
+      {error && <StyledPostersError>{error}</StyledPostersError>}
       {loading && <Spinner />}
       {!error && !loading && (
         <>

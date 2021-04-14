@@ -6,3 +6,4 @@ export const EDIT_MOVIE = 'EDIT_MOVIE';
 export const FILTER_MOVIES = 'FILTER_MOVIES';
 export const FILTER_ITEM = 'FILTER_ITEM';
 export const SEARCH_MOVIES = 'SEARCH_MOVIES';
+export const ERROR_MESSAGE = 'ERROR_MESSAGE';

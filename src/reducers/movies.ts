@@ -1,4 +1,3 @@
-import { SEARCH_MOVIES } from './../actions/types';
 import {
   FETCH_MOVIES,
   POSTER_ID,
@@ -7,6 +6,8 @@ import {
   EDIT_MOVIE,
   FILTER_MOVIES,
   FILTER_ITEM,
+  SEARCH_MOVIES,
+  ERROR_MESSAGE,
 } from '../actions/types';
 
 export const initialState = {
@@ -41,7 +42,7 @@ export const movies = (state = initialState, { type, payload }) => {
       return {
         ...state,
         items: [{ id: state.posterId, ...payload }, ...state.items],
-        loading: false,
+        loading: true,
       };
 
     case EDIT_MOVIE:
@@ -90,6 +91,18 @@ export const movies = (state = initialState, { type, payload }) => {
         items: payload.data,
         currentPage: 1,
         totalPages: payload.totalAmount - state.currentPage,
+      };
+
+    case ERROR_MESSAGE:
+      console.log('ERROR_MESSAGE: ');
+
+      return {
+        ...state,
+        items: [],
+        currentPage: 1,
+        totalPages: payload.totalAmount - state.currentPage,
+        error: payload,
+        loading: false,
       };
 
     default:
