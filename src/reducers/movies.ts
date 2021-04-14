@@ -1,3 +1,4 @@
+import { SEARCH_MOVIES } from './../actions/types';
 import {
   FETCH_MOVIES,
   POSTER_ID,
@@ -26,9 +27,7 @@ export const movies = (state = initialState, { type, payload }) => {
         ...state,
         items: [...state.items, ...payload.data],
         currentPage: payload.offset + 1,
-        totalPages: Math.floor(
-          payload.totalAmount / payload.limit - payload.offset,
-        ),
+        totalPages: payload.totalAmount - state.currentPage,
         loading: false,
       };
 
@@ -70,9 +69,7 @@ export const movies = (state = initialState, { type, payload }) => {
         ...state,
         items: [...state.items, ...payload.data],
         currentPage: payload.offset + 1,
-        totalPages: Math.floor(
-          payload.totalAmount / payload.limit - payload.offset,
-        ),
+        totalPages: payload.totalAmount - state.currentPage,
         loading: false,
       };
 
@@ -83,6 +80,16 @@ export const movies = (state = initialState, { type, payload }) => {
         filterItem: payload,
         items: [],
         loading: true,
+      };
+
+    case SEARCH_MOVIES:
+      console.log('SEARCH_MOVIES: ');
+
+      return {
+        ...state,
+        items: payload.data,
+        currentPage: 1,
+        totalPages: payload.totalAmount - state.currentPage,
       };
 
     default:

@@ -6,6 +6,7 @@ import {
   EDIT_MOVIE,
   FILTER_MOVIES,
   FILTER_ITEM,
+  SEARCH_MOVIES,
 } from '../actions/types';
 
 export const fetchMovies = (payload) => {
@@ -34,4 +35,8 @@ export const filterMovies = (payload) => {
 
 export const filterItem = (payload) => {
   return { type: FILTER_ITEM, payload };
+};
+
+export const searchMovies = (payload) => {
+  return { type: SEARCH_MOVIES, payload };
 };

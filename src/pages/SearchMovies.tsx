@@ -9,7 +9,7 @@ import { ModalsContext } from 'components/App/ModalsContext';
 
 import { useApiRequest } from 'hooks/useApiRequest';
 import { API_SEARCH } from '@constants';
-import { filterMovies, fetchMovies } from 'actions/actions';
+import { filterMovies, fetchMovies, searchMovies } from 'actions/actions';
 
 import { encodeURL } from 'helpers';
 
@@ -27,8 +27,7 @@ const SearchMovies = () => {
   const { fetchData: getSearchMovies } = useApiRequest(
     'get',
     API_SEARCH,
-    // filterMovies,
-    fetchMovies,
+    searchMovies,
   );
 
   const { slug } = useParams<ParamTypes>();
