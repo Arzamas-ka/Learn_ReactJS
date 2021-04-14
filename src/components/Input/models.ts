@@ -13,6 +13,7 @@ export interface InputProps {
   calendar?: string;
   disabled?: boolean;
   ref?: Ref<HTMLInputElement>;
+  onKeyDown?: any;
 }
 
 export interface StyledInputProps {

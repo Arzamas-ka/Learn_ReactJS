@@ -44,7 +44,7 @@ export const movies = (state = initialState, { type, payload }) => {
       return {
         ...state,
         items: [{ id: state.posterId, ...payload }, ...state.items],
-        loading: true,
+        loading: false,
       };
 
     case EDIT_MOVIE:
