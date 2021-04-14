@@ -12,7 +12,7 @@ import {
 
 export const initialState = {
   items: [],
-  currentPage: 0,
+  currentPage: 1,
   totalPages: 0,
   error: null,
   loading: true,
@@ -23,10 +23,12 @@ export const initialState = {
 export const movies = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_MOVIES:
-      console.log('FETCH_MOVIES');
       return {
         ...state,
-        items: [...state.items, ...payload.data],
+        items:
+          state.currentPage === 1
+            ? payload.data
+            : [...state.items, ...payload.data],
         currentPage: payload.offset + 1,
         totalPages: payload.totalAmount - state.currentPage,
         loading: false,
@@ -64,8 +66,6 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case FILTER_MOVIES:
-      console.log('FILTER_MOVIES: ');
-
       return {
         ...state,
         items: [...state.items, ...payload.data],
@@ -84,8 +84,6 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case SEARCH_MOVIES:
-      console.log('SEARCH_MOVIES: ');
-
       return {
         ...state,
         items: payload.data,
@@ -94,8 +92,6 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case ERROR_MESSAGE:
-      console.log('ERROR_MESSAGE: ');
-
       return {
         ...state,
         items: [],

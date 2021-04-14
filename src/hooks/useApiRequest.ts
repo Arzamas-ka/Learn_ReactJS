@@ -16,7 +16,6 @@ export const useApiRequest = (method, endpoint, action) => {
           dispatch(action(data));
         })
         .catch((error) => {
-          console.log('error: ', error.response.data)
           dispatch(getErrorMessage(error.response.data));
         });
     },

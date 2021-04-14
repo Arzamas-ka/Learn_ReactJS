@@ -56,8 +56,6 @@ const Posters: FC<PostersProps> = ({
     getMovies();
   }, []);
 
-  console.log('errorMessage: ', error);
-
   const handleLoadMoreMovies = useCallback(() => {
     if (filterItem !== 'all' || encode !== 'undefined') {
       filteredMovies(`&offset=${currentPage}`);
