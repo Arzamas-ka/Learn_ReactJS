@@ -7,7 +7,6 @@ import ErrorIndicator from 'components/ErrorIndicator';
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props) {
     super(props);
-
     this.state = { hasError: false };
   }
 

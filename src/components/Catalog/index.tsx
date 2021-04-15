@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { CatalogProps } from './models';
 import { StyledCatalogWrapper, StyledFilterSelectionWrapper } from './style';
@@ -31,4 +31,4 @@ const Catalog: FC<CatalogProps> = ({
   </StyledCatalogWrapper>
 );
 
-export default Catalog;
+export default memo(Catalog);

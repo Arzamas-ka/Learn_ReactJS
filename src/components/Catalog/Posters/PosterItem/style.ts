@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors, rgbaMap, colorsRgba } from '../../../../styles/consts';
 
@@ -15,7 +16,7 @@ export const StyledPostersItem = styled.li`
   }
 `;
 
-export const StyledPostersLink = styled.a`
+export const StyledPostersLink = styled(Link)`
   cursor: pointer;
 `;
 

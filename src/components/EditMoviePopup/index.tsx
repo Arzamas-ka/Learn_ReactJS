@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
 import { useFormik } from 'formik';
@@ -39,6 +39,20 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
     editMovie,
   );
 
+  useEffect(() => {
+    const close = (event) => {
+      if (event.keyCode === 27) {
+        event.preventDefault();
+
+        setIsActiveBackdrop(false);
+        hideEdit();
+      }
+    };
+    window.addEventListener('keydown', close);
+
+    return () => window.removeEventListener('keydown', close);
+  }, [hideEdit]);
+
   const onSubmit = (values) => {
     const body = {
       ...values,
@@ -78,7 +92,8 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
     <StyledEditMoviePopupWrapper>
       <StyledCloseIcon
         onClick={() => {
-          hideEdit(), setIsActiveBackdrop(false);
+          hideEdit();
+          setIsActiveBackdrop(false);
         }}
       />
       <StyledEditMoviePopupTitle>Edit Movie</StyledEditMoviePopupTitle>
@@ -116,6 +131,7 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
             type="text"
             onChange={handleOnCalendar}
             value={values['release_date']}
+            onKeyDown={(event) => event.preventDefault()}
           />
           <Input
             label="Movie url"

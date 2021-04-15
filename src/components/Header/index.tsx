@@ -1,6 +1,8 @@
 import React, { FC, SyntheticEvent, useCallback } from 'react';
+import { Route, useParams } from 'react-router-dom';
 
 import { HeaderProps } from './models';
+import { ParamTypes } from 'pages/models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';
 
 import Button from 'components/Button';
@@ -15,6 +17,8 @@ const Header: FC<HeaderProps> = ({
   hideAdd,
   setIsActiveBackdrop,
 }) => {
+  const { id } = useParams<ParamTypes>();
+
   const handleOnClick = useCallback((event: SyntheticEvent): void => {
     event.preventDefault();
   }, []);
@@ -38,18 +42,21 @@ const Header: FC<HeaderProps> = ({
             button
             type="button"
             onClick={() => {
-              hideAdd(), setIsActiveBackdrop(true);
+              hideAdd();
+              setIsActiveBackdrop(true);
             }}
             text="+ Add Movie"
           />
         )}
       </StyledHeaderTop>
       {showByCondition && (
-        <MovieDetails
-          movieDetails={movieDetails}
-          loadingMovieDetails={loadingMovieDetails}
-          errorMovieDetails={errorMovieDetails}
-        />
+        <Route path={`film/${id}`}>
+          <MovieDetails
+            movieDetails={movieDetails}
+            loadingMovieDetails={loadingMovieDetails}
+            errorMovieDetails={errorMovieDetails}
+          />
+        </Route>
       )}
 
       {!showByCondition && <Search />}

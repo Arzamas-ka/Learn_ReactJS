@@ -1,11 +1,8 @@
 import React, { FC } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import { ErrorIndicatorProps } from './models';
-import {
-  StyledErrorWrapper,
-  StyledErrorImage,
-  StyledErrorMessage,
-} from './style';
+import { StyledErrorWrapper, StyledErrorImage } from './style';
 
 import imageError from '../../assets/images/error-boundary.png';
 
@@ -13,16 +10,12 @@ import Button from 'components/Button';
 
 const ErrorIndicator: FC<ErrorIndicatorProps> = ({ handleCloseError }) => {
   const handleOnClick = () => {
-    console.log(`
-      = = = = = = = = = = = = = 
-      CLICK BUTTON: GO HOME !!
-      = = = = = = = = = = = = =
-    `);
+    <Redirect to="/" />;
+    handleCloseError();
   };
 
   return (
     <StyledErrorWrapper>
-      <StyledErrorMessage>Page Not Found</StyledErrorMessage>
       <StyledErrorImage src={imageError} alt="Error Indicator" />
       <Button
         reset

@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { mediaQueries, colors } from '../../../styles/consts';
 
+export interface StyledFilterItemProp {
+  active: string;
+  item: string;
+}
+
 export const StyledFilterList = styled.ul`
   display: flex;
   justify-content: space-between;
@@ -15,12 +20,14 @@ export const StyledFilterList = styled.ul`
   `}
 `;
 
-export const StyledFilterItem = styled.li`
+export const StyledFilterItem = styled.li<StyledFilterItemProp>`
   position: relative;
 
   display: inline-block;
   margin: 25px 15px;
 
+  color: ${({ item, active }) =>
+    active === item ? `${colors.coral}` : `${colors.white}`};
   text-decoration: none;
   cursor: pointer;
 
@@ -34,7 +41,12 @@ export const StyledFilterItem = styled.li`
     margin-top: 25px;
 
     background: ${colors.coral};
+
     transition: width 0.3s;
+  }
+
+  :hover::after {
+    width: 100%;
   }
 
   :hover {

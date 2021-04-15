@@ -1,23 +1,23 @@
-import React, { FC } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-
-import App from 'components/App';
-import ErrorBoundary from './ErrorBoundary';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import store from './store/index.js';
 
-const Index: FC = () => {
-  return (
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  );
-};
+import App from 'components/App';
+import ErrorBoundary from './ErrorBoundary';
+import ModalsContextProvider from './components/App/ModalsContext';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Index />
+    <ErrorBoundary>
+      <ModalsContextProvider>
+        <Router>
+          <App />
+        </Router>
+      </ModalsContextProvider>
+    </ErrorBoundary>
   </Provider>,
   document.getElementById('root'),
 );

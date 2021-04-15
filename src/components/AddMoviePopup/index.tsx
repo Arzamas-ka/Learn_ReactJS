@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import moment from 'moment';
 import { useFormik } from 'formik';
 
@@ -33,6 +33,20 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
     API_BASE,
     addMovie,
   );
+
+  useEffect(() => {
+    const close = (event) => {
+      if (event.keyCode === 27) {
+        event.preventDefault();
+
+        setIsActiveBackdrop(false);
+        hideAdd();
+      }
+    };
+    window.addEventListener('keydown', close);
+
+    return () => window.removeEventListener('keydown', close);
+  }, [hideAdd]);
 
   const onSubmit = (values) => {
     const body = { ...values, runtime: parseInt(values.runtime) };
@@ -93,6 +107,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
             type="text"
             value={values['release_date']}
             onChange={handleOnCalendar}
+            onKeyDown={(event) => event.preventDefault()}
           />
           <Input
             label="Movie url"

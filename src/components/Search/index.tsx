@@ -4,7 +4,10 @@ import React, {
   FormEvent,
   useState,
   useCallback,
+  useRef,
+  useEffect,
 } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   StyledSearchWrapper,
@@ -15,15 +18,29 @@ import {
 import Input from 'components/Input';
 import Button from 'components/Button';
 
+import { encodeURL } from 'helpers';
+
 const Search: FC = () => {
+  const inputRef = useRef(null);
   const [value, setValue] = useState('');
+  const encode = encodeURL(value);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const handleOnChange = useCallback(
     (event: FormEvent<HTMLInputElement>): void => {
       setValue(event.currentTarget.value);
     },
-    [],
+    [value],
   );
+
+  const handleOnSearch = useCallback(() => {
+    setValue('');
+  }, [value]);
 
   return (
     <StyledSearchWrapper>
@@ -38,8 +55,17 @@ const Search: FC = () => {
             placeholder="What do you want to watch?"
             onChange={handleOnChange}
             value={value}
+            ref={inputRef}
           />
-          <Button submit type="submit" onClick={null} text="Search" />
+
+          <Link to={`/search/${encode}`}>
+            <Button
+              submit
+              type="submit"
+              onClick={handleOnSearch}
+              text="Search"
+            />
+          </Link>
         </StyledInputSearchContainer>
       </form>
     </StyledSearchWrapper>

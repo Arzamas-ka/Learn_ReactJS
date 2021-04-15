@@ -6,11 +6,13 @@ import {
   EDIT_MOVIE,
   FILTER_MOVIES,
   FILTER_ITEM,
+  SEARCH_MOVIES,
+  ERROR_MESSAGE,
 } from '../actions/types';
 
 export const initialState = {
   items: [],
-  currentPage: 0,
+  currentPage: 1,
   totalPages: 0,
   error: null,
   loading: true,
@@ -23,11 +25,12 @@ export const movies = (state = initialState, { type, payload }) => {
     case FETCH_MOVIES:
       return {
         ...state,
-        items: [...state.items, ...payload.data],
+        items:
+          state.currentPage === 1
+            ? payload.data
+            : [...state.items, ...payload.data],
         currentPage: payload.offset + 1,
-        totalPages: Math.floor(
-          payload.totalAmount / payload.limit - payload.offset,
-        ),
+        totalPages: payload.totalAmount - state.currentPage,
         loading: false,
       };
 
@@ -67,10 +70,7 @@ export const movies = (state = initialState, { type, payload }) => {
         ...state,
         items: [...state.items, ...payload.data],
         currentPage: payload.offset + 1,
-        totalPages: Math.floor(
-          payload.totalAmount / payload.limit - payload.offset,
-        ),
-        error: null,
+        totalPages: payload.totalAmount - state.currentPage,
         loading: false,
       };
 
@@ -81,6 +81,24 @@ export const movies = (state = initialState, { type, payload }) => {
         filterItem: payload,
         items: [],
         loading: true,
+      };
+
+    case SEARCH_MOVIES:
+      return {
+        ...state,
+        items: payload.data,
+        currentPage: 1,
+        totalPages: payload.totalAmount - state.currentPage,
+      };
+
+    case ERROR_MESSAGE:
+      return {
+        ...state,
+        items: [],
+        currentPage: 1,
+        totalPages: payload.totalAmount - state.currentPage,
+        error: payload,
+        loading: false,
       };
 
     default:

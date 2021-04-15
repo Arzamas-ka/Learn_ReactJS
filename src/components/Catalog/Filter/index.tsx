@@ -1,4 +1,5 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC, useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { StyledFilterList, StyledFilterItem } from './style';
@@ -9,6 +10,8 @@ import { fetchMovies, filterItem, filterMovies } from 'actions/actions';
 
 const Filter: FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const [active, setActive] = useState('all');
   const { fetchData: getMovies } = useApiRequest('get', API_BASE, fetchMovies);
   const { fetchData: filteredMovies } = useApiRequest(
     'get',
@@ -17,7 +20,10 @@ const Filter: FC = () => {
   );
 
   const handleOnItem = useCallback((genre) => {
+    history.push('/');
+    setActive(genre);
     dispatch(filterItem(genre));
+
     if (genre === 'all') {
       getMovies();
     } else {
@@ -28,7 +34,12 @@ const Filter: FC = () => {
   return (
     <StyledFilterList>
       {FILTER_DATA.map((item) => (
-        <StyledFilterItem key={item} onClick={() => handleOnItem(item)}>
+        <StyledFilterItem
+          key={item}
+          onClick={() => handleOnItem(item)}
+          active={active}
+          item={item}
+        >
           {item}
         </StyledFilterItem>
       ))}

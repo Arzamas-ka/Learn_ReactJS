@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 import shortid from 'shortid';
 
 import { PosterItemProps } from './models';
@@ -12,44 +12,17 @@ import {
   StyledPostersLink,
 } from './style';
 
-import useMoreDetailsMovie from 'hooks/useMoreDetailsMovie';
-
 import defaultImgMovie from '../../../../assets/images/fallback_movie.png';
 
 import DropdownMenu from 'components/DropdownMenu';
 
 const PosterItem: FC<PosterItemProps> = ({
-  setMovieDetails,
-  setLoadingMovieDetails,
-  setErrorMovieDetails,
   genre,
   poster,
   hideEdit,
   hideDelete,
   setIsActiveBackdrop,
 }: any) => {
-  const {
-    movieDetails,
-    loadingMovieDetails,
-    errorMovieDetails,
-    fetchMovieDetails,
-  } = useMoreDetailsMovie();
-
-  const handleMoreDetails = useCallback((id) => {
-    fetchMovieDetails(id);
-
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, []);
-
-  useEffect(() => {
-    setLoadingMovieDetails(loadingMovieDetails);
-    setErrorMovieDetails(errorMovieDetails);
-    setMovieDetails(movieDetails);
-  }, [movieDetails, loadingMovieDetails, errorMovieDetails]);
-
   const addDefaultSrc = useCallback(({ target }) => {
     target.src = defaultImgMovie;
     target.alt = 'image not found';
@@ -63,7 +36,7 @@ const PosterItem: FC<PosterItemProps> = ({
         setIsActiveBackdrop={setIsActiveBackdrop}
         posterId={poster.id}
       />
-      <StyledPostersLink onClick={() => handleMoreDetails(poster.id)}>
+      <StyledPostersLink to={`/film/${poster.id}`}>
         <StyledPostersImg
           src={poster.poster_path}
           alt={poster.title}
@@ -79,4 +52,4 @@ const PosterItem: FC<PosterItemProps> = ({
   );
 };
 
-export default PosterItem;
+export default memo(PosterItem);
