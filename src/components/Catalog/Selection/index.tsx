@@ -1,4 +1,5 @@
-import React, { FC, useCallback } from 'react';
+import * as React from 'react';
+import { FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -9,7 +10,6 @@ import {
 } from './style';
 
 import { API_SORT_BY, SELECTION_DATA } from '@constants';
-
 import { useApiRequest } from 'hooks/useApiRequest';
 import { filterItem, filterMovies } from 'actions/actions';
 

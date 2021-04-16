@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import * as React from 'react';
+import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ParamTypes } from './models';
@@ -9,7 +10,7 @@ import { ModalsContext } from 'components/App/ModalsContext';
 
 import { useApiRequest } from 'hooks/useApiRequest';
 import { API_SEARCH } from '@constants';
-import { filterMovies, fetchMovies, searchMovies } from 'actions/actions';
+import { searchMovies } from 'actions/actions';
 
 import { encodeURL } from 'helpers';
 

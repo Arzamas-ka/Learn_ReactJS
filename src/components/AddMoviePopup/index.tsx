@@ -1,4 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import * as React from 'react';
+import { FC, useEffect } from 'react';
 import moment from 'moment';
 import { useFormik } from 'formik';
 

@@ -1,4 +1,5 @@
-import React, { FC, SyntheticEvent, useCallback } from 'react';
+import * as React from 'react';
+import { FC, SyntheticEvent, useCallback } from 'react';
 import { Route, useParams } from 'react-router-dom';
 
 import { HeaderProps } from './models';

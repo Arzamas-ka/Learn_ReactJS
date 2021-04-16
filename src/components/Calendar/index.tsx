@@ -1,4 +1,5 @@
-import React, { FC, forwardRef, useState } from 'react';
+import * as React from 'react';
+import { FC, forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import { StyledCalendarWrapper, StyledCalendarIcon } from './style';

@@ -1,7 +1,8 @@
-import React, { FC, useEffect, useCallback, memo } from 'react';
+import * as React from 'react';
+import { FC, useEffect, useCallback, memo } from 'react';
 import { useParams } from 'react-router-dom';
-import shortid from 'shortid';
 import { useSelector } from 'react-redux';
+import shortid from 'shortid';
 
 import { PostersProps } from './models';
 import { ParamTypes } from 'pages/models';
@@ -19,7 +20,6 @@ import PosterItem from './PosterItem';
 import { useApiRequest } from 'hooks/useApiRequest';
 import { API_BASE, API_FILTER, API_PAGE, API_SEARCH } from '@constants';
 import { fetchMovies, filterMovies } from 'actions/actions';
-
 import { encodeURL } from 'helpers';
 
 const Posters: FC<PostersProps> = ({

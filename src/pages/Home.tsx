@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
+import { useContext } from 'react';
 
 import Catalog from 'components/Catalog';
 import AddHeader from 'components/Header/AddHeader';

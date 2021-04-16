@@ -1,4 +1,5 @@
-import React, { FC, memo, useCallback } from 'react';
+import * as React from 'react';
+import { FC, memo, useCallback } from 'react';
 import shortid from 'shortid';
 
 import { PosterItemProps } from './models';

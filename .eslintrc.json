@@ -1,7 +1,8 @@
 {
   "env": {
-      "browser": true,
-      "es2020": true
+    "browser": true,
+    "es2020": true,
+    "jest": true
   },
   "extends": [
     "plugin:react/recommended",
@@ -15,17 +16,14 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-      "ecmaFeatures": {
-          "jsx": true
-      },
-      "ecmaVersion": 11,
-      "sourceType": "module",
-      "project": "./tsconfig.json"
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
-  "plugins": [
-      "react",
-      "@typescript-eslint"
-  ],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-namespace": "warn",
     "@typescript-eslint/no-empty-interface": "warn",
@@ -44,11 +42,14 @@
     "no-shadow": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "linebreak-style": "warn",
-    "prettier/prettier": ["warn", {"endOfLine": "auto"}],
+    "prettier/prettier": ["warn", { "endOfLine": "auto" }],
     "no-param-reassign": "off",
     "no-underscore-dangle": "warn",
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-wrap-multilines": ["error", {"declaration": false, "assignment": false}],
+    "react/jsx-wrap-multilines": [
+      "error",
+      { "declaration": false, "assignment": false }
+    ],
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
