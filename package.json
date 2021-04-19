@@ -72,6 +72,7 @@
     "husky": "^4.2.5",
     "image-webpack-loader": "^4.5.0",
     "jest": "^26.6.3",
+    "jest-transform-stub": "^2.0.0",
     "lint-staged": "^10.2.13",
     "mini-css-extract-plugin": "^0.4.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -85,7 +86,7 @@
     "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --watch",
     "prod": "cross-env NODE_ENV=production webpack-dev-server",
     "build:prod": "cross-env NODE_ENV=production webpack",

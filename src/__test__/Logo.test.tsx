@@ -1,16 +1,28 @@
 import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import Logo from '../components/Logo/index';
 
-it('<Logo />', () => {
-  render(
-    <Router>
-      <Logo />
-    </Router>,
-  );
-  const logoText = screen.getByText('netflix');
+describe('<Logo />', () => {
+  it('matches with snapshot', () => {
+    const { baseElement } = render(
+      <Router>
+        <Logo />
+      </Router>,
+    );
 
-  expect(logoText).toBeInTheDocument();
+    expect(baseElement).toMatchSnapshot();
+  });
+
+  it('shows text', () => {
+    const logoComponent = render(
+      <Router>
+        <Logo />
+      </Router>,
+    );
+    const logoText = logoComponent.getByRole('heading', {name: /netflix roulette/i})
+
+    expect(logoText).toBeInTheDocument();
+  });
 });
