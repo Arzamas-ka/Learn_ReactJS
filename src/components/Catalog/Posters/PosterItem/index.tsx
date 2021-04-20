@@ -30,7 +30,7 @@ const PosterItem: FC<PosterItemProps> = ({
   }, []);
 
   return (
-    <StyledPostersItem key={shortid.generate()}>
+    <StyledPostersItem key={poster.id}>
       <DropdownMenu
         hideEdit={hideEdit}
         hideDelete={hideDelete}

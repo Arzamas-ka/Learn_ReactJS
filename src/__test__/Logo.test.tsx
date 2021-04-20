@@ -21,7 +21,9 @@ describe('<Logo />', () => {
         <Logo />
       </Router>,
     );
-    const logoText = logoComponent.getByRole('heading', {name: /netflix roulette/i})
+    const logoText = logoComponent.getByRole('heading', {
+      name: /netflix roulette/i,
+    });
 
     expect(logoText).toBeInTheDocument();
   });
