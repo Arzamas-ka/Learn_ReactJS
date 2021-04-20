@@ -48,11 +48,13 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case EDIT_MOVIE:
-      let updatedMovie = state.items.find((movie) => {
+      const updatedMovie = state.items.find((movie) => {
         return movie.id === payload.id;
       });
 
-      Object.assign(updatedMovie, payload);
+      if (updatedMovie) {
+        Object.assign(updatedMovie, payload);
+      }
 
       return {
         items: [...state.items],
@@ -84,6 +86,8 @@ export const movies = (state = initialState, { type, payload }) => {
       };
 
     case SEARCH_MOVIES:
+      console.log('payload: ', payload);
+      
       return {
         ...state,
         items: payload.data,
