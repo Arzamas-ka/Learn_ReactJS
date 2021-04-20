@@ -56,4 +56,48 @@ describe('<PosterItem />', () => {
 
     expect(baseElement).toMatchSnapshot();
   });
+
+  it('shows poster title', () => {
+    const posterItemComponent = renderWithRedux(
+      <ModalsContextProvider>
+        <Router>
+          <PosterItem
+            genre={poster.genres}
+            poster={poster}
+            hideEdit={() => {}}
+            hideDelete={() => {}}
+            setIsActiveBackdrop={() => {}}
+            setLoadingMovieDetails={false}
+            setErrorMovieDetails={false}
+            setMovieDetails={poster}
+          />
+        </Router>
+      </ModalsContextProvider>,
+    );
+    const posterTitle = posterItemComponent.getByText(/fifty shades freed/i);
+
+    expect(posterTitle).toBeInTheDocument();
+  });
+
+  it('do not show poster title', () => {
+    const posterItemComponent = renderWithRedux(
+      <ModalsContextProvider>
+        <Router>
+          <PosterItem
+            genre={poster.genres}
+            poster={{ ...poster, title: '' }}
+            hideEdit={() => {}}
+            hideDelete={() => {}}
+            setIsActiveBackdrop={() => {}}
+            setLoadingMovieDetails={false}
+            setErrorMovieDetails={false}
+            setMovieDetails={poster}
+          />
+        </Router>
+      </ModalsContextProvider>,
+    );
+    const posterTitle = posterItemComponent.queryByText(/fifty shades freed/i);
+
+    expect(posterTitle).not.toBeInTheDocument();
+  });
 });
