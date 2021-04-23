@@ -3,7 +3,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/__test__/config/importJestDOM.ts'],
   "transform": {
-    ".+\\.(css|styl|less|sass|scss|png|jpg|gif|ttf|woff|woff2)$": "jest-transform-stub"
+    ".+\\.(css|styl|less|sass|scss|png|jpg|svg|gif|ttf|woff|woff2)$": "jest-transform-stub"
   },
   "moduleDirectories": [
     "src",

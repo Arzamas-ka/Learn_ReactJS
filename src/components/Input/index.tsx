@@ -19,7 +19,7 @@ const Input: FC<InputProps> = forwardRef(
     },
     ref,
   ) => (
-    <StyledInputWrapper placeholder={placeholder} {...props}>
+    <StyledInputWrapper {...props}>
       {label && <StyledLabel htmlFor="input-field">{label}</StyledLabel>}
       <StyledInput
         type={type}

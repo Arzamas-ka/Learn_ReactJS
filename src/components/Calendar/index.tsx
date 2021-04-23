@@ -12,10 +12,10 @@ const Calendar: FC<any> = ({ onChange, value, type, onKeyDown }) => {
   const DatePickerCustomInput = forwardRef(({ onClick }: any, ref: any) => (
     <>
       <Input
+        aria-label="release"
         label="Release Date"
         name="release"
         type={type}
-        placeholder="Select date"
         onChange={(date) => setStartDate(date)}
         value={value}
         onClick={onClick}
@@ -31,7 +31,7 @@ const Calendar: FC<any> = ({ onChange, value, type, onKeyDown }) => {
       <DatePicker
         selected={startDate}
         onChange={onChange}
-        placeholderText="Select date"
+        placeholderText=""
         showYearDropdown={true}
         customInput={<DatePickerCustomInput />}
       />
