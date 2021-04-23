@@ -43,35 +43,6 @@ describe('<AddMoviePopup />', () => {
     expect(container).toBeInTheDocument();
   });
 
-  // it('close on ESC', () => {
-  //   const closeFn = jest.fn();
-
-  //   const { container } = renderWithRedux(
-  //     <AddMoviePopup
-  //       hideAdd={() => {}}
-  //       setIsActiveBackdrop={() => {}}
-  //       hideCongratulations={() => {}}
-  //       isShowingAdd={true}
-  //     />,
-  //   );
-
-  //   fireEvent.keyDown(container, {
-  //     key: 'Escape',
-  //     code: 'Escape',
-  //     keyCode: 27,
-  //     charCode: 27,
-  //   });
-  //   expect(closeFn).toBeCalled();
-  // });
-
-  // it('close on icon', () => {
-  //   const closeFn = jest.fn();
-
-  //   fireEvent.click(screen.getByLabelText("button-close"));
-  //   screen.debug();
-  //   expect(closeFn).toBeCalled();
-  // });
-
   it('Input "Title" to be in the document', () => {
     expect(screen.queryByPlaceholderText('Moana')).toBeInTheDocument();
   });
