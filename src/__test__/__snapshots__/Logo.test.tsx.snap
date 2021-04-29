@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo /> 1`] = `
+<body>
+  <div>
+    <a
+      class="sc-bdfBwQ bfKVhG"
+      href="/"
+    >
+      <h2>
+        netflix
+        <span
+          class="sc-gsTCUz fYWTln"
+        >
+          roulette
+        </span>
+      </h2>
+    </a>
+  </div>
+</body>
+`;
+
+exports[`<Logo /> matches with snapshot 1`] = `
+<body>
+  <div>
+    <a
+      class="sc-bdfBwQ bfKVhG"
+      href="/"
+    >
+      <h2>
+        netflix
+        <span
+          class="sc-gsTCUz fYWTln"
+        >
+          roulette
+        </span>
+      </h2>
+    </a>
+  </div>
+</body>
+`;
+
+exports[`<Logo /> shows text 1`] = `
+<body>
+  <div>
+    <a
+      class="sc-bdfBwQ bfKVhG"
+      href="/"
+    >
+      <h2>
+        netflix
+        <span
+          class="sc-gsTCUz fYWTln"
+        >
+          roulette
+        </span>
+      </h2>
+    </a>
+  </div>
+</body>
+`;

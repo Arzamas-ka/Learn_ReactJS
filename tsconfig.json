@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "lib": ["es5", "es6", "dom", "dom.iterable"],
+    "outDir": "./build",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "baseUrl": "./src",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  }
+}
