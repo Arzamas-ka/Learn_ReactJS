@@ -1,4 +1,5 @@
-import React, { FC, useState, useCallback } from 'react';
+import * as React from 'react';
+import { FC, useState, useCallback } from 'react';
 
 import { SelectProps } from './models';
 import {
@@ -15,17 +16,20 @@ import { SELECT_OPTIONS } from '@constants';
 const Select: FC<SelectProps> = ({ selected, onChange }) => {
   const [isOpen, setOpen] = useState(false);
 
-  const handleOnSelected = useCallback((selectedOption) => {
-    if (selected.includes(selectedOption)) {
-      const newSelected = selected.filter(
-        (option) => option !== selectedOption,
-      );
-      onChange(newSelected);
-    } else {
-      const newSelected = [...selected, selectedOption];
-      onChange(newSelected);
-    }
-  }, [selected]);
+  const handleOnSelected = useCallback(
+    (selectedOption) => {
+      if (selected.includes(selectedOption)) {
+        const newSelected = selected.filter(
+          (option) => option !== selectedOption,
+        );
+        onChange(newSelected);
+      } else {
+        const newSelected = [...selected, selectedOption];
+        onChange(newSelected);
+      }
+    },
+    [selected],
+  );
 
   const options = SELECT_OPTIONS.map((option) => {
     return (

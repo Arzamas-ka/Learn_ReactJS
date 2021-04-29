@@ -1,7 +1,8 @@
-import React, { FC, useEffect } from 'react';
+import * as React from 'react';
+import { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import moment from 'moment';
 import { useFormik } from 'formik';
+import moment from 'moment';
 
 import { EditMoviePopupProps } from './models';
 import {
@@ -19,7 +20,6 @@ import Calendar from 'components/Calendar';
 import Select from 'components/Select';
 
 import { initialValue, validationSchema } from './config';
-
 import { API_BASE } from '@constants';
 import { useApiRequest } from 'hooks/useApiRequest';
 import { editMovie } from 'actions/actions';

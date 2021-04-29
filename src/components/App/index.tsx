@@ -1,4 +1,5 @@
-import React, { FC, useContext } from 'react';
+import * as React from 'react';
+import { FC, useContext } from 'react';
 
 import { GlobalStyle } from '../../styles/style';
 import { StyledApp, StyledBackdrop } from './style';

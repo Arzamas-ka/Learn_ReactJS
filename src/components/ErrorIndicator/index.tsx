@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import * as React from 'react';
+import { FC } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { ErrorIndicatorProps } from './models';

@@ -1,4 +1,5 @@
-import React, { FC, useCallback } from 'react';
+import * as React from 'react';
+import { FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { DropdownMenuProps } from './models';
@@ -13,7 +14,6 @@ import {
 } from './style';
 
 import usePopupToggle from 'hooks/usePopupToggle';
-
 import { putPosterId } from 'actions/actions';
 
 const DropdownMenu: FC<DropdownMenuProps> = ({

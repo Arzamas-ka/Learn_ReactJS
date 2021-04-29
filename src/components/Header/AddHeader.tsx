@@ -1,4 +1,5 @@
-import React, { FC, SyntheticEvent, useCallback } from 'react';
+import * as React from 'react';
+import { FC, SyntheticEvent, useCallback } from 'react';
 
 import { AddHeaderProps } from './models';
 import { StyledHeaderWrapper, StyledHeaderTop } from './style';

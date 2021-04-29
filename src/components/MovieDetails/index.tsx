@@ -1,4 +1,5 @@
-import React, { FC, useCallback } from 'react';
+import * as React from 'react';
+import { FC, useCallback } from 'react';
 
 import { MovieDetailsProps } from './models';
 import {

@@ -1,4 +1,5 @@
-import React, { FC, useCallback, useState } from 'react';
+import * as React from 'react';
+import { FC, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 

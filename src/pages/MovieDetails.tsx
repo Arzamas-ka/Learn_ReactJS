@@ -1,4 +1,5 @@
-import React, { memo, useContext, useEffect } from 'react';
+import * as React from 'react';
+import { memo, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { ParamTypes } from './models';

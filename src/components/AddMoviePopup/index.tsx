@@ -1,4 +1,5 @@
-import React, { FC, useEffect } from 'react';
+import * as React from 'react';
+import { FC, useEffect } from 'react';
 import moment from 'moment';
 import { useFormik } from 'formik';
 
@@ -81,6 +82,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
   return (
     <StyledAddMoviePopupWrapper>
       <StyledCloseIcon
+        aria-label="button-close"
         onClick={() => {
           hideAdd(), setIsActiveBackdrop(false);
         }}
@@ -107,6 +109,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
             type="text"
             value={values['release_date']}
             onChange={handleOnCalendar}
+            placeholder="Select date"
             onKeyDown={(event) => event.preventDefault()}
           />
           <Input
@@ -126,6 +129,7 @@ const AddMoviePopup: FC<AppMoviePopup> = ({
             </StyledAddMoviePopupError>
           }
           <Select
+            aria-label="select"
             name="genres"
             onChange={handleOnSelect}
             value={values.genres}

@@ -1,4 +1,5 @@
-import React, { useState, createContext } from 'react';
+import * as React from 'react';
+import { useState, createContext } from 'react';
 
 import usePopupToggle from 'hooks/usePopupToggle';
 
