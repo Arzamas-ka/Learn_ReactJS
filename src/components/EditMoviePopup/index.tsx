@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FC, useEffect } from 'react';
-import { RootStateOrAny, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import moment from 'moment';
 
@@ -28,10 +28,8 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
   hideEdit,
   setIsActiveBackdrop,
 }) => {
-  const posterId = useSelector(
-    ({ movies: { posterId } }: RootStateOrAny) => posterId,
-  );
-  const movie = useSelector(({ movies: { items } }: RootStateOrAny) =>
+  const posterId = useSelector(({ movies: { posterId } }: any) => posterId);
+  const movie = useSelector(({ movies: { items } }: any) =>
     items.find((movie) => movie.id === posterId),
   );
   const initialValues = { ...initialValue, ...movie };
