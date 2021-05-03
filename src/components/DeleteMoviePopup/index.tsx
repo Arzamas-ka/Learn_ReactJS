@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FC, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 
 import { DeleteMoviePopupProps } from './models';
 import {
@@ -21,7 +21,7 @@ const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
   hideDelete,
   setIsActiveBackdrop,
 }) => {
-  const posterId = useSelector(({ movies: { posterId } }) => posterId);
+  const posterId = useSelector(({ movies: { posterId } }: RootStateOrAny) => posterId);
   const { fetchData: deleteMovieFetch } = useApiRequest(
     'delete',
     API_DELETE,

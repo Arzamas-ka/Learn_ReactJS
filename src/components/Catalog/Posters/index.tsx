@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FC, useEffect, useCallback, memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { RootStateOrAny, useSelector } from 'react-redux';
 import shortid from 'shortid';
 
 import { PostersProps } from './models';
@@ -30,12 +30,20 @@ const Posters: FC<PostersProps> = ({
   hideDelete,
   setIsActiveBackdrop,
 }) => {
-  const filterItem = useSelector(({ movies: { filterItem } }) => filterItem);
-  const movies = useSelector(({ movies: { items } }) => items);
-  const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
-  const error = useSelector(({ movies: { error } }) => error);
-  const loading = useSelector(({ movies: { loading } }) => loading);
-  const totalPages = useSelector(({ movies: { totalPages } }) => totalPages);
+  const filterItem = useSelector(
+    ({ movies: { filterItem } }: RootStateOrAny) => filterItem,
+  );
+  const movies = useSelector(({ movies: { items } }: RootStateOrAny) => items);
+  const currentPage = useSelector(
+    ({ movies: { currentPage } }: RootStateOrAny) => currentPage,
+  );
+  const error = useSelector(({ movies: { error } }: RootStateOrAny) => error);
+  const loading = useSelector(
+    ({ movies: { loading } }: RootStateOrAny) => loading,
+  );
+  const totalPages = useSelector(
+    ({ movies: { totalPages } }: RootStateOrAny) => totalPages,
+  );
   const { fetchData: getMovies } = useApiRequest('get', API_BASE, fetchMovies);
   const { fetchData: getMoreMovies } = useApiRequest(
     'get',
