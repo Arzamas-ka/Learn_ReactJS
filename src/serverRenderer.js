@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import App from './components/App/';
+import store from './store';
 
 
-function renderHTML(html) {
+function renderHTML (html, preloadedState) {
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -23,6 +24,11 @@ function renderHTML(html) {
   
     <body>
     <div id="root">${html}</div>
+
+    <script>
+      window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+    </script>
+
   
       <script>
         if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer;
@@ -33,19 +39,20 @@ function renderHTML(html) {
   `;
 }
 
-export default function serverRenderer() {
+export default function serverRenderer () {
   return (req, res) => {
     const context = {};
 
-    const root = (
+    const renderRoot = () => (
       <App
         context={context}
         location={req.url}
         Router={StaticRouter}
+        store={store}
       />
     );
 
-    const htmlString = renderToString(root);
+    renderToString(renderRoot());
 
     if (context.url) {
       res.writeHead(302, {
@@ -55,6 +62,10 @@ export default function serverRenderer() {
       return;
     }
 
-    res.send(renderHTML(htmlString));
+    const htmlString = renderToString(renderRoot());
+    const preloadedState = store.getState();
+
+    res.send(renderHTML(htmlString, preloadedState));
   };
 }
+
