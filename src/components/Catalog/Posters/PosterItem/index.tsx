@@ -29,6 +29,7 @@ const PosterItem: FC<PosterItemProps> = ({
     target.alt = 'image not found';
   }, []);
 
+   // PATTERN: render props
   return (
     <StyledPostersItem key={poster.id}>
       <DropdownMenu

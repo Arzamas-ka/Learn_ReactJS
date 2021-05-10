@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 
+// PATTERN: custom hook
 const usePopupToggle = () => {
   const [isShowing, setIsShowing] = useState(false);
 
