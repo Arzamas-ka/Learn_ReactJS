@@ -35,7 +35,6 @@ function renderHTML (html, preloadedState) {
       </script>
     </body>
   </html>
-  
   `;
 }
 
