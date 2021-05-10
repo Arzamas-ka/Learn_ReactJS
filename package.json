@@ -21,6 +21,7 @@
     "@types/testing-library__react": "^10.2.0",
     "@types/webpack-env": "^1.16.0",
     "axios": "^0.21.1",
+    "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
     "formik": "^2.2.6",
     "jest-styled-components": "^7.0.3",
