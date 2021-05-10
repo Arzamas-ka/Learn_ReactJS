@@ -19,6 +19,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/testing-library__jest-dom": "^5.9.5",
     "@types/testing-library__react": "^10.2.0",
+    "@types/webpack-env": "^1.16.0",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "formik": "^2.2.6",
