@@ -25,6 +25,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
     "formik": "^2.2.6",
+    "immutable": "^4.0.0-rc.12",
     "jest-styled-components": "^7.0.3",
     "moment": "^2.29.1",
     "node-sass": "^4.10.0",

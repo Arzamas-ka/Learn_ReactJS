@@ -100,7 +100,7 @@ const Posters: FC<PostersProps> = ({
         <>
           {' '}
           <StyledNumberMovies>
-            <span>{movies.length}</span> movie found
+            <span>{movies.size}</span> movie found
           </StyledNumberMovies>
           <StyledPostersList>{posters}</StyledPostersList>
           {totalPages > 1 && (
