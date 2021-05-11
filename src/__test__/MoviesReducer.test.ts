@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import { initialState, movies } from 'reducers/movies';
 
 import {
@@ -27,7 +28,8 @@ const poster = {
   id: 337167,
 };
 
-const customArrayMovies = new Array(10).fill({ ...poster });
+const customArray = new Array(10).fill({ ...poster });
+const customArrayMovies = List(customArray);
 
 describe('Redux testing', () => {
   it('should return the initial state', () => {
@@ -47,7 +49,7 @@ describe('Redux testing', () => {
       }),
     ).toEqual({
       items: customArrayMovies,
-      currentPage: 1,
+      currentPage: 2,
       totalPages: 2999,
       error: null,
       loading: false,
@@ -63,7 +65,7 @@ describe('Redux testing', () => {
         payload: 337167,
       }),
     ).toEqual({
-      items: [],
+      items: List(),
       currentPage: 1,
       totalPages: 0,
       error: null,
@@ -87,13 +89,13 @@ describe('Redux testing', () => {
           runtime: 100,
           title: 'New Movie',
         },
-      }).items.length,
+      }).items.size,
     ).toBe(1);
   });
 
   it('should handle EDIT_MOVIE', () => {
     const initialState = {
-      items: [
+      items: List([
         {
           budget: 55000000,
           genres: ['Drama', 'Romance'],
@@ -110,7 +112,7 @@ describe('Redux testing', () => {
           vote_average: 6.1,
           vote_count: 1195,
         },
-      ],
+      ]),
       currentPage: 1,
       totalPages: 0,
       error: null,
@@ -126,7 +128,7 @@ describe('Redux testing', () => {
           ...initialState,
           title: 'Fifty Shades Freed EDITED',
         },
-      }).items.length,
+      }).items.size,
     ).toBe(1);
   });
 
@@ -135,7 +137,7 @@ describe('Redux testing', () => {
       movies(initialState, {
         type: DELETE_MOVIE,
         payload: '',
-      }).items.length,
+      }).items.size,
     ).toBe(0);
   });
 
@@ -149,7 +151,7 @@ describe('Redux testing', () => {
       currentPage: 0,
       error: null,
       filterItem: 'horror',
-      items: [],
+      items: List(),
       loading: true,
       posterId: null,
       totalPages: 0,
@@ -179,7 +181,7 @@ describe('Redux testing', () => {
         type: SEARCH_MOVIES,
         payload: initialState,
       }),
-    )["title"];
+    )['title'];
   });
 
   it('should handle ERROR_MESSAGE', () => {
@@ -188,6 +190,6 @@ describe('Redux testing', () => {
         type: ERROR_MESSAGE,
         payload: 'Not Found',
       }),
-    )["error"];
+    )['error'];
   });
 });
