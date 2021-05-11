@@ -25,9 +25,6 @@ export const initialState = {
 export const movies = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_MOVIES:
-      console.log('FETCH_MOVIES');
-      console.log('currentPage: ', state.currentPage);
-      
       return {
         ...state,
         items:
