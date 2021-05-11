@@ -1,5 +1,3 @@
-import { withKnobs } from '@storybook/addon-knobs'
-
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   options: {
@@ -7,5 +5,3 @@ export const parameters = {
       a[1].kind === b[1].kind ? 0 : a[1].id.localeCompare(b[1].id, undefined, { numeric: true }),
   },
 }
-
-addDecorator(withKnobs);
