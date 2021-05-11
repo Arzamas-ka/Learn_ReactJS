@@ -14,6 +14,7 @@
     }
   },
   "dependencies": {
+    "@storybook/addon-knobs": "^6.2.9",
     "@types/jest": "^26.0.22",
     "@types/react-datepicker": "^3.1.5",
     "@types/react-router-dom": "^5.1.7",
@@ -56,6 +57,11 @@
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "@babel/runtime": "^7.1.5",
+    "@storybook/addon-actions": "^6.3.0-alpha.22",
+    "@storybook/addon-essentials": "^6.3.0-alpha.22",
+    "@storybook/addon-links": "^6.3.0-alpha.22",
+    "@storybook/cli": "^6.2.9",
+    "@storybook/react": "^6.3.0-alpha.22",
     "@testing-library/dom": "^7.30.4",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/user-event": "^13.1.5",
@@ -99,7 +105,9 @@
     "build:prod": "cross-env NODE_ENV=production webpack",
     "build:dev": "cross-env NODE_ENV=development webpack",
     "tsc": "tsc",
-    "lint": "eslint"
+    "lint": "eslint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "",
   "license": "ISC"
