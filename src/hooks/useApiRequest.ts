@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { getErrorMessage } from './../actions/actions';
 
+// PATTERN: custom hook
 export const useApiRequest = (method, endpoint, action) => {
   const dispatch = useDispatch();
 

@@ -6,6 +6,7 @@ import { API_BASE } from '../@constants/index';
 
 import { ModalsContext } from 'components/App/ModalsContext';
 
+// PATTERN: custom hook
 const useMoreDetailsMovie = () => {
   const {
     setErrorMovieDetails,
