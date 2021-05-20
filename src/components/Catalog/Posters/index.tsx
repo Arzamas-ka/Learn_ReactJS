@@ -30,12 +30,18 @@ const Posters: FC<PostersProps> = ({
   hideDelete,
   setIsActiveBackdrop,
 }) => {
-  const filterItem = useSelector(({ movies: { filterItem } }) => filterItem);
-  const movies = useSelector(({ movies: { items } }) => items);
-  const currentPage = useSelector(({ movies: { currentPage } }) => currentPage);
-  const error = useSelector(({ movies: { error } }) => error);
-  const loading = useSelector(({ movies: { loading } }) => loading);
-  const totalPages = useSelector(({ movies: { totalPages } }) => totalPages);
+  const filterItem = useSelector(
+    ({ movies: { filterItem } }: any) => filterItem,
+  );
+  const movies = useSelector(({ movies: { items } }: any) => items);
+  const currentPage = useSelector(
+    ({ movies: { currentPage } }: any) => currentPage,
+  );
+  const error = useSelector(({ movies: { error } }: any) => error);
+  const loading = useSelector(({ movies: { loading } }: any) => loading);
+  const totalPages = useSelector(
+    ({ movies: { totalPages } }: any) => totalPages,
+  );
   const { fetchData: getMovies } = useApiRequest('get', API_BASE, fetchMovies);
   const { fetchData: getMoreMovies } = useApiRequest(
     'get',

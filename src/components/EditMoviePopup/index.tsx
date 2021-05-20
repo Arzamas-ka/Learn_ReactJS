@@ -28,8 +28,8 @@ const EditMoviePopup: FC<EditMoviePopupProps> = ({
   hideEdit,
   setIsActiveBackdrop,
 }) => {
-  const posterId = useSelector(({ movies: { posterId } }) => posterId);
-  const movie = useSelector(({ movies: { items } }) =>
+  const posterId = useSelector(({ movies: { posterId } }: any) => posterId);
+  const movie = useSelector(({ movies: { items } }: any) =>
     items.find((movie) => movie.id === posterId),
   );
   const initialValues = { ...initialValue, ...movie };

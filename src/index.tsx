@@ -9,7 +9,9 @@ import App from 'components/App';
 import ErrorBoundary from './ErrorBoundary';
 import ModalsContextProvider from './components/App/ModalsContext';
 
-ReactDOM.render(
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+
+renderMethod(
   <Provider store={store}>
     <ErrorBoundary>
       <ModalsContextProvider>

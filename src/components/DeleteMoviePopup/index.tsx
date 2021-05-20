@@ -21,7 +21,7 @@ const DeleteMoviePopup: FC<DeleteMoviePopupProps> = ({
   hideDelete,
   setIsActiveBackdrop,
 }) => {
-  const posterId = useSelector(({ movies: { posterId } }) => posterId);
+  const posterId = useSelector(({ movies: { posterId } }: any) => posterId);
   const { fetchData: deleteMovieFetch } = useApiRequest(
     'delete',
     API_DELETE,
